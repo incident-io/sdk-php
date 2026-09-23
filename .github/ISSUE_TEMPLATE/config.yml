@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: incident.io API documentation
+    url: https://api-docs.incident.io/
+    about: Reference for the incident.io public API itself.
+  - name: incident.io support
+    url: https://incident.io/contact
+    about: Account, billing, or product questions unrelated to this SDK.

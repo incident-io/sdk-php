@@ -1,0 +1,14 @@
+# The workflows pin every action by SHA, which nothing else can bump.
+#
+# No composer entry: composer.lock is not committed (this is a library, so CI
+# resolves dependencies fresh on every run, as consumers do), so there is
+# nothing for Dependabot to bump.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]

@@ -1,0 +1,19 @@
+# Everything listed here is ours. Everything the generator writes outside this
+# list (src/ and .openapi-generator/) is generated, and is cleared and rewritten
+# by `make generate`.
+#
+# The generator has no --meta none for PHP, so without these entries it would
+# overwrite the package metadata and the README on every run.
+composer.json
+README.md
+.gitignore
+.travis.yml
+.php-cs-fixer.dist.php
+.phplint.yml
+phpunit.xml.dist
+git_push.sh
+tests/**
+scripts/**
+templates/**
+Makefile
+.github/**

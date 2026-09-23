@@ -1,0 +1,60 @@
+name: test
+
+# Pull requests and hand-made commits. The hourly release commits are pushed
+# with GITHUB_TOKEN, which does not trigger workflows, so sync.yml runs the same
+# gates itself before it tags anything.
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # The floor composer.json promises, and the newest release. The floor
+        # is the one that catches syntax newer than we declare; the newest is
+        # the one that catches deprecations turning into errors.
+        php: ["8.1", "8.5"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
+          coverage: none
+      - run: make test
+
+  # Both need the generator jar, so one job restores it once.
+  #
+  # template-drift fails if the generator's templates changed under the text
+  # scripts/fix_generated.py rewrites. generate-drift regenerates from the
+  # committed schema and fails if the result differs from what is committed:
+  # someone edited src/ by hand, or changed the Makefile or
+  # scripts/fix_generated.py without regenerating.
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # ~30MB from Maven Central, fetched by the Makefile into /tmp. Keyed on
+      # the Makefile because that is where OPENAPI_GENERATOR_VERSION lives.
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: /tmp/openapi-generator-cli-*.jar
+          key: openapi-generator-${{ hashFiles('Makefile') }}
+      - run: make template-drift
+      - run: make generate
+      # --porcelain rather than `git diff --quiet`, which ignores untracked
+      # files and so would miss a new endpoint's class.
+      - name: Fail if the generated client is out of date
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git status --porcelain
+            echo "::error::The generated client is out of date. Run make generate and commit the result."
+            exit 1
+          fi

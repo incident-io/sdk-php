@@ -1,0 +1,463 @@
+name: sync
+
+# Runs hourly once enabled. When the schema hasn't changed the job exits in
+# seconds, which is what makes that affordable.
+#
+# There is no publish step. Packagist reads versions from git tags and learns
+# about a new one from its GitHub webhook, which fires on any push, including
+# one made with GITHUB_TOKEN. The job pushes the tag, then waits until
+# Packagist lists the version, so a broken webhook is reported rather than
+# silent.
+#
+# Keep the filename. Nothing binds to it today, but every other SDK repo's
+# trusted-publishing binding does, and keeping the name the same across them is
+# what lets one fix be copied between them.
+on:
+  # Disabled until the package is registered on Packagist: the release would
+  # otherwise tag, wait for a version Packagist can never list, and file a
+  # stuck-release issue. Uncomment to start the hourly loop. Avoid minute 0,
+  # which is GitHub's most contended scheduling slot.
+  # schedule:
+  #   - cron: "37 * * * *" # hourly
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: "Which part of the version to bump"
+        type: choice
+        options: [minor, major]
+        default: minor
+      acknowledge_breaking:
+        description: "Release even though a gate reports a breaking change"
+        type: boolean
+        default: false
+      dry_run:
+        description: "Regenerate and verify, but don't tag or release"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write # commit + tag + create release
+  issues: write # open an issue when something needs a human
+
+concurrency:
+  group: sync
+  cancel-in-progress: false
+
+env:
+  # Pinned: oasdiff decides whether we release at all.
+  OASDIFF_VERSION: "1.32.1"
+  PACKAGE: incident-io/sdk-php
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    # cancel-in-progress is false, so a hung run holds the group until it
+    # dies, and the default is six hours. A timeout is a cancellation, and
+    # `if: failure()` steps do not run on a cancelled job, so this has to
+    # leave room for the Packagist wait after the tag is pushed.
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0 # need full history + tags to read the last version
+
+      # Goes to a scratch path because oasdiff needs both versions to compare;
+      # writing straight over openapi.json would lose the old one.
+      - name: Fetch latest public schema
+        run: make fetch OUT=openapi.json.new
+
+      # curl -f fails on an HTTP error but not on a 200 with an empty or
+      # truncated body, and oasdiff reads an empty file as every path having
+      # been removed, which it rates breaking. Check the bytes are a schema
+      # before anything downstream trusts them.
+      - name: Check the fetched schema is a schema
+        run: |
+          set -euo pipefail
+          python3 -c "
+          import json, sys
+          with open('openapi.json.new') as f:
+              document = json.load(f)
+          paths = document.get('paths') or {}
+          if len(paths) < 100:
+              sys.exit(f'only {len(paths)} paths in the fetched schema')
+          print(f'{len(paths)} paths')
+          " || (echo "::error::The fetched schema is not usable; leaving the committed one alone." && exit 1)
+
+      - name: Exit early if schema unchanged
+        id: changed
+        run: |
+          if diff -q openapi.json openapi.json.new >/dev/null 2>&1; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Schema unchanged; nothing to do."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check for breaking changes
+        if: steps.changed.outputs.changed == 'true'
+        id: breaking
+        run: |
+          set -euo pipefail
+          curl -sfSL "https://github.com/oasdiff/oasdiff/releases/download/v${OASDIFF_VERSION}/oasdiff_${OASDIFF_VERSION}_linux_amd64.tar.gz" \
+            | tar -xz -C /tmp oasdiff
+
+          # First release: nothing to compare against.
+          if [ ! -f openapi.json ]; then
+            echo "breaking=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # oasdiff-severity.txt adjusts rules in both directions; it takes no
+          # comments of its own.
+          #
+          # Down to WARN: an added response enum value, because
+          # scripts/fix_generated.py makes every enum accept values it does not
+          # know, and a tightened request minimum, because the generated
+          # client does no range validation. Left at ERR these halt about a
+          # quarter of real schema changes.
+          #
+          # Up to ERR: a removed operationId or component schema. Neither
+          # changes the wire contract, so oasdiff rates them info, but both
+          # rename a method or class that callers use.
+          report="$(/tmp/oasdiff breaking openapi.json openapi.json.new \
+            --severity-levels oasdiff-severity.txt --fail-on ERR 2>&1)" && rc=0 || rc=$?
+          echo "$report"
+
+          # 1 means it found breaking changes. Anything else means it couldn't
+          # do the comparison at all, which is not a breaking change and mustn't
+          # be filed as one.
+          if [ "$rc" -ne 0 ] && [ "$rc" -ne 1 ]; then
+            echo "::error::oasdiff exited $rc without comparing the schemas."
+            exit 1
+          fi
+
+          if [ "$rc" -ne 0 ]; then
+            echo "breaking=true" >> "$GITHUB_OUTPUT"
+            { echo "report<<OASDIFF_EOF"; echo "$report"; echo "OASDIFF_EOF"; } >> "$GITHUB_OUTPUT"
+          else
+            echo "breaking=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # A human dispatch with acknowledge_breaking skips this. The step below
+      # requires bump: major alongside it, so an acknowledged break cannot ship
+      # as a minor.
+      - name: Halt on breaking change
+        if: steps.changed.outputs.changed == 'true' && steps.breaking.outputs.breaking == 'true' && !inputs.acknowledge_breaking
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPORT: ${{ steps.breaking.outputs.report }}
+        run: |
+          set -euo pipefail
+          body="$(cat <<EOF
+          The upstream OpenAPI schema changed in a way that is **not backwards-compatible**, so the automated release was halted rather than publishing a breaking change as a minor bump.
+
+          A human needs to decide how to proceed, most likely a new major version.
+
+          To release it once you have decided: run this workflow from the Actions tab
+          (**Run workflow**) with **bump: major** and **acknowledge_breaking: true**. Both
+          are required together. Close this issue afterwards, or the next genuine
+          breaking change will be deduped against it and file nothing.
+
+          <details><summary>oasdiff report</summary>
+
+          \`\`\`
+          $REPORT
+          \`\`\`
+
+          </details>
+
+          Triggered by run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          EOF
+          )"
+          # Created here rather than assumed: gh issue create fails outright on
+          # a label that doesn't exist, and an unlabelled fallback would be
+          # invisible to the dedup below, filing one issue an hour forever.
+          gh label create breaking-change \
+            --description "Schema changed incompatibly; release halted" \
+            --color B60205 2>/dev/null || true
+
+          # We stop without committing the new schema, so every later run sees
+          # the same diff and lands here again. Only file one issue. `|| true`
+          # so a gh outage reads as "none open" rather than failing the
+          # pipeline, then test the text.
+          open_issue="$(gh issue list --label breaking-change --state open --limit 1 \
+            --json number --jq '.[0].number // empty' || true)"
+          if [ -n "$open_issue" ]; then
+            echo "::error::Breaking change detected; an issue is already open."
+            exit 1
+          fi
+
+          gh issue create \
+            --title "Breaking API change detected — manual release required" \
+            --body "$body" \
+            --label breaking-change
+          echo "::error::Breaking change detected; opened an issue and stopped."
+          exit 1
+
+      - name: Reject acknowledging a break without a major bump
+        id: reject
+        if: inputs.acknowledge_breaking && inputs.bump != 'major'
+        run: |
+          echo "::error::acknowledge_breaking requires bump: major."
+          exit 1
+
+      # Scheduled runs only ever bump minor, since anything breaking has
+      # already stopped the run. Patch is for hand-fixes; major needs a human
+      # dispatch with both bump: major and acknowledge_breaking.
+      #
+      # Nothing writes the version into composer.json: Packagist takes it from
+      # the tag, and a version field there would have to agree with the tag or
+      # Packagist rejects the release.
+      - name: Decide next version
+        if: steps.changed.outputs.changed == 'true'
+        id: version
+        run: |
+          set -euo pipefail
+          BUMP="${{ inputs.bump || 'minor' }}"
+          # Highest version, not `git describe`'s nearest-by-commit-distance: a
+          # hand-cut patch tag would otherwise make us recompute a version that
+          # already exists. The pattern also skips any non-semver tag.
+          BASE="$(git tag --list 'v[0-9]*.[0-9]*.[0-9]*' --sort=-v:refname | head -1)"
+
+          if [ -z "$BASE" ]; then
+            NEXT="v1.0.0"
+          elif [ "$BUMP" = "major" ]; then
+            NEXT="$(echo "${BASE#v}" | awk -F. '{printf "v%d.0.0", $1+1}')"
+          else
+            NEXT="$(echo "${BASE#v}" | awk -F. '{printf "v%d.%d.0", $1, $2+1}')"
+          fi
+
+          if git rev-parse -q --verify "refs/tags/$NEXT" >/dev/null; then
+            echo "::error::$NEXT already exists. A previous run tagged without"
+            echo "::error::releasing, or a tag was cut by hand. Resolve before releasing."
+            exit 1
+          fi
+
+          echo "Next version: $NEXT (base: ${BASE:-none}, bump: $BUMP)"
+          echo "next=$NEXT" >> "$GITHUB_OUTPUT"
+
+      # After the breaking-change halt, not before: a halted schema halts every
+      # hour until someone acts, and those runs need neither PHP nor the jar.
+      - if: steps.changed.outputs.changed == 'true'
+        # The floor composer.json promises. The newest PHP is checked below.
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: "8.1"
+          tools: composer:v2
+          coverage: none
+      - if: steps.changed.outputs.changed == 'true'
+        # ~30MB from Maven Central, fetched by the Makefile into /tmp. Keyed on
+        # the Makefile because that is where OPENAPI_GENERATOR_VERSION lives.
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: /tmp/openapi-generator-cli-*.jar
+          key: openapi-generator-${{ hashFiles('Makefile') }}
+
+      # No `make template-drift` here: the generator is pinned, so its templates
+      # cannot change between releases. test.yml checks them on every pull
+      # request, which is where a generator bump arrives.
+      - name: Regenerate and check
+        if: steps.changed.outputs.changed == 'true'
+        env:
+          ACKNOWLEDGED: ${{ inputs.acknowledge_breaking }}
+        run: |
+          set -euo pipefail
+          mv openapi.json.new openapi.json
+          make generate
+          # An acknowledged major removes things on purpose, so the surface
+          # check would fail on exactly the removals being released. Record
+          # the new surface first; the check then passes against it.
+          if [ "$ACKNOWLEDGED" = "true" ]; then
+            make surface
+          fi
+          # make test depends on make verify: composer validate, loading every
+          # class, the API surface check, then the tests.
+          make test
+          # After a passing check, so the baseline also records what this
+          # release adds. Without it, something added now and removed in the
+          # next release would not be caught.
+          make surface
+
+      - name: Check on the newest PHP
+        if: steps.changed.outputs.changed == 'true'
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: "8.5"
+          tools: composer:v2
+          coverage: none
+      # Release commits are pushed with GITHUB_TOKEN, so test.yml never runs on
+      # them. This is the only place the newest PHP sees a release before
+      # consumers do.
+      - if: steps.changed.outputs.changed == 'true'
+        run: make test
+
+      - name: Report what a dry run would have done
+        if: steps.changed.outputs.changed == 'true' && inputs.dry_run
+        env:
+          NEXT: ${{ steps.version.outputs.next }}
+        run: |
+          {
+            echo "### Dry run — nothing was tagged or released"
+            echo ""
+            echo "Would have released **$NEXT**."
+            echo ""
+            echo '```'
+            git status --short
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit, tag and push
+        if: steps.changed.outputs.changed == 'true' && !inputs.dry_run
+        id: push
+        env:
+          NEXT: ${{ steps.version.outputs.next }}
+        run: |
+          set -euo pipefail
+          git config user.name "incident-io-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add openapi.json src .openapi-generator api-surface.txt
+          # Anything the allowlist above misses would be left out of the tag
+          # Packagist serves. Catch it while the tag is still local.
+          #
+          # Only the residue: --porcelain lists staged entries too, with the
+          # status in column 1, so checking it whole would match every file the
+          # add above just staged.
+          residue="$(git status --porcelain | grep -v '^[MADRC] ' || true)"
+          if [ -n "$residue" ]; then
+            echo "::error::Files changed that the commit does not stage. Add them"
+            echo "::error::to the git add above, or gitignore them."
+            echo "$residue"
+            exit 1
+          fi
+          git commit -m "Update to schema as of $(date -u +%Y-%m-%dT%H:%M:%SZ)
+
+          Regenerated from https://api.incident.io/v1/openapiV3.json"
+          git tag "$NEXT"
+          # --atomic: otherwise the tag can land while the branch push is
+          # refused, and every later run recomputes this version and dies on
+          # "tag already exists".
+          git push --atomic origin HEAD "refs/tags/$NEXT"
+
+      - name: Create the GitHub release
+        if: steps.changed.outputs.changed == 'true' && !inputs.dry_run
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEXT: ${{ steps.version.outputs.next }}
+        run: gh release create "$NEXT" --generate-notes --title "$NEXT"
+
+      # The push is the publish, but only if Packagist hears about it. A
+      # removed webhook or a lapsed Packagist integration fails silently: the
+      # tag exists, the run is green, and composer never sees the version.
+      #
+      # Packagist normally updates within a minute of the hook. Its metadata
+      # is served from a CDN, so allow a while before calling it stuck.
+      - name: Wait for Packagist to list the version
+        if: steps.changed.outputs.changed == 'true' && !inputs.dry_run
+        env:
+          NEXT: ${{ steps.version.outputs.next }}
+        run: |
+          set -euo pipefail
+          for _ in $(seq 1 20); do
+            if curl -sfSL "https://repo.packagist.org/p2/${PACKAGE}.json" \
+              | python3 -c "import json, sys; versions = {v.get('version') for v in json.load(sys.stdin)['packages']['${PACKAGE}']}; sys.exit(0 if versions & {'${NEXT}', '${NEXT#v}'} else 1)"; then
+              echo "Packagist lists $NEXT."
+              exit 0
+            fi
+            sleep 30
+          done
+          echo "::error::Packagist does not list $NEXT after 10 minutes."
+          exit 1
+
+      # Every other signal in this workflow is a failure() hook, and a loop
+      # that never runs never fails: a disabled cron and a quiet API look
+      # identical in the Actions tab. This is the one line that says the loop
+      # ran and what it decided.
+      #
+      # GitHub disables a scheduled workflow after 60 days without repository
+      # activity. This repo's activity is its own release commits, which stop
+      # exactly when the schema stops changing.
+      - name: Record what this run did
+        if: always() && steps.changed.outputs.changed != ''
+        env:
+          CHANGED: ${{ steps.changed.outputs.changed }}
+          NEXT: ${{ steps.version.outputs.next }}
+        run: |
+          if [ "$CHANGED" = "true" ]; then
+            echo "Schema changed; released ${NEXT:-nothing (dry run or halted)}." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Schema unchanged; nothing to release." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      # Last in the job so it can observe every step, including the push and
+      # the Packagist wait above. A failure() step cannot see a step declared
+      # after it.
+      #
+      # The guards narrow it to a release that actually got going and actually
+      # wedged: not a failed fetch (the next run retries by itself), not a
+      # dispatch typo, not a dry run, and not a halted breaking change, which
+      # files its own issue. On an acknowledged break the run continues, so a
+      # failure after the push is still reported.
+      - name: Report a stuck release
+        if: >-
+          failure()
+          && steps.changed.outputs.changed == 'true'
+          && !inputs.dry_run
+          && (steps.breaking.outputs.breaking != 'true' || inputs.acknowledge_breaking)
+          && steps.reject.outcome != 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PUSHED: ${{ steps.push.outcome == 'success' }}
+          RELEASED: ${{ steps.release.outcome == 'success' }}
+          NEXT: ${{ steps.version.outputs.next }}
+        run: |
+          set -euo pipefail
+
+          if [ "$PUSHED" = "true" ] && [ "$RELEASED" != "true" ]; then
+            title="Release $NEXT is tagged but has no GitHub release"
+            body="**$NEXT** is tagged and pushed, so Packagist can serve it. The run then failed before creating the GitHub release.
+
+          To finish it:
+
+          \`\`\`
+          gh release create $NEXT --generate-notes --title $NEXT
+          \`\`\`
+
+          Then check https://packagist.org/packages/$PACKAGE lists $NEXT.
+
+          Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          elif [ "$PUSHED" = "true" ]; then
+            # The schema is committed and the tag is pushed, so the next run
+            # sees no diff and exits in seconds. Nothing retries.
+            title="Release $NEXT is tagged but Packagist has not picked it up"
+            body="The sync pushed the tag and created the GitHub release for **$NEXT**, but Packagist did not list it within 10 minutes. \`composer require $PACKAGE\` will not see it.
+
+          This will not fix itself. The next run finds the schema unchanged and exits in seconds, so the cron goes green and nothing retries.
+
+          Check https://packagist.org/packages/$PACKAGE: if it shows a warning that the GitHub hook is not set up, re-enable it from the package page (or the repository's webhook settings) and press **Update**. Packagist then reads every tag, including this one.
+
+          Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          else
+            title="Release is stuck — regeneration or verification is failing"
+            body="The hourly sync failed after detecting a schema change, before committing anything. The next run will see the same diff and fail the same way, so this repeats hourly until someone looks.
+
+          Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+
+          Likely causes: the generator rejected the new schema, \`scripts/fix_generated.py\` stopped matching, or the API surface check found a removal oasdiff rated compatible (a renamed schema, operation or parameter). The surface check prints what disappeared."
+          fi
+
+          gh label create release-stuck \
+            --description "The hourly sync could not complete a release" \
+            --color B60205 2>/dev/null || true
+
+          # Dedup only the pre-commit case, which repeats hourly. The
+          # post-push cases cannot repeat, and deduping them against an
+          # unrelated open issue would swallow the one report that matters.
+          open_issue="$(gh issue list --label release-stuck --state open --limit 1 \
+            --json number --jq '.[0].number // empty' || true)"
+          if [ "$PUSHED" != "true" ] && [ -n "$open_issue" ]; then
+            echo "Already reported."
+            exit 0
+          fi
+
+          gh issue create --title "$title" --label release-stuck --body "$body"

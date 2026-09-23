@@ -1,0 +1,4 @@
+response-property-enum-value-added WARN
+request-parameter-min-set WARN
+api-operation-id-removed ERR
+api-schema-removed ERR

@@ -1,0 +1,8 @@
+/vendor/
+/.phpunit.cache/
+/.phpunit.result.cache
+/openapi.json.new
+
+# Dev-only lock. This is a library, so dependencies resolve fresh rather than
+# pinning what consumers get.
+/composer.lock
