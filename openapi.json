@@ -175330,8 +175330,8 @@
         ],
         "x-display-name": "Show",
         "x-docs-display-name": "Show",
-        "x-docs-group-name": "Status Pages V2",
-        "x-docs-resource-type": "StatusPageV2"
+        "x-docs-group-name": "Status Page Structures V2",
+        "x-docs-resource-type": "StatusPageStructureV2"
       }
     },
     "/v2/status_pages": {
