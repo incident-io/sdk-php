@@ -1,6 +1,6 @@
 <?php
 /**
- * PolicyFindingScheduleImpactedUserV2
+ * AnnouncementTemplateActionV2
  *
  * PHP version 8.1
  *
@@ -32,14 +32,14 @@ use ReturnTypeWillChange;
 use IncidentIo\ObjectSerializer;
 
 /**
- * PolicyFindingScheduleImpactedUserV2 Class Doc Comment
+ * AnnouncementTemplateActionV2 Class Doc Comment
  *
  * @package  IncidentIo
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess, JsonSerializable
+class AnnouncementTemplateActionV2 implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static string $openAPIModelName = 'PolicyFindingScheduleImpactedUserV2';
+    protected static string $openAPIModelName = 'AnnouncementTemplateActionV2';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
-        'cause' => 'string',
-        'name' => 'string',
-        'userId' => 'string'
+        'actionType' => 'string',
+        'emoji' => 'string',
+        'rank' => 'int',
+        'title' => 'string'
     ];
 
     /**
@@ -67,9 +68,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'cause' => null,
-        'name' => null,
-        'userId' => null
+        'actionType' => null,
+        'emoji' => null,
+        'rank' => 'int64',
+        'title' => null
     ];
 
     /**
@@ -78,9 +80,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, bool>
      */
     protected static array $openAPINullables = [
-        'cause' => false,
-        'name' => false,
-        'userId' => false
+        'actionType' => false,
+        'emoji' => false,
+        'rank' => false,
+        'title' => false
     ];
 
     /**
@@ -159,9 +162,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'cause' => 'cause',
-        'name' => 'name',
-        'userId' => 'user_id'
+        'actionType' => 'action_type',
+        'emoji' => 'emoji',
+        'rank' => 'rank',
+        'title' => 'title'
     ];
 
     /**
@@ -170,9 +174,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $setters = [
-        'cause' => 'setCause',
-        'name' => 'setName',
-        'userId' => 'setUserId'
+        'actionType' => 'setActionType',
+        'emoji' => 'setEmoji',
+        'rank' => 'setRank',
+        'title' => 'setTitle'
     ];
 
     /**
@@ -181,9 +186,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $getters = [
-        'cause' => 'getCause',
-        'name' => 'getName',
-        'userId' => 'getUserId'
+        'actionType' => 'getActionType',
+        'emoji' => 'getEmoji',
+        'rank' => 'getRank',
+        'title' => 'getTitle'
     ];
 
     /**
@@ -218,21 +224,43 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const CAUSE_NO_ON_CALL_SEAT = 'no_on_call_seat';
-    public const CAUSE_USER_DEACTIVATED = 'user_deactivated';
-    public const CAUSE_NOTIFICATIONS_PAUSED = 'notifications_paused';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_HOMEPAGE = 'announcement_post_actions_homepage';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_SUBSCRIBE = 'announcement_post_actions_subscribe';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_JOIN_CALL = 'announcement_post_actions_join_call';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_JIRA_TICKET = 'announcement_post_actions_jira_ticket';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_INTERNAL_STATUS_PAGE = 'announcement_post_actions_internal_status_page';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_PUBLIC_STATUS_PAGE = 'announcement_post_actions_public_status_page';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_POSTMORTEM = 'announcement_post_actions_postmortem';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_CREATE_CHANNEL = 'announcement_post_actions_create_channel';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_VIEW_ALERT = 'announcement_post_actions_view_alert';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_TRIAGE = 'announcement_post_actions_triage';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_ESCALATE = 'announcement_post_actions_escalate';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_SHARE_UPDATE = 'announcement_post_actions_share_update';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_UPDATE_STATUS = 'announcement_post_actions_update_status';
+    public const ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_REQUEST_ACCESS = 'announcement_post_actions_request_access';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public static function getCauseAllowableValues()
+    public static function getActionTypeAllowableValues()
     {
         return [
-            self::CAUSE_NO_ON_CALL_SEAT,
-            self::CAUSE_USER_DEACTIVATED,
-            self::CAUSE_NOTIFICATIONS_PAUSED,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_HOMEPAGE,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_SUBSCRIBE,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_JOIN_CALL,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_JIRA_TICKET,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_INTERNAL_STATUS_PAGE,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_PUBLIC_STATUS_PAGE,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_POSTMORTEM,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_CREATE_CHANNEL,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_VIEW_ALERT,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_TRIAGE,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_ESCALATE,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_SHARE_UPDATE,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_UPDATE_STATUS,
+            self::ACTION_TYPE_ANNOUNCEMENT_POST_ACTIONS_REQUEST_ACCESS,
         ];
     }
 
@@ -250,9 +278,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('cause', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('userId', $data ?? [], null);
+        $this->setIfExists('actionType', $data ?? [], null);
+        $this->setIfExists('emoji', $data ?? [], null);
+        $this->setIfExists('rank', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
     }
 
     /**
@@ -280,14 +309,14 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['cause'] === null) {
-            $invalidProperties[] = "'cause' can't be null";
+        if ($this->container['actionType'] === null) {
+            $invalidProperties[] = "'actionType' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['rank'] === null) {
+            $invalidProperties[] = "'rank' can't be null";
         }
-        if ($this->container['userId'] === null) {
-            $invalidProperties[] = "'userId' can't be null";
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,82 +331,109 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets cause
+     * Gets actionType
      *
      * @return string
      */
-    public function getCause(): string
+    public function getActionType(): string
     {
-        return $this->container['cause'];
+        return $this->container['actionType'];
     }
 
     /**
-     * Sets cause
+     * Sets actionType
      *
-     * @param string $cause Why this user's entries don't count as cover
+     * @param string $actionType Type of this action
      *
      * @return $this
      */
-    public function setCause(string $cause): static
+    public function setActionType(string $actionType): static
     {
-        if (is_null($cause)) {
-            throw new InvalidArgumentException('non-nullable cause cannot be null');
+        if (is_null($actionType)) {
+            throw new InvalidArgumentException('non-nullable actionType cannot be null');
         }
-        $this->container['cause'] = $cause;
+        $this->container['actionType'] = $actionType;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets emoji
      *
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getEmoji(): ?string
     {
-        return $this->container['name'];
+        return $this->container['emoji'];
     }
 
     /**
-     * Sets name
+     * Sets emoji
      *
-     * @param string $name name
+     * @param string|null $emoji Emoji shown on this action's button
      *
      * @return $this
      */
-    public function setName(string $name): static
+    public function setEmoji(?string $emoji): static
     {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($emoji)) {
+            throw new InvalidArgumentException('non-nullable emoji cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['emoji'] = $emoji;
 
         return $this;
     }
 
     /**
-     * Gets userId
+     * Gets rank
      *
-     * @return string
+     * @return int
      */
-    public function getUserId(): string
+    public function getRank(): int
     {
-        return $this->container['userId'];
+        return $this->container['rank'];
     }
 
     /**
-     * Sets userId
+     * Sets rank
      *
-     * @param string $userId userId
+     * @param int $rank Position of this action on the post, lowest first
      *
      * @return $this
      */
-    public function setUserId(string $userId): static
+    public function setRank(int $rank): static
     {
-        if (is_null($userId)) {
-            throw new InvalidArgumentException('non-nullable userId cannot be null');
+        if (is_null($rank)) {
+            throw new InvalidArgumentException('non-nullable rank cannot be null');
         }
-        $this->container['userId'] = $userId;
+        $this->container['rank'] = $rank;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string $title Label shown on this action's button, derived from its type
+     *
+     * @return $this
+     */
+    public function setTitle(string $title): static
+    {
+        if (is_null($title)) {
+            throw new InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
 
         return $this;
     }

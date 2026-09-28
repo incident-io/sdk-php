@@ -1644,7 +1644,7 @@ class AlertsV2Api
             $deduplicationKey,
             'deduplication_key', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -1653,7 +1653,7 @@ class AlertsV2Api
             $status,
             'status', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -1662,7 +1662,7 @@ class AlertsV2Api
             $alertSource,
             'alert_source', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -1671,7 +1671,7 @@ class AlertsV2Api
             $alertGroupId,
             'alert_group_id', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -1680,7 +1680,7 @@ class AlertsV2Api
             $createdAt,
             'created_at', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -1689,7 +1689,7 @@ class AlertsV2Api
             $updatedAt,
             'updated_at', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -1698,7 +1698,7 @@ class AlertsV2Api
             $attributes,
             'attributes', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -1707,7 +1707,7 @@ class AlertsV2Api
             $hasNotes,
             'has_notes', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -1716,7 +1716,7 @@ class AlertsV2Api
             $tags,
             'tags', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -1725,7 +1725,7 @@ class AlertsV2Api
             $includeMaintenanceWindow,
             'include_maintenance_window', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);

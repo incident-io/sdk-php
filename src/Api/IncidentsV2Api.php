@@ -2145,7 +2145,7 @@ class IncidentsV2Api
             $status,
             'status', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2154,7 +2154,7 @@ class IncidentsV2Api
             $statusCategory,
             'status_category', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2163,7 +2163,7 @@ class IncidentsV2Api
             $createdAt,
             'created_at', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2172,7 +2172,7 @@ class IncidentsV2Api
             $updatedAt,
             'updated_at', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2181,7 +2181,7 @@ class IncidentsV2Api
             $severity,
             'severity', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2190,7 +2190,7 @@ class IncidentsV2Api
             $incidentType,
             'incident_type', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2199,7 +2199,7 @@ class IncidentsV2Api
             $incidentRole,
             'incident_role', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2208,7 +2208,7 @@ class IncidentsV2Api
             $customField,
             'custom_field', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2217,7 +2217,7 @@ class IncidentsV2Api
             $mode,
             'mode', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);

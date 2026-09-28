@@ -1,6 +1,6 @@
 <?php
 /**
- * PolicyFindingScheduleImpactedUserV2
+ * AnnouncementTemplatesCreatePayloadV2
  *
  * PHP version 8.1
  *
@@ -32,14 +32,14 @@ use ReturnTypeWillChange;
 use IncidentIo\ObjectSerializer;
 
 /**
- * PolicyFindingScheduleImpactedUserV2 Class Doc Comment
+ * AnnouncementTemplatesCreatePayloadV2 Class Doc Comment
  *
  * @package  IncidentIo
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess, JsonSerializable
+class AnnouncementTemplatesCreatePayloadV2 implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static string $openAPIModelName = 'PolicyFindingScheduleImpactedUserV2';
+    protected static string $openAPIModelName = 'AnnouncementTemplatesCreatePayloadV2';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
-        'cause' => 'string',
+        'actions' => '\IncidentIo\Model\AnnouncementTemplateActionPayloadV2[]',
+        'fields' => '\IncidentIo\Model\AnnouncementTemplateFieldPayloadV2[]',
         'name' => 'string',
-        'userId' => 'string'
+        'owningTeamIds' => 'string[]'
     ];
 
     /**
@@ -67,9 +68,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'cause' => null,
+        'actions' => null,
+        'fields' => null,
         'name' => null,
-        'userId' => null
+        'owningTeamIds' => null
     ];
 
     /**
@@ -78,9 +80,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, bool>
      */
     protected static array $openAPINullables = [
-        'cause' => false,
+        'actions' => false,
+        'fields' => false,
         'name' => false,
-        'userId' => false
+        'owningTeamIds' => false
     ];
 
     /**
@@ -159,9 +162,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'cause' => 'cause',
+        'actions' => 'actions',
+        'fields' => 'fields',
         'name' => 'name',
-        'userId' => 'user_id'
+        'owningTeamIds' => 'owning_team_ids'
     ];
 
     /**
@@ -170,9 +174,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $setters = [
-        'cause' => 'setCause',
+        'actions' => 'setActions',
+        'fields' => 'setFields',
         'name' => 'setName',
-        'userId' => 'setUserId'
+        'owningTeamIds' => 'setOwningTeamIds'
     ];
 
     /**
@@ -181,9 +186,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $getters = [
-        'cause' => 'getCause',
+        'actions' => 'getActions',
+        'fields' => 'getFields',
         'name' => 'getName',
-        'userId' => 'getUserId'
+        'owningTeamIds' => 'getOwningTeamIds'
     ];
 
     /**
@@ -218,23 +224,6 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const CAUSE_NO_ON_CALL_SEAT = 'no_on_call_seat';
-    public const CAUSE_USER_DEACTIVATED = 'user_deactivated';
-    public const CAUSE_NOTIFICATIONS_PAUSED = 'notifications_paused';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public static function getCauseAllowableValues()
-    {
-        return [
-            self::CAUSE_NO_ON_CALL_SEAT,
-            self::CAUSE_USER_DEACTIVATED,
-            self::CAUSE_NOTIFICATIONS_PAUSED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -250,9 +239,10 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('cause', $data ?? [], null);
+        $this->setIfExists('actions', $data ?? [], null);
+        $this->setIfExists('fields', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('userId', $data ?? [], null);
+        $this->setIfExists('owningTeamIds', $data ?? [], null);
     }
 
     /**
@@ -280,14 +270,8 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['cause'] === null) {
-            $invalidProperties[] = "'cause' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['userId'] === null) {
-            $invalidProperties[] = "'userId' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,28 +286,55 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets cause
+     * Gets actions
      *
-     * @return string
+     * @return \IncidentIo\Model\AnnouncementTemplateActionPayloadV2[]|null
      */
-    public function getCause(): string
+    public function getActions(): ?array
     {
-        return $this->container['cause'];
+        return $this->container['actions'];
     }
 
     /**
-     * Sets cause
+     * Sets actions
      *
-     * @param string $cause Why this user's entries don't count as cover
+     * @param \IncidentIo\Model\AnnouncementTemplateActionPayloadV2[]|null $actions Actions shown on the announcement post
      *
      * @return $this
      */
-    public function setCause(string $cause): static
+    public function setActions(?array $actions): static
     {
-        if (is_null($cause)) {
-            throw new InvalidArgumentException('non-nullable cause cannot be null');
+        if (is_null($actions)) {
+            throw new InvalidArgumentException('non-nullable actions cannot be null');
         }
-        $this->container['cause'] = $cause;
+        $this->container['actions'] = $actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets fields
+     *
+     * @return \IncidentIo\Model\AnnouncementTemplateFieldPayloadV2[]|null
+     */
+    public function getFields(): ?array
+    {
+        return $this->container['fields'];
+    }
+
+    /**
+     * Sets fields
+     *
+     * @param \IncidentIo\Model\AnnouncementTemplateFieldPayloadV2[]|null $fields Fields shown on the announcement post
+     *
+     * @return $this
+     */
+    public function setFields(?array $fields): static
+    {
+        if (is_null($fields)) {
+            throw new InvalidArgumentException('non-nullable fields cannot be null');
+        }
+        $this->container['fields'] = $fields;
 
         return $this;
     }
@@ -341,7 +352,7 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string $name Name of this announcement template, unique within the organisation
      *
      * @return $this
      */
@@ -356,28 +367,28 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets userId
+     * Gets owningTeamIds
      *
-     * @return string
+     * @return string[]|null
      */
-    public function getUserId(): string
+    public function getOwningTeamIds(): ?array
     {
-        return $this->container['userId'];
+        return $this->container['owningTeamIds'];
     }
 
     /**
-     * Sets userId
+     * Sets owningTeamIds
      *
-     * @param string $userId userId
+     * @param string[]|null $owningTeamIds IDs of the teams that own this template
      *
      * @return $this
      */
-    public function setUserId(string $userId): static
+    public function setOwningTeamIds(?array $owningTeamIds): static
     {
-        if (is_null($userId)) {
-            throw new InvalidArgumentException('non-nullable userId cannot be null');
+        if (is_null($owningTeamIds)) {
+            throw new InvalidArgumentException('non-nullable owningTeamIds cannot be null');
         }
-        $this->container['userId'] = $userId;
+        $this->container['owningTeamIds'] = $owningTeamIds;
 
         return $this;
     }

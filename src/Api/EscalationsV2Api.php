@@ -2712,7 +2712,7 @@ class EscalationsV2Api
             $escalationPath,
             'escalation_path', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2721,7 +2721,7 @@ class EscalationsV2Api
             $status,
             'status', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2730,7 +2730,7 @@ class EscalationsV2Api
             $alert,
             'alert', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2739,7 +2739,7 @@ class EscalationsV2Api
             $incident,
             'incident', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2748,7 +2748,7 @@ class EscalationsV2Api
             $createdAt,
             'created_at', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2757,7 +2757,7 @@ class EscalationsV2Api
             $updatedAt,
             'updated_at', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -2766,7 +2766,7 @@ class EscalationsV2Api
             $idempotencyKey,
             'idempotency_key', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);

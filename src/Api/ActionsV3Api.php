@@ -1401,7 +1401,7 @@ class ActionsV3Api
             $createdAt,
             'created_at', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);
@@ -1410,7 +1410,7 @@ class ActionsV3Api
             $updatedAt,
             'updated_at', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);

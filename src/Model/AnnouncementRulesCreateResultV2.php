@@ -1,6 +1,6 @@
 <?php
 /**
- * PolicyFindingScheduleImpactedUserV2
+ * AnnouncementRulesCreateResultV2
  *
  * PHP version 8.1
  *
@@ -32,14 +32,14 @@ use ReturnTypeWillChange;
 use IncidentIo\ObjectSerializer;
 
 /**
- * PolicyFindingScheduleImpactedUserV2 Class Doc Comment
+ * AnnouncementRulesCreateResultV2 Class Doc Comment
  *
  * @package  IncidentIo
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess, JsonSerializable
+class AnnouncementRulesCreateResultV2 implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static string $openAPIModelName = 'PolicyFindingScheduleImpactedUserV2';
+    protected static string $openAPIModelName = 'AnnouncementRulesCreateResultV2';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,7 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
-        'cause' => 'string',
-        'name' => 'string',
-        'userId' => 'string'
+        'announcementRule' => '\IncidentIo\Model\AnnouncementRuleV2'
     ];
 
     /**
@@ -67,9 +65,7 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'cause' => null,
-        'name' => null,
-        'userId' => null
+        'announcementRule' => null
     ];
 
     /**
@@ -78,9 +74,7 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, bool>
      */
     protected static array $openAPINullables = [
-        'cause' => false,
-        'name' => false,
-        'userId' => false
+        'announcementRule' => false
     ];
 
     /**
@@ -159,9 +153,7 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'cause' => 'cause',
-        'name' => 'name',
-        'userId' => 'user_id'
+        'announcementRule' => 'announcement_rule'
     ];
 
     /**
@@ -170,9 +162,7 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $setters = [
-        'cause' => 'setCause',
-        'name' => 'setName',
-        'userId' => 'setUserId'
+        'announcementRule' => 'setAnnouncementRule'
     ];
 
     /**
@@ -181,9 +171,7 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $getters = [
-        'cause' => 'getCause',
-        'name' => 'getName',
-        'userId' => 'getUserId'
+        'announcementRule' => 'getAnnouncementRule'
     ];
 
     /**
@@ -218,23 +206,6 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const CAUSE_NO_ON_CALL_SEAT = 'no_on_call_seat';
-    public const CAUSE_USER_DEACTIVATED = 'user_deactivated';
-    public const CAUSE_NOTIFICATIONS_PAUSED = 'notifications_paused';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public static function getCauseAllowableValues()
-    {
-        return [
-            self::CAUSE_NO_ON_CALL_SEAT,
-            self::CAUSE_USER_DEACTIVATED,
-            self::CAUSE_NOTIFICATIONS_PAUSED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -250,9 +221,7 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('cause', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('userId', $data ?? [], null);
+        $this->setIfExists('announcementRule', $data ?? [], null);
     }
 
     /**
@@ -280,14 +249,8 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['cause'] === null) {
-            $invalidProperties[] = "'cause' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['userId'] === null) {
-            $invalidProperties[] = "'userId' can't be null";
+        if ($this->container['announcementRule'] === null) {
+            $invalidProperties[] = "'announcementRule' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,82 +265,28 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets cause
+     * Gets announcementRule
      *
-     * @return string
+     * @return \IncidentIo\Model\AnnouncementRuleV2
      */
-    public function getCause(): string
+    public function getAnnouncementRule(): \IncidentIo\Model\AnnouncementRuleV2
     {
-        return $this->container['cause'];
+        return $this->container['announcementRule'];
     }
 
     /**
-     * Sets cause
+     * Sets announcementRule
      *
-     * @param string $cause Why this user's entries don't count as cover
+     * @param \IncidentIo\Model\AnnouncementRuleV2 $announcementRule announcementRule
      *
      * @return $this
      */
-    public function setCause(string $cause): static
+    public function setAnnouncementRule(\IncidentIo\Model\AnnouncementRuleV2 $announcementRule): static
     {
-        if (is_null($cause)) {
-            throw new InvalidArgumentException('non-nullable cause cannot be null');
+        if (is_null($announcementRule)) {
+            throw new InvalidArgumentException('non-nullable announcementRule cannot be null');
         }
-        $this->container['cause'] = $cause;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return $this
-     */
-    public function setName(string $name): static
-    {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets userId
-     *
-     * @return string
-     */
-    public function getUserId(): string
-    {
-        return $this->container['userId'];
-    }
-
-    /**
-     * Sets userId
-     *
-     * @param string $userId userId
-     *
-     * @return $this
-     */
-    public function setUserId(string $userId): static
-    {
-        if (is_null($userId)) {
-            throw new InvalidArgumentException('non-nullable userId cannot be null');
-        }
-        $this->container['userId'] = $userId;
+        $this->container['announcementRule'] = $announcementRule;
 
         return $this;
     }

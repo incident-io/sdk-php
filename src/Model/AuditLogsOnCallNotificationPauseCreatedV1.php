@@ -1,6 +1,6 @@
 <?php
 /**
- * PolicyFindingScheduleImpactedUserV2
+ * AuditLogsOnCallNotificationPauseCreatedV1
  *
  * PHP version 8.1
  *
@@ -32,14 +32,14 @@ use ReturnTypeWillChange;
 use IncidentIo\ObjectSerializer;
 
 /**
- * PolicyFindingScheduleImpactedUserV2 Class Doc Comment
+ * AuditLogsOnCallNotificationPauseCreatedV1 Class Doc Comment
  *
  * @package  IncidentIo
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess, JsonSerializable
+class AuditLogsOnCallNotificationPauseCreatedV1 implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static string $openAPIModelName = 'PolicyFindingScheduleImpactedUserV2';
+    protected static string $openAPIModelName = 'AuditLogsOnCallNotificationPauseCreatedV1';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,12 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
-        'cause' => 'string',
-        'name' => 'string',
-        'userId' => 'string'
+        'action' => 'string',
+        'actor' => '\IncidentIo\Model\AuditLogActorV2',
+        'context' => '\IncidentIo\Model\AuditLogEntryContextV2',
+        'occurredAt' => '\DateTime',
+        'targets' => '\IncidentIo\Model\AuditLogTargetV2[]',
+        'version' => 'int'
     ];
 
     /**
@@ -67,9 +70,12 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'cause' => null,
-        'name' => null,
-        'userId' => null
+        'action' => null,
+        'actor' => null,
+        'context' => null,
+        'occurredAt' => 'date-time',
+        'targets' => null,
+        'version' => 'int64'
     ];
 
     /**
@@ -78,9 +84,12 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, bool>
      */
     protected static array $openAPINullables = [
-        'cause' => false,
-        'name' => false,
-        'userId' => false
+        'action' => false,
+        'actor' => false,
+        'context' => false,
+        'occurredAt' => false,
+        'targets' => false,
+        'version' => false
     ];
 
     /**
@@ -159,9 +168,12 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'cause' => 'cause',
-        'name' => 'name',
-        'userId' => 'user_id'
+        'action' => 'action',
+        'actor' => 'actor',
+        'context' => 'context',
+        'occurredAt' => 'occurred_at',
+        'targets' => 'targets',
+        'version' => 'version'
     ];
 
     /**
@@ -170,9 +182,12 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $setters = [
-        'cause' => 'setCause',
-        'name' => 'setName',
-        'userId' => 'setUserId'
+        'action' => 'setAction',
+        'actor' => 'setActor',
+        'context' => 'setContext',
+        'occurredAt' => 'setOccurredAt',
+        'targets' => 'setTargets',
+        'version' => 'setVersion'
     ];
 
     /**
@@ -181,9 +196,12 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $getters = [
-        'cause' => 'getCause',
-        'name' => 'getName',
-        'userId' => 'getUserId'
+        'action' => 'getAction',
+        'actor' => 'getActor',
+        'context' => 'getContext',
+        'occurredAt' => 'getOccurredAt',
+        'targets' => 'getTargets',
+        'version' => 'getVersion'
     ];
 
     /**
@@ -218,23 +236,6 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const CAUSE_NO_ON_CALL_SEAT = 'no_on_call_seat';
-    public const CAUSE_USER_DEACTIVATED = 'user_deactivated';
-    public const CAUSE_NOTIFICATIONS_PAUSED = 'notifications_paused';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public static function getCauseAllowableValues()
-    {
-        return [
-            self::CAUSE_NO_ON_CALL_SEAT,
-            self::CAUSE_USER_DEACTIVATED,
-            self::CAUSE_NOTIFICATIONS_PAUSED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -250,9 +251,12 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('cause', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('userId', $data ?? [], null);
+        $this->setIfExists('action', $data ?? [], null);
+        $this->setIfExists('actor', $data ?? [], null);
+        $this->setIfExists('context', $data ?? [], null);
+        $this->setIfExists('occurredAt', $data ?? [], null);
+        $this->setIfExists('targets', $data ?? [], null);
+        $this->setIfExists('version', $data ?? [], null);
     }
 
     /**
@@ -280,14 +284,23 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['cause'] === null) {
-            $invalidProperties[] = "'cause' can't be null";
+        if ($this->container['action'] === null) {
+            $invalidProperties[] = "'action' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['actor'] === null) {
+            $invalidProperties[] = "'actor' can't be null";
         }
-        if ($this->container['userId'] === null) {
-            $invalidProperties[] = "'userId' can't be null";
+        if ($this->container['context'] === null) {
+            $invalidProperties[] = "'context' can't be null";
+        }
+        if ($this->container['occurredAt'] === null) {
+            $invalidProperties[] = "'occurredAt' can't be null";
+        }
+        if ($this->container['targets'] === null) {
+            $invalidProperties[] = "'targets' can't be null";
+        }
+        if ($this->container['version'] === null) {
+            $invalidProperties[] = "'version' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,82 +315,163 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets cause
+     * Gets action
      *
      * @return string
      */
-    public function getCause(): string
+    public function getAction(): string
     {
-        return $this->container['cause'];
+        return $this->container['action'];
     }
 
     /**
-     * Sets cause
+     * Sets action
      *
-     * @param string $cause Why this user's entries don't count as cover
+     * @param string $action The type of log entry that this is
      *
      * @return $this
      */
-    public function setCause(string $cause): static
+    public function setAction(string $action): static
     {
-        if (is_null($cause)) {
-            throw new InvalidArgumentException('non-nullable cause cannot be null');
+        if (is_null($action)) {
+            throw new InvalidArgumentException('non-nullable action cannot be null');
         }
-        $this->container['cause'] = $cause;
+        $this->container['action'] = $action;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets actor
      *
-     * @return string
+     * @return \IncidentIo\Model\AuditLogActorV2
      */
-    public function getName(): string
+    public function getActor(): \IncidentIo\Model\AuditLogActorV2
     {
-        return $this->container['name'];
+        return $this->container['actor'];
     }
 
     /**
-     * Sets name
+     * Sets actor
      *
-     * @param string $name name
+     * @param \IncidentIo\Model\AuditLogActorV2 $actor actor
      *
      * @return $this
      */
-    public function setName(string $name): static
+    public function setActor(\IncidentIo\Model\AuditLogActorV2 $actor): static
     {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($actor)) {
+            throw new InvalidArgumentException('non-nullable actor cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['actor'] = $actor;
 
         return $this;
     }
 
     /**
-     * Gets userId
+     * Gets context
      *
-     * @return string
+     * @return \IncidentIo\Model\AuditLogEntryContextV2
      */
-    public function getUserId(): string
+    public function getContext(): \IncidentIo\Model\AuditLogEntryContextV2
     {
-        return $this->container['userId'];
+        return $this->container['context'];
     }
 
     /**
-     * Sets userId
+     * Sets context
      *
-     * @param string $userId userId
+     * @param \IncidentIo\Model\AuditLogEntryContextV2 $context context
      *
      * @return $this
      */
-    public function setUserId(string $userId): static
+    public function setContext(\IncidentIo\Model\AuditLogEntryContextV2 $context): static
     {
-        if (is_null($userId)) {
-            throw new InvalidArgumentException('non-nullable userId cannot be null');
+        if (is_null($context)) {
+            throw new InvalidArgumentException('non-nullable context cannot be null');
         }
-        $this->container['userId'] = $userId;
+        $this->container['context'] = $context;
+
+        return $this;
+    }
+
+    /**
+     * Gets occurredAt
+     *
+     * @return \DateTime
+     */
+    public function getOccurredAt(): \DateTime
+    {
+        return $this->container['occurredAt'];
+    }
+
+    /**
+     * Sets occurredAt
+     *
+     * @param \DateTime $occurredAt When the entry occurred
+     *
+     * @return $this
+     */
+    public function setOccurredAt(\DateTime $occurredAt): static
+    {
+        if (is_null($occurredAt)) {
+            throw new InvalidArgumentException('non-nullable occurredAt cannot be null');
+        }
+        $this->container['occurredAt'] = $occurredAt;
+
+        return $this;
+    }
+
+    /**
+     * Gets targets
+     *
+     * @return \IncidentIo\Model\AuditLogTargetV2[]
+     */
+    public function getTargets(): array
+    {
+        return $this->container['targets'];
+    }
+
+    /**
+     * Sets targets
+     *
+     * @param \IncidentIo\Model\AuditLogTargetV2[] $targets The custom field that was created
+     *
+     * @return $this
+     */
+    public function setTargets(array $targets): static
+    {
+        if (is_null($targets)) {
+            throw new InvalidArgumentException('non-nullable targets cannot be null');
+        }
+        $this->container['targets'] = $targets;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return int
+     */
+    public function getVersion(): int
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param int $version Which version the event is
+     *
+     * @return $this
+     */
+    public function setVersion(int $version): static
+    {
+        if (is_null($version)) {
+            throw new InvalidArgumentException('non-nullable version cannot be null');
+        }
+        $this->container['version'] = $version;
 
         return $this;
     }

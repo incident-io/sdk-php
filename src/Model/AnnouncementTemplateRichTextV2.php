@@ -1,6 +1,6 @@
 <?php
 /**
- * AuditLogTargetV2
+ * AnnouncementTemplateRichTextV2
  *
  * PHP version 8.1
  *
@@ -32,14 +32,15 @@ use ReturnTypeWillChange;
 use IncidentIo\ObjectSerializer;
 
 /**
- * AuditLogTargetV2 Class Doc Comment
+ * AnnouncementTemplateRichTextV2 Class Doc Comment
  *
+ * @description Content of a rich text field. The type says how contents is written.
  * @package  IncidentIo
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
+class AnnouncementTemplateRichTextV2 implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +49,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
      *
      * @var string
      */
-    protected static string $openAPIModelName = 'AuditLogTargetV2';
+    protected static string $openAPIModelName = 'AnnouncementTemplateRichTextV2';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +57,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
+        'contents' => 'string',
         'type' => 'string'
     ];
 
@@ -67,8 +67,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'id' => null,
-        'name' => null,
+        'contents' => null,
         'type' => null
     ];
 
@@ -78,8 +77,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, bool>
      */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
+        'contents' => false,
         'type' => false
     ];
 
@@ -159,8 +157,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
+        'contents' => 'contents',
         'type' => 'type'
     ];
 
@@ -170,8 +167,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
+        'contents' => 'setContents',
         'type' => 'setType'
     ];
 
@@ -181,8 +177,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
+        'contents' => 'getContents',
         'type' => 'getType'
     ];
 
@@ -218,75 +213,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const TYPE_API_KEY = 'api_key';
-    public const TYPE_ALERT = 'alert';
-    public const TYPE_ALERT_CHAT_MESSAGE_TEMPLATE = 'alert_chat_message_template';
-    public const TYPE_ALERT_ROUTE = 'alert_route';
-    public const TYPE_ALERT_SCHEMA = 'alert_schema';
-    public const TYPE_ALERT_SOURCE = 'alert_source';
-    public const TYPE_ALERT_PRIORITY = 'alert_priority';
-    public const TYPE_ANNOUNCEMENT_RULE = 'announcement_rule';
-    public const TYPE_ANNOUNCEMENT_POST_TEMPLATE = 'announcement_post_template';
-    public const TYPE_CATALOG_TYPE = 'catalog_type';
-    public const TYPE_CATALOG_ENTRY = 'catalog_entry';
-    public const TYPE_CATALOG_ATTRIBUTE = 'catalog_attribute';
-    public const TYPE_CONNECTOR_CONFIG = 'connector_config';
-    public const TYPE_CUSTOM_FIELD = 'custom_field';
-    public const TYPE_DEBRIEF_INVITE_RULE = 'debrief_invite_rule';
-    public const TYPE_ESCALATION = 'escalation';
-    public const TYPE_ESCALATION_PATH = 'escalation_path';
-    public const TYPE_ESCALATION_PATH_TEMPLATE = 'escalation_path_template';
-    public const TYPE_EXTENSION_CONNECTOR = 'extension_connector';
-    public const TYPE_EXTENSION_CONNECTOR_TOOL = 'extension_connector_tool';
-    public const TYPE_FOLLOW_UP_CATEGORY = 'follow_up_category';
-    public const TYPE_FOLLOW_UP_PRIORITY = 'follow_up_priority';
-    public const TYPE_HOLIDAY_USER_FEED = 'holiday_user_feed';
-    public const TYPE_HRIS_TIME_OFF_POLICY = 'hris_time_off_policy';
-    public const TYPE_INCIDENT = 'incident';
-    public const TYPE_INCIDENT_CALL_TRANSCRIPTION_SESSION = 'incident_call_transcription_session';
-    public const TYPE_INCIDENT_CALL_SETTING = 'incident_call_setting';
-    public const TYPE_INCIDENT_DURATION_METRIC = 'incident_duration_metric';
-    public const TYPE_INCIDENT_TEMPLATE = 'incident_template';
-    public const TYPE_MAINTENANCE_WINDOW = 'maintenance_window';
-    public const TYPE_INCIDENT_ROLE = 'incident_role';
-    public const TYPE_INCIDENT_STATUS = 'incident_status';
-    public const TYPE_INCIDENT_TIMESTAMP = 'incident_timestamp';
-    public const TYPE_INCIDENT_TIMESTAMP_SET_BY_RULE = 'incident_timestamp_set_by_rule';
-    public const TYPE_INCIDENT_TYPE = 'incident_type';
-    public const TYPE_INTEGRATION = 'integration';
-    public const TYPE_INTERNAL_STATUS_PAGE = 'internal_status_page';
-    public const TYPE_IP_ALLOWLIST = 'ip_allowlist';
-    public const TYPE_NUDGE = 'nudge';
-    public const TYPE_ON_CALL_NOTIFICATION_METHOD = 'on_call_notification_method';
-    public const TYPE_ON_CALL_NOTIFICATION_PAUSE = 'on_call_notification_pause';
-    public const TYPE_ORGANISATION = 'organisation';
-    public const TYPE_ORGANISATION_SETTINGS = 'organisation_settings';
-    public const TYPE_SCHEDULE_OVERRIDE = 'schedule_override';
-    public const TYPE_SCHEDULE_SYNC_RULE = 'schedule_sync_rule';
-    public const TYPE_SCHEDULE_SYNC_TARGET = 'schedule_sync_target';
-    public const TYPE_POLICY = 'policy';
-    public const TYPE_POLICY_REPORT_SCHEDULE = 'policy_report_schedule';
-    public const TYPE_POST_INCIDENT_TASK = 'post_incident_task';
-    public const TYPE_POSTMORTEM_TEMPLATE = 'postmortem_template';
-    public const TYPE_POSTMORTEM_TEMPLATE_SECTION = 'postmortem_template_section';
-    public const TYPE_PRIVATE_INCIDENT_MEMBERSHIP = 'private_incident_membership';
-    public const TYPE_RBAC_ROLE = 'rbac_role';
-    public const TYPE_SCIM_GROUP = 'scim_group';
-    public const TYPE_SCHEDULE = 'schedule';
-    public const TYPE_TEAM_ROLE = 'team_role';
-    public const TYPE_SECRET = 'secret';
-    public const TYPE_SEVERITY = 'severity';
-    public const TYPE_STATUS_PAGE = 'status_page';
-    public const TYPE_STATUS_PAGE_SUB_PAGE = 'status_page_sub_page';
-    public const TYPE_STATUS_PAGE_TEMPLATE = 'status_page_template';
-    public const TYPE_TEAM_SETTINGS = 'team_settings';
-    public const TYPE_TELEMETRY_DATA_SOURCE = 'telemetry_data_source';
-    public const TYPE_TWILIO_CONNECTION = 'twilio_connection';
-    public const TYPE_USER = 'user';
-    public const TYPE_WORKFLOW = 'workflow';
-    public const TYPE_ACTIVITY_LOG = 'activity_log';
-    public const TYPE_TIMELINE_ITEM = 'timeline_item';
-    public const TYPE_ON_CALL_UPSELL_REQUEST = 'on_call_upsell_request';
+    public const TYPE_MARKDOWN = 'markdown';
 
     /**
      * Gets allowable values of the enum
@@ -296,75 +223,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
     public static function getTypeAllowableValues()
     {
         return [
-            self::TYPE_API_KEY,
-            self::TYPE_ALERT,
-            self::TYPE_ALERT_CHAT_MESSAGE_TEMPLATE,
-            self::TYPE_ALERT_ROUTE,
-            self::TYPE_ALERT_SCHEMA,
-            self::TYPE_ALERT_SOURCE,
-            self::TYPE_ALERT_PRIORITY,
-            self::TYPE_ANNOUNCEMENT_RULE,
-            self::TYPE_ANNOUNCEMENT_POST_TEMPLATE,
-            self::TYPE_CATALOG_TYPE,
-            self::TYPE_CATALOG_ENTRY,
-            self::TYPE_CATALOG_ATTRIBUTE,
-            self::TYPE_CONNECTOR_CONFIG,
-            self::TYPE_CUSTOM_FIELD,
-            self::TYPE_DEBRIEF_INVITE_RULE,
-            self::TYPE_ESCALATION,
-            self::TYPE_ESCALATION_PATH,
-            self::TYPE_ESCALATION_PATH_TEMPLATE,
-            self::TYPE_EXTENSION_CONNECTOR,
-            self::TYPE_EXTENSION_CONNECTOR_TOOL,
-            self::TYPE_FOLLOW_UP_CATEGORY,
-            self::TYPE_FOLLOW_UP_PRIORITY,
-            self::TYPE_HOLIDAY_USER_FEED,
-            self::TYPE_HRIS_TIME_OFF_POLICY,
-            self::TYPE_INCIDENT,
-            self::TYPE_INCIDENT_CALL_TRANSCRIPTION_SESSION,
-            self::TYPE_INCIDENT_CALL_SETTING,
-            self::TYPE_INCIDENT_DURATION_METRIC,
-            self::TYPE_INCIDENT_TEMPLATE,
-            self::TYPE_MAINTENANCE_WINDOW,
-            self::TYPE_INCIDENT_ROLE,
-            self::TYPE_INCIDENT_STATUS,
-            self::TYPE_INCIDENT_TIMESTAMP,
-            self::TYPE_INCIDENT_TIMESTAMP_SET_BY_RULE,
-            self::TYPE_INCIDENT_TYPE,
-            self::TYPE_INTEGRATION,
-            self::TYPE_INTERNAL_STATUS_PAGE,
-            self::TYPE_IP_ALLOWLIST,
-            self::TYPE_NUDGE,
-            self::TYPE_ON_CALL_NOTIFICATION_METHOD,
-            self::TYPE_ON_CALL_NOTIFICATION_PAUSE,
-            self::TYPE_ORGANISATION,
-            self::TYPE_ORGANISATION_SETTINGS,
-            self::TYPE_SCHEDULE_OVERRIDE,
-            self::TYPE_SCHEDULE_SYNC_RULE,
-            self::TYPE_SCHEDULE_SYNC_TARGET,
-            self::TYPE_POLICY,
-            self::TYPE_POLICY_REPORT_SCHEDULE,
-            self::TYPE_POST_INCIDENT_TASK,
-            self::TYPE_POSTMORTEM_TEMPLATE,
-            self::TYPE_POSTMORTEM_TEMPLATE_SECTION,
-            self::TYPE_PRIVATE_INCIDENT_MEMBERSHIP,
-            self::TYPE_RBAC_ROLE,
-            self::TYPE_SCIM_GROUP,
-            self::TYPE_SCHEDULE,
-            self::TYPE_TEAM_ROLE,
-            self::TYPE_SECRET,
-            self::TYPE_SEVERITY,
-            self::TYPE_STATUS_PAGE,
-            self::TYPE_STATUS_PAGE_SUB_PAGE,
-            self::TYPE_STATUS_PAGE_TEMPLATE,
-            self::TYPE_TEAM_SETTINGS,
-            self::TYPE_TELEMETRY_DATA_SOURCE,
-            self::TYPE_TWILIO_CONNECTION,
-            self::TYPE_USER,
-            self::TYPE_WORKFLOW,
-            self::TYPE_ACTIVITY_LOG,
-            self::TYPE_TIMELINE_ITEM,
-            self::TYPE_ON_CALL_UPSELL_REQUEST,
+            self::TYPE_MARKDOWN,
         ];
     }
 
@@ -382,8 +241,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('contents', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
     }
 
@@ -412,8 +270,8 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['contents'] === null) {
+            $invalidProperties[] = "'contents' can't be null";
         }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
@@ -431,55 +289,28 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets contents
      *
      * @return string
      */
-    public function getId(): string
+    public function getContents(): string
     {
-        return $this->container['id'];
+        return $this->container['contents'];
     }
 
     /**
-     * Sets id
+     * Sets contents
      *
-     * @param string $id The ID of the target
+     * @param string $contents The content, as markdown. Write incident variables as {{name}}, e.g. {{incident.reference}}.
      *
      * @return $this
      */
-    public function setId(string $id): static
+    public function setContents(string $contents): static
     {
-        if (is_null($id)) {
-            throw new InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($contents)) {
+            throw new InvalidArgumentException('non-nullable contents cannot be null');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name The name of the target
-     *
-     * @return $this
-     */
-    public function setName(?string $name): static
-    {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
+        $this->container['contents'] = $contents;
 
         return $this;
     }
@@ -497,7 +328,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets type
      *
-     * @param string $type The type of target
+     * @param string $type How contents is written. Only markdown is supported today.
      *
      * @return $this
      */

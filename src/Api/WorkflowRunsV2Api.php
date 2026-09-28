@@ -580,7 +580,7 @@ class WorkflowRunsV2Api
             $createdAt,
             'created_at', // param base name
             'object', // openApiType
-            'form', // style
+            'deepObject', // style
             true, // explode
             false // required
         ) ?? []);

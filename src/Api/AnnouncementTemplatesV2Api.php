@@ -1,6 +1,6 @@
 <?php
 /**
- * FollowUpsV3Api
+ * AnnouncementTemplatesV2Api
  * PHP version 8.1
  *
  * @package  IncidentIo
@@ -40,13 +40,13 @@ use IncidentIo\HeaderSelector;
 use IncidentIo\ObjectSerializer;
 
 /**
- * FollowUpsV3Api Class Doc Comment
+ * AnnouncementTemplatesV2Api Class Doc Comment
  *
  * @package  IncidentIo
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class FollowUpsV3Api
+class AnnouncementTemplatesV2Api
 {
     /**
      * @var ClientInterface
@@ -70,25 +70,19 @@ class FollowUpsV3Api
 
     /** @var array<string,string[]> $contentTypes **/
     public const contentTypes = [
-        'followUpsV3ConnectExternalIssue' => [
+        'announcementTemplatesV2Create' => [
             'application/json',
         ],
-        'followUpsV3Create' => [
+        'announcementTemplatesV2Destroy' => [
             'application/json',
         ],
-        'followUpsV3CreateFromLink' => [
+        'announcementTemplatesV2List' => [
             'application/json',
         ],
-        'followUpsV3Delete' => [
+        'announcementTemplatesV2Show' => [
             'application/json',
         ],
-        'followUpsV3List' => [
-            'application/json',
-        ],
-        'followUpsV3Show' => [
-            'application/json',
-        ],
-        'followUpsV3Update' => [
+        'announcementTemplatesV2Update' => [
             'application/json',
         ],
     ];
@@ -140,48 +134,44 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3ConnectExternalIssue
+     * Operation announcementTemplatesV2Create
      *
-     * ConnectExternalIssue Follow-ups V3
+     * Create Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  \IncidentIo\Model\FollowUpsConnectExternalIssuePayloadV3 $followUpsConnectExternalIssuePayloadV3 followUpsConnectExternalIssuePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3ConnectExternalIssue'] to see the possible values for this operation
+     * @param  \IncidentIo\Model\AnnouncementTemplatesCreatePayloadV2 $announcementTemplatesCreatePayloadV2 announcementTemplatesCreatePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Create'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \IncidentIo\Model\FollowUpsConnectExternalIssueResultV3|\IncidentIo\Model\ErrorResponse
+     * @return \IncidentIo\Model\AnnouncementTemplatesCreateResultV2|\IncidentIo\Model\ErrorResponse
      */
-    public function followUpsV3ConnectExternalIssue(
-        string $id,
-        \IncidentIo\Model\FollowUpsConnectExternalIssuePayloadV3 $followUpsConnectExternalIssuePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3ConnectExternalIssue'][0]
-    ): \IncidentIo\Model\FollowUpsConnectExternalIssueResultV3|\IncidentIo\Model\ErrorResponse
+    public function announcementTemplatesV2Create(
+        \IncidentIo\Model\AnnouncementTemplatesCreatePayloadV2 $announcementTemplatesCreatePayloadV2,
+        string $contentType = self::contentTypes['announcementTemplatesV2Create'][0]
+    ): \IncidentIo\Model\AnnouncementTemplatesCreateResultV2|\IncidentIo\Model\ErrorResponse
     {
-        list($response) = $this->followUpsV3ConnectExternalIssueWithHttpInfo($id, $followUpsConnectExternalIssuePayloadV3, $contentType);
+        list($response) = $this->announcementTemplatesV2CreateWithHttpInfo($announcementTemplatesCreatePayloadV2, $contentType);
         return $response;
     }
 
     /**
-     * Operation followUpsV3ConnectExternalIssueWithHttpInfo
+     * Operation announcementTemplatesV2CreateWithHttpInfo
      *
-     * ConnectExternalIssue Follow-ups V3
+     * Create Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  \IncidentIo\Model\FollowUpsConnectExternalIssuePayloadV3 $followUpsConnectExternalIssuePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3ConnectExternalIssue'] to see the possible values for this operation
+     * @param  \IncidentIo\Model\AnnouncementTemplatesCreatePayloadV2 $announcementTemplatesCreatePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Create'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array{0: \IncidentIo\Model\FollowUpsConnectExternalIssueResultV3|\IncidentIo\Model\ErrorResponse, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     * @return array{0: \IncidentIo\Model\AnnouncementTemplatesCreateResultV2|\IncidentIo\Model\ErrorResponse, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
-    public function followUpsV3ConnectExternalIssueWithHttpInfo(
-        string $id,
-        \IncidentIo\Model\FollowUpsConnectExternalIssuePayloadV3 $followUpsConnectExternalIssuePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3ConnectExternalIssue'][0]
+    public function announcementTemplatesV2CreateWithHttpInfo(
+        \IncidentIo\Model\AnnouncementTemplatesCreatePayloadV2 $announcementTemplatesCreatePayloadV2,
+        string $contentType = self::contentTypes['announcementTemplatesV2Create'][0]
     ): array
     {
-        $request = $this->followUpsV3ConnectExternalIssueRequest($id, $followUpsConnectExternalIssuePayloadV3, $contentType);
+        $request = $this->announcementTemplatesV2CreateRequest($announcementTemplatesCreatePayloadV2, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -206,9 +196,9 @@ class FollowUpsV3Api
             $statusCode = $response->getStatusCode();
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\FollowUpsConnectExternalIssueResultV3',
+                        '\IncidentIo\Model\AnnouncementTemplatesCreateResultV2',
                         $request,
                         $response,
                     );
@@ -306,16 +296,16 @@ class FollowUpsV3Api
             }
 
             return $this->handleResponseWithDataType(
-                '\IncidentIo\Model\FollowUpsConnectExternalIssueResultV3',
+                '\IncidentIo\Model\AnnouncementTemplatesCreateResultV2',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\IncidentIo\Model\FollowUpsConnectExternalIssueResultV3',
+                        '\IncidentIo\Model\AnnouncementTemplatesCreateResultV2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -431,24 +421,22 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3ConnectExternalIssueAsync
+     * Operation announcementTemplatesV2CreateAsync
      *
-     * ConnectExternalIssue Follow-ups V3
+     * Create Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  \IncidentIo\Model\FollowUpsConnectExternalIssuePayloadV3 $followUpsConnectExternalIssuePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3ConnectExternalIssue'] to see the possible values for this operation
+     * @param  \IncidentIo\Model\AnnouncementTemplatesCreatePayloadV2 $announcementTemplatesCreatePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Create'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function followUpsV3ConnectExternalIssueAsync(
-        string $id,
-        \IncidentIo\Model\FollowUpsConnectExternalIssuePayloadV3 $followUpsConnectExternalIssuePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3ConnectExternalIssue'][0]
+    public function announcementTemplatesV2CreateAsync(
+        \IncidentIo\Model\AnnouncementTemplatesCreatePayloadV2 $announcementTemplatesCreatePayloadV2,
+        string $contentType = self::contentTypes['announcementTemplatesV2Create'][0]
     ): PromiseInterface
     {
-        return $this->followUpsV3ConnectExternalIssueAsyncWithHttpInfo($id, $followUpsConnectExternalIssuePayloadV3, $contentType)
+        return $this->announcementTemplatesV2CreateAsyncWithHttpInfo($announcementTemplatesCreatePayloadV2, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -457,25 +445,23 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3ConnectExternalIssueAsyncWithHttpInfo
+     * Operation announcementTemplatesV2CreateAsyncWithHttpInfo
      *
-     * ConnectExternalIssue Follow-ups V3
+     * Create Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  \IncidentIo\Model\FollowUpsConnectExternalIssuePayloadV3 $followUpsConnectExternalIssuePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3ConnectExternalIssue'] to see the possible values for this operation
+     * @param  \IncidentIo\Model\AnnouncementTemplatesCreatePayloadV2 $announcementTemplatesCreatePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Create'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function followUpsV3ConnectExternalIssueAsyncWithHttpInfo(
-        string $id,
-        \IncidentIo\Model\FollowUpsConnectExternalIssuePayloadV3 $followUpsConnectExternalIssuePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3ConnectExternalIssue'][0]
+    public function announcementTemplatesV2CreateAsyncWithHttpInfo(
+        \IncidentIo\Model\AnnouncementTemplatesCreatePayloadV2 $announcementTemplatesCreatePayloadV2,
+        string $contentType = self::contentTypes['announcementTemplatesV2Create'][0]
     ): PromiseInterface
     {
-        $returnType = '\IncidentIo\Model\FollowUpsConnectExternalIssueResultV3';
-        $request = $this->followUpsV3ConnectExternalIssueRequest($id, $followUpsConnectExternalIssuePayloadV3, $contentType);
+        $returnType = '\IncidentIo\Model\AnnouncementTemplatesCreateResultV2';
+        $request = $this->announcementTemplatesV2CreateRequest($announcementTemplatesCreatePayloadV2, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -514,35 +500,27 @@ class FollowUpsV3Api
     }
 
     /**
-     * Create request for operation 'followUpsV3ConnectExternalIssue'
+     * Create request for operation 'announcementTemplatesV2Create'
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  \IncidentIo\Model\FollowUpsConnectExternalIssuePayloadV3 $followUpsConnectExternalIssuePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3ConnectExternalIssue'] to see the possible values for this operation
+     * @param  \IncidentIo\Model\AnnouncementTemplatesCreatePayloadV2 $announcementTemplatesCreatePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Create'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function followUpsV3ConnectExternalIssueRequest(
-        string $id,
-        \IncidentIo\Model\FollowUpsConnectExternalIssuePayloadV3 $followUpsConnectExternalIssuePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3ConnectExternalIssue'][0]
+    public function announcementTemplatesV2CreateRequest(
+        \IncidentIo\Model\AnnouncementTemplatesCreatePayloadV2 $announcementTemplatesCreatePayloadV2,
+        string $contentType = self::contentTypes['announcementTemplatesV2Create'][0]
     ): Request
     {
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
+        // verify the required parameter 'announcementTemplatesCreatePayloadV2' is set
+        if ($announcementTemplatesCreatePayloadV2 === null || (is_array($announcementTemplatesCreatePayloadV2) && count($announcementTemplatesCreatePayloadV2) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $id when calling followUpsV3ConnectExternalIssue'
-            );
-        }
-        // verify the required parameter 'followUpsConnectExternalIssuePayloadV3' is set
-        if ($followUpsConnectExternalIssuePayloadV3 === null || (is_array($followUpsConnectExternalIssuePayloadV3) && count($followUpsConnectExternalIssuePayloadV3) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $followUpsConnectExternalIssuePayloadV3 when calling followUpsV3ConnectExternalIssue'
+                'Missing the required parameter $announcementTemplatesCreatePayloadV2 when calling announcementTemplatesV2Create'
             );
         }
 
-        $resourcePath = '/v3/follow_ups/{id}/actions/connect_external_issue';
+        $resourcePath = '/v2/announcement_templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -551,14 +529,6 @@ class FollowUpsV3Api
 
 
 
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{id}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -568,16 +538,16 @@ class FollowUpsV3Api
         );
 
         // for model (json/xml)
-        if (isset($followUpsConnectExternalIssuePayloadV3)) {
+        if (isset($announcementTemplatesCreatePayloadV2)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
                 try {
-                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($followUpsConnectExternalIssuePayloadV3), JSON_THROW_ON_ERROR);
+                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($announcementTemplatesCreatePayloadV2), JSON_THROW_ON_ERROR);
                 } catch (\JsonException $e) {
                     throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
                 }
             } else {
-                $httpBody = $followUpsConnectExternalIssuePayloadV3;
+                $httpBody = $announcementTemplatesCreatePayloadV2;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -634,984 +604,44 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3Create
+     * Operation announcementTemplatesV2Destroy
      *
-     * Create Follow-ups V3
+     * Destroy Announcement Templates V2
      *
-     * @param  \IncidentIo\Model\FollowUpsCreatePayloadV3 $followUpsCreatePayloadV3 followUpsCreatePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Create'] to see the possible values for this operation
-     *
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @return \IncidentIo\Model\FollowUpsCreateResultV3|\IncidentIo\Model\ErrorResponse
-     */
-    public function followUpsV3Create(
-        \IncidentIo\Model\FollowUpsCreatePayloadV3 $followUpsCreatePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3Create'][0]
-    ): \IncidentIo\Model\FollowUpsCreateResultV3|\IncidentIo\Model\ErrorResponse
-    {
-        list($response) = $this->followUpsV3CreateWithHttpInfo($followUpsCreatePayloadV3, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation followUpsV3CreateWithHttpInfo
-     *
-     * Create Follow-ups V3
-     *
-     * @param  \IncidentIo\Model\FollowUpsCreatePayloadV3 $followUpsCreatePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Create'] to see the possible values for this operation
-     *
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @return array{0: \IncidentIo\Model\FollowUpsCreateResultV3|\IncidentIo\Model\ErrorResponse, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
-     */
-    public function followUpsV3CreateWithHttpInfo(
-        \IncidentIo\Model\FollowUpsCreatePayloadV3 $followUpsCreatePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3Create'][0]
-    ): array
-    {
-        $request = $this->followUpsV3CreateRequest($followUpsCreatePayloadV3, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch($statusCode) {
-                case 201:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\FollowUpsCreateResultV3',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 405:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 406:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 408:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 409:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 412:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 413:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 422:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\IncidentIo\Model\FollowUpsCreateResultV3',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\FollowUpsCreateResultV3',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 405:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 406:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 408:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 409:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 412:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 422:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation followUpsV3CreateAsync
-     *
-     * Create Follow-ups V3
-     *
-     * @param  \IncidentIo\Model\FollowUpsCreatePayloadV3 $followUpsCreatePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Create'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function followUpsV3CreateAsync(
-        \IncidentIo\Model\FollowUpsCreatePayloadV3 $followUpsCreatePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3Create'][0]
-    ): PromiseInterface
-    {
-        return $this->followUpsV3CreateAsyncWithHttpInfo($followUpsCreatePayloadV3, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation followUpsV3CreateAsyncWithHttpInfo
-     *
-     * Create Follow-ups V3
-     *
-     * @param  \IncidentIo\Model\FollowUpsCreatePayloadV3 $followUpsCreatePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Create'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function followUpsV3CreateAsyncWithHttpInfo(
-        \IncidentIo\Model\FollowUpsCreatePayloadV3 $followUpsCreatePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3Create'][0]
-    ): PromiseInterface
-    {
-        $returnType = '\IncidentIo\Model\FollowUpsCreateResultV3';
-        $request = $this->followUpsV3CreateRequest($followUpsCreatePayloadV3, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'followUpsV3Create'
-     *
-     * @param  \IncidentIo\Model\FollowUpsCreatePayloadV3 $followUpsCreatePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Create'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function followUpsV3CreateRequest(
-        \IncidentIo\Model\FollowUpsCreatePayloadV3 $followUpsCreatePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3Create'][0]
-    ): Request
-    {
-        // verify the required parameter 'followUpsCreatePayloadV3' is set
-        if ($followUpsCreatePayloadV3 === null || (is_array($followUpsCreatePayloadV3) && count($followUpsCreatePayloadV3) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $followUpsCreatePayloadV3 when calling followUpsV3Create'
-            );
-        }
-
-        $resourcePath = '/v3/follow_ups';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($followUpsCreatePayloadV3)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                try {
-                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($followUpsCreatePayloadV3), JSON_THROW_ON_ERROR);
-                } catch (\JsonException $e) {
-                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
-                }
-            } else {
-                $httpBody = $followUpsCreatePayloadV3;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new \GuzzleHttp\Psr7\MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                try {
-                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-                } catch (\JsonException $e) {
-                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
-                }
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation followUpsV3CreateFromLink
-     *
-     * CreateFromLink Follow-ups V3
-     *
-     * @param  \IncidentIo\Model\FollowUpsCreateFromLinkPayloadV3 $followUpsCreateFromLinkPayloadV3 followUpsCreateFromLinkPayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3CreateFromLink'] to see the possible values for this operation
-     *
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @return \IncidentIo\Model\FollowUpsCreateFromLinkResultV3|\IncidentIo\Model\ErrorResponse
-     */
-    public function followUpsV3CreateFromLink(
-        \IncidentIo\Model\FollowUpsCreateFromLinkPayloadV3 $followUpsCreateFromLinkPayloadV3,
-        string $contentType = self::contentTypes['followUpsV3CreateFromLink'][0]
-    ): \IncidentIo\Model\FollowUpsCreateFromLinkResultV3|\IncidentIo\Model\ErrorResponse
-    {
-        list($response) = $this->followUpsV3CreateFromLinkWithHttpInfo($followUpsCreateFromLinkPayloadV3, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation followUpsV3CreateFromLinkWithHttpInfo
-     *
-     * CreateFromLink Follow-ups V3
-     *
-     * @param  \IncidentIo\Model\FollowUpsCreateFromLinkPayloadV3 $followUpsCreateFromLinkPayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3CreateFromLink'] to see the possible values for this operation
-     *
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @return array{0: \IncidentIo\Model\FollowUpsCreateFromLinkResultV3|\IncidentIo\Model\ErrorResponse, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
-     */
-    public function followUpsV3CreateFromLinkWithHttpInfo(
-        \IncidentIo\Model\FollowUpsCreateFromLinkPayloadV3 $followUpsCreateFromLinkPayloadV3,
-        string $contentType = self::contentTypes['followUpsV3CreateFromLink'][0]
-    ): array
-    {
-        $request = $this->followUpsV3CreateFromLinkRequest($followUpsCreateFromLinkPayloadV3, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch($statusCode) {
-                case 201:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\FollowUpsCreateFromLinkResultV3',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 405:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 406:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 408:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 409:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 412:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 413:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 422:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\IncidentIo\Model\FollowUpsCreateFromLinkResultV3',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\FollowUpsCreateFromLinkResultV3',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 405:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 406:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 408:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 409:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 412:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 422:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\IncidentIo\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation followUpsV3CreateFromLinkAsync
-     *
-     * CreateFromLink Follow-ups V3
-     *
-     * @param  \IncidentIo\Model\FollowUpsCreateFromLinkPayloadV3 $followUpsCreateFromLinkPayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3CreateFromLink'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function followUpsV3CreateFromLinkAsync(
-        \IncidentIo\Model\FollowUpsCreateFromLinkPayloadV3 $followUpsCreateFromLinkPayloadV3,
-        string $contentType = self::contentTypes['followUpsV3CreateFromLink'][0]
-    ): PromiseInterface
-    {
-        return $this->followUpsV3CreateFromLinkAsyncWithHttpInfo($followUpsCreateFromLinkPayloadV3, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation followUpsV3CreateFromLinkAsyncWithHttpInfo
-     *
-     * CreateFromLink Follow-ups V3
-     *
-     * @param  \IncidentIo\Model\FollowUpsCreateFromLinkPayloadV3 $followUpsCreateFromLinkPayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3CreateFromLink'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function followUpsV3CreateFromLinkAsyncWithHttpInfo(
-        \IncidentIo\Model\FollowUpsCreateFromLinkPayloadV3 $followUpsCreateFromLinkPayloadV3,
-        string $contentType = self::contentTypes['followUpsV3CreateFromLink'][0]
-    ): PromiseInterface
-    {
-        $returnType = '\IncidentIo\Model\FollowUpsCreateFromLinkResultV3';
-        $request = $this->followUpsV3CreateFromLinkRequest($followUpsCreateFromLinkPayloadV3, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'followUpsV3CreateFromLink'
-     *
-     * @param  \IncidentIo\Model\FollowUpsCreateFromLinkPayloadV3 $followUpsCreateFromLinkPayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3CreateFromLink'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function followUpsV3CreateFromLinkRequest(
-        \IncidentIo\Model\FollowUpsCreateFromLinkPayloadV3 $followUpsCreateFromLinkPayloadV3,
-        string $contentType = self::contentTypes['followUpsV3CreateFromLink'][0]
-    ): Request
-    {
-        // verify the required parameter 'followUpsCreateFromLinkPayloadV3' is set
-        if ($followUpsCreateFromLinkPayloadV3 === null || (is_array($followUpsCreateFromLinkPayloadV3) && count($followUpsCreateFromLinkPayloadV3) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $followUpsCreateFromLinkPayloadV3 when calling followUpsV3CreateFromLink'
-            );
-        }
-
-        $resourcePath = '/v3/follow_ups/actions/create_from_link';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($followUpsCreateFromLinkPayloadV3)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                try {
-                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($followUpsCreateFromLinkPayloadV3), JSON_THROW_ON_ERROR);
-                } catch (\JsonException $e) {
-                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
-                }
-            } else {
-                $httpBody = $followUpsCreateFromLinkPayloadV3;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new \GuzzleHttp\Psr7\MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                try {
-                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-                } catch (\JsonException $e) {
-                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
-                }
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation followUpsV3Delete
-     *
-     * Delete Follow-ups V3
-     *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Delete'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Destroy'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return \IncidentIo\Model\ErrorResponse|null
      */
-    public function followUpsV3Delete(
+    public function announcementTemplatesV2Destroy(
         string $id,
-        string $contentType = self::contentTypes['followUpsV3Delete'][0]
+        string $contentType = self::contentTypes['announcementTemplatesV2Destroy'][0]
     ): ?\IncidentIo\Model\ErrorResponse
     {
-        list($response) = $this->followUpsV3DeleteWithHttpInfo($id, $contentType);
+        list($response) = $this->announcementTemplatesV2DestroyWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation followUpsV3DeleteWithHttpInfo
+     * Operation announcementTemplatesV2DestroyWithHttpInfo
      *
-     * Delete Follow-ups V3
+     * Destroy Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Delete'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Destroy'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return array{0: null, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
-    public function followUpsV3DeleteWithHttpInfo(
+    public function announcementTemplatesV2DestroyWithHttpInfo(
         string $id,
-        string $contentType = self::contentTypes['followUpsV3Delete'][0]
+        string $contentType = self::contentTypes['announcementTemplatesV2Destroy'][0]
     ): array
     {
-        $request = $this->followUpsV3DeleteRequest($id, $contentType);
+        $request = $this->announcementTemplatesV2DestroyRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1750,22 +780,22 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3DeleteAsync
+     * Operation announcementTemplatesV2DestroyAsync
      *
-     * Delete Follow-ups V3
+     * Destroy Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Delete'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Destroy'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function followUpsV3DeleteAsync(
+    public function announcementTemplatesV2DestroyAsync(
         string $id,
-        string $contentType = self::contentTypes['followUpsV3Delete'][0]
+        string $contentType = self::contentTypes['announcementTemplatesV2Destroy'][0]
     ): PromiseInterface
     {
-        return $this->followUpsV3DeleteAsyncWithHttpInfo($id, $contentType)
+        return $this->announcementTemplatesV2DestroyAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1774,23 +804,23 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3DeleteAsyncWithHttpInfo
+     * Operation announcementTemplatesV2DestroyAsyncWithHttpInfo
      *
-     * Delete Follow-ups V3
+     * Destroy Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Delete'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Destroy'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function followUpsV3DeleteAsyncWithHttpInfo(
+    public function announcementTemplatesV2DestroyAsyncWithHttpInfo(
         string $id,
-        string $contentType = self::contentTypes['followUpsV3Delete'][0]
+        string $contentType = self::contentTypes['announcementTemplatesV2Destroy'][0]
     ): PromiseInterface
     {
         $returnType = '';
-        $request = $this->followUpsV3DeleteRequest($id, $contentType);
+        $request = $this->announcementTemplatesV2DestroyRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1816,27 +846,27 @@ class FollowUpsV3Api
     }
 
     /**
-     * Create request for operation 'followUpsV3Delete'
+     * Create request for operation 'announcementTemplatesV2Destroy'
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Delete'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Destroy'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function followUpsV3DeleteRequest(
+    public function announcementTemplatesV2DestroyRequest(
         string $id,
-        string $contentType = self::contentTypes['followUpsV3Delete'][0]
+        string $contentType = self::contentTypes['announcementTemplatesV2Destroy'][0]
     ): Request
     {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $id when calling followUpsV3Delete'
+                'Missing the required parameter $id when calling announcementTemplatesV2Destroy'
             );
         }
 
-        $resourcePath = '/v3/follow_ups/{id}';
+        $resourcePath = '/v2/announcement_templates/{id}';
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
@@ -1888,68 +918,40 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3List
+     * Operation announcementTemplatesV2List
      *
-     * List Follow-ups V3
+     * List Announcement Templates V2
      *
-     * @param  int|null $pageSize Integer number of records to return (optional, default to 25)
-     * @param  string|null $after A follow-up&#39;s ID. This endpoint will return a list of follow-ups after this ID in relation to the API response order. (optional)
-     * @param  string|null $incidentId Find follow-ups related to this incident (optional)
-     * @param  string|null $incidentMode Filter to follow-ups from incidents of the given mode. If not set, only follow-ups from &#x60;standard&#x60; and &#x60;retrospective&#x60; incidents are returned (optional)
-     * @param  string|null $assigneeTeamId Filter follow-ups that are assigned to the given team (optional)
-     * @param  array<string,string[]>|null $createdAt Filter on follow-up created at timestamp. Accepted operators are &#39;gte&#39;, &#39;lte&#39; and &#39;date_range&#39;. (optional)
-     * @param  array<string,string[]>|null $updatedAt Filter on follow-up updated at timestamp. Accepted operators are &#39;gte&#39;, &#39;lte&#39; and &#39;date_range&#39;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3List'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2List'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \IncidentIo\Model\FollowUpsListResultV3|\IncidentIo\Model\ErrorResponse
+     * @return \IncidentIo\Model\AnnouncementTemplatesListResultV2|\IncidentIo\Model\ErrorResponse
      */
-    public function followUpsV3List(
-        ?int $pageSize = 25,
-        ?string $after = null,
-        ?string $incidentId = null,
-        ?string $incidentMode = null,
-        ?string $assigneeTeamId = null,
-        ?array $createdAt = null,
-        ?array $updatedAt = null,
-        string $contentType = self::contentTypes['followUpsV3List'][0]
-    ): \IncidentIo\Model\FollowUpsListResultV3|\IncidentIo\Model\ErrorResponse
+    public function announcementTemplatesV2List(
+        string $contentType = self::contentTypes['announcementTemplatesV2List'][0]
+    ): \IncidentIo\Model\AnnouncementTemplatesListResultV2|\IncidentIo\Model\ErrorResponse
     {
-        list($response) = $this->followUpsV3ListWithHttpInfo($pageSize, $after, $incidentId, $incidentMode, $assigneeTeamId, $createdAt, $updatedAt, $contentType);
+        list($response) = $this->announcementTemplatesV2ListWithHttpInfo($contentType);
         return $response;
     }
 
     /**
-     * Operation followUpsV3ListWithHttpInfo
+     * Operation announcementTemplatesV2ListWithHttpInfo
      *
-     * List Follow-ups V3
+     * List Announcement Templates V2
      *
-     * @param  int|null $pageSize Integer number of records to return (optional, default to 25)
-     * @param  string|null $after A follow-up&#39;s ID. This endpoint will return a list of follow-ups after this ID in relation to the API response order. (optional)
-     * @param  string|null $incidentId Find follow-ups related to this incident (optional)
-     * @param  string|null $incidentMode Filter to follow-ups from incidents of the given mode. If not set, only follow-ups from &#x60;standard&#x60; and &#x60;retrospective&#x60; incidents are returned (optional)
-     * @param  string|null $assigneeTeamId Filter follow-ups that are assigned to the given team (optional)
-     * @param  array<string,string[]>|null $createdAt Filter on follow-up created at timestamp. Accepted operators are &#39;gte&#39;, &#39;lte&#39; and &#39;date_range&#39;. (optional)
-     * @param  array<string,string[]>|null $updatedAt Filter on follow-up updated at timestamp. Accepted operators are &#39;gte&#39;, &#39;lte&#39; and &#39;date_range&#39;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3List'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2List'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array{0: \IncidentIo\Model\FollowUpsListResultV3|\IncidentIo\Model\ErrorResponse, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     * @return array{0: \IncidentIo\Model\AnnouncementTemplatesListResultV2|\IncidentIo\Model\ErrorResponse, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
-    public function followUpsV3ListWithHttpInfo(
-        ?int $pageSize = 25,
-        ?string $after = null,
-        ?string $incidentId = null,
-        ?string $incidentMode = null,
-        ?string $assigneeTeamId = null,
-        ?array $createdAt = null,
-        ?array $updatedAt = null,
-        string $contentType = self::contentTypes['followUpsV3List'][0]
+    public function announcementTemplatesV2ListWithHttpInfo(
+        string $contentType = self::contentTypes['announcementTemplatesV2List'][0]
     ): array
     {
-        $request = $this->followUpsV3ListRequest($pageSize, $after, $incidentId, $incidentMode, $assigneeTeamId, $createdAt, $updatedAt, $contentType);
+        $request = $this->announcementTemplatesV2ListRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1976,7 +978,7 @@ class FollowUpsV3Api
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\FollowUpsListResultV3',
+                        '\IncidentIo\Model\AnnouncementTemplatesListResultV2',
                         $request,
                         $response,
                     );
@@ -2074,7 +1076,7 @@ class FollowUpsV3Api
             }
 
             return $this->handleResponseWithDataType(
-                '\IncidentIo\Model\FollowUpsListResultV3',
+                '\IncidentIo\Model\AnnouncementTemplatesListResultV2',
                 $request,
                 $response,
             );
@@ -2083,7 +1085,7 @@ class FollowUpsV3Api
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\IncidentIo\Model\FollowUpsListResultV3',
+                        '\IncidentIo\Model\AnnouncementTemplatesListResultV2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2199,34 +1201,20 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3ListAsync
+     * Operation announcementTemplatesV2ListAsync
      *
-     * List Follow-ups V3
+     * List Announcement Templates V2
      *
-     * @param  int|null $pageSize Integer number of records to return (optional, default to 25)
-     * @param  string|null $after A follow-up&#39;s ID. This endpoint will return a list of follow-ups after this ID in relation to the API response order. (optional)
-     * @param  string|null $incidentId Find follow-ups related to this incident (optional)
-     * @param  string|null $incidentMode Filter to follow-ups from incidents of the given mode. If not set, only follow-ups from &#x60;standard&#x60; and &#x60;retrospective&#x60; incidents are returned (optional)
-     * @param  string|null $assigneeTeamId Filter follow-ups that are assigned to the given team (optional)
-     * @param  array<string,string[]>|null $createdAt Filter on follow-up created at timestamp. Accepted operators are &#39;gte&#39;, &#39;lte&#39; and &#39;date_range&#39;. (optional)
-     * @param  array<string,string[]>|null $updatedAt Filter on follow-up updated at timestamp. Accepted operators are &#39;gte&#39;, &#39;lte&#39; and &#39;date_range&#39;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3List'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2List'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function followUpsV3ListAsync(
-        ?int $pageSize = 25,
-        ?string $after = null,
-        ?string $incidentId = null,
-        ?string $incidentMode = null,
-        ?string $assigneeTeamId = null,
-        ?array $createdAt = null,
-        ?array $updatedAt = null,
-        string $contentType = self::contentTypes['followUpsV3List'][0]
+    public function announcementTemplatesV2ListAsync(
+        string $contentType = self::contentTypes['announcementTemplatesV2List'][0]
     ): PromiseInterface
     {
-        return $this->followUpsV3ListAsyncWithHttpInfo($pageSize, $after, $incidentId, $incidentMode, $assigneeTeamId, $createdAt, $updatedAt, $contentType)
+        return $this->announcementTemplatesV2ListAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2235,35 +1223,21 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3ListAsyncWithHttpInfo
+     * Operation announcementTemplatesV2ListAsyncWithHttpInfo
      *
-     * List Follow-ups V3
+     * List Announcement Templates V2
      *
-     * @param  int|null $pageSize Integer number of records to return (optional, default to 25)
-     * @param  string|null $after A follow-up&#39;s ID. This endpoint will return a list of follow-ups after this ID in relation to the API response order. (optional)
-     * @param  string|null $incidentId Find follow-ups related to this incident (optional)
-     * @param  string|null $incidentMode Filter to follow-ups from incidents of the given mode. If not set, only follow-ups from &#x60;standard&#x60; and &#x60;retrospective&#x60; incidents are returned (optional)
-     * @param  string|null $assigneeTeamId Filter follow-ups that are assigned to the given team (optional)
-     * @param  array<string,string[]>|null $createdAt Filter on follow-up created at timestamp. Accepted operators are &#39;gte&#39;, &#39;lte&#39; and &#39;date_range&#39;. (optional)
-     * @param  array<string,string[]>|null $updatedAt Filter on follow-up updated at timestamp. Accepted operators are &#39;gte&#39;, &#39;lte&#39; and &#39;date_range&#39;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3List'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2List'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function followUpsV3ListAsyncWithHttpInfo(
-        ?int $pageSize = 25,
-        ?string $after = null,
-        ?string $incidentId = null,
-        ?string $incidentMode = null,
-        ?string $assigneeTeamId = null,
-        ?array $createdAt = null,
-        ?array $updatedAt = null,
-        string $contentType = self::contentTypes['followUpsV3List'][0]
+    public function announcementTemplatesV2ListAsyncWithHttpInfo(
+        string $contentType = self::contentTypes['announcementTemplatesV2List'][0]
     ): PromiseInterface
     {
-        $returnType = '\IncidentIo\Model\FollowUpsListResultV3';
-        $request = $this->followUpsV3ListRequest($pageSize, $after, $incidentId, $incidentMode, $assigneeTeamId, $createdAt, $updatedAt, $contentType);
+        $returnType = '\IncidentIo\Model\AnnouncementTemplatesListResultV2';
+        $request = $this->announcementTemplatesV2ListRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2302,107 +1276,24 @@ class FollowUpsV3Api
     }
 
     /**
-     * Create request for operation 'followUpsV3List'
+     * Create request for operation 'announcementTemplatesV2List'
      *
-     * @param  int|null $pageSize Integer number of records to return (optional, default to 25)
-     * @param  string|null $after A follow-up&#39;s ID. This endpoint will return a list of follow-ups after this ID in relation to the API response order. (optional)
-     * @param  string|null $incidentId Find follow-ups related to this incident (optional)
-     * @param  string|null $incidentMode Filter to follow-ups from incidents of the given mode. If not set, only follow-ups from &#x60;standard&#x60; and &#x60;retrospective&#x60; incidents are returned (optional)
-     * @param  string|null $assigneeTeamId Filter follow-ups that are assigned to the given team (optional)
-     * @param  array<string,string[]>|null $createdAt Filter on follow-up created at timestamp. Accepted operators are &#39;gte&#39;, &#39;lte&#39; and &#39;date_range&#39;. (optional)
-     * @param  array<string,string[]>|null $updatedAt Filter on follow-up updated at timestamp. Accepted operators are &#39;gte&#39;, &#39;lte&#39; and &#39;date_range&#39;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3List'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2List'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function followUpsV3ListRequest(
-        ?int $pageSize = 25,
-        ?string $after = null,
-        ?string $incidentId = null,
-        ?string $incidentMode = null,
-        ?string $assigneeTeamId = null,
-        ?array $createdAt = null,
-        ?array $updatedAt = null,
-        string $contentType = self::contentTypes['followUpsV3List'][0]
+    public function announcementTemplatesV2ListRequest(
+        string $contentType = self::contentTypes['announcementTemplatesV2List'][0]
     ): Request
     {
-        if ($pageSize !== null && $pageSize > 250) {
-            throw new InvalidArgumentException('invalid value for "$pageSize" when calling FollowUpsV3Api.followUpsV3List, must be smaller than or equal to 250.');
-        }
-        if ($pageSize !== null && $pageSize < 1) {
-            throw new InvalidArgumentException('invalid value for "$pageSize" when calling FollowUpsV3Api.followUpsV3List, must be bigger than or equal to 1.');
-        }
 
-        $resourcePath = '/v3/follow_ups';
+        $resourcePath = '/v2/announcement_templates';
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $pageSize,
-            'page_size', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $incidentId,
-            'incident_id', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $incidentMode,
-            'incident_mode', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $assigneeTeamId,
-            'assignee_team_id', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $createdAt,
-            'created_at', // param base name
-            'object', // openApiType
-            'deepObject', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updatedAt,
-            'updated_at', // param base name
-            'object', // openApiType
-            'deepObject', // style
-            true, // explode
-            false // required
-        ) ?? []);
 
 
 
@@ -2441,44 +1332,44 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3Show
+     * Operation announcementTemplatesV2Show
      *
-     * Show Follow-ups V3
+     * Show Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Show'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Show'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \IncidentIo\Model\FollowUpsShowResultV3|\IncidentIo\Model\ErrorResponse
+     * @return \IncidentIo\Model\AnnouncementTemplatesShowResultV2|\IncidentIo\Model\ErrorResponse
      */
-    public function followUpsV3Show(
+    public function announcementTemplatesV2Show(
         string $id,
-        string $contentType = self::contentTypes['followUpsV3Show'][0]
-    ): \IncidentIo\Model\FollowUpsShowResultV3|\IncidentIo\Model\ErrorResponse
+        string $contentType = self::contentTypes['announcementTemplatesV2Show'][0]
+    ): \IncidentIo\Model\AnnouncementTemplatesShowResultV2|\IncidentIo\Model\ErrorResponse
     {
-        list($response) = $this->followUpsV3ShowWithHttpInfo($id, $contentType);
+        list($response) = $this->announcementTemplatesV2ShowWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation followUpsV3ShowWithHttpInfo
+     * Operation announcementTemplatesV2ShowWithHttpInfo
      *
-     * Show Follow-ups V3
+     * Show Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Show'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Show'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array{0: \IncidentIo\Model\FollowUpsShowResultV3|\IncidentIo\Model\ErrorResponse, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     * @return array{0: \IncidentIo\Model\AnnouncementTemplatesShowResultV2|\IncidentIo\Model\ErrorResponse, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
-    public function followUpsV3ShowWithHttpInfo(
+    public function announcementTemplatesV2ShowWithHttpInfo(
         string $id,
-        string $contentType = self::contentTypes['followUpsV3Show'][0]
+        string $contentType = self::contentTypes['announcementTemplatesV2Show'][0]
     ): array
     {
-        $request = $this->followUpsV3ShowRequest($id, $contentType);
+        $request = $this->announcementTemplatesV2ShowRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2505,7 +1396,7 @@ class FollowUpsV3Api
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\FollowUpsShowResultV3',
+                        '\IncidentIo\Model\AnnouncementTemplatesShowResultV2',
                         $request,
                         $response,
                     );
@@ -2603,7 +1494,7 @@ class FollowUpsV3Api
             }
 
             return $this->handleResponseWithDataType(
-                '\IncidentIo\Model\FollowUpsShowResultV3',
+                '\IncidentIo\Model\AnnouncementTemplatesShowResultV2',
                 $request,
                 $response,
             );
@@ -2612,7 +1503,7 @@ class FollowUpsV3Api
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\IncidentIo\Model\FollowUpsShowResultV3',
+                        '\IncidentIo\Model\AnnouncementTemplatesShowResultV2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2728,22 +1619,22 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3ShowAsync
+     * Operation announcementTemplatesV2ShowAsync
      *
-     * Show Follow-ups V3
+     * Show Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Show'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Show'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function followUpsV3ShowAsync(
+    public function announcementTemplatesV2ShowAsync(
         string $id,
-        string $contentType = self::contentTypes['followUpsV3Show'][0]
+        string $contentType = self::contentTypes['announcementTemplatesV2Show'][0]
     ): PromiseInterface
     {
-        return $this->followUpsV3ShowAsyncWithHttpInfo($id, $contentType)
+        return $this->announcementTemplatesV2ShowAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2752,23 +1643,23 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3ShowAsyncWithHttpInfo
+     * Operation announcementTemplatesV2ShowAsyncWithHttpInfo
      *
-     * Show Follow-ups V3
+     * Show Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Show'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Show'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function followUpsV3ShowAsyncWithHttpInfo(
+    public function announcementTemplatesV2ShowAsyncWithHttpInfo(
         string $id,
-        string $contentType = self::contentTypes['followUpsV3Show'][0]
+        string $contentType = self::contentTypes['announcementTemplatesV2Show'][0]
     ): PromiseInterface
     {
-        $returnType = '\IncidentIo\Model\FollowUpsShowResultV3';
-        $request = $this->followUpsV3ShowRequest($id, $contentType);
+        $returnType = '\IncidentIo\Model\AnnouncementTemplatesShowResultV2';
+        $request = $this->announcementTemplatesV2ShowRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2807,27 +1698,27 @@ class FollowUpsV3Api
     }
 
     /**
-     * Create request for operation 'followUpsV3Show'
+     * Create request for operation 'announcementTemplatesV2Show'
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Show'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Show'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function followUpsV3ShowRequest(
+    public function announcementTemplatesV2ShowRequest(
         string $id,
-        string $contentType = self::contentTypes['followUpsV3Show'][0]
+        string $contentType = self::contentTypes['announcementTemplatesV2Show'][0]
     ): Request
     {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $id when calling followUpsV3Show'
+                'Missing the required parameter $id when calling announcementTemplatesV2Show'
             );
         }
 
-        $resourcePath = '/v3/follow_ups/{id}';
+        $resourcePath = '/v2/announcement_templates/{id}';
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
@@ -2879,48 +1770,48 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3Update
+     * Operation announcementTemplatesV2Update
      *
-     * Update Follow-ups V3
+     * Update Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  \IncidentIo\Model\FollowUpsUpdatePayloadV3 $followUpsUpdatePayloadV3 followUpsUpdatePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Update'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  \IncidentIo\Model\AnnouncementTemplatesUpdatePayloadV2 $announcementTemplatesUpdatePayloadV2 announcementTemplatesUpdatePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \IncidentIo\Model\FollowUpsUpdateResultV3|\IncidentIo\Model\ErrorResponse
+     * @return \IncidentIo\Model\AnnouncementTemplatesUpdateResultV2|\IncidentIo\Model\ErrorResponse
      */
-    public function followUpsV3Update(
+    public function announcementTemplatesV2Update(
         string $id,
-        \IncidentIo\Model\FollowUpsUpdatePayloadV3 $followUpsUpdatePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3Update'][0]
-    ): \IncidentIo\Model\FollowUpsUpdateResultV3|\IncidentIo\Model\ErrorResponse
+        \IncidentIo\Model\AnnouncementTemplatesUpdatePayloadV2 $announcementTemplatesUpdatePayloadV2,
+        string $contentType = self::contentTypes['announcementTemplatesV2Update'][0]
+    ): \IncidentIo\Model\AnnouncementTemplatesUpdateResultV2|\IncidentIo\Model\ErrorResponse
     {
-        list($response) = $this->followUpsV3UpdateWithHttpInfo($id, $followUpsUpdatePayloadV3, $contentType);
+        list($response) = $this->announcementTemplatesV2UpdateWithHttpInfo($id, $announcementTemplatesUpdatePayloadV2, $contentType);
         return $response;
     }
 
     /**
-     * Operation followUpsV3UpdateWithHttpInfo
+     * Operation announcementTemplatesV2UpdateWithHttpInfo
      *
-     * Update Follow-ups V3
+     * Update Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  \IncidentIo\Model\FollowUpsUpdatePayloadV3 $followUpsUpdatePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Update'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  \IncidentIo\Model\AnnouncementTemplatesUpdatePayloadV2 $announcementTemplatesUpdatePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array{0: \IncidentIo\Model\FollowUpsUpdateResultV3|\IncidentIo\Model\ErrorResponse, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     * @return array{0: \IncidentIo\Model\AnnouncementTemplatesUpdateResultV2|\IncidentIo\Model\ErrorResponse, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
-    public function followUpsV3UpdateWithHttpInfo(
+    public function announcementTemplatesV2UpdateWithHttpInfo(
         string $id,
-        \IncidentIo\Model\FollowUpsUpdatePayloadV3 $followUpsUpdatePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3Update'][0]
+        \IncidentIo\Model\AnnouncementTemplatesUpdatePayloadV2 $announcementTemplatesUpdatePayloadV2,
+        string $contentType = self::contentTypes['announcementTemplatesV2Update'][0]
     ): array
     {
-        $request = $this->followUpsV3UpdateRequest($id, $followUpsUpdatePayloadV3, $contentType);
+        $request = $this->announcementTemplatesV2UpdateRequest($id, $announcementTemplatesUpdatePayloadV2, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2947,7 +1838,7 @@ class FollowUpsV3Api
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\IncidentIo\Model\FollowUpsUpdateResultV3',
+                        '\IncidentIo\Model\AnnouncementTemplatesUpdateResultV2',
                         $request,
                         $response,
                     );
@@ -3045,7 +1936,7 @@ class FollowUpsV3Api
             }
 
             return $this->handleResponseWithDataType(
-                '\IncidentIo\Model\FollowUpsUpdateResultV3',
+                '\IncidentIo\Model\AnnouncementTemplatesUpdateResultV2',
                 $request,
                 $response,
             );
@@ -3054,7 +1945,7 @@ class FollowUpsV3Api
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\IncidentIo\Model\FollowUpsUpdateResultV3',
+                        '\IncidentIo\Model\AnnouncementTemplatesUpdateResultV2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3170,24 +2061,24 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3UpdateAsync
+     * Operation announcementTemplatesV2UpdateAsync
      *
-     * Update Follow-ups V3
+     * Update Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  \IncidentIo\Model\FollowUpsUpdatePayloadV3 $followUpsUpdatePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Update'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  \IncidentIo\Model\AnnouncementTemplatesUpdatePayloadV2 $announcementTemplatesUpdatePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function followUpsV3UpdateAsync(
+    public function announcementTemplatesV2UpdateAsync(
         string $id,
-        \IncidentIo\Model\FollowUpsUpdatePayloadV3 $followUpsUpdatePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3Update'][0]
+        \IncidentIo\Model\AnnouncementTemplatesUpdatePayloadV2 $announcementTemplatesUpdatePayloadV2,
+        string $contentType = self::contentTypes['announcementTemplatesV2Update'][0]
     ): PromiseInterface
     {
-        return $this->followUpsV3UpdateAsyncWithHttpInfo($id, $followUpsUpdatePayloadV3, $contentType)
+        return $this->announcementTemplatesV2UpdateAsyncWithHttpInfo($id, $announcementTemplatesUpdatePayloadV2, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3196,25 +2087,25 @@ class FollowUpsV3Api
     }
 
     /**
-     * Operation followUpsV3UpdateAsyncWithHttpInfo
+     * Operation announcementTemplatesV2UpdateAsyncWithHttpInfo
      *
-     * Update Follow-ups V3
+     * Update Announcement Templates V2
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  \IncidentIo\Model\FollowUpsUpdatePayloadV3 $followUpsUpdatePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Update'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  \IncidentIo\Model\AnnouncementTemplatesUpdatePayloadV2 $announcementTemplatesUpdatePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function followUpsV3UpdateAsyncWithHttpInfo(
+    public function announcementTemplatesV2UpdateAsyncWithHttpInfo(
         string $id,
-        \IncidentIo\Model\FollowUpsUpdatePayloadV3 $followUpsUpdatePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3Update'][0]
+        \IncidentIo\Model\AnnouncementTemplatesUpdatePayloadV2 $announcementTemplatesUpdatePayloadV2,
+        string $contentType = self::contentTypes['announcementTemplatesV2Update'][0]
     ): PromiseInterface
     {
-        $returnType = '\IncidentIo\Model\FollowUpsUpdateResultV3';
-        $request = $this->followUpsV3UpdateRequest($id, $followUpsUpdatePayloadV3, $contentType);
+        $returnType = '\IncidentIo\Model\AnnouncementTemplatesUpdateResultV2';
+        $request = $this->announcementTemplatesV2UpdateRequest($id, $announcementTemplatesUpdatePayloadV2, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3253,35 +2144,35 @@ class FollowUpsV3Api
     }
 
     /**
-     * Create request for operation 'followUpsV3Update'
+     * Create request for operation 'announcementTemplatesV2Update'
      *
-     * @param  string $id Unique identifier for the follow-up (required)
-     * @param  \IncidentIo\Model\FollowUpsUpdatePayloadV3 $followUpsUpdatePayloadV3 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['followUpsV3Update'] to see the possible values for this operation
+     * @param  string $id Unique identifier for this announcement template (required)
+     * @param  \IncidentIo\Model\AnnouncementTemplatesUpdatePayloadV2 $announcementTemplatesUpdatePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['announcementTemplatesV2Update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function followUpsV3UpdateRequest(
+    public function announcementTemplatesV2UpdateRequest(
         string $id,
-        \IncidentIo\Model\FollowUpsUpdatePayloadV3 $followUpsUpdatePayloadV3,
-        string $contentType = self::contentTypes['followUpsV3Update'][0]
+        \IncidentIo\Model\AnnouncementTemplatesUpdatePayloadV2 $announcementTemplatesUpdatePayloadV2,
+        string $contentType = self::contentTypes['announcementTemplatesV2Update'][0]
     ): Request
     {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $id when calling followUpsV3Update'
+                'Missing the required parameter $id when calling announcementTemplatesV2Update'
             );
         }
-        // verify the required parameter 'followUpsUpdatePayloadV3' is set
-        if ($followUpsUpdatePayloadV3 === null || (is_array($followUpsUpdatePayloadV3) && count($followUpsUpdatePayloadV3) === 0)) {
+        // verify the required parameter 'announcementTemplatesUpdatePayloadV2' is set
+        if ($announcementTemplatesUpdatePayloadV2 === null || (is_array($announcementTemplatesUpdatePayloadV2) && count($announcementTemplatesUpdatePayloadV2) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $followUpsUpdatePayloadV3 when calling followUpsV3Update'
+                'Missing the required parameter $announcementTemplatesUpdatePayloadV2 when calling announcementTemplatesV2Update'
             );
         }
 
-        $resourcePath = '/v3/follow_ups/{id}';
+        $resourcePath = '/v2/announcement_templates/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3307,16 +2198,16 @@ class FollowUpsV3Api
         );
 
         // for model (json/xml)
-        if (isset($followUpsUpdatePayloadV3)) {
+        if (isset($announcementTemplatesUpdatePayloadV2)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
                 try {
-                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($followUpsUpdatePayloadV3), JSON_THROW_ON_ERROR);
+                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($announcementTemplatesUpdatePayloadV2), JSON_THROW_ON_ERROR);
                 } catch (\JsonException $e) {
                     throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
                 }
             } else {
-                $httpBody = $followUpsUpdatePayloadV3;
+                $httpBody = $announcementTemplatesUpdatePayloadV2;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

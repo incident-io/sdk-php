@@ -1,6 +1,6 @@
 <?php
 /**
- * PolicyFindingScheduleV2
+ * AnnouncementTemplateFieldV2
  *
  * PHP version 8.1
  *
@@ -32,15 +32,14 @@ use ReturnTypeWillChange;
 use IncidentIo\ObjectSerializer;
 
 /**
- * PolicyFindingScheduleV2 Class Doc Comment
+ * AnnouncementTemplateFieldV2 Class Doc Comment
  *
- * @description Set when policy_type is schedule. Describes a gap in on-call cover.
  * @package  IncidentIo
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class PolicyFindingScheduleV2 implements ModelInterface, ArrayAccess, JsonSerializable
+class AnnouncementTemplateFieldV2 implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +48,7 @@ class PolicyFindingScheduleV2 implements ModelInterface, ArrayAccess, JsonSerial
      *
      * @var string
      */
-    protected static string $openAPIModelName = 'PolicyFindingScheduleV2';
+    protected static string $openAPIModelName = 'AnnouncementTemplateFieldV2';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +56,14 @@ class PolicyFindingScheduleV2 implements ModelInterface, ArrayAccess, JsonSerial
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
-        'cause' => 'string',
-        'endAt' => '\DateTime',
-        'hasUnscheduledTime' => 'bool',
-        'impactedUsers' => '\IncidentIo\Model\PolicyFindingScheduleImpactedUserV2[]',
-        'rotationId' => 'string',
-        'scheduleId' => 'string',
-        'startAt' => '\DateTime'
+        'customFieldId' => 'string',
+        'emoji' => 'string',
+        'fieldType' => 'string',
+        'incidentRoleId' => 'string',
+        'incidentTimestampId' => 'string',
+        'rank' => 'int',
+        'richText' => '\IncidentIo\Model\AnnouncementTemplateRichTextV2',
+        'title' => 'string'
     ];
 
     /**
@@ -72,13 +72,14 @@ class PolicyFindingScheduleV2 implements ModelInterface, ArrayAccess, JsonSerial
      * @var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'cause' => null,
-        'endAt' => 'date-time',
-        'hasUnscheduledTime' => null,
-        'impactedUsers' => null,
-        'rotationId' => null,
-        'scheduleId' => null,
-        'startAt' => 'date-time'
+        'customFieldId' => null,
+        'emoji' => null,
+        'fieldType' => null,
+        'incidentRoleId' => null,
+        'incidentTimestampId' => null,
+        'rank' => 'int64',
+        'richText' => null,
+        'title' => null
     ];
 
     /**
@@ -87,13 +88,14 @@ class PolicyFindingScheduleV2 implements ModelInterface, ArrayAccess, JsonSerial
      * @var array<string, bool>
      */
     protected static array $openAPINullables = [
-        'cause' => false,
-        'endAt' => false,
-        'hasUnscheduledTime' => false,
-        'impactedUsers' => false,
-        'rotationId' => false,
-        'scheduleId' => false,
-        'startAt' => false
+        'customFieldId' => false,
+        'emoji' => false,
+        'fieldType' => false,
+        'incidentRoleId' => false,
+        'incidentTimestampId' => false,
+        'rank' => false,
+        'richText' => false,
+        'title' => false
     ];
 
     /**
@@ -172,13 +174,14 @@ class PolicyFindingScheduleV2 implements ModelInterface, ArrayAccess, JsonSerial
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'cause' => 'cause',
-        'endAt' => 'end_at',
-        'hasUnscheduledTime' => 'has_unscheduled_time',
-        'impactedUsers' => 'impacted_users',
-        'rotationId' => 'rotation_id',
-        'scheduleId' => 'schedule_id',
-        'startAt' => 'start_at'
+        'customFieldId' => 'custom_field_id',
+        'emoji' => 'emoji',
+        'fieldType' => 'field_type',
+        'incidentRoleId' => 'incident_role_id',
+        'incidentTimestampId' => 'incident_timestamp_id',
+        'rank' => 'rank',
+        'richText' => 'rich_text',
+        'title' => 'title'
     ];
 
     /**
@@ -187,13 +190,14 @@ class PolicyFindingScheduleV2 implements ModelInterface, ArrayAccess, JsonSerial
      * @var array<string, string>
      */
     protected static array $setters = [
-        'cause' => 'setCause',
-        'endAt' => 'setEndAt',
-        'hasUnscheduledTime' => 'setHasUnscheduledTime',
-        'impactedUsers' => 'setImpactedUsers',
-        'rotationId' => 'setRotationId',
-        'scheduleId' => 'setScheduleId',
-        'startAt' => 'setStartAt'
+        'customFieldId' => 'setCustomFieldId',
+        'emoji' => 'setEmoji',
+        'fieldType' => 'setFieldType',
+        'incidentRoleId' => 'setIncidentRoleId',
+        'incidentTimestampId' => 'setIncidentTimestampId',
+        'rank' => 'setRank',
+        'richText' => 'setRichText',
+        'title' => 'setTitle'
     ];
 
     /**
@@ -202,13 +206,14 @@ class PolicyFindingScheduleV2 implements ModelInterface, ArrayAccess, JsonSerial
      * @var array<string, string>
      */
     protected static array $getters = [
-        'cause' => 'getCause',
-        'endAt' => 'getEndAt',
-        'hasUnscheduledTime' => 'getHasUnscheduledTime',
-        'impactedUsers' => 'getImpactedUsers',
-        'rotationId' => 'getRotationId',
-        'scheduleId' => 'getScheduleId',
-        'startAt' => 'getStartAt'
+        'customFieldId' => 'getCustomFieldId',
+        'emoji' => 'getEmoji',
+        'fieldType' => 'getFieldType',
+        'incidentRoleId' => 'getIncidentRoleId',
+        'incidentTimestampId' => 'getIncidentTimestampId',
+        'rank' => 'getRank',
+        'richText' => 'getRichText',
+        'title' => 'getTitle'
     ];
 
     /**
@@ -243,23 +248,35 @@ class PolicyFindingScheduleV2 implements ModelInterface, ArrayAccess, JsonSerial
         return self::$openAPIModelName;
     }
 
-    public const CAUSE_NOBODY_SCHEDULED = 'nobody_scheduled';
-    public const CAUSE_NO_ON_CALL_SEAT = 'no_on_call_seat';
-    public const CAUSE_USER_DEACTIVATED = 'user_deactivated';
-    public const CAUSE_NOTIFICATIONS_PAUSED = 'notifications_paused';
+    public const FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_STATUS = 'announcement_post_fields_status';
+    public const FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_INCIDENT_TYPE = 'announcement_post_fields_incident_type';
+    public const FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_SEVERITY = 'announcement_post_fields_severity';
+    public const FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_ROLE = 'announcement_post_fields_role';
+    public const FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_DESCRIPTION = 'announcement_post_fields_description';
+    public const FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_CUSTOM_FIELD = 'announcement_post_fields_custom_field';
+    public const FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_TIMESTAMP = 'announcement_post_fields_timestamp';
+    public const FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_CREATOR = 'announcement_post_fields_creator';
+    public const FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_SLACK = 'announcement_post_fields_slack';
+    public const FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_RICH_TEXT = 'announcement_post_fields_rich_text';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public static function getCauseAllowableValues()
+    public static function getFieldTypeAllowableValues()
     {
         return [
-            self::CAUSE_NOBODY_SCHEDULED,
-            self::CAUSE_NO_ON_CALL_SEAT,
-            self::CAUSE_USER_DEACTIVATED,
-            self::CAUSE_NOTIFICATIONS_PAUSED,
+            self::FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_STATUS,
+            self::FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_INCIDENT_TYPE,
+            self::FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_SEVERITY,
+            self::FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_ROLE,
+            self::FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_DESCRIPTION,
+            self::FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_CUSTOM_FIELD,
+            self::FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_TIMESTAMP,
+            self::FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_CREATOR,
+            self::FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_SLACK,
+            self::FIELD_TYPE_ANNOUNCEMENT_POST_FIELDS_RICH_TEXT,
         ];
     }
 
@@ -277,13 +294,14 @@ class PolicyFindingScheduleV2 implements ModelInterface, ArrayAccess, JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('cause', $data ?? [], null);
-        $this->setIfExists('endAt', $data ?? [], null);
-        $this->setIfExists('hasUnscheduledTime', $data ?? [], null);
-        $this->setIfExists('impactedUsers', $data ?? [], null);
-        $this->setIfExists('rotationId', $data ?? [], null);
-        $this->setIfExists('scheduleId', $data ?? [], null);
-        $this->setIfExists('startAt', $data ?? [], null);
+        $this->setIfExists('customFieldId', $data ?? [], null);
+        $this->setIfExists('emoji', $data ?? [], null);
+        $this->setIfExists('fieldType', $data ?? [], null);
+        $this->setIfExists('incidentRoleId', $data ?? [], null);
+        $this->setIfExists('incidentTimestampId', $data ?? [], null);
+        $this->setIfExists('rank', $data ?? [], null);
+        $this->setIfExists('richText', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
     }
 
     /**
@@ -311,14 +329,14 @@ class PolicyFindingScheduleV2 implements ModelInterface, ArrayAccess, JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['endAt'] === null) {
-            $invalidProperties[] = "'endAt' can't be null";
+        if ($this->container['fieldType'] === null) {
+            $invalidProperties[] = "'fieldType' can't be null";
         }
-        if ($this->container['scheduleId'] === null) {
-            $invalidProperties[] = "'scheduleId' can't be null";
+        if ($this->container['rank'] === null) {
+            $invalidProperties[] = "'rank' can't be null";
         }
-        if ($this->container['startAt'] === null) {
-            $invalidProperties[] = "'startAt' can't be null";
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
         }
         return $invalidProperties;
     }
@@ -333,190 +351,217 @@ class PolicyFindingScheduleV2 implements ModelInterface, ArrayAccess, JsonSerial
 
 
     /**
-     * Gets cause
+     * Gets customFieldId
      *
      * @return string|null
      */
-    public function getCause(): ?string
+    public function getCustomFieldId(): ?string
     {
-        return $this->container['cause'];
+        return $this->container['customFieldId'];
     }
 
     /**
-     * Sets cause
+     * Sets customFieldId
      *
-     * @param string|null $cause Why the gap exists
+     * @param string|null $customFieldId ID of the custom field to show, for custom field fields
      *
      * @return $this
      */
-    public function setCause(?string $cause): static
+    public function setCustomFieldId(?string $customFieldId): static
     {
-        if (is_null($cause)) {
-            throw new InvalidArgumentException('non-nullable cause cannot be null');
+        if (is_null($customFieldId)) {
+            throw new InvalidArgumentException('non-nullable customFieldId cannot be null');
         }
-        $this->container['cause'] = $cause;
+        $this->container['customFieldId'] = $customFieldId;
 
         return $this;
     }
 
     /**
-     * Gets endAt
-     *
-     * @return \DateTime
-     */
-    public function getEndAt(): \DateTime
-    {
-        return $this->container['endAt'];
-    }
-
-    /**
-     * Sets endAt
-     *
-     * @param \DateTime $endAt When the gap ends
-     *
-     * @return $this
-     */
-    public function setEndAt(\DateTime $endAt): static
-    {
-        if (is_null($endAt)) {
-            throw new InvalidArgumentException('non-nullable endAt cannot be null');
-        }
-        $this->container['endAt'] = $endAt;
-
-        return $this;
-    }
-
-    /**
-     * Gets hasUnscheduledTime
-     *
-     * @return bool|null
-     */
-    public function getHasUnscheduledTime(): ?bool
-    {
-        return $this->container['hasUnscheduledTime'];
-    }
-
-    /**
-     * Sets hasUnscheduledTime
-     *
-     * @param bool|null $hasUnscheduledTime Whether part of the gap has nobody scheduled at all, so impacted_users doesn't fully explain it
-     *
-     * @return $this
-     */
-    public function setHasUnscheduledTime(?bool $hasUnscheduledTime): static
-    {
-        if (is_null($hasUnscheduledTime)) {
-            throw new InvalidArgumentException('non-nullable hasUnscheduledTime cannot be null');
-        }
-        $this->container['hasUnscheduledTime'] = $hasUnscheduledTime;
-
-        return $this;
-    }
-
-    /**
-     * Gets impactedUsers
-     *
-     * @return \IncidentIo\Model\PolicyFindingScheduleImpactedUserV2[]|null
-     */
-    public function getImpactedUsers(): ?array
-    {
-        return $this->container['impactedUsers'];
-    }
-
-    /**
-     * Sets impactedUsers
-     *
-     * @param \IncidentIo\Model\PolicyFindingScheduleImpactedUserV2[]|null $impactedUsers Users scheduled across the gap whose entries don't count as cover
-     *
-     * @return $this
-     */
-    public function setImpactedUsers(?array $impactedUsers): static
-    {
-        if (is_null($impactedUsers)) {
-            throw new InvalidArgumentException('non-nullable impactedUsers cannot be null');
-        }
-        $this->container['impactedUsers'] = $impactedUsers;
-
-        return $this;
-    }
-
-    /**
-     * Gets rotationId
+     * Gets emoji
      *
      * @return string|null
      */
-    public function getRotationId(): ?string
+    public function getEmoji(): ?string
     {
-        return $this->container['rotationId'];
+        return $this->container['emoji'];
     }
 
     /**
-     * Sets rotationId
+     * Sets emoji
      *
-     * @param string|null $rotationId The rotation with the gap, when the policy evaluates per rotation
+     * @param string|null $emoji Emoji shown next to this field
      *
      * @return $this
      */
-    public function setRotationId(?string $rotationId): static
+    public function setEmoji(?string $emoji): static
     {
-        if (is_null($rotationId)) {
-            throw new InvalidArgumentException('non-nullable rotationId cannot be null');
+        if (is_null($emoji)) {
+            throw new InvalidArgumentException('non-nullable emoji cannot be null');
         }
-        $this->container['rotationId'] = $rotationId;
+        $this->container['emoji'] = $emoji;
 
         return $this;
     }
 
     /**
-     * Gets scheduleId
+     * Gets fieldType
      *
      * @return string
      */
-    public function getScheduleId(): string
+    public function getFieldType(): string
     {
-        return $this->container['scheduleId'];
+        return $this->container['fieldType'];
     }
 
     /**
-     * Sets scheduleId
+     * Sets fieldType
      *
-     * @param string $scheduleId The schedule with the gap
+     * @param string $fieldType Type of this field
      *
      * @return $this
      */
-    public function setScheduleId(string $scheduleId): static
+    public function setFieldType(string $fieldType): static
     {
-        if (is_null($scheduleId)) {
-            throw new InvalidArgumentException('non-nullable scheduleId cannot be null');
+        if (is_null($fieldType)) {
+            throw new InvalidArgumentException('non-nullable fieldType cannot be null');
         }
-        $this->container['scheduleId'] = $scheduleId;
+        $this->container['fieldType'] = $fieldType;
 
         return $this;
     }
 
     /**
-     * Gets startAt
+     * Gets incidentRoleId
      *
-     * @return \DateTime
+     * @return string|null
      */
-    public function getStartAt(): \DateTime
+    public function getIncidentRoleId(): ?string
     {
-        return $this->container['startAt'];
+        return $this->container['incidentRoleId'];
     }
 
     /**
-     * Sets startAt
+     * Sets incidentRoleId
      *
-     * @param \DateTime $startAt When the gap starts
+     * @param string|null $incidentRoleId ID of the incident role to show, for incident role fields
      *
      * @return $this
      */
-    public function setStartAt(\DateTime $startAt): static
+    public function setIncidentRoleId(?string $incidentRoleId): static
     {
-        if (is_null($startAt)) {
-            throw new InvalidArgumentException('non-nullable startAt cannot be null');
+        if (is_null($incidentRoleId)) {
+            throw new InvalidArgumentException('non-nullable incidentRoleId cannot be null');
         }
-        $this->container['startAt'] = $startAt;
+        $this->container['incidentRoleId'] = $incidentRoleId;
+
+        return $this;
+    }
+
+    /**
+     * Gets incidentTimestampId
+     *
+     * @return string|null
+     */
+    public function getIncidentTimestampId(): ?string
+    {
+        return $this->container['incidentTimestampId'];
+    }
+
+    /**
+     * Sets incidentTimestampId
+     *
+     * @param string|null $incidentTimestampId ID of the incident timestamp to show, for incident timestamp fields
+     *
+     * @return $this
+     */
+    public function setIncidentTimestampId(?string $incidentTimestampId): static
+    {
+        if (is_null($incidentTimestampId)) {
+            throw new InvalidArgumentException('non-nullable incidentTimestampId cannot be null');
+        }
+        $this->container['incidentTimestampId'] = $incidentTimestampId;
+
+        return $this;
+    }
+
+    /**
+     * Gets rank
+     *
+     * @return int
+     */
+    public function getRank(): int
+    {
+        return $this->container['rank'];
+    }
+
+    /**
+     * Sets rank
+     *
+     * @param int $rank Position of this field on the post, lowest first
+     *
+     * @return $this
+     */
+    public function setRank(int $rank): static
+    {
+        if (is_null($rank)) {
+            throw new InvalidArgumentException('non-nullable rank cannot be null');
+        }
+        $this->container['rank'] = $rank;
+
+        return $this;
+    }
+
+    /**
+     * Gets richText
+     *
+     * @return \IncidentIo\Model\AnnouncementTemplateRichTextV2|null
+     */
+    public function getRichText(): ?\IncidentIo\Model\AnnouncementTemplateRichTextV2
+    {
+        return $this->container['richText'];
+    }
+
+    /**
+     * Sets richText
+     *
+     * @param \IncidentIo\Model\AnnouncementTemplateRichTextV2|null $richText richText
+     *
+     * @return $this
+     */
+    public function setRichText(?\IncidentIo\Model\AnnouncementTemplateRichTextV2 $richText): static
+    {
+        if (is_null($richText)) {
+            throw new InvalidArgumentException('non-nullable richText cannot be null');
+        }
+        $this->container['richText'] = $richText;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string $title Title shown next to this field, derived from its type
+     *
+     * @return $this
+     */
+    public function setTitle(string $title): static
+    {
+        if (is_null($title)) {
+            throw new InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
 
         return $this;
     }

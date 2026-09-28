@@ -1,6 +1,6 @@
 <?php
 /**
- * PolicyFindingScheduleImpactedUserV2
+ * AnnouncementRulesListResultV2
  *
  * PHP version 8.1
  *
@@ -32,14 +32,14 @@ use ReturnTypeWillChange;
 use IncidentIo\ObjectSerializer;
 
 /**
- * PolicyFindingScheduleImpactedUserV2 Class Doc Comment
+ * AnnouncementRulesListResultV2 Class Doc Comment
  *
  * @package  IncidentIo
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess, JsonSerializable
+class AnnouncementRulesListResultV2 implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static string $openAPIModelName = 'PolicyFindingScheduleImpactedUserV2';
+    protected static string $openAPIModelName = 'AnnouncementRulesListResultV2';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,8 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
-        'cause' => 'string',
-        'name' => 'string',
-        'userId' => 'string'
+        'announcementRules' => '\IncidentIo\Model\AnnouncementRuleV2[]',
+        'paginationMeta' => '\IncidentIo\Model\PaginationMetaResultV2'
     ];
 
     /**
@@ -67,9 +66,8 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'cause' => null,
-        'name' => null,
-        'userId' => null
+        'announcementRules' => null,
+        'paginationMeta' => null
     ];
 
     /**
@@ -78,9 +76,8 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, bool>
      */
     protected static array $openAPINullables = [
-        'cause' => false,
-        'name' => false,
-        'userId' => false
+        'announcementRules' => false,
+        'paginationMeta' => false
     ];
 
     /**
@@ -159,9 +156,8 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'cause' => 'cause',
-        'name' => 'name',
-        'userId' => 'user_id'
+        'announcementRules' => 'announcement_rules',
+        'paginationMeta' => 'pagination_meta'
     ];
 
     /**
@@ -170,9 +166,8 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $setters = [
-        'cause' => 'setCause',
-        'name' => 'setName',
-        'userId' => 'setUserId'
+        'announcementRules' => 'setAnnouncementRules',
+        'paginationMeta' => 'setPaginationMeta'
     ];
 
     /**
@@ -181,9 +176,8 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $getters = [
-        'cause' => 'getCause',
-        'name' => 'getName',
-        'userId' => 'getUserId'
+        'announcementRules' => 'getAnnouncementRules',
+        'paginationMeta' => 'getPaginationMeta'
     ];
 
     /**
@@ -218,23 +212,6 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const CAUSE_NO_ON_CALL_SEAT = 'no_on_call_seat';
-    public const CAUSE_USER_DEACTIVATED = 'user_deactivated';
-    public const CAUSE_NOTIFICATIONS_PAUSED = 'notifications_paused';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public static function getCauseAllowableValues()
-    {
-        return [
-            self::CAUSE_NO_ON_CALL_SEAT,
-            self::CAUSE_USER_DEACTIVATED,
-            self::CAUSE_NOTIFICATIONS_PAUSED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -250,9 +227,8 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('cause', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('userId', $data ?? [], null);
+        $this->setIfExists('announcementRules', $data ?? [], null);
+        $this->setIfExists('paginationMeta', $data ?? [], null);
     }
 
     /**
@@ -280,14 +256,11 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['cause'] === null) {
-            $invalidProperties[] = "'cause' can't be null";
+        if ($this->container['announcementRules'] === null) {
+            $invalidProperties[] = "'announcementRules' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['userId'] === null) {
-            $invalidProperties[] = "'userId' can't be null";
+        if ($this->container['paginationMeta'] === null) {
+            $invalidProperties[] = "'paginationMeta' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,82 +275,55 @@ class PolicyFindingScheduleImpactedUserV2 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets cause
+     * Gets announcementRules
      *
-     * @return string
+     * @return \IncidentIo\Model\AnnouncementRuleV2[]
      */
-    public function getCause(): string
+    public function getAnnouncementRules(): array
     {
-        return $this->container['cause'];
+        return $this->container['announcementRules'];
     }
 
     /**
-     * Sets cause
+     * Sets announcementRules
      *
-     * @param string $cause Why this user's entries don't count as cover
+     * @param \IncidentIo\Model\AnnouncementRuleV2[] $announcementRules announcementRules
      *
      * @return $this
      */
-    public function setCause(string $cause): static
+    public function setAnnouncementRules(array $announcementRules): static
     {
-        if (is_null($cause)) {
-            throw new InvalidArgumentException('non-nullable cause cannot be null');
+        if (is_null($announcementRules)) {
+            throw new InvalidArgumentException('non-nullable announcementRules cannot be null');
         }
-        $this->container['cause'] = $cause;
+        $this->container['announcementRules'] = $announcementRules;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets paginationMeta
      *
-     * @return string
+     * @return \IncidentIo\Model\PaginationMetaResultV2
      */
-    public function getName(): string
+    public function getPaginationMeta(): \IncidentIo\Model\PaginationMetaResultV2
     {
-        return $this->container['name'];
+        return $this->container['paginationMeta'];
     }
 
     /**
-     * Sets name
+     * Sets paginationMeta
      *
-     * @param string $name name
+     * @param \IncidentIo\Model\PaginationMetaResultV2 $paginationMeta paginationMeta
      *
      * @return $this
      */
-    public function setName(string $name): static
+    public function setPaginationMeta(\IncidentIo\Model\PaginationMetaResultV2 $paginationMeta): static
     {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($paginationMeta)) {
+            throw new InvalidArgumentException('non-nullable paginationMeta cannot be null');
         }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets userId
-     *
-     * @return string
-     */
-    public function getUserId(): string
-    {
-        return $this->container['userId'];
-    }
-
-    /**
-     * Sets userId
-     *
-     * @param string $userId userId
-     *
-     * @return $this
-     */
-    public function setUserId(string $userId): static
-    {
-        if (is_null($userId)) {
-            throw new InvalidArgumentException('non-nullable userId cannot be null');
-        }
-        $this->container['userId'] = $userId;
+        $this->container['paginationMeta'] = $paginationMeta;
 
         return $this;
     }
