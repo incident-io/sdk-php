@@ -13,12 +13,9 @@ name: sync
 # trusted-publishing binding does, and keeping the name the same across them is
 # what lets one fix be copied between them.
 on:
-  # Disabled until the package is registered on Packagist: the release would
-  # otherwise tag, wait for a version Packagist can never list, and file a
-  # stuck-release issue. Uncomment to start the hourly loop. Avoid minute 0,
-  # which is GitHub's most contended scheduling slot.
-  # schedule:
-  #   - cron: "37 * * * *" # hourly
+  # Avoid minute 0, which is GitHub's most contended scheduling slot.
+  schedule:
+    - cron: "37 * * * *" # hourly
   workflow_dispatch:
     inputs:
       bump:
