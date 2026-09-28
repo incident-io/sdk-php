@@ -152,27 +152,6 @@ has to a compile. `php -l` parses one file at a time and does not notice a class
 extending something missing or a namespace that disagrees with its path.
 Loading parses every file too, so there is no separate `php -l` pass.
 
-## First release checklist
-
-The package does not exist on Packagist yet, and the hourly loop is switched
-off until it does. In order:
-
-1. **Create `incident-io/sdk-php` on GitHub** as a public repository, and push
-   `master`. Leave `master` unprotected: the release job pushes to it directly
-   with `GITHUB_TOKEN`.
-2. **Tag the first version by hand.** The committed schema is the live one, so
-   the workflow would find nothing to release.
-   `git tag v1.0.0 && git push origin v1.0.0 && gh release create v1.0.0 --generate-notes`.
-3. **Register the package on Packagist**: sign in with the incident.io
-   Packagist account, submit `https://github.com/incident-io/sdk-php`, and
-   confirm the package page shows no warning about the GitHub hook. Packagist
-   reads the `v1.0.0` tag on its first crawl.
-4. **Run the workflow once manually** with `dry_run: true` and confirm it
-   reports "Schema unchanged" or, if the schema has moved since, a version.
-5. **Uncomment the `schedule:` block** at the top of
-   `.github/workflows/sync.yml`. Nothing else enables the loop, and nothing
-   checks that you did.
-
 ## Keeping the loop alive
 
 Everything that reports a problem here is a `failure()` hook, and a loop that
