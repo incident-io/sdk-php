@@ -276,6 +276,7 @@ src/Model/AuditLogIncidentTypeDefaultTeamsMetadataV2.php
 src/Model/AuditLogMicrosoftEntraTenantLinkedMetadataV2.php
 src/Model/AuditLogMobileIntuneEnabledSettingUpdatedMetadataV2.php
 src/Model/AuditLogOnCallNotificationMethodMetadataV2.php
+src/Model/AuditLogOnCallNotificationPauseMetadataV2.php
 src/Model/AuditLogOnCallUpsellRequestedMetadataV2.php
 src/Model/AuditLogOrganisationSettingsUpdatedMetadataV2.php
 src/Model/AuditLogPolicyMetadataV2.php
@@ -413,8 +414,11 @@ src/Model/AuditLogsOnCallNotificationMethodCreatedV2.php
 src/Model/AuditLogsOnCallNotificationMethodDestroyedV1.php
 src/Model/AuditLogsOnCallNotificationMethodDestroyedV2.php
 src/Model/AuditLogsOnCallNotificationPauseCreatedV1.php
+src/Model/AuditLogsOnCallNotificationPauseCreatedV2.php
 src/Model/AuditLogsOnCallNotificationPauseDeletedV1.php
+src/Model/AuditLogsOnCallNotificationPauseDeletedV2.php
 src/Model/AuditLogsOnCallNotificationPauseUpdatedV1.php
+src/Model/AuditLogsOnCallNotificationPauseUpdatedV2.php
 src/Model/AuditLogsOnCallUpsellRequestedV1.php
 src/Model/AuditLogsOrganisationSettingsUpdatedV1.php
 src/Model/AuditLogsPolicyCreatedV1.php
