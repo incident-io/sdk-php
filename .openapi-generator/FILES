@@ -1137,6 +1137,7 @@ src/Model/StatusPagesListStatusPagesResultV2.php
 src/Model/StatusPagesShowStatusPageComponentAvailabilityResultV2.php
 src/Model/StatusPagesShowStatusPageIncidentResultV2.php
 src/Model/StatusPagesShowStatusPageMaintenanceResultV2.php
+src/Model/StatusPagesShowStatusPageResultV2.php
 src/Model/StatusPagesShowStatusPageStructureResultV2.php
 src/Model/StatusPagesUpdateStatusPageIncidentPayloadV2.php
 src/Model/StatusPagesUpdateStatusPageIncidentResultV2.php

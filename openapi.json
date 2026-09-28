@@ -95886,6 +95886,25 @@
         },
         "type": "object"
       },
+      "StatusPagesShowStatusPageResultV2": {
+        "example": {
+          "status_page": {
+            "description": "This status page is our public status page.",
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "name": "Our public status page",
+            "public_url": "https://statuspage.incident.io/our-public-status-page"
+          }
+        },
+        "properties": {
+          "status_page": {
+            "$ref": "#/components/schemas/StatusPageV2"
+          }
+        },
+        "required": [
+          "status_page"
+        ],
+        "type": "object"
+      },
       "StatusPagesShowStatusPageStructureResultV2": {
         "example": {
           "current_structure": {
@@ -175530,6 +175549,184 @@
         ],
         "x-display-name": "List",
         "x-docs-display-name": "List",
+        "x-docs-group-name": "Status Pages V2",
+        "x-docs-resource-type": "StatusPageV2"
+      }
+    },
+    "/v2/status_pages/{status_page_id}": {
+      "get": {
+        "description": "Show a single status page.\n\nThis endpoint requires a valid API key but no specific scopes. Use ShowStatusPageStructure to see the components and groups configured on the page.",
+        "operationId": "Status Pages V2#ShowStatusPage",
+        "parameters": [
+          {
+            "description": "ID of the status page. You can find this by calling the ListStatusPages endpoint.",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "in": "path",
+            "name": "status_page_id",
+            "required": true,
+            "schema": {
+              "description": "ID of the status page. You can find this by calling the ListStatusPages endpoint.",
+              "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status_page": {
+                    "description": "This status page is our public status page.",
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "name": "Our public status page",
+                    "public_url": "https://statuspage.incident.io/our-public-status-page"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/StatusPagesShowStatusPageResultV2"
+                }
+              }
+            },
+            "description": "OK response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "ShowStatusPage Status Pages V2",
+        "tags": [
+          "Status Pages V2"
+        ],
+        "x-display-name": "Show",
+        "x-docs-display-name": "Show",
         "x-docs-group-name": "Status Pages V2",
         "x-docs-resource-type": "StatusPageV2"
       }
