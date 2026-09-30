@@ -1,6 +1,6 @@
 <?php
 /**
- * ScheduleEntryV2
+ * AuditLogsOnCallNotificationPauseResumedV1
  *
  * PHP version 8.1
  *
@@ -32,15 +32,14 @@ use ReturnTypeWillChange;
 use IncidentIo\ObjectSerializer;
 
 /**
- * ScheduleEntryV2 Class Doc Comment
+ * AuditLogsOnCallNotificationPauseResumedV1 Class Doc Comment
  *
- * @description A single shift on a schedule, representing who is on-call between a start and end time. When present, &#x60;rotation_id&#x60; tells you which rotation the entry belongs to. A schedule may have multiple rotations (for example, a primary and a secondary rotation) and each rotation can be made up of several layers — entries are returned for every rotation and layer on the schedule.  Entries come from two places: they are either generated from a schedule&#39;s rotation configuration (the regular pattern of who is on-call) or created by an override (a one-off change that replaces the normal rotation for a period of time). When you call the List schedule entries endpoint we return both kinds separately, along with the merged &#x60;final&#x60; schedule that reflects what will actually happen.  &#x60;entry_id&#x60; is only populated for entries that correspond to a stored record. Scheduled entries are projections computed from the rotation rules on the fly and don&#39;t have a persisted ID, so &#x60;entry_id&#x60; will be absent for those. Use &#x60;fingerprint&#x60; if you need a stable identifier to deduplicate or diff a shift across requests.
  * @package  IncidentIo
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class ScheduleEntryV2 implements ModelInterface, ArrayAccess, JsonSerializable
+class AuditLogsOnCallNotificationPauseResumedV1 implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +48,7 @@ class ScheduleEntryV2 implements ModelInterface, ArrayAccess, JsonSerializable
      *
      * @var string
      */
-    protected static string $openAPIModelName = 'ScheduleEntryV2';
+    protected static string $openAPIModelName = 'AuditLogsOnCallNotificationPauseResumedV1';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +56,13 @@ class ScheduleEntryV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
-        'endAt' => '\DateTime',
-        'entryId' => 'string',
-        'fingerprint' => 'string',
-        'rotationId' => 'string',
-        'startAt' => '\DateTime',
-        'user' => '\IncidentIo\Model\UserV2'
+        'action' => 'string',
+        'actor' => '\IncidentIo\Model\AuditLogActorV2',
+        'context' => '\IncidentIo\Model\AuditLogEntryContextV2',
+        'metadata' => '\IncidentIo\Model\AuditLogOnCallNotificationPauseMetadataV2',
+        'occurredAt' => '\DateTime',
+        'targets' => '\IncidentIo\Model\AuditLogTargetV2[]',
+        'version' => 'int'
     ];
 
     /**
@@ -71,12 +71,13 @@ class ScheduleEntryV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'endAt' => 'date-time',
-        'entryId' => null,
-        'fingerprint' => null,
-        'rotationId' => null,
-        'startAt' => 'date-time',
-        'user' => null
+        'action' => null,
+        'actor' => null,
+        'context' => null,
+        'metadata' => null,
+        'occurredAt' => 'date-time',
+        'targets' => null,
+        'version' => 'int64'
     ];
 
     /**
@@ -85,12 +86,13 @@ class ScheduleEntryV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, bool>
      */
     protected static array $openAPINullables = [
-        'endAt' => false,
-        'entryId' => false,
-        'fingerprint' => false,
-        'rotationId' => false,
-        'startAt' => false,
-        'user' => false
+        'action' => false,
+        'actor' => false,
+        'context' => false,
+        'metadata' => false,
+        'occurredAt' => false,
+        'targets' => false,
+        'version' => false
     ];
 
     /**
@@ -169,12 +171,13 @@ class ScheduleEntryV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'endAt' => 'end_at',
-        'entryId' => 'entry_id',
-        'fingerprint' => 'fingerprint',
-        'rotationId' => 'rotation_id',
-        'startAt' => 'start_at',
-        'user' => 'user'
+        'action' => 'action',
+        'actor' => 'actor',
+        'context' => 'context',
+        'metadata' => 'metadata',
+        'occurredAt' => 'occurred_at',
+        'targets' => 'targets',
+        'version' => 'version'
     ];
 
     /**
@@ -183,12 +186,13 @@ class ScheduleEntryV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $setters = [
-        'endAt' => 'setEndAt',
-        'entryId' => 'setEntryId',
-        'fingerprint' => 'setFingerprint',
-        'rotationId' => 'setRotationId',
-        'startAt' => 'setStartAt',
-        'user' => 'setUser'
+        'action' => 'setAction',
+        'actor' => 'setActor',
+        'context' => 'setContext',
+        'metadata' => 'setMetadata',
+        'occurredAt' => 'setOccurredAt',
+        'targets' => 'setTargets',
+        'version' => 'setVersion'
     ];
 
     /**
@@ -197,12 +201,13 @@ class ScheduleEntryV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $getters = [
-        'endAt' => 'getEndAt',
-        'entryId' => 'getEntryId',
-        'fingerprint' => 'getFingerprint',
-        'rotationId' => 'getRotationId',
-        'startAt' => 'getStartAt',
-        'user' => 'getUser'
+        'action' => 'getAction',
+        'actor' => 'getActor',
+        'context' => 'getContext',
+        'metadata' => 'getMetadata',
+        'occurredAt' => 'getOccurredAt',
+        'targets' => 'getTargets',
+        'version' => 'getVersion'
     ];
 
     /**
@@ -252,12 +257,13 @@ class ScheduleEntryV2 implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('endAt', $data ?? [], null);
-        $this->setIfExists('entryId', $data ?? [], null);
-        $this->setIfExists('fingerprint', $data ?? [], null);
-        $this->setIfExists('rotationId', $data ?? [], null);
-        $this->setIfExists('startAt', $data ?? [], null);
-        $this->setIfExists('user', $data ?? [], null);
+        $this->setIfExists('action', $data ?? [], null);
+        $this->setIfExists('actor', $data ?? [], null);
+        $this->setIfExists('context', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('occurredAt', $data ?? [], null);
+        $this->setIfExists('targets', $data ?? [], null);
+        $this->setIfExists('version', $data ?? [], null);
     }
 
     /**
@@ -285,11 +291,26 @@ class ScheduleEntryV2 implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['endAt'] === null) {
-            $invalidProperties[] = "'endAt' can't be null";
+        if ($this->container['action'] === null) {
+            $invalidProperties[] = "'action' can't be null";
         }
-        if ($this->container['startAt'] === null) {
-            $invalidProperties[] = "'startAt' can't be null";
+        if ($this->container['actor'] === null) {
+            $invalidProperties[] = "'actor' can't be null";
+        }
+        if ($this->container['context'] === null) {
+            $invalidProperties[] = "'context' can't be null";
+        }
+        if ($this->container['metadata'] === null) {
+            $invalidProperties[] = "'metadata' can't be null";
+        }
+        if ($this->container['occurredAt'] === null) {
+            $invalidProperties[] = "'occurredAt' can't be null";
+        }
+        if ($this->container['targets'] === null) {
+            $invalidProperties[] = "'targets' can't be null";
+        }
+        if ($this->container['version'] === null) {
+            $invalidProperties[] = "'version' can't be null";
         }
         return $invalidProperties;
     }
@@ -304,163 +325,190 @@ class ScheduleEntryV2 implements ModelInterface, ArrayAccess, JsonSerializable
 
 
     /**
-     * Gets endAt
+     * Gets action
+     *
+     * @return string
+     */
+    public function getAction(): string
+    {
+        return $this->container['action'];
+    }
+
+    /**
+     * Sets action
+     *
+     * @param string $action The type of log entry that this is
+     *
+     * @return $this
+     */
+    public function setAction(string $action): static
+    {
+        if (is_null($action)) {
+            throw new InvalidArgumentException('non-nullable action cannot be null');
+        }
+        $this->container['action'] = $action;
+
+        return $this;
+    }
+
+    /**
+     * Gets actor
+     *
+     * @return \IncidentIo\Model\AuditLogActorV2
+     */
+    public function getActor(): \IncidentIo\Model\AuditLogActorV2
+    {
+        return $this->container['actor'];
+    }
+
+    /**
+     * Sets actor
+     *
+     * @param \IncidentIo\Model\AuditLogActorV2 $actor actor
+     *
+     * @return $this
+     */
+    public function setActor(\IncidentIo\Model\AuditLogActorV2 $actor): static
+    {
+        if (is_null($actor)) {
+            throw new InvalidArgumentException('non-nullable actor cannot be null');
+        }
+        $this->container['actor'] = $actor;
+
+        return $this;
+    }
+
+    /**
+     * Gets context
+     *
+     * @return \IncidentIo\Model\AuditLogEntryContextV2
+     */
+    public function getContext(): \IncidentIo\Model\AuditLogEntryContextV2
+    {
+        return $this->container['context'];
+    }
+
+    /**
+     * Sets context
+     *
+     * @param \IncidentIo\Model\AuditLogEntryContextV2 $context context
+     *
+     * @return $this
+     */
+    public function setContext(\IncidentIo\Model\AuditLogEntryContextV2 $context): static
+    {
+        if (is_null($context)) {
+            throw new InvalidArgumentException('non-nullable context cannot be null');
+        }
+        $this->container['context'] = $context;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return \IncidentIo\Model\AuditLogOnCallNotificationPauseMetadataV2
+     */
+    public function getMetadata(): \IncidentIo\Model\AuditLogOnCallNotificationPauseMetadataV2
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param \IncidentIo\Model\AuditLogOnCallNotificationPauseMetadataV2 $metadata metadata
+     *
+     * @return $this
+     */
+    public function setMetadata(\IncidentIo\Model\AuditLogOnCallNotificationPauseMetadataV2 $metadata): static
+    {
+        if (is_null($metadata)) {
+            throw new InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets occurredAt
      *
      * @return \DateTime
      */
-    public function getEndAt(): \DateTime
+    public function getOccurredAt(): \DateTime
     {
-        return $this->container['endAt'];
+        return $this->container['occurredAt'];
     }
 
     /**
-     * Sets endAt
+     * Sets occurredAt
      *
-     * @param \DateTime $endAt endAt
+     * @param \DateTime $occurredAt When the entry occurred
      *
      * @return $this
      */
-    public function setEndAt(\DateTime $endAt): static
+    public function setOccurredAt(\DateTime $occurredAt): static
     {
-        if (is_null($endAt)) {
-            throw new InvalidArgumentException('non-nullable endAt cannot be null');
+        if (is_null($occurredAt)) {
+            throw new InvalidArgumentException('non-nullable occurredAt cannot be null');
         }
-        $this->container['endAt'] = $endAt;
+        $this->container['occurredAt'] = $occurredAt;
 
         return $this;
     }
 
     /**
-     * Gets entryId
+     * Gets targets
      *
-     * @return string|null
+     * @return \IncidentIo\Model\AuditLogTargetV2[]
      */
-    public function getEntryId(): ?string
+    public function getTargets(): array
     {
-        return $this->container['entryId'];
+        return $this->container['targets'];
     }
 
     /**
-     * Sets entryId
+     * Sets targets
      *
-     * @param string|null $entryId Unique identifier of the schedule entry
+     * @param \IncidentIo\Model\AuditLogTargetV2[] $targets The custom field that was created
      *
      * @return $this
      */
-    public function setEntryId(?string $entryId): static
+    public function setTargets(array $targets): static
     {
-        if (is_null($entryId)) {
-            throw new InvalidArgumentException('non-nullable entryId cannot be null');
+        if (is_null($targets)) {
+            throw new InvalidArgumentException('non-nullable targets cannot be null');
         }
-        $this->container['entryId'] = $entryId;
+        $this->container['targets'] = $targets;
 
         return $this;
     }
 
     /**
-     * Gets fingerprint
+     * Gets version
      *
-     * @return string|null
+     * @return int
      */
-    public function getFingerprint(): ?string
+    public function getVersion(): int
     {
-        return $this->container['fingerprint'];
+        return $this->container['version'];
     }
 
     /**
-     * Sets fingerprint
+     * Sets version
      *
-     * @param string|null $fingerprint A unique identifier for this entry, used to determine a unique shift
+     * @param int $version Which version the event is
      *
      * @return $this
      */
-    public function setFingerprint(?string $fingerprint): static
+    public function setVersion(int $version): static
     {
-        if (is_null($fingerprint)) {
-            throw new InvalidArgumentException('non-nullable fingerprint cannot be null');
+        if (is_null($version)) {
+            throw new InvalidArgumentException('non-nullable version cannot be null');
         }
-        $this->container['fingerprint'] = $fingerprint;
-
-        return $this;
-    }
-
-    /**
-     * Gets rotationId
-     *
-     * @return string|null
-     */
-    public function getRotationId(): ?string
-    {
-        return $this->container['rotationId'];
-    }
-
-    /**
-     * Sets rotationId
-     *
-     * @param string|null $rotationId If present, the rotation this entry applies to on the schedule
-     *
-     * @return $this
-     */
-    public function setRotationId(?string $rotationId): static
-    {
-        if (is_null($rotationId)) {
-            throw new InvalidArgumentException('non-nullable rotationId cannot be null');
-        }
-        $this->container['rotationId'] = $rotationId;
-
-        return $this;
-    }
-
-    /**
-     * Gets startAt
-     *
-     * @return \DateTime
-     */
-    public function getStartAt(): \DateTime
-    {
-        return $this->container['startAt'];
-    }
-
-    /**
-     * Sets startAt
-     *
-     * @param \DateTime $startAt startAt
-     *
-     * @return $this
-     */
-    public function setStartAt(\DateTime $startAt): static
-    {
-        if (is_null($startAt)) {
-            throw new InvalidArgumentException('non-nullable startAt cannot be null');
-        }
-        $this->container['startAt'] = $startAt;
-
-        return $this;
-    }
-
-    /**
-     * Gets user
-     *
-     * @return \IncidentIo\Model\UserV2|null
-     */
-    public function getUser(): ?\IncidentIo\Model\UserV2
-    {
-        return $this->container['user'];
-    }
-
-    /**
-     * Sets user
-     *
-     * @param \IncidentIo\Model\UserV2|null $user user
-     *
-     * @return $this
-     */
-    public function setUser(?\IncidentIo\Model\UserV2 $user): static
-    {
-        if (is_null($user)) {
-            throw new InvalidArgumentException('non-nullable user cannot be null');
-        }
-        $this->container['user'] = $user;
+        $this->container['version'] = $version;
 
         return $this;
     }

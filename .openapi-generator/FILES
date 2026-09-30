@@ -417,6 +417,7 @@ src/Model/AuditLogsOnCallNotificationPauseCreatedV1.php
 src/Model/AuditLogsOnCallNotificationPauseCreatedV2.php
 src/Model/AuditLogsOnCallNotificationPauseDeletedV1.php
 src/Model/AuditLogsOnCallNotificationPauseDeletedV2.php
+src/Model/AuditLogsOnCallNotificationPauseResumedV1.php
 src/Model/AuditLogsOnCallNotificationPauseUpdatedV1.php
 src/Model/AuditLogsOnCallNotificationPauseUpdatedV2.php
 src/Model/AuditLogsOnCallUpsellRequestedV1.php
