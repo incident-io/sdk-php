@@ -516,6 +516,8 @@ src/Model/AuditLogsTimelineItemDeletedV1.php
 src/Model/AuditLogsTwilioConnectionCreatedV1.php
 src/Model/AuditLogsTwilioConnectionDeletedV1.php
 src/Model/AuditLogsTwilioConnectionUpdatedV1.php
+src/Model/AuditLogsUserAPIKeyCreatedV1.php
+src/Model/AuditLogsUserAPIKeyDeletedV1.php
 src/Model/AuditLogsUserCreatedV1.php
 src/Model/AuditLogsUserDeactivatedV1.php
 src/Model/AuditLogsUserLoggedInV1.php

@@ -283,6 +283,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
     public const TYPE_TELEMETRY_DATA_SOURCE = 'telemetry_data_source';
     public const TYPE_TWILIO_CONNECTION = 'twilio_connection';
     public const TYPE_USER = 'user';
+    public const TYPE_USER_API_KEY = 'user_api_key';
     public const TYPE_WORKFLOW = 'workflow';
     public const TYPE_ACTIVITY_LOG = 'activity_log';
     public const TYPE_TIMELINE_ITEM = 'timeline_item';
@@ -361,6 +362,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
             self::TYPE_TELEMETRY_DATA_SOURCE,
             self::TYPE_TWILIO_CONNECTION,
             self::TYPE_USER,
+            self::TYPE_USER_API_KEY,
             self::TYPE_WORKFLOW,
             self::TYPE_ACTIVITY_LOG,
             self::TYPE_TIMELINE_ITEM,

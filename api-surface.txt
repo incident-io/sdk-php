@@ -516,6 +516,8 @@ class IncidentIo\Model\AuditLogsTimelineItemDeletedV1
 class IncidentIo\Model\AuditLogsTwilioConnectionCreatedV1
 class IncidentIo\Model\AuditLogsTwilioConnectionDeletedV1
 class IncidentIo\Model\AuditLogsTwilioConnectionUpdatedV1
+class IncidentIo\Model\AuditLogsUserAPIKeyCreatedV1
+class IncidentIo\Model\AuditLogsUserAPIKeyDeletedV1
 class IncidentIo\Model\AuditLogsUserCreatedV1
 class IncidentIo\Model\AuditLogsUserDeactivatedV1
 class IncidentIo\Model\AuditLogsUserLoggedInV1
@@ -2142,6 +2144,7 @@ const IncidentIo\Model\AuditLogTargetV2::TYPE_TELEMETRY_DATA_SOURCE
 const IncidentIo\Model\AuditLogTargetV2::TYPE_TIMELINE_ITEM
 const IncidentIo\Model\AuditLogTargetV2::TYPE_TWILIO_CONNECTION
 const IncidentIo\Model\AuditLogTargetV2::TYPE_USER
+const IncidentIo\Model\AuditLogTargetV2::TYPE_USER_API_KEY
 const IncidentIo\Model\AuditLogTargetV2::TYPE_WORKFLOW
 const IncidentIo\Model\AuditLogTelemetryDataSourceAccessModeChangedMetadataV2::DISCRIMINATOR
 const IncidentIo\Model\AuditLogTelemetryDataSourceAccessPolicyChangedMetadataV2::DISCRIMINATOR
@@ -2368,6 +2371,8 @@ const IncidentIo\Model\AuditLogsTimelineItemDeletedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsTwilioConnectionCreatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsTwilioConnectionDeletedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsTwilioConnectionUpdatedV1::DISCRIMINATOR
+const IncidentIo\Model\AuditLogsUserAPIKeyCreatedV1::DISCRIMINATOR
+const IncidentIo\Model\AuditLogsUserAPIKeyDeletedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsUserCreatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsUserDeactivatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsUserLoggedInV1::DISCRIMINATOR
@@ -14195,6 +14200,18 @@ property IncidentIo\Model\AuditLogsTwilioConnectionUpdatedV1 metadata
 property IncidentIo\Model\AuditLogsTwilioConnectionUpdatedV1 occurredAt
 property IncidentIo\Model\AuditLogsTwilioConnectionUpdatedV1 targets
 property IncidentIo\Model\AuditLogsTwilioConnectionUpdatedV1 version
+property IncidentIo\Model\AuditLogsUserAPIKeyCreatedV1 action
+property IncidentIo\Model\AuditLogsUserAPIKeyCreatedV1 actor
+property IncidentIo\Model\AuditLogsUserAPIKeyCreatedV1 context
+property IncidentIo\Model\AuditLogsUserAPIKeyCreatedV1 occurredAt
+property IncidentIo\Model\AuditLogsUserAPIKeyCreatedV1 targets
+property IncidentIo\Model\AuditLogsUserAPIKeyCreatedV1 version
+property IncidentIo\Model\AuditLogsUserAPIKeyDeletedV1 action
+property IncidentIo\Model\AuditLogsUserAPIKeyDeletedV1 actor
+property IncidentIo\Model\AuditLogsUserAPIKeyDeletedV1 context
+property IncidentIo\Model\AuditLogsUserAPIKeyDeletedV1 occurredAt
+property IncidentIo\Model\AuditLogsUserAPIKeyDeletedV1 targets
+property IncidentIo\Model\AuditLogsUserAPIKeyDeletedV1 version
 property IncidentIo\Model\AuditLogsUserCreatedV1 action
 property IncidentIo\Model\AuditLogsUserCreatedV1 actor
 property IncidentIo\Model\AuditLogsUserCreatedV1 context
