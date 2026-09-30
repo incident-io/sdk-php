@@ -18,7 +18,10 @@
  * Api class, and a renamed path parameter renames a named argument.
  * api-surface.txt records one line per name, so an addition never rewrites an
  * existing line, and `check` fails if any recorded line has disappeared. The
- * release runs `write` after a passing check, so additions are recorded too.
+ * release runs `write` after the check, so additions are recorded too.
+ *
+ * `check` exits 3 when the only problem is removed lines, and 1 for anything
+ * else. The release reads 3 as "this is a major" and 1 as a broken build.
  *
  * Parameters are recorded by name, not position. The API inserts new optional
  * parameters among the existing ones, which moves the later ones along and
@@ -126,9 +129,9 @@ if ($missing !== []) {
     if (count($missing) > 50) {
         fwrite(STDERR, sprintf("  ... and %d more\n", count($missing) - 50));
     }
-    fwrite(STDERR, "\nThis breaks code that uses them. If it is deliberate, it needs a major\n");
-    fwrite(STDERR, "release: see CONTRIBUTING.md.\n");
-    exit(1);
+    fwrite(STDERR, "\nThis breaks code that uses them, so it needs a major release:\n");
+    fwrite(STDERR, "see CONTRIBUTING.md.\n");
+    exit(3);
 }
 
 printf(

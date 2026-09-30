@@ -79,9 +79,8 @@ verify: ## Validate the package, load every class, check the API surface
 test: verify ## Everything verify does, plus the tests
 	$(PHP) vendor/bin/phpunit
 
-# Rewrites the baseline from the current src/. The release does this after a
-# passing check, so additions are recorded; a human runs it by hand only
-# alongside a deliberate major release.
+# Rewrites the baseline from the current src/. The release does this after the
+# check, so additions and removals are both recorded.
 surface: ## Record the current public API as the baseline
 	$(COMPOSER) install --no-interaction --no-progress --quiet
 	$(PHP) scripts/verify.php write api-surface.txt
@@ -120,7 +119,7 @@ template-drift: $(GENERATOR) ## Fail if the generator's templates moved under us
 	done; \
 	test -z "$$drifted"
 
-# The gate that stops an unattended release, runnable by hand.
+# The schema gate that makes a release a major, runnable by hand.
 oasdiff: $(OASDIFF) ## Diff the live schema against the committed one, as the release does
 	@$(MAKE) --no-print-directory fetch OUT=/tmp/openapi.json.new
 	# curl -f passes a 200 with an empty or truncated body, and oasdiff reads an
