@@ -46,18 +46,24 @@ on a newer PHP. That setting applies only to this repo, not to consumers.
 - `make surface`: rewrite `api-surface.txt` from the current `src/`.
 - `make template-drift`: fail if the generator's templates changed under the
   text `scripts/fix_generated.py` matches on.
-- `make oasdiff`: the schema gate that stops a release, runnable by hand.
+- `make oasdiff`: the schema gate that makes a release a major, runnable by
+  hand.
 
 ## How a release happens
 
 `.github/workflows/sync.yml`, hourly. When the live schema at
 `https://api.incident.io/v1/openapiV3.json` differs from the committed one, it:
 
-1. runs `oasdiff` between the two schemas, and stops if it reports a break;
-2. regenerates, and runs `make test` on PHP 8.1 and on the newest PHP;
-3. records the new API surface;
-4. commits, tags the next **minor** version, and pushes;
-5. creates a GitHub release;
+1. runs `oasdiff` between the two schemas and records whether it reports a
+   break;
+2. regenerates, and runs the API surface check, recording whether anything was
+   removed;
+3. records the new API surface and runs `make test` on PHP 8.1 and on the
+   newest PHP;
+4. commits, tags the next version, and pushes. It is a **major** if either
+   step 1 or step 2 found a break, and a **minor** otherwise;
+5. creates a GitHub release. On a major, the notes start with the oasdiff
+   report and the list of removed names;
 6. waits until Packagist lists the new version.
 
 There is no publish step. Packagist reads versions from git tags, and its
@@ -65,19 +71,14 @@ GitHub webhook tells it about each push, including pushes made with
 `GITHUB_TOKEN`. Nothing writes a version into `composer.json`: Packagist takes
 the version from the tag.
 
-A human is needed only when a gate trips, and each trip files an issue:
+A breaking change does not need a human: it is released as a major. A human
+is needed only when something fails, which files a **`release-stuck`** issue.
+The issue says which of three cases it is (failed before committing, tagged
+with no GitHub release, or tagged but not on Packagist) and what to do.
 
-- **`breaking-change`**: oasdiff found a break. The new schema is **not**
-  committed, so every later run sees the same diff and halts the same way until
-  someone acts. The issue is deduped for that reason.
-- **`release-stuck`**: something failed after the schema changed. The issue
-  says which of three cases it is (failed before committing, tagged with no
-  GitHub release, or tagged but not on Packagist) and what to do.
-
-To release a breaking change, run the workflow from the Actions tab with
-**bump: major** and **acknowledge_breaking: true**. Both are required together.
-An acknowledged major also rewrites `api-surface.txt` before checking it, since
-the removals are what is being released.
+To force a major for a break neither gate sees, run the workflow from the
+Actions tab with **bump: major**. The default, **auto**, picks major or minor
+from the gates. There is no way to release a detected break as a minor.
 
 Patch versions are never cut automatically. They are for hand fixes to
 `scripts/` or `composer.json`: commit, then tag and push `vX.Y.Z+1` yourself.
@@ -134,9 +135,10 @@ property from one of those removes a getter without oasdiff noticing.
 
 `scripts/verify.php` loads every class, then records one line per class,
 constant, model property, method and method parameter name in
-`api-surface.txt`. `make verify` fails if any recorded line has disappeared.
-Additions are allowed, and the release records them after a passing check, so
-something added in one release and removed in the next is caught.
+`api-surface.txt`. `make verify` fails if any recorded line has disappeared,
+exiting 3 when removals are the only problem. The release reads that as a
+major, then records the new surface. Additions are allowed and recorded the
+same way, so something added in one release and removed in the next is caught.
 
 Parameters are recorded by name, not position. The API inserts new optional
 parameters among existing ones, which moves the later ones and breaks
@@ -144,8 +146,8 @@ positional calls but not named ones. The README tells callers to use named
 arguments, and that is the contract checked here.
 
 Replayed against sdk-go's 124 committed schema changes, oasdiff would have
-halted 3 releases and the surface check 4 more, all for genuine removals.
-Recording parameter positions would have halted another 7.
+flagged 3 releases as majors and the surface check 4 more, all for genuine
+removals. Recording parameter positions would have flagged another 7.
 
 Loading every class through Composer's autoloader is also the nearest thing PHP
 has to a compile. `php -l` parses one file at a time and does not notice a class

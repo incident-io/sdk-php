@@ -18,15 +18,14 @@ on:
     - cron: "37 * * * *" # hourly
   workflow_dispatch:
     inputs:
+      # auto: major if oasdiff or the API surface check finds a break,
+      # otherwise minor. major forces one for a break neither gate sees.
+      # There is no minor override: a detected break never ships as a minor.
       bump:
         description: "Which part of the version to bump"
         type: choice
-        options: [minor, major]
-        default: minor
-      acknowledge_breaking:
-        description: "Release even though a gate reports a breaking change"
-        type: boolean
-        default: false
+        options: [auto, major]
+        default: auto
       dry_run:
         description: "Regenerate and verify, but don't tag or release"
         type: boolean
@@ -122,119 +121,29 @@ jobs:
 
           # 1 means it found breaking changes. Anything else means it couldn't
           # do the comparison at all, which is not a breaking change and mustn't
-          # be filed as one.
+          # be released as one.
           if [ "$rc" -ne 0 ] && [ "$rc" -ne 1 ]; then
             echo "::error::oasdiff exited $rc without comparing the schemas."
             exit 1
           fi
 
+          # A break does not stop the run: it makes this release a major.
+          # The report goes into the release notes so the major explains
+          # itself.
           if [ "$rc" -ne 0 ]; then
             echo "breaking=true" >> "$GITHUB_OUTPUT"
-            { echo "report<<OASDIFF_EOF"; echo "$report"; echo "OASDIFF_EOF"; } >> "$GITHUB_OUTPUT"
+            {
+              echo "### oasdiff: breaking changes to the API"
+              echo
+              echo '```'
+              echo "$report"
+              echo '```'
+              echo
+            } >> /tmp/breaks.md
           else
             echo "breaking=false" >> "$GITHUB_OUTPUT"
           fi
 
-      # A human dispatch with acknowledge_breaking skips this. The step below
-      # requires bump: major alongside it, so an acknowledged break cannot ship
-      # as a minor.
-      - name: Halt on breaking change
-        if: steps.changed.outputs.changed == 'true' && steps.breaking.outputs.breaking == 'true' && !inputs.acknowledge_breaking
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPORT: ${{ steps.breaking.outputs.report }}
-        run: |
-          set -euo pipefail
-          body="$(cat <<EOF
-          The upstream OpenAPI schema changed in a way that is **not backwards-compatible**, so the automated release was halted rather than publishing a breaking change as a minor bump.
-
-          A human needs to decide how to proceed, most likely a new major version.
-
-          To release it once you have decided: run this workflow from the Actions tab
-          (**Run workflow**) with **bump: major** and **acknowledge_breaking: true**. Both
-          are required together. Close this issue afterwards, or the next genuine
-          breaking change will be deduped against it and file nothing.
-
-          <details><summary>oasdiff report</summary>
-
-          \`\`\`
-          $REPORT
-          \`\`\`
-
-          </details>
-
-          Triggered by run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
-          EOF
-          )"
-          # Created here rather than assumed: gh issue create fails outright on
-          # a label that doesn't exist, and an unlabelled fallback would be
-          # invisible to the dedup below, filing one issue an hour forever.
-          gh label create breaking-change \
-            --description "Schema changed incompatibly; release halted" \
-            --color B60205 2>/dev/null || true
-
-          # We stop without committing the new schema, so every later run sees
-          # the same diff and lands here again. Only file one issue. `|| true`
-          # so a gh outage reads as "none open" rather than failing the
-          # pipeline, then test the text.
-          open_issue="$(gh issue list --label breaking-change --state open --limit 1 \
-            --json number --jq '.[0].number // empty' || true)"
-          if [ -n "$open_issue" ]; then
-            echo "::error::Breaking change detected; an issue is already open."
-            exit 1
-          fi
-
-          gh issue create \
-            --title "Breaking API change detected — manual release required" \
-            --body "$body" \
-            --label breaking-change
-          echo "::error::Breaking change detected; opened an issue and stopped."
-          exit 1
-
-      - name: Reject acknowledging a break without a major bump
-        id: reject
-        if: inputs.acknowledge_breaking && inputs.bump != 'major'
-        run: |
-          echo "::error::acknowledge_breaking requires bump: major."
-          exit 1
-
-      # Scheduled runs only ever bump minor, since anything breaking has
-      # already stopped the run. Patch is for hand-fixes; major needs a human
-      # dispatch with both bump: major and acknowledge_breaking.
-      #
-      # Nothing writes the version into composer.json: Packagist takes it from
-      # the tag, and a version field there would have to agree with the tag or
-      # Packagist rejects the release.
-      - name: Decide next version
-        if: steps.changed.outputs.changed == 'true'
-        id: version
-        run: |
-          set -euo pipefail
-          BUMP="${{ inputs.bump || 'minor' }}"
-          # Highest version, not `git describe`'s nearest-by-commit-distance: a
-          # hand-cut patch tag would otherwise make us recompute a version that
-          # already exists. The pattern also skips any non-semver tag.
-          BASE="$(git tag --list 'v[0-9]*.[0-9]*.[0-9]*' --sort=-v:refname | head -1)"
-
-          if [ -z "$BASE" ]; then
-            NEXT="v1.0.0"
-          elif [ "$BUMP" = "major" ]; then
-            NEXT="$(echo "${BASE#v}" | awk -F. '{printf "v%d.0.0", $1+1}')"
-          else
-            NEXT="$(echo "${BASE#v}" | awk -F. '{printf "v%d.%d.0", $1, $2+1}')"
-          fi
-
-          if git rev-parse -q --verify "refs/tags/$NEXT" >/dev/null; then
-            echo "::error::$NEXT already exists. A previous run tagged without"
-            echo "::error::releasing, or a tag was cut by hand. Resolve before releasing."
-            exit 1
-          fi
-
-          echo "Next version: $NEXT (base: ${BASE:-none}, bump: $BUMP)"
-          echo "next=$NEXT" >> "$GITHUB_OUTPUT"
-
-      # After the breaking-change halt, not before: a halted schema halts every
-      # hour until someone acts, and those runs need neither PHP nor the jar.
       - if: steps.changed.outputs.changed == 'true'
         # The floor composer.json promises. The newest PHP is checked below.
         uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
@@ -255,25 +164,99 @@ jobs:
       # request, which is where a generator bump arrives.
       - name: Regenerate and check
         if: steps.changed.outputs.changed == 'true'
-        env:
-          ACKNOWLEDGED: ${{ inputs.acknowledge_breaking }}
+        id: surface
         run: |
           set -euo pipefail
           mv openapi.json.new openapi.json
           make generate
-          # An acknowledged major removes things on purpose, so the surface
-          # check would fail on exactly the removals being released. Record
-          # the new surface first; the check then passes against it.
-          if [ "$ACKNOWLEDGED" = "true" ]; then
-            make surface
+          composer install --no-interaction --no-progress --quiet
+
+          # Before the version is chosen, because a removal here makes this
+          # release a major. Exit 3 is removals only; anything else is a
+          # broken build and stops the run.
+          php scripts/verify.php check api-surface.txt 2>/tmp/surface.txt && rc=0 || rc=$?
+          cat /tmp/surface.txt >&2
+          if [ "$rc" -eq 3 ]; then
+            echo "removed=true" >> "$GITHUB_OUTPUT"
+            {
+              echo "### Removed from the PHP API"
+              echo
+              echo '```'
+              grep '^  ' /tmp/surface.txt
+              echo '```'
+              echo
+            } >> /tmp/breaks.md
+          elif [ "$rc" -ne 0 ]; then
+            exit "$rc"
+          else
+            echo "removed=false" >> "$GITHUB_OUTPUT"
           fi
+
+          # Recorded before the tests, so the check inside make test runs
+          # against this release's surface, removals included. The baseline
+          # also records what this release adds, so removing one of those
+          # later is caught.
+          make surface
           # make test depends on make verify: composer validate, loading every
           # class, the API surface check, then the tests.
           make test
-          # After a passing check, so the baseline also records what this
-          # release adds. Without it, something added now and removed in the
-          # next release would not be caught.
-          make surface
+
+      # After regeneration, because the API surface check is one of the two
+      # signals. Patch is for hand-fixes and never cut here.
+      #
+      # Nothing writes the version into composer.json: Packagist takes it from
+      # the tag, and a version field there would have to agree with the tag or
+      # Packagist rejects the release.
+      - name: Decide next version
+        if: steps.changed.outputs.changed == 'true'
+        id: version
+        env:
+          BUMP_INPUT: ${{ inputs.bump || 'auto' }}
+          BREAKING: ${{ steps.breaking.outputs.breaking }}
+          REMOVED: ${{ steps.surface.outputs.removed }}
+        run: |
+          set -euo pipefail
+          if [ "$BUMP_INPUT" = "major" ] || [ "$BREAKING" = "true" ] || [ "$REMOVED" = "true" ]; then
+            BUMP=major
+          else
+            BUMP=minor
+          fi
+          # Highest version, not `git describe`'s nearest-by-commit-distance: a
+          # hand-cut patch tag would otherwise make us recompute a version that
+          # already exists. The pattern also skips any non-semver tag.
+          BASE="$(git tag --list 'v[0-9]*.[0-9]*.[0-9]*' --sort=-v:refname | head -1)"
+
+          if [ -z "$BASE" ]; then
+            NEXT="v1.0.0"
+          elif [ "$BUMP" = "major" ]; then
+            NEXT="$(echo "${BASE#v}" | awk -F. '{printf "v%d.0.0", $1+1}')"
+          else
+            NEXT="$(echo "${BASE#v}" | awk -F. '{printf "v%d.%d.0", $1, $2+1}')"
+          fi
+
+          if git rev-parse -q --verify "refs/tags/$NEXT" >/dev/null; then
+            echo "::error::$NEXT already exists. A previous run tagged without"
+            echo "::error::releasing, or a tag was cut by hand. Resolve before releasing."
+            exit 1
+          fi
+
+          echo "Next version: $NEXT (base: ${BASE:-none}, bump: $BUMP, oasdiff break: $BREAKING, surface removals: $REMOVED)"
+          echo "next=$NEXT" >> "$GITHUB_OUTPUT"
+
+          # Release notes: the breaks, if any, above GitHub's generated notes.
+          if [ "$BUMP" = "major" ]; then
+            {
+              echo "## Breaking changes"
+              echo
+              if [ -f /tmp/breaks.md ]; then
+                cat /tmp/breaks.md
+              else
+                echo "Released as a major by hand (bump: major); neither gate reported a break."
+              fi
+            } > /tmp/release-notes.md
+          else
+            : > /tmp/release-notes.md
+          fi
 
       - name: Check on the newest PHP
         if: steps.changed.outputs.changed == 'true'
@@ -297,6 +280,8 @@ jobs:
             echo "### Dry run — nothing was tagged or released"
             echo ""
             echo "Would have released **$NEXT**."
+            echo ""
+            cat /tmp/release-notes.md
             echo ""
             echo '```'
             git status --short
@@ -341,7 +326,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           NEXT: ${{ steps.version.outputs.next }}
-        run: gh release create "$NEXT" --generate-notes --title "$NEXT"
+        # --notes-file with --generate-notes puts the file above the generated
+        # notes. The file is empty on a minor.
+        run: gh release create "$NEXT" --generate-notes --notes-file /tmp/release-notes.md --title "$NEXT"
 
       # The push is the publish, but only if Packagist hears about it. A
       # removed webhook or a lapsed Packagist integration fails silently: the
@@ -381,7 +368,7 @@ jobs:
           NEXT: ${{ steps.version.outputs.next }}
         run: |
           if [ "$CHANGED" = "true" ]; then
-            echo "Schema changed; released ${NEXT:-nothing (dry run or halted)}." >> "$GITHUB_STEP_SUMMARY"
+            echo "Schema changed; released ${NEXT:-nothing (dry run or failed)}." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "Schema unchanged; nothing to release." >> "$GITHUB_STEP_SUMMARY"
           fi
@@ -391,17 +378,13 @@ jobs:
       # after it.
       #
       # The guards narrow it to a release that actually got going and actually
-      # wedged: not a failed fetch (the next run retries by itself), not a
-      # dispatch typo, not a dry run, and not a halted breaking change, which
-      # files its own issue. On an acknowledged break the run continues, so a
-      # failure after the push is still reported.
+      # wedged: not a failed fetch (the next run retries by itself) and not a
+      # dry run.
       - name: Report a stuck release
         if: >-
           failure()
           && steps.changed.outputs.changed == 'true'
           && !inputs.dry_run
-          && (steps.breaking.outputs.breaking != 'true' || inputs.acknowledge_breaking)
-          && steps.reject.outcome != 'failure'
         env:
           GH_TOKEN: ${{ github.token }}
           PUSHED: ${{ steps.push.outcome == 'success' }}
@@ -440,7 +423,7 @@ jobs:
 
           Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
 
-          Likely causes: the generator rejected the new schema, \`scripts/fix_generated.py\` stopped matching, or the API surface check found a removal oasdiff rated compatible (a renamed schema, operation or parameter). The surface check prints what disappeared."
+          Likely causes: the generator rejected the new schema, \`scripts/fix_generated.py\` stopped matching, a generated class failed to load, or the tests failed. Removals from the API surface do not land here: they make the release a major."
           fi
 
           gh label create release-stuck \
