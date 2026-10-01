@@ -56,6 +56,7 @@ class GroupingSettingsV3 implements ModelInterface, ArrayAccess, JsonSerializabl
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
+        'aiEnabled' => 'bool',
         'enabled' => 'bool',
         'groupingKeys' => '\IncidentIo\Model\GroupingKeyV3[]',
         'windowSeconds' => 'int',
@@ -68,6 +69,7 @@ class GroupingSettingsV3 implements ModelInterface, ArrayAccess, JsonSerializabl
      * @var array<string, string|null>
      */
     protected static array $openAPIFormats = [
+        'aiEnabled' => null,
         'enabled' => null,
         'groupingKeys' => null,
         'windowSeconds' => 'int32',
@@ -80,6 +82,7 @@ class GroupingSettingsV3 implements ModelInterface, ArrayAccess, JsonSerializabl
      * @var array<string, bool>
      */
     protected static array $openAPINullables = [
+        'aiEnabled' => false,
         'enabled' => false,
         'groupingKeys' => false,
         'windowSeconds' => false,
@@ -162,6 +165,7 @@ class GroupingSettingsV3 implements ModelInterface, ArrayAccess, JsonSerializabl
      * @var array<string, string>
      */
     protected static array $attributeMap = [
+        'aiEnabled' => 'ai_enabled',
         'enabled' => 'enabled',
         'groupingKeys' => 'grouping_keys',
         'windowSeconds' => 'window_seconds',
@@ -174,6 +178,7 @@ class GroupingSettingsV3 implements ModelInterface, ArrayAccess, JsonSerializabl
      * @var array<string, string>
      */
     protected static array $setters = [
+        'aiEnabled' => 'setAiEnabled',
         'enabled' => 'setEnabled',
         'groupingKeys' => 'setGroupingKeys',
         'windowSeconds' => 'setWindowSeconds',
@@ -186,6 +191,7 @@ class GroupingSettingsV3 implements ModelInterface, ArrayAccess, JsonSerializabl
      * @var array<string, string>
      */
     protected static array $getters = [
+        'aiEnabled' => 'getAiEnabled',
         'enabled' => 'getEnabled',
         'groupingKeys' => 'getGroupingKeys',
         'windowSeconds' => 'getWindowSeconds',
@@ -254,6 +260,7 @@ class GroupingSettingsV3 implements ModelInterface, ArrayAccess, JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('aiEnabled', $data ?? [], null);
         $this->setIfExists('enabled', $data ?? [], null);
         $this->setIfExists('groupingKeys', $data ?? [], null);
         $this->setIfExists('windowSeconds', $data ?? [], null);
@@ -307,6 +314,33 @@ class GroupingSettingsV3 implements ModelInterface, ArrayAccess, JsonSerializabl
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets aiEnabled
+     *
+     * @return bool|null
+     */
+    public function getAiEnabled(): ?bool
+    {
+        return $this->container['aiEnabled'];
+    }
+
+    /**
+     * Sets aiEnabled
+     *
+     * @param bool|null $aiEnabled Use AI to group similar looking alerts. AI alert grouping can only group alerts that are attributed to the same team, so grouping keys must only contain the team alert attribute. Private alerts are grouped by key alone unless AI incident access allows private incidents and alerts. Omit it on an update to keep the current value.
+     *
+     * @return $this
+     */
+    public function setAiEnabled(?bool $aiEnabled): static
+    {
+        if (is_null($aiEnabled)) {
+            throw new InvalidArgumentException('non-nullable aiEnabled cannot be null');
+        }
+        $this->container['aiEnabled'] = $aiEnabled;
+
+        return $this;
+    }
 
     /**
      * Gets enabled

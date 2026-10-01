@@ -3592,6 +3592,7 @@
       "AlertGroupingConfigV3": {
         "example": {
           "default": {
+            "ai_enabled": false,
             "enabled": true,
             "grouping_keys": [
               {
@@ -8931,6 +8932,7 @@
           ],
           "grouping_config": {
             "default": {
+              "ai_enabled": false,
               "enabled": true,
               "grouping_keys": [
                 {
@@ -10554,6 +10556,7 @@
           ],
           "grouping_config": {
             "default": {
+              "ai_enabled": false,
               "enabled": true,
               "grouping_keys": [
                 {
@@ -11865,6 +11868,7 @@
             ],
             "grouping_config": {
               "default": {
+                "ai_enabled": false,
                 "enabled": true,
                 "grouping_keys": [
                   {
@@ -13033,6 +13037,7 @@
             ],
             "grouping_config": {
               "default": {
+                "ai_enabled": false,
                 "enabled": true,
                 "grouping_keys": [
                   {
@@ -14315,6 +14320,7 @@
           ],
           "grouping_config": {
             "default": {
+              "ai_enabled": false,
               "enabled": true,
               "grouping_keys": [
                 {
@@ -15634,6 +15640,7 @@
             ],
             "grouping_config": {
               "default": {
+                "ai_enabled": false,
                 "enabled": true,
                 "grouping_keys": [
                   {
@@ -65911,6 +65918,7 @@
       },
       "GroupingSettingsV3": {
         "example": {
+          "ai_enabled": false,
           "enabled": true,
           "grouping_keys": [
             {
@@ -65921,6 +65929,11 @@
           "window_type": "rolling"
         },
         "properties": {
+          "ai_enabled": {
+            "description": "Use AI to group similar looking alerts. AI alert grouping can only group alerts that are attributed to the same team, so grouping keys must only contain the team alert attribute. Private alerts are grouped by key alone unless AI incident access allows private incidents and alerts. Omit it on an update to keep the current value.",
+            "example": false,
+            "type": "boolean"
+          },
           "enabled": {
             "description": "Whether grouping is enabled",
             "example": true,
@@ -182704,6 +182717,7 @@
                 ],
                 "grouping_config": {
                   "default": {
+                    "ai_enabled": false,
                     "enabled": true,
                     "grouping_keys": [
                       {
@@ -183223,6 +183237,7 @@
                     ],
                     "grouping_config": {
                       "default": {
+                        "ai_enabled": false,
                         "enabled": true,
                         "grouping_keys": [
                           {
@@ -184088,6 +184103,7 @@
                     ],
                     "grouping_config": {
                       "default": {
+                        "ai_enabled": false,
                         "enabled": true,
                         "grouping_keys": [
                           {
@@ -184748,6 +184764,7 @@
                 ],
                 "grouping_config": {
                   "default": {
+                    "ai_enabled": false,
                     "enabled": true,
                     "grouping_keys": [
                       {
@@ -185268,6 +185285,7 @@
                     ],
                     "grouping_config": {
                       "default": {
+                        "ai_enabled": false,
                         "enabled": true,
                         "grouping_keys": [
                           {

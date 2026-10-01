@@ -15278,6 +15278,7 @@ property IncidentIo\Model\FollowUpsUpdateResultV2 followUp
 property IncidentIo\Model\FollowUpsUpdateResultV3 followUp
 property IncidentIo\Model\GroupingKeyV2 reference
 property IncidentIo\Model\GroupingKeyV3 reference
+property IncidentIo\Model\GroupingSettingsV3 aiEnabled
 property IncidentIo\Model\GroupingSettingsV3 enabled
 property IncidentIo\Model\GroupingSettingsV3 groupingKeys
 property IncidentIo\Model\GroupingSettingsV3 windowSeconds
