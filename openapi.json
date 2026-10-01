@@ -86839,6 +86839,109 @@
         ],
         "type": "object"
       },
+      "PolicyFindingShiftConflictShiftV2": {
+        "example": {
+          "end_at": "2021-08-17T13:28:57.801578Z",
+          "layer_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+          "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+          "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+          "start_at": "2021-08-17T13:28:57.801578Z"
+        },
+        "properties": {
+          "end_at": {
+            "description": "When this shift ends, which can be after the conflict does",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "layer_id": {
+            "description": "The layer this shift belongs to",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          },
+          "rotation_id": {
+            "description": "The rotation this shift belongs to",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          },
+          "schedule_id": {
+            "description": "The schedule this shift belongs to",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          },
+          "start_at": {
+            "description": "When this shift starts, which can be before the conflict does",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schedule_id",
+          "start_at",
+          "end_at"
+        ],
+        "type": "object"
+      },
+      "PolicyFindingShiftConflictV2": {
+        "description": "Set when policy_type is shift_conflict. Someone is on call in two or more places at once.",
+        "example": {
+          "end_at": "2021-08-17T13:28:57.801578Z",
+          "shifts": [
+            {
+              "end_at": "2021-08-17T13:28:57.801578Z",
+              "layer_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "start_at": "2021-08-17T13:28:57.801578Z"
+            }
+          ],
+          "start_at": "2021-08-17T13:28:57.801578Z",
+          "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+        },
+        "properties": {
+          "end_at": {
+            "description": "When the conflict ends",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "shifts": {
+            "description": "Every shift that overlaps the conflict",
+            "example": [
+              {
+                "end_at": "2021-08-17T13:28:57.801578Z",
+                "layer_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "start_at": "2021-08-17T13:28:57.801578Z"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/PolicyFindingShiftConflictShiftV2"
+            },
+            "type": "array"
+          },
+          "start_at": {
+            "description": "When the conflict starts",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "description": "The user with overlapping shifts",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          }
+        },
+        "required": [
+          "user_id",
+          "start_at",
+          "end_at",
+          "shifts"
+        ],
+        "type": "object"
+      },
       "PolicyFindingV2": {
         "example": {
           "created_at": "2021-08-17T13:28:57.801578Z",
@@ -86927,6 +87030,20 @@
             "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
             "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
             "start_at": "2021-08-17T13:28:57.801578Z"
+          },
+          "shift_conflict": {
+            "end_at": "2021-08-17T13:28:57.801578Z",
+            "shifts": [
+              {
+                "end_at": "2021-08-17T13:28:57.801578Z",
+                "layer_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "start_at": "2021-08-17T13:28:57.801578Z"
+              }
+            ],
+            "start_at": "2021-08-17T13:28:57.801578Z",
+            "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
           },
           "state": "active",
           "updated_at": "2021-08-17T13:28:57.801578Z",
@@ -87020,6 +87137,9 @@
           },
           "schedule": {
             "$ref": "#/components/schemas/PolicyFindingScheduleV2"
+          },
+          "shift_conflict": {
+            "$ref": "#/components/schemas/PolicyFindingShiftConflictV2"
           },
           "state": {
             "description": "Where this finding is in its lifecycle",
@@ -87213,6 +87333,20 @@
               "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
               "start_at": "2021-08-17T13:28:57.801578Z"
             },
+            "shift_conflict": {
+              "end_at": "2021-08-17T13:28:57.801578Z",
+              "shifts": [
+                {
+                  "end_at": "2021-08-17T13:28:57.801578Z",
+                  "layer_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                  "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                  "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                  "start_at": "2021-08-17T13:28:57.801578Z"
+                }
+              ],
+              "start_at": "2021-08-17T13:28:57.801578Z",
+              "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+            },
             "state": "active",
             "updated_at": "2021-08-17T13:28:57.801578Z",
             "vacation_conflict": {
@@ -87330,6 +87464,20 @@
                 "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                 "start_at": "2021-08-17T13:28:57.801578Z"
               },
+              "shift_conflict": {
+                "end_at": "2021-08-17T13:28:57.801578Z",
+                "shifts": [
+                  {
+                    "end_at": "2021-08-17T13:28:57.801578Z",
+                    "layer_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "start_at": "2021-08-17T13:28:57.801578Z"
+                  }
+                ],
+                "start_at": "2021-08-17T13:28:57.801578Z",
+                "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+              },
               "state": "active",
               "updated_at": "2021-08-17T13:28:57.801578Z",
               "vacation_conflict": {
@@ -87436,6 +87584,20 @@
                   "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                   "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                   "start_at": "2021-08-17T13:28:57.801578Z"
+                },
+                "shift_conflict": {
+                  "end_at": "2021-08-17T13:28:57.801578Z",
+                  "shifts": [
+                    {
+                      "end_at": "2021-08-17T13:28:57.801578Z",
+                      "layer_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "start_at": "2021-08-17T13:28:57.801578Z"
+                    }
+                  ],
+                  "start_at": "2021-08-17T13:28:57.801578Z",
+                  "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
                 },
                 "state": "active",
                 "updated_at": "2021-08-17T13:28:57.801578Z",
@@ -87551,6 +87713,20 @@
               "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
               "start_at": "2021-08-17T13:28:57.801578Z"
             },
+            "shift_conflict": {
+              "end_at": "2021-08-17T13:28:57.801578Z",
+              "shifts": [
+                {
+                  "end_at": "2021-08-17T13:28:57.801578Z",
+                  "layer_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                  "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                  "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                  "start_at": "2021-08-17T13:28:57.801578Z"
+                }
+              ],
+              "start_at": "2021-08-17T13:28:57.801578Z",
+              "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+            },
             "state": "active",
             "updated_at": "2021-08-17T13:28:57.801578Z",
             "vacation_conflict": {
@@ -87662,6 +87838,20 @@
               "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
               "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
               "start_at": "2021-08-17T13:28:57.801578Z"
+            },
+            "shift_conflict": {
+              "end_at": "2021-08-17T13:28:57.801578Z",
+              "shifts": [
+                {
+                  "end_at": "2021-08-17T13:28:57.801578Z",
+                  "layer_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                  "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                  "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                  "start_at": "2021-08-17T13:28:57.801578Z"
+                }
+              ],
+              "start_at": "2021-08-17T13:28:57.801578Z",
+              "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
             },
             "state": "active",
             "updated_at": "2021-08-17T13:28:57.801578Z",
@@ -165020,6 +165210,20 @@
                         "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                         "start_at": "2021-08-17T13:28:57.801578Z"
                       },
+                      "shift_conflict": {
+                        "end_at": "2021-08-17T13:28:57.801578Z",
+                        "shifts": [
+                          {
+                            "end_at": "2021-08-17T13:28:57.801578Z",
+                            "layer_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                            "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                            "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                            "start_at": "2021-08-17T13:28:57.801578Z"
+                          }
+                        ],
+                        "start_at": "2021-08-17T13:28:57.801578Z",
+                        "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+                      },
                       "state": "active",
                       "updated_at": "2021-08-17T13:28:57.801578Z",
                       "vacation_conflict": {
@@ -165296,6 +165500,20 @@
                       "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                       "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                       "start_at": "2021-08-17T13:28:57.801578Z"
+                    },
+                    "shift_conflict": {
+                      "end_at": "2021-08-17T13:28:57.801578Z",
+                      "shifts": [
+                        {
+                          "end_at": "2021-08-17T13:28:57.801578Z",
+                          "layer_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                          "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                          "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                          "start_at": "2021-08-17T13:28:57.801578Z"
+                        }
+                      ],
+                      "start_at": "2021-08-17T13:28:57.801578Z",
+                      "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
                     },
                     "state": "active",
                     "updated_at": "2021-08-17T13:28:57.801578Z",
@@ -165586,6 +165804,20 @@
                       "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                       "start_at": "2021-08-17T13:28:57.801578Z"
                     },
+                    "shift_conflict": {
+                      "end_at": "2021-08-17T13:28:57.801578Z",
+                      "shifts": [
+                        {
+                          "end_at": "2021-08-17T13:28:57.801578Z",
+                          "layer_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                          "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                          "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                          "start_at": "2021-08-17T13:28:57.801578Z"
+                        }
+                      ],
+                      "start_at": "2021-08-17T13:28:57.801578Z",
+                      "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+                    },
                     "state": "active",
                     "updated_at": "2021-08-17T13:28:57.801578Z",
                     "vacation_conflict": {
@@ -165861,6 +166093,20 @@
                       "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                       "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                       "start_at": "2021-08-17T13:28:57.801578Z"
+                    },
+                    "shift_conflict": {
+                      "end_at": "2021-08-17T13:28:57.801578Z",
+                      "shifts": [
+                        {
+                          "end_at": "2021-08-17T13:28:57.801578Z",
+                          "layer_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                          "rotation_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                          "schedule_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                          "start_at": "2021-08-17T13:28:57.801578Z"
+                        }
+                      ],
+                      "start_at": "2021-08-17T13:28:57.801578Z",
+                      "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
                     },
                     "state": "active",
                     "updated_at": "2021-08-17T13:28:57.801578Z",

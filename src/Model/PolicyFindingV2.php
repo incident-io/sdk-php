@@ -70,6 +70,7 @@ class PolicyFindingV2 implements ModelInterface, ArrayAccess, JsonSerializable
         'postMortem' => '\IncidentIo\Model\PolicyFindingPostMortemV2',
         'responsibleUsers' => '\IncidentIo\Model\UserV2[]',
         'schedule' => '\IncidentIo\Model\PolicyFindingScheduleV2',
+        'shiftConflict' => '\IncidentIo\Model\PolicyFindingShiftConflictV2',
         'state' => 'string',
         'updatedAt' => '\DateTime',
         'vacationConflict' => '\IncidentIo\Model\PolicyFindingVacationConflictV2'
@@ -95,6 +96,7 @@ class PolicyFindingV2 implements ModelInterface, ArrayAccess, JsonSerializable
         'postMortem' => null,
         'responsibleUsers' => null,
         'schedule' => null,
+        'shiftConflict' => null,
         'state' => null,
         'updatedAt' => 'date-time',
         'vacationConflict' => null
@@ -120,6 +122,7 @@ class PolicyFindingV2 implements ModelInterface, ArrayAccess, JsonSerializable
         'postMortem' => false,
         'responsibleUsers' => false,
         'schedule' => false,
+        'shiftConflict' => false,
         'state' => false,
         'updatedAt' => false,
         'vacationConflict' => false
@@ -215,6 +218,7 @@ class PolicyFindingV2 implements ModelInterface, ArrayAccess, JsonSerializable
         'postMortem' => 'post_mortem',
         'responsibleUsers' => 'responsible_users',
         'schedule' => 'schedule',
+        'shiftConflict' => 'shift_conflict',
         'state' => 'state',
         'updatedAt' => 'updated_at',
         'vacationConflict' => 'vacation_conflict'
@@ -240,6 +244,7 @@ class PolicyFindingV2 implements ModelInterface, ArrayAccess, JsonSerializable
         'postMortem' => 'setPostMortem',
         'responsibleUsers' => 'setResponsibleUsers',
         'schedule' => 'setSchedule',
+        'shiftConflict' => 'setShiftConflict',
         'state' => 'setState',
         'updatedAt' => 'setUpdatedAt',
         'vacationConflict' => 'setVacationConflict'
@@ -265,6 +270,7 @@ class PolicyFindingV2 implements ModelInterface, ArrayAccess, JsonSerializable
         'postMortem' => 'getPostMortem',
         'responsibleUsers' => 'getResponsibleUsers',
         'schedule' => 'getSchedule',
+        'shiftConflict' => 'getShiftConflict',
         'state' => 'getState',
         'updatedAt' => 'getUpdatedAt',
         'vacationConflict' => 'getVacationConflict'
@@ -377,6 +383,7 @@ class PolicyFindingV2 implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('postMortem', $data ?? [], null);
         $this->setIfExists('responsibleUsers', $data ?? [], null);
         $this->setIfExists('schedule', $data ?? [], null);
+        $this->setIfExists('shiftConflict', $data ?? [], null);
         $this->setIfExists('state', $data ?? [], null);
         $this->setIfExists('updatedAt', $data ?? [], null);
         $this->setIfExists('vacationConflict', $data ?? [], null);
@@ -817,6 +824,33 @@ class PolicyFindingV2 implements ModelInterface, ArrayAccess, JsonSerializable
             throw new InvalidArgumentException('non-nullable schedule cannot be null');
         }
         $this->container['schedule'] = $schedule;
+
+        return $this;
+    }
+
+    /**
+     * Gets shiftConflict
+     *
+     * @return \IncidentIo\Model\PolicyFindingShiftConflictV2|null
+     */
+    public function getShiftConflict(): ?\IncidentIo\Model\PolicyFindingShiftConflictV2
+    {
+        return $this->container['shiftConflict'];
+    }
+
+    /**
+     * Sets shiftConflict
+     *
+     * @param \IncidentIo\Model\PolicyFindingShiftConflictV2|null $shiftConflict shiftConflict
+     *
+     * @return $this
+     */
+    public function setShiftConflict(?\IncidentIo\Model\PolicyFindingShiftConflictV2 $shiftConflict): static
+    {
+        if (is_null($shiftConflict)) {
+            throw new InvalidArgumentException('non-nullable shiftConflict cannot be null');
+        }
+        $this->container['shiftConflict'] = $shiftConflict;
 
         return $this;
     }

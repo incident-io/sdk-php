@@ -1002,6 +1002,8 @@ class IncidentIo\Model\PolicyFindingPostMortemV2
 class IncidentIo\Model\PolicyFindingReadinessRuleV2
 class IncidentIo\Model\PolicyFindingScheduleImpactedUserV2
 class IncidentIo\Model\PolicyFindingScheduleV2
+class IncidentIo\Model\PolicyFindingShiftConflictShiftV2
+class IncidentIo\Model\PolicyFindingShiftConflictV2
 class IncidentIo\Model\PolicyFindingV2
 class IncidentIo\Model\PolicyFindingVacationConflictV2
 class IncidentIo\Model\PolicyFindingsDismissPayloadV2
@@ -3906,6 +3908,8 @@ const IncidentIo\Model\PolicyFindingScheduleV2::CAUSE_NOTIFICATIONS_PAUSED
 const IncidentIo\Model\PolicyFindingScheduleV2::CAUSE_NO_ON_CALL_SEAT
 const IncidentIo\Model\PolicyFindingScheduleV2::CAUSE_USER_DEACTIVATED
 const IncidentIo\Model\PolicyFindingScheduleV2::DISCRIMINATOR
+const IncidentIo\Model\PolicyFindingShiftConflictShiftV2::DISCRIMINATOR
+const IncidentIo\Model\PolicyFindingShiftConflictV2::DISCRIMINATOR
 const IncidentIo\Model\PolicyFindingV2::DISCRIMINATOR
 const IncidentIo\Model\PolicyFindingV2::POLICY_TYPE_DEBRIEF
 const IncidentIo\Model\PolicyFindingV2::POLICY_TYPE_FOLLOW_UP
@@ -16004,6 +16008,15 @@ property IncidentIo\Model\PolicyFindingScheduleV2 impactedUsers
 property IncidentIo\Model\PolicyFindingScheduleV2 rotationId
 property IncidentIo\Model\PolicyFindingScheduleV2 scheduleId
 property IncidentIo\Model\PolicyFindingScheduleV2 startAt
+property IncidentIo\Model\PolicyFindingShiftConflictShiftV2 endAt
+property IncidentIo\Model\PolicyFindingShiftConflictShiftV2 layerId
+property IncidentIo\Model\PolicyFindingShiftConflictShiftV2 rotationId
+property IncidentIo\Model\PolicyFindingShiftConflictShiftV2 scheduleId
+property IncidentIo\Model\PolicyFindingShiftConflictShiftV2 startAt
+property IncidentIo\Model\PolicyFindingShiftConflictV2 endAt
+property IncidentIo\Model\PolicyFindingShiftConflictV2 shifts
+property IncidentIo\Model\PolicyFindingShiftConflictV2 startAt
+property IncidentIo\Model\PolicyFindingShiftConflictV2 userId
 property IncidentIo\Model\PolicyFindingV2 createdAt
 property IncidentIo\Model\PolicyFindingV2 days
 property IncidentIo\Model\PolicyFindingV2 debrief
@@ -16018,6 +16031,7 @@ property IncidentIo\Model\PolicyFindingV2 policyType
 property IncidentIo\Model\PolicyFindingV2 postMortem
 property IncidentIo\Model\PolicyFindingV2 responsibleUsers
 property IncidentIo\Model\PolicyFindingV2 schedule
+property IncidentIo\Model\PolicyFindingV2 shiftConflict
 property IncidentIo\Model\PolicyFindingV2 state
 property IncidentIo\Model\PolicyFindingV2 updatedAt
 property IncidentIo\Model\PolicyFindingV2 vacationConflict

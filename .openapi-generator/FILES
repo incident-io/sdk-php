@@ -1002,6 +1002,8 @@ src/Model/PolicyFindingPostMortemV2.php
 src/Model/PolicyFindingReadinessRuleV2.php
 src/Model/PolicyFindingScheduleImpactedUserV2.php
 src/Model/PolicyFindingScheduleV2.php
+src/Model/PolicyFindingShiftConflictShiftV2.php
+src/Model/PolicyFindingShiftConflictV2.php
 src/Model/PolicyFindingV2.php
 src/Model/PolicyFindingVacationConflictV2.php
 src/Model/PolicyFindingsDismissPayloadV2.php
