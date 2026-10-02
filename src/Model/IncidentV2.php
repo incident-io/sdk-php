@@ -60,6 +60,7 @@ class IncidentV2 implements ModelInterface, ArrayAccess, JsonSerializable
         'createdAt' => '\DateTime',
         'creator' => '\IncidentIo\Model\ActorV2',
         'customFieldEntries' => '\IncidentIo\Model\CustomFieldEntryV2[]',
+        'debriefs' => '\IncidentIo\Model\IncidentDebriefV2[]',
         'durationMetrics' => '\IncidentIo\Model\IncidentDurationMetricWithValueV2[]',
         'externalIssueReference' => '\IncidentIo\Model\ExternalIssueReferenceV2',
         'hasDebrief' => 'bool',
@@ -101,6 +102,7 @@ class IncidentV2 implements ModelInterface, ArrayAccess, JsonSerializable
         'createdAt' => 'date-time',
         'creator' => null,
         'customFieldEntries' => null,
+        'debriefs' => null,
         'durationMetrics' => null,
         'externalIssueReference' => null,
         'hasDebrief' => null,
@@ -142,6 +144,7 @@ class IncidentV2 implements ModelInterface, ArrayAccess, JsonSerializable
         'createdAt' => false,
         'creator' => false,
         'customFieldEntries' => false,
+        'debriefs' => false,
         'durationMetrics' => false,
         'externalIssueReference' => false,
         'hasDebrief' => false,
@@ -253,6 +256,7 @@ class IncidentV2 implements ModelInterface, ArrayAccess, JsonSerializable
         'createdAt' => 'created_at',
         'creator' => 'creator',
         'customFieldEntries' => 'custom_field_entries',
+        'debriefs' => 'debriefs',
         'durationMetrics' => 'duration_metrics',
         'externalIssueReference' => 'external_issue_reference',
         'hasDebrief' => 'has_debrief',
@@ -294,6 +298,7 @@ class IncidentV2 implements ModelInterface, ArrayAccess, JsonSerializable
         'createdAt' => 'setCreatedAt',
         'creator' => 'setCreator',
         'customFieldEntries' => 'setCustomFieldEntries',
+        'debriefs' => 'setDebriefs',
         'durationMetrics' => 'setDurationMetrics',
         'externalIssueReference' => 'setExternalIssueReference',
         'hasDebrief' => 'setHasDebrief',
@@ -335,6 +340,7 @@ class IncidentV2 implements ModelInterface, ArrayAccess, JsonSerializable
         'createdAt' => 'getCreatedAt',
         'creator' => 'getCreator',
         'customFieldEntries' => 'getCustomFieldEntries',
+        'debriefs' => 'getDebriefs',
         'durationMetrics' => 'getDurationMetrics',
         'externalIssueReference' => 'getExternalIssueReference',
         'hasDebrief' => 'getHasDebrief',
@@ -451,6 +457,7 @@ class IncidentV2 implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('createdAt', $data ?? [], null);
         $this->setIfExists('creator', $data ?? [], null);
         $this->setIfExists('customFieldEntries', $data ?? [], null);
+        $this->setIfExists('debriefs', $data ?? [], null);
         $this->setIfExists('durationMetrics', $data ?? [], null);
         $this->setIfExists('externalIssueReference', $data ?? [], null);
         $this->setIfExists('hasDebrief', $data ?? [], null);
@@ -668,6 +675,33 @@ class IncidentV2 implements ModelInterface, ArrayAccess, JsonSerializable
             throw new InvalidArgumentException('non-nullable customFieldEntries cannot be null');
         }
         $this->container['customFieldEntries'] = $customFieldEntries;
+
+        return $this;
+    }
+
+    /**
+     * Gets debriefs
+     *
+     * @return \IncidentIo\Model\IncidentDebriefV2[]|null
+     */
+    public function getDebriefs(): ?array
+    {
+        return $this->container['debriefs'];
+    }
+
+    /**
+     * Sets debriefs
+     *
+     * @param \IncidentIo\Model\IncidentDebriefV2[]|null $debriefs Debriefs scheduled for this incident, ordered by start time. Excludes cancelled calendar events.
+     *
+     * @return $this
+     */
+    public function setDebriefs(?array $debriefs): static
+    {
+        if (is_null($debriefs)) {
+            throw new InvalidArgumentException('non-nullable debriefs cannot be null');
+        }
+        $this->container['debriefs'] = $debriefs;
 
         return $this;
     }

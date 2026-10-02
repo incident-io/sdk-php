@@ -816,6 +816,7 @@ class IncidentIo\Model\IncidentAttachmentsCreatePayloadV1
 class IncidentIo\Model\IncidentAttachmentsCreatePayloadV1Resource
 class IncidentIo\Model\IncidentAttachmentsCreateResultV1
 class IncidentIo\Model\IncidentAttachmentsListResultV1
+class IncidentIo\Model\IncidentDebriefV2
 class IncidentIo\Model\IncidentDurationMetricV2
 class IncidentIo\Model\IncidentDurationMetricWithValueV2
 class IncidentIo\Model\IncidentEditPayloadV2
@@ -3520,6 +3521,7 @@ const IncidentIo\Model\IncidentAttachmentsCreatePayloadV1Resource::RESOURCE_TYPE
 const IncidentIo\Model\IncidentAttachmentsCreatePayloadV1Resource::RESOURCE_TYPE_ZENDESK_TICKET
 const IncidentIo\Model\IncidentAttachmentsCreateResultV1::DISCRIMINATOR
 const IncidentIo\Model\IncidentAttachmentsListResultV1::DISCRIMINATOR
+const IncidentIo\Model\IncidentDebriefV2::DISCRIMINATOR
 const IncidentIo\Model\IncidentDurationMetricV2::DISCRIMINATOR
 const IncidentIo\Model\IncidentDurationMetricWithValueV2::DISCRIMINATOR
 const IncidentIo\Model\IncidentDurationMetricWithValueV2::STATUS_CALCULATING
@@ -15348,6 +15350,9 @@ property IncidentIo\Model\IncidentAttachmentsCreatePayloadV1Resource title
 property IncidentIo\Model\IncidentAttachmentsCreatePayloadV1Resource url
 property IncidentIo\Model\IncidentAttachmentsCreateResultV1 incidentAttachment
 property IncidentIo\Model\IncidentAttachmentsListResultV1 incidentAttachments
+property IncidentIo\Model\IncidentDebriefV2 endAt
+property IncidentIo\Model\IncidentDebriefV2 id
+property IncidentIo\Model\IncidentDebriefV2 startAt
 property IncidentIo\Model\IncidentDurationMetricV2 id
 property IncidentIo\Model\IncidentDurationMetricV2 name
 property IncidentIo\Model\IncidentDurationMetricWithValueV2 durationMetric
@@ -15633,6 +15638,7 @@ property IncidentIo\Model\IncidentV2 callUrl
 property IncidentIo\Model\IncidentV2 createdAt
 property IncidentIo\Model\IncidentV2 creator
 property IncidentIo\Model\IncidentV2 customFieldEntries
+property IncidentIo\Model\IncidentV2 debriefs
 property IncidentIo\Model\IncidentV2 durationMetrics
 property IncidentIo\Model\IncidentV2 externalIssueReference
 property IncidentIo\Model\IncidentV2 hasDebrief
@@ -16605,6 +16611,7 @@ property IncidentIo\Model\WebhookIncidentV2 callUrl
 property IncidentIo\Model\WebhookIncidentV2 createdAt
 property IncidentIo\Model\WebhookIncidentV2 creator
 property IncidentIo\Model\WebhookIncidentV2 customFieldEntries
+property IncidentIo\Model\WebhookIncidentV2 debriefs
 property IncidentIo\Model\WebhookIncidentV2 durationMetrics
 property IncidentIo\Model\WebhookIncidentV2 externalIssueReference
 property IncidentIo\Model\WebhookIncidentV2 hasDebrief

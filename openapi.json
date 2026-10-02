@@ -69356,6 +69356,38 @@
         ],
         "type": "object"
       },
+      "IncidentDebriefV2": {
+        "example": {
+          "end_at": "2021-08-17T14:28:57.801578Z",
+          "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+          "start_at": "2021-08-17T13:28:57.801578Z"
+        },
+        "properties": {
+          "end_at": {
+            "description": "When the debrief is scheduled to end",
+            "example": "2021-08-17T14:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "description": "Unique ID of the incident debrief",
+            "example": "01G0J1EXE7AXZ2C93K61WBPYEH",
+            "type": "string"
+          },
+          "start_at": {
+            "description": "When the debrief is scheduled to start",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "start_at",
+          "end_at"
+        ],
+        "type": "object"
+      },
       "IncidentDurationMetricV2": {
         "example": {
           "id": "01FCNDV6P870EA6S7TK1DSYD5H",
@@ -76297,6 +76329,13 @@
               ]
             }
           ],
+          "debriefs": [
+            {
+              "end_at": "2021-08-17T14:28:57.801578Z",
+              "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+              "start_at": "2021-08-17T13:28:57.801578Z"
+            }
+          ],
           "duration_metrics": [
             {
               "duration_metric": {
@@ -76459,6 +76498,20 @@
             ],
             "items": {
               "$ref": "#/components/schemas/CustomFieldEntryV2"
+            },
+            "type": "array"
+          },
+          "debriefs": {
+            "description": "Debriefs scheduled for this incident, ordered by start time. Excludes cancelled calendar events.",
+            "example": [
+              {
+                "end_at": "2021-08-17T14:28:57.801578Z",
+                "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                "start_at": "2021-08-17T13:28:57.801578Z"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/IncidentDebriefV2"
             },
             "type": "array"
           },
@@ -76761,6 +76814,13 @@
                     "value_text": "This is my text field, I hope you like it"
                   }
                 ]
+              }
+            ],
+            "debriefs": [
+              {
+                "end_at": "2021-08-17T14:28:57.801578Z",
+                "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                "start_at": "2021-08-17T13:28:57.801578Z"
               }
             ],
             "duration_metrics": [
@@ -77440,6 +77500,13 @@
                 ]
               }
             ],
+            "debriefs": [
+              {
+                "end_at": "2021-08-17T14:28:57.801578Z",
+                "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                "start_at": "2021-08-17T13:28:57.801578Z"
+              }
+            ],
             "duration_metrics": [
               {
                 "duration_metric": {
@@ -77678,6 +77745,13 @@
                     "value_text": "This is my text field, I hope you like it"
                   }
                 ]
+              }
+            ],
+            "debriefs": [
+              {
+                "end_at": "2021-08-17T14:28:57.801578Z",
+                "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                "start_at": "2021-08-17T13:28:57.801578Z"
               }
             ],
             "duration_metrics": [
@@ -78186,6 +78260,13 @@
                   ]
                 }
               ],
+              "debriefs": [
+                {
+                  "end_at": "2021-08-17T14:28:57.801578Z",
+                  "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                  "start_at": "2021-08-17T13:28:57.801578Z"
+                }
+              ],
               "duration_metrics": [
                 {
                   "duration_metric": {
@@ -78361,6 +78442,13 @@
                         "value_text": "This is my text field, I hope you like it"
                       }
                     ]
+                  }
+                ],
+                "debriefs": [
+                  {
+                    "end_at": "2021-08-17T14:28:57.801578Z",
+                    "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                    "start_at": "2021-08-17T13:28:57.801578Z"
                   }
                 ],
                 "duration_metrics": [
@@ -78677,6 +78765,13 @@
                     "value_text": "This is my text field, I hope you like it"
                   }
                 ]
+              }
+            ],
+            "debriefs": [
+              {
+                "end_at": "2021-08-17T14:28:57.801578Z",
+                "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                "start_at": "2021-08-17T13:28:57.801578Z"
               }
             ],
             "duration_metrics": [
@@ -98244,6 +98339,13 @@
               ]
             }
           ],
+          "debriefs": [
+            {
+              "end_at": "2021-08-17T14:28:57.801578Z",
+              "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+              "start_at": "2021-08-17T13:28:57.801578Z"
+            }
+          ],
           "duration_metrics": [
             {
               "duration_metric": {
@@ -98410,6 +98512,20 @@
             ],
             "items": {
               "$ref": "#/components/schemas/CustomFieldEntryV2"
+            },
+            "type": "array"
+          },
+          "debriefs": {
+            "description": "Debriefs scheduled for this incident, ordered by start time. Excludes cancelled calendar events.",
+            "example": [
+              {
+                "end_at": "2021-08-17T14:28:57.801578Z",
+                "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                "start_at": "2021-08-17T13:28:57.801578Z"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/IncidentDebriefV2"
             },
             "type": "array"
           },
@@ -100693,6 +100809,13 @@
                 ]
               }
             ],
+            "debriefs": [
+              {
+                "end_at": "2021-08-17T14:28:57.801578Z",
+                "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                "start_at": "2021-08-17T13:28:57.801578Z"
+              }
+            ],
             "duration_metrics": [
               {
                 "duration_metric": {
@@ -100919,6 +101042,13 @@
                       "value_text": "This is my text field, I hope you like it"
                     }
                   ]
+                }
+              ],
+              "debriefs": [
+                {
+                  "end_at": "2021-08-17T14:28:57.801578Z",
+                  "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                  "start_at": "2021-08-17T13:28:57.801578Z"
                 }
               ],
               "duration_metrics": [
@@ -101162,6 +101292,13 @@
                     "value_text": "This is my text field, I hope you like it"
                   }
                 ]
+              }
+            ],
+            "debriefs": [
+              {
+                "end_at": "2021-08-17T14:28:57.801578Z",
+                "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                "start_at": "2021-08-17T13:28:57.801578Z"
               }
             ],
             "duration_metrics": [
@@ -155662,6 +155799,13 @@
                           ]
                         }
                       ],
+                      "debriefs": [
+                        {
+                          "end_at": "2021-08-17T14:28:57.801578Z",
+                          "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                          "start_at": "2021-08-17T13:28:57.801578Z"
+                        }
+                      ],
                       "duration_metrics": [
                         {
                           "duration_metric": {
@@ -156055,6 +156199,13 @@
                         ]
                       }
                     ],
+                    "debriefs": [
+                      {
+                        "end_at": "2021-08-17T14:28:57.801578Z",
+                        "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                        "start_at": "2021-08-17T13:28:57.801578Z"
+                      }
+                    ],
                     "duration_metrics": [
                       {
                         "duration_metric": {
@@ -156397,6 +156548,13 @@
                             "value_text": "This is my text field, I hope you like it"
                           }
                         ]
+                      }
+                    ],
+                    "debriefs": [
+                      {
+                        "end_at": "2021-08-17T14:28:57.801578Z",
+                        "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                        "start_at": "2021-08-17T13:28:57.801578Z"
                       }
                     ],
                     "duration_metrics": [
@@ -156794,6 +156952,13 @@
                             "value_text": "This is my text field, I hope you like it"
                           }
                         ]
+                      }
+                    ],
+                    "debriefs": [
+                      {
+                        "end_at": "2021-08-17T14:28:57.801578Z",
+                        "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                        "start_at": "2021-08-17T13:28:57.801578Z"
                       }
                     ],
                     "duration_metrics": [
@@ -203187,6 +203352,13 @@
                         ]
                       }
                     ],
+                    "debriefs": [
+                      {
+                        "end_at": "2021-08-17T14:28:57.801578Z",
+                        "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                        "start_at": "2021-08-17T13:28:57.801578Z"
+                      }
+                    ],
                     "duration_metrics": [
                       {
                         "duration_metric": {
@@ -203381,6 +203553,13 @@
                               "value_text": "This is my text field, I hope you like it"
                             }
                           ]
+                        }
+                      ],
+                      "debriefs": [
+                        {
+                          "end_at": "2021-08-17T14:28:57.801578Z",
+                          "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                          "start_at": "2021-08-17T13:28:57.801578Z"
                         }
                       ],
                       "duration_metrics": [
@@ -203592,6 +203771,13 @@
                             "value_text": "This is my text field, I hope you like it"
                           }
                         ]
+                      }
+                    ],
+                    "debriefs": [
+                      {
+                        "end_at": "2021-08-17T14:28:57.801578Z",
+                        "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                        "start_at": "2021-08-17T13:28:57.801578Z"
                       }
                     ],
                     "duration_metrics": [

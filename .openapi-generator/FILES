@@ -816,6 +816,7 @@ src/Model/IncidentAttachmentsCreatePayloadV1.php
 src/Model/IncidentAttachmentsCreatePayloadV1Resource.php
 src/Model/IncidentAttachmentsCreateResultV1.php
 src/Model/IncidentAttachmentsListResultV1.php
+src/Model/IncidentDebriefV2.php
 src/Model/IncidentDurationMetricV2.php
 src/Model/IncidentDurationMetricWithValueV2.php
 src/Model/IncidentEditPayloadV2.php
