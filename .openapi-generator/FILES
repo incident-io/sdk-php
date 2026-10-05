@@ -379,6 +379,7 @@ src/Model/AuditLogsIncidentDurationMetricUpdatedV1.php
 src/Model/AuditLogsIncidentRoleCreatedV1.php
 src/Model/AuditLogsIncidentRoleDeletedV1.php
 src/Model/AuditLogsIncidentRoleUpdatedV1.php
+src/Model/AuditLogsIncidentScrubbedV1.php
 src/Model/AuditLogsIncidentStatusCreatedV1.php
 src/Model/AuditLogsIncidentStatusDeletedV1.php
 src/Model/AuditLogsIncidentStatusUpdatedV1.php

@@ -379,6 +379,7 @@ class IncidentIo\Model\AuditLogsIncidentDurationMetricUpdatedV1
 class IncidentIo\Model\AuditLogsIncidentRoleCreatedV1
 class IncidentIo\Model\AuditLogsIncidentRoleDeletedV1
 class IncidentIo\Model\AuditLogsIncidentRoleUpdatedV1
+class IncidentIo\Model\AuditLogsIncidentScrubbedV1
 class IncidentIo\Model\AuditLogsIncidentStatusCreatedV1
 class IncidentIo\Model\AuditLogsIncidentStatusDeletedV1
 class IncidentIo\Model\AuditLogsIncidentStatusUpdatedV1
@@ -2244,6 +2245,7 @@ const IncidentIo\Model\AuditLogsIncidentDurationMetricUpdatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsIncidentRoleCreatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsIncidentRoleDeletedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsIncidentRoleUpdatedV1::DISCRIMINATOR
+const IncidentIo\Model\AuditLogsIncidentScrubbedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsIncidentStatusCreatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsIncidentStatusDeletedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsIncidentStatusUpdatedV1::DISCRIMINATOR
@@ -13393,6 +13395,12 @@ property IncidentIo\Model\AuditLogsIncidentRoleUpdatedV1 context
 property IncidentIo\Model\AuditLogsIncidentRoleUpdatedV1 occurredAt
 property IncidentIo\Model\AuditLogsIncidentRoleUpdatedV1 targets
 property IncidentIo\Model\AuditLogsIncidentRoleUpdatedV1 version
+property IncidentIo\Model\AuditLogsIncidentScrubbedV1 action
+property IncidentIo\Model\AuditLogsIncidentScrubbedV1 actor
+property IncidentIo\Model\AuditLogsIncidentScrubbedV1 context
+property IncidentIo\Model\AuditLogsIncidentScrubbedV1 occurredAt
+property IncidentIo\Model\AuditLogsIncidentScrubbedV1 targets
+property IncidentIo\Model\AuditLogsIncidentScrubbedV1 version
 property IncidentIo\Model\AuditLogsIncidentStatusCreatedV1 action
 property IncidentIo\Model\AuditLogsIncidentStatusCreatedV1 actor
 property IncidentIo\Model\AuditLogsIncidentStatusCreatedV1 context
