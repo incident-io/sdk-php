@@ -56,7 +56,8 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
-        'currentStructure' => '\IncidentIo\Model\StatusPageStructureV2'
+        'currentStructure' => '\IncidentIo\Model\StatusPageStructureV2',
+        'displayUptimeMode' => 'string'
     ];
 
     /**
@@ -65,7 +66,8 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
      * @var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'currentStructure' => null
+        'currentStructure' => null,
+        'displayUptimeMode' => null
     ];
 
     /**
@@ -74,7 +76,8 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
      * @var array<string, bool>
      */
     protected static array $openAPINullables = [
-        'currentStructure' => false
+        'currentStructure' => false,
+        'displayUptimeMode' => false
     ];
 
     /**
@@ -153,7 +156,8 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'currentStructure' => 'current_structure'
+        'currentStructure' => 'current_structure',
+        'displayUptimeMode' => 'display_uptime_mode'
     ];
 
     /**
@@ -162,7 +166,8 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
      * @var array<string, string>
      */
     protected static array $setters = [
-        'currentStructure' => 'setCurrentStructure'
+        'currentStructure' => 'setCurrentStructure',
+        'displayUptimeMode' => 'setDisplayUptimeMode'
     ];
 
     /**
@@ -171,7 +176,8 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
      * @var array<string, string>
      */
     protected static array $getters = [
-        'currentStructure' => 'getCurrentStructure'
+        'currentStructure' => 'getCurrentStructure',
+        'displayUptimeMode' => 'getDisplayUptimeMode'
     ];
 
     /**
@@ -206,6 +212,23 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
+    public const DISPLAY_UPTIME_MODE_CHART_AND_PERCENTAGE = 'chart_and_percentage';
+    public const DISPLAY_UPTIME_MODE_CHART_ONLY = 'chart_only';
+    public const DISPLAY_UPTIME_MODE_NOTHING = 'nothing';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public static function getDisplayUptimeModeAllowableValues()
+    {
+        return [
+            self::DISPLAY_UPTIME_MODE_CHART_AND_PERCENTAGE,
+            self::DISPLAY_UPTIME_MODE_CHART_ONLY,
+            self::DISPLAY_UPTIME_MODE_NOTHING,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -222,6 +245,7 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
     public function __construct(?array $data = null)
     {
         $this->setIfExists('currentStructure', $data ?? [], null);
+        $this->setIfExists('displayUptimeMode', $data ?? [], null);
     }
 
     /**
@@ -251,6 +275,9 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
 
         if ($this->container['currentStructure'] === null) {
             $invalidProperties[] = "'currentStructure' can't be null";
+        }
+        if ($this->container['displayUptimeMode'] === null) {
+            $invalidProperties[] = "'displayUptimeMode' can't be null";
         }
         return $invalidProperties;
     }
@@ -287,6 +314,33 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
             throw new InvalidArgumentException('non-nullable currentStructure cannot be null');
         }
         $this->container['currentStructure'] = $currentStructure;
+
+        return $this;
+    }
+
+    /**
+     * Gets displayUptimeMode
+     *
+     * @return string
+     */
+    public function getDisplayUptimeMode(): string
+    {
+        return $this->container['displayUptimeMode'];
+    }
+
+    /**
+     * Sets displayUptimeMode
+     *
+     * @param string $displayUptimeMode How the page shows uptime against its components
+     *
+     * @return $this
+     */
+    public function setDisplayUptimeMode(string $displayUptimeMode): static
+    {
+        if (is_null($displayUptimeMode)) {
+            throw new InvalidArgumentException('non-nullable displayUptimeMode cannot be null');
+        }
+        $this->container['displayUptimeMode'] = $displayUptimeMode;
 
         return $this;
     }

@@ -57,6 +57,8 @@ class StatusPageStructureComponentV2 implements ModelInterface, ArrayAccess, Jso
      */
     protected static array $openAPITypes = [
         'componentId' => 'string',
+        'displayUptime' => 'bool',
+        'hidden' => 'bool',
         'name' => 'string'
     ];
 
@@ -67,6 +69,8 @@ class StatusPageStructureComponentV2 implements ModelInterface, ArrayAccess, Jso
      */
     protected static array $openAPIFormats = [
         'componentId' => null,
+        'displayUptime' => null,
+        'hidden' => null,
         'name' => null
     ];
 
@@ -77,6 +81,8 @@ class StatusPageStructureComponentV2 implements ModelInterface, ArrayAccess, Jso
      */
     protected static array $openAPINullables = [
         'componentId' => false,
+        'displayUptime' => false,
+        'hidden' => false,
         'name' => false
     ];
 
@@ -157,6 +163,8 @@ class StatusPageStructureComponentV2 implements ModelInterface, ArrayAccess, Jso
      */
     protected static array $attributeMap = [
         'componentId' => 'component_id',
+        'displayUptime' => 'display_uptime',
+        'hidden' => 'hidden',
         'name' => 'name'
     ];
 
@@ -167,6 +175,8 @@ class StatusPageStructureComponentV2 implements ModelInterface, ArrayAccess, Jso
      */
     protected static array $setters = [
         'componentId' => 'setComponentId',
+        'displayUptime' => 'setDisplayUptime',
+        'hidden' => 'setHidden',
         'name' => 'setName'
     ];
 
@@ -177,6 +187,8 @@ class StatusPageStructureComponentV2 implements ModelInterface, ArrayAccess, Jso
      */
     protected static array $getters = [
         'componentId' => 'getComponentId',
+        'displayUptime' => 'getDisplayUptime',
+        'hidden' => 'getHidden',
         'name' => 'getName'
     ];
 
@@ -228,6 +240,8 @@ class StatusPageStructureComponentV2 implements ModelInterface, ArrayAccess, Jso
     public function __construct(?array $data = null)
     {
         $this->setIfExists('componentId', $data ?? [], null);
+        $this->setIfExists('displayUptime', $data ?? [], null);
+        $this->setIfExists('hidden', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
     }
 
@@ -258,6 +272,12 @@ class StatusPageStructureComponentV2 implements ModelInterface, ArrayAccess, Jso
 
         if ($this->container['componentId'] === null) {
             $invalidProperties[] = "'componentId' can't be null";
+        }
+        if ($this->container['displayUptime'] === null) {
+            $invalidProperties[] = "'displayUptime' can't be null";
+        }
+        if ($this->container['hidden'] === null) {
+            $invalidProperties[] = "'hidden' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
@@ -297,6 +317,60 @@ class StatusPageStructureComponentV2 implements ModelInterface, ArrayAccess, Jso
             throw new InvalidArgumentException('non-nullable componentId cannot be null');
         }
         $this->container['componentId'] = $componentId;
+
+        return $this;
+    }
+
+    /**
+     * Gets displayUptime
+     *
+     * @return bool
+     */
+    public function getDisplayUptime(): bool
+    {
+        return $this->container['displayUptime'];
+    }
+
+    /**
+     * Sets displayUptime
+     *
+     * @param bool $displayUptime Whether the page shows this component's uptime
+     *
+     * @return $this
+     */
+    public function setDisplayUptime(bool $displayUptime): static
+    {
+        if (is_null($displayUptime)) {
+            throw new InvalidArgumentException('non-nullable displayUptime cannot be null');
+        }
+        $this->container['displayUptime'] = $displayUptime;
+
+        return $this;
+    }
+
+    /**
+     * Gets hidden
+     *
+     * @return bool
+     */
+    public function getHidden(): bool
+    {
+        return $this->container['hidden'];
+    }
+
+    /**
+     * Sets hidden
+     *
+     * @param bool $hidden Whether the component is hidden from the page
+     *
+     * @return $this
+     */
+    public function setHidden(bool $hidden): static
+    {
+        if (is_null($hidden)) {
+            throw new InvalidArgumentException('non-nullable hidden cannot be null');
+        }
+        $this->container['hidden'] = $hidden;
 
         return $this;
     }

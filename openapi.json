@@ -95398,6 +95398,8 @@
       "StatusPageStructureComponentV2": {
         "example": {
           "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+          "display_uptime": true,
+          "hidden": false,
           "name": "App"
         },
         "properties": {
@@ -95405,6 +95407,16 @@
             "description": "The ID of the affected component. This may be found by calling the ShowStatusPageStructure endpoint.",
             "example": "01FCNDV6P870EA6S7TK1DSYDG1",
             "type": "string"
+          },
+          "display_uptime": {
+            "description": "Whether the page shows this component's uptime",
+            "example": true,
+            "type": "boolean"
+          },
+          "hidden": {
+            "description": "Whether the component is hidden from the page",
+            "example": false,
+            "type": "boolean"
           },
           "name": {
             "description": "The name of this component",
@@ -95414,7 +95426,9 @@
         },
         "required": [
           "component_id",
-          "name"
+          "name",
+          "hidden",
+          "display_uptime"
         ],
         "type": "object"
       },
@@ -95423,9 +95437,14 @@
           "components": [
             {
               "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+              "display_uptime": true,
+              "hidden": false,
               "name": "App"
             }
           ],
+          "description": "Services hosted in our EU data center",
+          "display_aggregated_uptime": true,
+          "hidden": false,
           "id": "01FCNDV6P870EA6S7TK1DSYDG1",
           "name": "EU Data center"
         },
@@ -95435,6 +95454,8 @@
             "example": [
               {
                 "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                "display_uptime": true,
+                "hidden": false,
                 "name": "App"
               }
             ],
@@ -95442,6 +95463,21 @@
               "$ref": "#/components/schemas/StatusPageStructureComponentV2"
             },
             "type": "array"
+          },
+          "description": {
+            "description": "A description shown under the group's name",
+            "example": "Services hosted in our EU data center",
+            "type": "string"
+          },
+          "display_aggregated_uptime": {
+            "description": "Whether the page shows uptime aggregated across the group's components",
+            "example": true,
+            "type": "boolean"
+          },
+          "hidden": {
+            "description": "Whether the group is hidden from the page",
+            "example": false,
+            "type": "boolean"
           },
           "id": {
             "description": "Unique ID of this component group",
@@ -95457,6 +95493,8 @@
         "required": [
           "id",
           "name",
+          "hidden",
+          "display_aggregated_uptime",
           "components"
         ],
         "type": "object"
@@ -95465,15 +95503,22 @@
         "example": {
           "component": {
             "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "display_uptime": true,
+            "hidden": false,
             "name": "App"
           },
           "group": {
             "components": [
               {
                 "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                "display_uptime": true,
+                "hidden": false,
                 "name": "App"
               }
             ],
+            "description": "Services hosted in our EU data center",
+            "display_aggregated_uptime": true,
+            "hidden": false,
             "id": "01FCNDV6P870EA6S7TK1DSYDG1",
             "name": "EU Data center"
           },
@@ -95483,15 +95528,22 @@
               {
                 "component": {
                   "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                  "display_uptime": true,
+                  "hidden": false,
                   "name": "App"
                 },
                 "group": {
                   "components": [
                     {
                       "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                      "display_uptime": true,
+                      "hidden": false,
                       "name": "App"
                     }
                   ],
+                  "description": "Services hosted in our EU data center",
+                  "display_aggregated_uptime": true,
+                  "hidden": false,
                   "id": "01FCNDV6P870EA6S7TK1DSYDG1",
                   "name": "EU Data center"
                 }
@@ -95517,15 +95569,22 @@
         "example": {
           "component": {
             "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "display_uptime": true,
+            "hidden": false,
             "name": "App"
           },
           "group": {
             "components": [
               {
                 "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                "display_uptime": true,
+                "hidden": false,
                 "name": "App"
               }
             ],
+            "description": "Services hosted in our EU data center",
+            "display_aggregated_uptime": true,
+            "hidden": false,
             "id": "01FCNDV6P870EA6S7TK1DSYDG1",
             "name": "EU Data center"
           }
@@ -95547,15 +95606,22 @@
             {
               "component": {
                 "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                "display_uptime": true,
+                "hidden": false,
                 "name": "App"
               },
               "group": {
                 "components": [
                   {
                     "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                    "display_uptime": true,
+                    "hidden": false,
                     "name": "App"
                   }
                 ],
+                "description": "Services hosted in our EU data center",
+                "display_aggregated_uptime": true,
+                "hidden": false,
                 "id": "01FCNDV6P870EA6S7TK1DSYDG1",
                 "name": "EU Data center"
               }
@@ -95575,15 +95641,22 @@
               {
                 "component": {
                   "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                  "display_uptime": true,
+                  "hidden": false,
                   "name": "App"
                 },
                 "group": {
                   "components": [
                     {
                       "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                      "display_uptime": true,
+                      "hidden": false,
                       "name": "App"
                     }
                   ],
+                  "description": "Services hosted in our EU data center",
+                  "display_aggregated_uptime": true,
+                  "hidden": false,
                   "id": "01FCNDV6P870EA6S7TK1DSYDG1",
                   "name": "EU Data center"
                 }
@@ -95613,15 +95686,22 @@
             {
               "component": {
                 "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                "display_uptime": true,
+                "hidden": false,
                 "name": "App"
               },
               "group": {
                 "components": [
                   {
                     "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                    "display_uptime": true,
+                    "hidden": false,
                     "name": "App"
                   }
                 ],
+                "description": "Services hosted in our EU data center",
+                "display_aggregated_uptime": true,
+                "hidden": false,
                 "id": "01FCNDV6P870EA6S7TK1DSYDG1",
                 "name": "EU Data center"
               },
@@ -95631,15 +95711,22 @@
                   {
                     "component": {
                       "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                      "display_uptime": true,
+                      "hidden": false,
                       "name": "App"
                     },
                     "group": {
                       "components": [
                         {
                           "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                          "display_uptime": true,
+                          "hidden": false,
                           "name": "App"
                         }
                       ],
+                      "description": "Services hosted in our EU data center",
+                      "display_aggregated_uptime": true,
+                      "hidden": false,
                       "id": "01FCNDV6P870EA6S7TK1DSYDG1",
                       "name": "EU Data center"
                     }
@@ -95657,15 +95744,22 @@
               {
                 "component": {
                   "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                  "display_uptime": true,
+                  "hidden": false,
                   "name": "App"
                 },
                 "group": {
                   "components": [
                     {
                       "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                      "display_uptime": true,
+                      "hidden": false,
                       "name": "App"
                     }
                   ],
+                  "description": "Services hosted in our EU data center",
+                  "display_aggregated_uptime": true,
+                  "hidden": false,
                   "id": "01FCNDV6P870EA6S7TK1DSYDG1",
                   "name": "EU Data center"
                 },
@@ -95675,15 +95769,22 @@
                     {
                       "component": {
                         "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                        "display_uptime": true,
+                        "hidden": false,
                         "name": "App"
                       },
                       "group": {
                         "components": [
                           {
                             "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                            "display_uptime": true,
+                            "hidden": false,
                             "name": "App"
                           }
                         ],
+                        "description": "Services hosted in our EU data center",
+                        "display_aggregated_uptime": true,
+                        "hidden": false,
                         "id": "01FCNDV6P870EA6S7TK1DSYDG1",
                         "name": "EU Data center"
                       }
@@ -96637,15 +96738,22 @@
               {
                 "component": {
                   "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                  "display_uptime": true,
+                  "hidden": false,
                   "name": "App"
                 },
                 "group": {
                   "components": [
                     {
                       "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                      "display_uptime": true,
+                      "hidden": false,
                       "name": "App"
                     }
                   ],
+                  "description": "Services hosted in our EU data center",
+                  "display_aggregated_uptime": true,
+                  "hidden": false,
                   "id": "01FCNDV6P870EA6S7TK1DSYDG1",
                   "name": "EU Data center"
                 },
@@ -96655,15 +96763,22 @@
                     {
                       "component": {
                         "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                        "display_uptime": true,
+                        "hidden": false,
                         "name": "App"
                       },
                       "group": {
                         "components": [
                           {
                             "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                            "display_uptime": true,
+                            "hidden": false,
                             "name": "App"
                           }
                         ],
+                        "description": "Services hosted in our EU data center",
+                        "display_aggregated_uptime": true,
+                        "hidden": false,
                         "id": "01FCNDV6P870EA6S7TK1DSYDG1",
                         "name": "EU Data center"
                       }
@@ -96673,15 +96788,27 @@
                 }
               }
             ]
-          }
+          },
+          "display_uptime_mode": "chart_and_percentage"
         },
         "properties": {
           "current_structure": {
             "$ref": "#/components/schemas/StatusPageStructureV2"
+          },
+          "display_uptime_mode": {
+            "description": "How the page shows uptime against its components",
+            "enum": [
+              "chart_and_percentage",
+              "chart_only",
+              "nothing"
+            ],
+            "example": "chart_and_percentage",
+            "type": "string"
           }
         },
         "required": [
-          "current_structure"
+          "current_structure",
+          "display_uptime_mode"
         ],
         "type": "object"
       },
@@ -176333,7 +176460,7 @@
     },
     "/v2/status_page_structures/{status_page_id}": {
       "get": {
-        "description": "Show the structure of a status page.\n\nThis endpoint requires a valid API key but no specific scopes. Returns the components and component groups configured on a status page. Use this to find component IDs when specifying affected components for incidents or maintenance windows.",
+        "description": "Show the structure of a status page.\n\nThis endpoint requires a valid API key but no specific scopes. Returns the components and component groups configured on a status page, with their display settings, and how the page shows uptime. Use this to find component IDs when specifying affected components for incidents or maintenance windows.",
         "operationId": "Status Pages V2#ShowStatusPageStructure",
         "parameters": [
           {
@@ -176359,15 +176486,22 @@
                       {
                         "component": {
                           "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                          "display_uptime": true,
+                          "hidden": false,
                           "name": "App"
                         },
                         "group": {
                           "components": [
                             {
                               "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                              "display_uptime": true,
+                              "hidden": false,
                               "name": "App"
                             }
                           ],
+                          "description": "Services hosted in our EU data center",
+                          "display_aggregated_uptime": true,
+                          "hidden": false,
                           "id": "01FCNDV6P870EA6S7TK1DSYDG1",
                           "name": "EU Data center"
                         },
@@ -176377,15 +176511,22 @@
                             {
                               "component": {
                                 "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                                "display_uptime": true,
+                                "hidden": false,
                                 "name": "App"
                               },
                               "group": {
                                 "components": [
                                   {
                                     "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                                    "display_uptime": true,
+                                    "hidden": false,
                                     "name": "App"
                                   }
                                 ],
+                                "description": "Services hosted in our EU data center",
+                                "display_aggregated_uptime": true,
+                                "hidden": false,
                                 "id": "01FCNDV6P870EA6S7TK1DSYDG1",
                                 "name": "EU Data center"
                               }
@@ -176395,7 +176536,8 @@
                         }
                       }
                     ]
-                  }
+                  },
+                  "display_uptime_mode": "chart_and_percentage"
                 },
                 "schema": {
                   "$ref": "#/components/schemas/StatusPagesShowStatusPageStructureResultV2"

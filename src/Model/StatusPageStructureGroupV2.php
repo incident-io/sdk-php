@@ -57,6 +57,9 @@ class StatusPageStructureGroupV2 implements ModelInterface, ArrayAccess, JsonSer
      */
     protected static array $openAPITypes = [
         'components' => '\IncidentIo\Model\StatusPageStructureComponentV2[]',
+        'description' => 'string',
+        'displayAggregatedUptime' => 'bool',
+        'hidden' => 'bool',
         'id' => 'string',
         'name' => 'string'
     ];
@@ -68,6 +71,9 @@ class StatusPageStructureGroupV2 implements ModelInterface, ArrayAccess, JsonSer
      */
     protected static array $openAPIFormats = [
         'components' => null,
+        'description' => null,
+        'displayAggregatedUptime' => null,
+        'hidden' => null,
         'id' => null,
         'name' => null
     ];
@@ -79,6 +85,9 @@ class StatusPageStructureGroupV2 implements ModelInterface, ArrayAccess, JsonSer
      */
     protected static array $openAPINullables = [
         'components' => false,
+        'description' => false,
+        'displayAggregatedUptime' => false,
+        'hidden' => false,
         'id' => false,
         'name' => false
     ];
@@ -160,6 +169,9 @@ class StatusPageStructureGroupV2 implements ModelInterface, ArrayAccess, JsonSer
      */
     protected static array $attributeMap = [
         'components' => 'components',
+        'description' => 'description',
+        'displayAggregatedUptime' => 'display_aggregated_uptime',
+        'hidden' => 'hidden',
         'id' => 'id',
         'name' => 'name'
     ];
@@ -171,6 +183,9 @@ class StatusPageStructureGroupV2 implements ModelInterface, ArrayAccess, JsonSer
      */
     protected static array $setters = [
         'components' => 'setComponents',
+        'description' => 'setDescription',
+        'displayAggregatedUptime' => 'setDisplayAggregatedUptime',
+        'hidden' => 'setHidden',
         'id' => 'setId',
         'name' => 'setName'
     ];
@@ -182,6 +197,9 @@ class StatusPageStructureGroupV2 implements ModelInterface, ArrayAccess, JsonSer
      */
     protected static array $getters = [
         'components' => 'getComponents',
+        'description' => 'getDescription',
+        'displayAggregatedUptime' => 'getDisplayAggregatedUptime',
+        'hidden' => 'getHidden',
         'id' => 'getId',
         'name' => 'getName'
     ];
@@ -234,6 +252,9 @@ class StatusPageStructureGroupV2 implements ModelInterface, ArrayAccess, JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('components', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('displayAggregatedUptime', $data ?? [], null);
+        $this->setIfExists('hidden', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
     }
@@ -265,6 +286,12 @@ class StatusPageStructureGroupV2 implements ModelInterface, ArrayAccess, JsonSer
 
         if ($this->container['components'] === null) {
             $invalidProperties[] = "'components' can't be null";
+        }
+        if ($this->container['displayAggregatedUptime'] === null) {
+            $invalidProperties[] = "'displayAggregatedUptime' can't be null";
+        }
+        if ($this->container['hidden'] === null) {
+            $invalidProperties[] = "'hidden' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
@@ -307,6 +334,87 @@ class StatusPageStructureGroupV2 implements ModelInterface, ArrayAccess, JsonSer
             throw new InvalidArgumentException('non-nullable components cannot be null');
         }
         $this->container['components'] = $components;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description A description shown under the group's name
+     *
+     * @return $this
+     */
+    public function setDescription(?string $description): static
+    {
+        if (is_null($description)) {
+            throw new InvalidArgumentException('non-nullable description cannot be null');
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets displayAggregatedUptime
+     *
+     * @return bool
+     */
+    public function getDisplayAggregatedUptime(): bool
+    {
+        return $this->container['displayAggregatedUptime'];
+    }
+
+    /**
+     * Sets displayAggregatedUptime
+     *
+     * @param bool $displayAggregatedUptime Whether the page shows uptime aggregated across the group's components
+     *
+     * @return $this
+     */
+    public function setDisplayAggregatedUptime(bool $displayAggregatedUptime): static
+    {
+        if (is_null($displayAggregatedUptime)) {
+            throw new InvalidArgumentException('non-nullable displayAggregatedUptime cannot be null');
+        }
+        $this->container['displayAggregatedUptime'] = $displayAggregatedUptime;
+
+        return $this;
+    }
+
+    /**
+     * Gets hidden
+     *
+     * @return bool
+     */
+    public function getHidden(): bool
+    {
+        return $this->container['hidden'];
+    }
+
+    /**
+     * Sets hidden
+     *
+     * @param bool $hidden Whether the group is hidden from the page
+     *
+     * @return $this
+     */
+    public function setHidden(bool $hidden): static
+    {
+        if (is_null($hidden)) {
+            throw new InvalidArgumentException('non-nullable hidden cannot be null');
+        }
+        $this->container['hidden'] = $hidden;
 
         return $this;
     }
