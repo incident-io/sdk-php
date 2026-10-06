@@ -27,6 +27,7 @@ src/Api/HeartbeatV2Api.php
 src/Api/IPAllowlistsV1Api.php
 src/Api/IncidentActivityLogEntriesV2Api.php
 src/Api/IncidentAttachmentsV1Api.php
+src/Api/IncidentFormsV3Api.php
 src/Api/IncidentMembershipsV1Api.php
 src/Api/IncidentParticipantWorkloadsV2Api.php
 src/Api/IncidentParticipantsV2Api.php
@@ -822,6 +823,16 @@ src/Model/IncidentDebriefV2.php
 src/Model/IncidentDurationMetricV2.php
 src/Model/IncidentDurationMetricWithValueV2.php
 src/Model/IncidentEditPayloadV2.php
+src/Model/IncidentFormLifecycleElementConfigV3.php
+src/Model/IncidentFormLifecycleElementPayloadV3.php
+src/Model/IncidentFormLifecycleElementV3.php
+src/Model/IncidentFormV3.php
+src/Model/IncidentFormsCreatePayloadV3.php
+src/Model/IncidentFormsCreateResultV3.php
+src/Model/IncidentFormsListResultV3.php
+src/Model/IncidentFormsShowResultV3.php
+src/Model/IncidentFormsUpdatePayloadV3.php
+src/Model/IncidentFormsUpdateResultV3.php
 src/Model/IncidentMembershipV1.php
 src/Model/IncidentMembershipsCreatePayloadV1.php
 src/Model/IncidentMembershipsCreateResultV1.php

@@ -28,6 +28,7 @@ class IncidentIo\Api\HeartbeatV2Api
 class IncidentIo\Api\IPAllowlistsV1Api
 class IncidentIo\Api\IncidentActivityLogEntriesV2Api
 class IncidentIo\Api\IncidentAttachmentsV1Api
+class IncidentIo\Api\IncidentFormsV3Api
 class IncidentIo\Api\IncidentMembershipsV1Api
 class IncidentIo\Api\IncidentParticipantWorkloadsV2Api
 class IncidentIo\Api\IncidentParticipantsV2Api
@@ -822,6 +823,16 @@ class IncidentIo\Model\IncidentDebriefV2
 class IncidentIo\Model\IncidentDurationMetricV2
 class IncidentIo\Model\IncidentDurationMetricWithValueV2
 class IncidentIo\Model\IncidentEditPayloadV2
+class IncidentIo\Model\IncidentFormLifecycleElementConfigV3
+class IncidentIo\Model\IncidentFormLifecycleElementPayloadV3
+class IncidentIo\Model\IncidentFormLifecycleElementV3
+class IncidentIo\Model\IncidentFormV3
+class IncidentIo\Model\IncidentFormsCreatePayloadV3
+class IncidentIo\Model\IncidentFormsCreateResultV3
+class IncidentIo\Model\IncidentFormsListResultV3
+class IncidentIo\Model\IncidentFormsShowResultV3
+class IncidentIo\Model\IncidentFormsUpdatePayloadV3
+class IncidentIo\Model\IncidentFormsUpdateResultV3
 class IncidentIo\Model\IncidentMembershipV1
 class IncidentIo\Model\IncidentMembershipsCreatePayloadV1
 class IncidentIo\Model\IncidentMembershipsCreateResultV1
@@ -1285,6 +1296,7 @@ const IncidentIo\Api\HeartbeatV2Api::contentTypes
 const IncidentIo\Api\IPAllowlistsV1Api::contentTypes
 const IncidentIo\Api\IncidentActivityLogEntriesV2Api::contentTypes
 const IncidentIo\Api\IncidentAttachmentsV1Api::contentTypes
+const IncidentIo\Api\IncidentFormsV3Api::contentTypes
 const IncidentIo\Api\IncidentMembershipsV1Api::contentTypes
 const IncidentIo\Api\IncidentParticipantWorkloadsV2Api::contentTypes
 const IncidentIo\Api\IncidentParticipantsV2Api::contentTypes
@@ -3540,6 +3552,78 @@ const IncidentIo\Model\IncidentDurationMetricWithValueV2::STATUS_INVALID_TIMESTA
 const IncidentIo\Model\IncidentDurationMetricWithValueV2::STATUS_SUCCESS
 const IncidentIo\Model\IncidentDurationMetricWithValueV2::STATUS_TIMESTAMPS_MISSING
 const IncidentIo\Model\IncidentEditPayloadV2::DISCRIMINATOR
+const IncidentIo\Model\IncidentFormLifecycleElementConfigV3::DISCRIMINATOR
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::DISCRIMINATOR
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_ANNOUNCE_RETRO_INCIDENT
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_CUSTOM_FIELD
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_DIVIDER
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_ENTER_POST_INCIDENT_FLOW
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_INCIDENT_ATTACHMENTS
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_INCIDENT_ROLE
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_INCIDENT_TYPE
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_INVESTIGATION_FEEDBACK
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_NAME
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_NEXT_UPDATE_IN
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_SEVERITY
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_SLACK_CHANNEL
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_STATUS
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_SUMMARY
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_TEXT
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_TIMESTAMP
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_TRIAGE
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_UPDATE_MESSAGE
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::ELEMENT_TYPE_VISIBILITY
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::REQUIRED_IF_ALWAYS_REQUIRE
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::REQUIRED_IF_CHECK_ENGINE_CONFIG
+const IncidentIo\Model\IncidentFormLifecycleElementPayloadV3::REQUIRED_IF_NEVER_REQUIRE
+const IncidentIo\Model\IncidentFormLifecycleElementV3::DISCRIMINATOR
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_ANNOUNCE_RETRO_INCIDENT
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_CUSTOM_FIELD
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_DIVIDER
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_ENTER_POST_INCIDENT_FLOW
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_INCIDENT_ATTACHMENTS
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_INCIDENT_ROLE
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_INCIDENT_TYPE
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_INVESTIGATION_FEEDBACK
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_NAME
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_NEXT_UPDATE_IN
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_SEVERITY
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_SLACK_CHANNEL
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_STATUS
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_SUMMARY
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_TEXT
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_TIMESTAMP
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_TRIAGE
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_UPDATE_MESSAGE
+const IncidentIo\Model\IncidentFormLifecycleElementV3::ELEMENT_TYPE_VISIBILITY
+const IncidentIo\Model\IncidentFormLifecycleElementV3::REQUIRED_IF_ALWAYS_REQUIRE
+const IncidentIo\Model\IncidentFormLifecycleElementV3::REQUIRED_IF_CHECK_ENGINE_CONFIG
+const IncidentIo\Model\IncidentFormLifecycleElementV3::REQUIRED_IF_NEVER_REQUIRE
+const IncidentIo\Model\IncidentFormV3::DISCRIMINATOR
+const IncidentIo\Model\IncidentFormV3::FORM_TYPE_ACCEPT
+const IncidentIo\Model\IncidentFormV3::FORM_TYPE_CUSTOM_FIELDS
+const IncidentIo\Model\IncidentFormV3::FORM_TYPE_RESOLVE
+const IncidentIo\Model\IncidentFormV3::FORM_TYPE_RETROSPECTIVE
+const IncidentIo\Model\IncidentFormV3::FORM_TYPE_UPDATE
+const IncidentIo\Model\IncidentFormV3::FORM_TYPE__DECLARE
+const IncidentIo\Model\IncidentFormsCreatePayloadV3::DISCRIMINATOR
+const IncidentIo\Model\IncidentFormsCreatePayloadV3::FORM_TYPE_ACCEPT
+const IncidentIo\Model\IncidentFormsCreatePayloadV3::FORM_TYPE_CUSTOM_FIELDS
+const IncidentIo\Model\IncidentFormsCreatePayloadV3::FORM_TYPE_RESOLVE
+const IncidentIo\Model\IncidentFormsCreatePayloadV3::FORM_TYPE_RETROSPECTIVE
+const IncidentIo\Model\IncidentFormsCreatePayloadV3::FORM_TYPE_UPDATE
+const IncidentIo\Model\IncidentFormsCreatePayloadV3::FORM_TYPE__DECLARE
+const IncidentIo\Model\IncidentFormsCreateResultV3::DISCRIMINATOR
+const IncidentIo\Model\IncidentFormsListResultV3::DISCRIMINATOR
+const IncidentIo\Model\IncidentFormsShowResultV3::DISCRIMINATOR
+const IncidentIo\Model\IncidentFormsUpdatePayloadV3::DISCRIMINATOR
+const IncidentIo\Model\IncidentFormsUpdatePayloadV3::FORM_TYPE_ACCEPT
+const IncidentIo\Model\IncidentFormsUpdatePayloadV3::FORM_TYPE_CUSTOM_FIELDS
+const IncidentIo\Model\IncidentFormsUpdatePayloadV3::FORM_TYPE_RESOLVE
+const IncidentIo\Model\IncidentFormsUpdatePayloadV3::FORM_TYPE_RETROSPECTIVE
+const IncidentIo\Model\IncidentFormsUpdatePayloadV3::FORM_TYPE_UPDATE
+const IncidentIo\Model\IncidentFormsUpdatePayloadV3::FORM_TYPE__DECLARE
+const IncidentIo\Model\IncidentFormsUpdateResultV3::DISCRIMINATOR
 const IncidentIo\Model\IncidentMembershipV1::DISCRIMINATOR
 const IncidentIo\Model\IncidentMembershipsCreatePayloadV1::DISCRIMINATOR
 const IncidentIo\Model\IncidentMembershipsCreateResultV1::DISCRIMINATOR
@@ -6502,6 +6586,35 @@ method IncidentIo\Api\IncidentAttachmentsV1Api::incidentAttachmentsV1ListAsyncWi
 method IncidentIo\Api\IncidentAttachmentsV1Api::incidentAttachmentsV1ListRequest
 method IncidentIo\Api\IncidentAttachmentsV1Api::incidentAttachmentsV1ListWithHttpInfo
 method IncidentIo\Api\IncidentAttachmentsV1Api::setHostIndex
+method IncidentIo\Api\IncidentFormsV3Api::__construct
+method IncidentIo\Api\IncidentFormsV3Api::getConfig
+method IncidentIo\Api\IncidentFormsV3Api::getHostIndex
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3Create
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3CreateAsync
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3CreateAsyncWithHttpInfo
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3CreateRequest
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3CreateWithHttpInfo
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3Delete
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3DeleteAsync
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3DeleteAsyncWithHttpInfo
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3DeleteRequest
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3DeleteWithHttpInfo
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3List
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListAsync
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListAsyncWithHttpInfo
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListRequest
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListWithHttpInfo
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3Show
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ShowAsync
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ShowAsyncWithHttpInfo
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ShowRequest
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ShowWithHttpInfo
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3Update
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateAsync
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateAsyncWithHttpInfo
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateRequest
+method IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateWithHttpInfo
+method IncidentIo\Api\IncidentFormsV3Api::setHostIndex
 method IncidentIo\Api\IncidentMembershipsV1Api::__construct
 method IncidentIo\Api\IncidentMembershipsV1Api::getConfig
 method IncidentIo\Api\IncidentMembershipsV1Api::getHostIndex
@@ -9802,6 +9915,71 @@ param IncidentIo\Api\IncidentAttachmentsV1Api::incidentAttachmentsV1ListWithHttp
 param IncidentIo\Api\IncidentAttachmentsV1Api::incidentAttachmentsV1ListWithHttpInfo $incidentId
 param IncidentIo\Api\IncidentAttachmentsV1Api::incidentAttachmentsV1ListWithHttpInfo $resourceType
 param IncidentIo\Api\IncidentAttachmentsV1Api::setHostIndex $hostIndex
+param IncidentIo\Api\IncidentFormsV3Api::__construct $client
+param IncidentIo\Api\IncidentFormsV3Api::__construct $config
+param IncidentIo\Api\IncidentFormsV3Api::__construct $hostIndex
+param IncidentIo\Api\IncidentFormsV3Api::__construct $selector
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3Create $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3Create $incidentFormsCreatePayloadV3
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3CreateAsync $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3CreateAsync $incidentFormsCreatePayloadV3
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3CreateAsyncWithHttpInfo $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3CreateAsyncWithHttpInfo $incidentFormsCreatePayloadV3
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3CreateRequest $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3CreateRequest $incidentFormsCreatePayloadV3
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3CreateWithHttpInfo $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3CreateWithHttpInfo $incidentFormsCreatePayloadV3
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3Delete $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3Delete $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3DeleteAsync $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3DeleteAsync $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3DeleteAsyncWithHttpInfo $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3DeleteAsyncWithHttpInfo $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3DeleteRequest $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3DeleteRequest $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3DeleteWithHttpInfo $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3DeleteWithHttpInfo $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3List $after
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3List $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3List $pageSize
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListAsync $after
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListAsync $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListAsync $pageSize
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListAsyncWithHttpInfo $after
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListAsyncWithHttpInfo $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListAsyncWithHttpInfo $pageSize
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListRequest $after
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListRequest $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListRequest $pageSize
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListWithHttpInfo $after
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListWithHttpInfo $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ListWithHttpInfo $pageSize
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3Show $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3Show $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ShowAsync $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ShowAsync $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ShowAsyncWithHttpInfo $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ShowAsyncWithHttpInfo $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ShowRequest $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ShowRequest $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ShowWithHttpInfo $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3ShowWithHttpInfo $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3Update $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3Update $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3Update $incidentFormsUpdatePayloadV3
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateAsync $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateAsync $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateAsync $incidentFormsUpdatePayloadV3
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateAsyncWithHttpInfo $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateAsyncWithHttpInfo $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateAsyncWithHttpInfo $incidentFormsUpdatePayloadV3
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateRequest $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateRequest $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateRequest $incidentFormsUpdatePayloadV3
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateWithHttpInfo $contentType
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateWithHttpInfo $id
+param IncidentIo\Api\IncidentFormsV3Api::incidentFormsV3UpdateWithHttpInfo $incidentFormsUpdatePayloadV3
+param IncidentIo\Api\IncidentFormsV3Api::setHostIndex $hostIndex
 param IncidentIo\Api\IncidentMembershipsV1Api::__construct $client
 param IncidentIo\Api\IncidentMembershipsV1Api::__construct $config
 param IncidentIo\Api\IncidentMembershipsV1Api::__construct $hostIndex
@@ -15478,6 +15656,53 @@ property IncidentIo\Model\IncidentEditPayloadV2 name
 property IncidentIo\Model\IncidentEditPayloadV2 severityId
 property IncidentIo\Model\IncidentEditPayloadV2 slackChannelNameOverride
 property IncidentIo\Model\IncidentEditPayloadV2 summary
+property IncidentIo\Model\IncidentFormLifecycleElementConfigV3 requireComment
+property IncidentIo\Model\IncidentFormLifecycleElementPayloadV3 canSelectNoValue
+property IncidentIo\Model\IncidentFormLifecycleElementPayloadV3 config
+property IncidentIo\Model\IncidentFormLifecycleElementPayloadV3 customFieldId
+property IncidentIo\Model\IncidentFormLifecycleElementPayloadV3 defaultValue
+property IncidentIo\Model\IncidentFormLifecycleElementPayloadV3 description
+property IncidentIo\Model\IncidentFormLifecycleElementPayloadV3 elementType
+property IncidentIo\Model\IncidentFormLifecycleElementPayloadV3 id
+property IncidentIo\Model\IncidentFormLifecycleElementPayloadV3 incidentRoleId
+property IncidentIo\Model\IncidentFormLifecycleElementPayloadV3 incidentTimestampId
+property IncidentIo\Model\IncidentFormLifecycleElementPayloadV3 placeholder
+property IncidentIo\Model\IncidentFormLifecycleElementPayloadV3 requiredIf
+property IncidentIo\Model\IncidentFormLifecycleElementPayloadV3 requiredIfConditionGroups
+property IncidentIo\Model\IncidentFormLifecycleElementPayloadV3 showIfConditionGroups
+property IncidentIo\Model\IncidentFormLifecycleElementV3 canSelectNoValue
+property IncidentIo\Model\IncidentFormLifecycleElementV3 config
+property IncidentIo\Model\IncidentFormLifecycleElementV3 customFieldId
+property IncidentIo\Model\IncidentFormLifecycleElementV3 defaultValue
+property IncidentIo\Model\IncidentFormLifecycleElementV3 description
+property IncidentIo\Model\IncidentFormLifecycleElementV3 elementType
+property IncidentIo\Model\IncidentFormLifecycleElementV3 id
+property IncidentIo\Model\IncidentFormLifecycleElementV3 incidentRoleId
+property IncidentIo\Model\IncidentFormLifecycleElementV3 incidentTimestampId
+property IncidentIo\Model\IncidentFormLifecycleElementV3 placeholder
+property IncidentIo\Model\IncidentFormLifecycleElementV3 requiredIf
+property IncidentIo\Model\IncidentFormLifecycleElementV3 requiredIfConditionGroups
+property IncidentIo\Model\IncidentFormLifecycleElementV3 showIfConditionGroups
+property IncidentIo\Model\IncidentFormV3 createdAt
+property IncidentIo\Model\IncidentFormV3 expressions
+property IncidentIo\Model\IncidentFormV3 formType
+property IncidentIo\Model\IncidentFormV3 id
+property IncidentIo\Model\IncidentFormV3 incidentTypeId
+property IncidentIo\Model\IncidentFormV3 lifecycleElements
+property IncidentIo\Model\IncidentFormV3 updatedAt
+property IncidentIo\Model\IncidentFormsCreatePayloadV3 expressions
+property IncidentIo\Model\IncidentFormsCreatePayloadV3 formType
+property IncidentIo\Model\IncidentFormsCreatePayloadV3 incidentTypeId
+property IncidentIo\Model\IncidentFormsCreatePayloadV3 lifecycleElements
+property IncidentIo\Model\IncidentFormsCreateResultV3 incidentForm
+property IncidentIo\Model\IncidentFormsListResultV3 incidentForms
+property IncidentIo\Model\IncidentFormsListResultV3 paginationMeta
+property IncidentIo\Model\IncidentFormsShowResultV3 incidentForm
+property IncidentIo\Model\IncidentFormsUpdatePayloadV3 expressions
+property IncidentIo\Model\IncidentFormsUpdatePayloadV3 formType
+property IncidentIo\Model\IncidentFormsUpdatePayloadV3 incidentTypeId
+property IncidentIo\Model\IncidentFormsUpdatePayloadV3 lifecycleElements
+property IncidentIo\Model\IncidentFormsUpdateResultV3 incidentForm
 property IncidentIo\Model\IncidentMembershipV1 createdAt
 property IncidentIo\Model\IncidentMembershipV1 id
 property IncidentIo\Model\IncidentMembershipV1 incidentId
