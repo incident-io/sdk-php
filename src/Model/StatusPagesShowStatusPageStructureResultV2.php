@@ -57,7 +57,8 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
      */
     protected static array $openAPITypes = [
         'currentStructure' => '\IncidentIo\Model\StatusPageStructureV2',
-        'displayUptimeMode' => 'string'
+        'displayUptimeMode' => 'string',
+        'managementMeta' => '\IncidentIo\Model\ManagementMetaV2'
     ];
 
     /**
@@ -67,7 +68,8 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
      */
     protected static array $openAPIFormats = [
         'currentStructure' => null,
-        'displayUptimeMode' => null
+        'displayUptimeMode' => null,
+        'managementMeta' => null
     ];
 
     /**
@@ -77,7 +79,8 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
      */
     protected static array $openAPINullables = [
         'currentStructure' => false,
-        'displayUptimeMode' => false
+        'displayUptimeMode' => false,
+        'managementMeta' => false
     ];
 
     /**
@@ -157,7 +160,8 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
      */
     protected static array $attributeMap = [
         'currentStructure' => 'current_structure',
-        'displayUptimeMode' => 'display_uptime_mode'
+        'displayUptimeMode' => 'display_uptime_mode',
+        'managementMeta' => 'management_meta'
     ];
 
     /**
@@ -167,7 +171,8 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
      */
     protected static array $setters = [
         'currentStructure' => 'setCurrentStructure',
-        'displayUptimeMode' => 'setDisplayUptimeMode'
+        'displayUptimeMode' => 'setDisplayUptimeMode',
+        'managementMeta' => 'setManagementMeta'
     ];
 
     /**
@@ -177,7 +182,8 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
      */
     protected static array $getters = [
         'currentStructure' => 'getCurrentStructure',
-        'displayUptimeMode' => 'getDisplayUptimeMode'
+        'displayUptimeMode' => 'getDisplayUptimeMode',
+        'managementMeta' => 'getManagementMeta'
     ];
 
     /**
@@ -246,6 +252,7 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
     {
         $this->setIfExists('currentStructure', $data ?? [], null);
         $this->setIfExists('displayUptimeMode', $data ?? [], null);
+        $this->setIfExists('managementMeta', $data ?? [], null);
     }
 
     /**
@@ -278,6 +285,9 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
         }
         if ($this->container['displayUptimeMode'] === null) {
             $invalidProperties[] = "'displayUptimeMode' can't be null";
+        }
+        if ($this->container['managementMeta'] === null) {
+            $invalidProperties[] = "'managementMeta' can't be null";
         }
         return $invalidProperties;
     }
@@ -341,6 +351,33 @@ class StatusPagesShowStatusPageStructureResultV2 implements ModelInterface, Arra
             throw new InvalidArgumentException('non-nullable displayUptimeMode cannot be null');
         }
         $this->container['displayUptimeMode'] = $displayUptimeMode;
+
+        return $this;
+    }
+
+    /**
+     * Gets managementMeta
+     *
+     * @return \IncidentIo\Model\ManagementMetaV2
+     */
+    public function getManagementMeta(): \IncidentIo\Model\ManagementMetaV2
+    {
+        return $this->container['managementMeta'];
+    }
+
+    /**
+     * Sets managementMeta
+     *
+     * @param \IncidentIo\Model\ManagementMetaV2 $managementMeta managementMeta
+     *
+     * @return $this
+     */
+    public function setManagementMeta(\IncidentIo\Model\ManagementMetaV2 $managementMeta): static
+    {
+        if (is_null($managementMeta)) {
+            throw new InvalidArgumentException('non-nullable managementMeta cannot be null');
+        }
+        $this->container['managementMeta'] = $managementMeta;
 
         return $this;
     }

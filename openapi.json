@@ -96789,7 +96789,14 @@
               }
             ]
           },
-          "display_uptime_mode": "chart_and_percentage"
+          "display_uptime_mode": "chart_and_percentage",
+          "management_meta": {
+            "annotations": {
+              "incident.io/terraform/version": "3.0.0"
+            },
+            "managed_by": "dashboard",
+            "source_url": "https://github.com/my-company/infrastructure"
+          }
         },
         "properties": {
           "current_structure": {
@@ -96804,11 +96811,15 @@
             ],
             "example": "chart_and_percentage",
             "type": "string"
+          },
+          "management_meta": {
+            "$ref": "#/components/schemas/ManagementMetaV2"
           }
         },
         "required": [
           "current_structure",
-          "display_uptime_mode"
+          "display_uptime_mode",
+          "management_meta"
         ],
         "type": "object"
       },
@@ -176537,7 +176548,14 @@
                       }
                     ]
                   },
-                  "display_uptime_mode": "chart_and_percentage"
+                  "display_uptime_mode": "chart_and_percentage",
+                  "management_meta": {
+                    "annotations": {
+                      "incident.io/terraform/version": "3.0.0"
+                    },
+                    "managed_by": "dashboard",
+                    "source_url": "https://github.com/my-company/infrastructure"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/StatusPagesShowStatusPageStructureResultV2"
