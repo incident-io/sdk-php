@@ -52,6 +52,7 @@ src/Api/ScheduleSyncTargetsV2Api.php
 src/Api/SchedulesV2Api.php
 src/Api/SecretsV2Api.php
 src/Api/SeveritiesV1Api.php
+src/Api/StatusPageComponentsV2Api.php
 src/Api/StatusPagesV1Api.php
 src/Api/StatusPagesV2Api.php
 src/Api/TeamsV3Api.php
@@ -1115,6 +1116,13 @@ src/Model/SeveritiesUpdateResultV1.php
 src/Model/SeverityV1.php
 src/Model/SeverityV2.php
 src/Model/StatusPageComponentAvailabilityV2.php
+src/Model/StatusPageComponentV2.php
+src/Model/StatusPageComponentsCreatePayloadV2.php
+src/Model/StatusPageComponentsCreateResultV2.php
+src/Model/StatusPageComponentsListResultV2.php
+src/Model/StatusPageComponentsShowResultV2.php
+src/Model/StatusPageComponentsUpdatePayloadV2.php
+src/Model/StatusPageComponentsUpdateResultV2.php
 src/Model/StatusPageIncidentAffectedComponentV2.php
 src/Model/StatusPageIncidentComponentImpactV2.php
 src/Model/StatusPageIncidentUpdateV2.php

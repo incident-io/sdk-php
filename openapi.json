@@ -94744,6 +94744,210 @@
         ],
         "type": "object"
       },
+      "StatusPageComponentV2": {
+        "description": "A status page component that can appear on one or more status pages.\n\nComponents are organisation-scoped. Placement on a page is controlled by that\npage's structure, not by ownership of the component.",
+        "example": {
+          "description": "Our iOS app",
+          "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+          "management_meta": {
+            "annotations": {
+              "incident.io/terraform/version": "3.0.0"
+            },
+            "managed_by": "dashboard",
+            "source_url": "https://github.com/my-company/infrastructure"
+          },
+          "name": "App"
+        },
+        "properties": {
+          "description": {
+            "description": "Optional short description of this component",
+            "example": "Our iOS app",
+            "type": "string"
+          },
+          "id": {
+            "description": "Unique identifier for this component",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "type": "string"
+          },
+          "management_meta": {
+            "$ref": "#/components/schemas/ManagementMetaV2"
+          },
+          "name": {
+            "description": "Human-readable name for the component",
+            "example": "App",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "management_meta"
+        ],
+        "type": "object"
+      },
+      "StatusPageComponentsCreatePayloadV2": {
+        "example": {
+          "description": "Our iOS app",
+          "name": "App"
+        },
+        "properties": {
+          "description": {
+            "description": "Optional short description of this component",
+            "example": "Our iOS app",
+            "type": "string"
+          },
+          "name": {
+            "description": "Human-readable name for the component",
+            "example": "App",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      },
+      "StatusPageComponentsCreateResultV2": {
+        "example": {
+          "status_page_component": {
+            "description": "Our iOS app",
+            "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "management_meta": {
+              "annotations": {
+                "incident.io/terraform/version": "3.0.0"
+              },
+              "managed_by": "dashboard",
+              "source_url": "https://github.com/my-company/infrastructure"
+            },
+            "name": "App"
+          }
+        },
+        "properties": {
+          "status_page_component": {
+            "$ref": "#/components/schemas/StatusPageComponentV2"
+          }
+        },
+        "required": [
+          "status_page_component"
+        ],
+        "type": "object"
+      },
+      "StatusPageComponentsListResultV2": {
+        "example": {
+          "status_page_components": [
+            {
+              "description": "Our iOS app",
+              "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+              "management_meta": {
+                "annotations": {
+                  "incident.io/terraform/version": "3.0.0"
+                },
+                "managed_by": "dashboard",
+                "source_url": "https://github.com/my-company/infrastructure"
+              },
+              "name": "App"
+            }
+          ]
+        },
+        "properties": {
+          "status_page_components": {
+            "example": [
+              {
+                "description": "Our iOS app",
+                "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                "management_meta": {
+                  "annotations": {
+                    "incident.io/terraform/version": "3.0.0"
+                  },
+                  "managed_by": "dashboard",
+                  "source_url": "https://github.com/my-company/infrastructure"
+                },
+                "name": "App"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/StatusPageComponentV2"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "status_page_components"
+        ],
+        "type": "object"
+      },
+      "StatusPageComponentsShowResultV2": {
+        "example": {
+          "status_page_component": {
+            "description": "Our iOS app",
+            "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "management_meta": {
+              "annotations": {
+                "incident.io/terraform/version": "3.0.0"
+              },
+              "managed_by": "dashboard",
+              "source_url": "https://github.com/my-company/infrastructure"
+            },
+            "name": "App"
+          }
+        },
+        "properties": {
+          "status_page_component": {
+            "$ref": "#/components/schemas/StatusPageComponentV2"
+          }
+        },
+        "required": [
+          "status_page_component"
+        ],
+        "type": "object"
+      },
+      "StatusPageComponentsUpdatePayloadV2": {
+        "example": {
+          "description": "Our iOS app",
+          "name": "App"
+        },
+        "properties": {
+          "description": {
+            "description": "Optional short description of this component",
+            "example": "Our iOS app",
+            "type": "string"
+          },
+          "name": {
+            "description": "Human-readable name for the component",
+            "example": "App",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      },
+      "StatusPageComponentsUpdateResultV2": {
+        "example": {
+          "status_page_component": {
+            "description": "Our iOS app",
+            "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "management_meta": {
+              "annotations": {
+                "incident.io/terraform/version": "3.0.0"
+              },
+              "managed_by": "dashboard",
+              "source_url": "https://github.com/my-company/infrastructure"
+            },
+            "name": "App"
+          }
+        },
+        "properties": {
+          "status_page_component": {
+            "$ref": "#/components/schemas/StatusPageComponentV2"
+          }
+        },
+        "required": [
+          "status_page_component"
+        ],
+        "type": "object"
+      },
       "StatusPageIncidentAffectedComponentV2": {
         "example": {
           "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
@@ -173808,6 +174012,914 @@
         ]
       }
     },
+    "/v2/status_page_components": {
+      "get": {
+        "description": "List all status page components for an organisation.",
+        "operationId": "Status Page Components V2#List",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status_page_components": [
+                    {
+                      "description": "Our iOS app",
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                      "management_meta": {
+                        "annotations": {
+                          "incident.io/terraform/version": "3.0.0"
+                        },
+                        "managed_by": "dashboard",
+                        "source_url": "https://github.com/my-company/infrastructure"
+                      },
+                      "name": "App"
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/StatusPageComponentsListResultV2"
+                }
+              }
+            },
+            "description": "OK response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "List Status Page Components V2",
+        "tags": [
+          "Status Page Components V2"
+        ],
+        "x-docs-display-name": "List",
+        "x-docs-group-name": "Status Page Components V2",
+        "x-docs-resource-type": "StatusPageComponentV2"
+      },
+      "post": {
+        "description": "Create a status page component. Placement on a page is controlled separately via status page structures.",
+        "operationId": "Status Page Components V2#Create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "description": "Our iOS app",
+                "name": "App"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/StatusPageComponentsCreatePayloadV2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status_page_component": {
+                    "description": "Our iOS app",
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                    "management_meta": {
+                      "annotations": {
+                        "incident.io/terraform/version": "3.0.0"
+                      },
+                      "managed_by": "dashboard",
+                      "source_url": "https://github.com/my-company/infrastructure"
+                    },
+                    "name": "App"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/StatusPageComponentsCreateResultV2"
+                }
+              }
+            },
+            "description": "Created response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "Create Status Page Components V2",
+        "tags": [
+          "Status Page Components V2"
+        ],
+        "x-docs-display-name": "Create",
+        "x-docs-group-name": "Status Page Components V2",
+        "x-docs-resource-type": "StatusPageComponentV2",
+        "x-mint": {
+          "content": "🔑 Requires the `status_pages.configure` scope."
+        },
+        "x-rbac-scopes": [
+          "status_pages.configure"
+        ]
+      }
+    },
+    "/v2/status_page_components/{id}": {
+      "delete": {
+        "description": "Archive a status page component.",
+        "operationId": "Status Page Components V2#Destroy",
+        "parameters": [
+          {
+            "description": "Unique identifier of the status page component",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "Unique identifier of the status page component",
+              "example": "01FCNDV6P870EA6S7TK1DSYDG1",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "Destroy Status Page Components V2",
+        "tags": [
+          "Status Page Components V2"
+        ],
+        "x-docs-display-name": "Delete",
+        "x-docs-group-name": "Status Page Components V2",
+        "x-docs-resource-type": "StatusPageComponentV2",
+        "x-mint": {
+          "content": "🔑 Requires the `status_pages.configure` scope."
+        },
+        "x-rbac-scopes": [
+          "status_pages.configure"
+        ]
+      },
+      "get": {
+        "description": "Show a single status page component.",
+        "operationId": "Status Page Components V2#Show",
+        "parameters": [
+          {
+            "description": "Unique identifier of the status page component",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "Unique identifier of the status page component",
+              "example": "01FCNDV6P870EA6S7TK1DSYDG1",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status_page_component": {
+                    "description": "Our iOS app",
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                    "management_meta": {
+                      "annotations": {
+                        "incident.io/terraform/version": "3.0.0"
+                      },
+                      "managed_by": "dashboard",
+                      "source_url": "https://github.com/my-company/infrastructure"
+                    },
+                    "name": "App"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/StatusPageComponentsShowResultV2"
+                }
+              }
+            },
+            "description": "OK response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "Show Status Page Components V2",
+        "tags": [
+          "Status Page Components V2"
+        ],
+        "x-docs-display-name": "Show",
+        "x-docs-group-name": "Status Page Components V2",
+        "x-docs-resource-type": "StatusPageComponentV2"
+      },
+      "put": {
+        "description": "Update a status page component's name and description.",
+        "operationId": "Status Page Components V2#Update",
+        "parameters": [
+          {
+            "description": "Unique identifier of the status page component",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "Unique identifier of the status page component",
+              "example": "01FCNDV6P870EA6S7TK1DSYDG1",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "description": "Our iOS app",
+                "name": "App"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/StatusPageComponentsUpdatePayloadV2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "status_page_component": {
+                    "description": "Our iOS app",
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                    "management_meta": {
+                      "annotations": {
+                        "incident.io/terraform/version": "3.0.0"
+                      },
+                      "managed_by": "dashboard",
+                      "source_url": "https://github.com/my-company/infrastructure"
+                    },
+                    "name": "App"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/StatusPageComponentsUpdateResultV2"
+                }
+              }
+            },
+            "description": "OK response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "Update Status Page Components V2",
+        "tags": [
+          "Status Page Components V2"
+        ],
+        "x-docs-display-name": "Update",
+        "x-docs-group-name": "Status Page Components V2",
+        "x-docs-resource-type": "StatusPageComponentV2",
+        "x-mint": {
+          "content": "🔑 Requires the `status_pages.configure` scope."
+        },
+        "x-rbac-scopes": [
+          "status_pages.configure"
+        ]
+      }
+    },
     "/v2/status_page_incident_updates": {
       "post": {
         "description": "Post an update on a Status Page incident.\n\nThis is the endpoint to use when resolving an incident - set incident_status to \"resolved\" to end the incident. There is a limit of 100 updates per incident.\n\nThis endpoint requires an API key with the \"Create status page incidents, status page maintenance windows, and publish status page updates\" scope.",
@@ -191555,6 +192667,10 @@
     {
       "description": "Manage incident severities.\n\nEach incident has a severity, picked from one of the severities configured in your\norganisations settings.\n\nSeverities help categorise incidents, and communicate urgency/impact. You can use\nseverities when filtering incidents in the dashboard, and in workflows and announcement\nrules.\n",
       "name": "Severities V1"
+    },
+    {
+      "description": "Manage status page components.\n\nComponents are organisation-scoped and can appear on multiple status pages via\neach page's structure. Use these endpoints to create and maintain components;\nuse status page structure endpoints to place them on pages.",
+      "name": "Status Page Components V2"
     },
     {
       "description": "This API currently only allows linked Response incidents for a status page incident to be listed.",
