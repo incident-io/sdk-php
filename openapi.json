@@ -23034,6 +23034,154 @@
         ],
         "type": "object"
       },
+      "AuditLogExtensionPluginCreatedMetadataV2": {
+        "example": {
+          "provider": "github",
+          "repo_name": "oncall-plugins",
+          "repo_owner": "acme",
+          "subpath": "plugins/acme-oncall"
+        },
+        "properties": {
+          "provider": {
+            "description": "The source control provider the plugin's repository lives in (github, gitlab)",
+            "example": "github",
+            "type": "string"
+          },
+          "repo_name": {
+            "description": "The name of the plugin's repository",
+            "example": "oncall-plugins",
+            "type": "string"
+          },
+          "repo_owner": {
+            "description": "The owner of the plugin's repository, including any GitLab group path",
+            "example": "acme",
+            "type": "string"
+          },
+          "subpath": {
+            "description": "The plugin's directory within the repository, absent when the plugin is the repository root",
+            "example": "plugins/acme-oncall",
+            "type": "string"
+          }
+        },
+        "required": [
+          "provider",
+          "repo_owner",
+          "repo_name"
+        ],
+        "type": "object"
+      },
+      "AuditLogExtensionPluginUpdatedMetadataV2": {
+        "example": {
+          "after_enabled": "true",
+          "after_enabled_skill_count": "2",
+          "after_name": "acme-oncall",
+          "after_provider": "github",
+          "after_repo_name": "oncall-plugins",
+          "after_repo_owner": "acme-forks",
+          "after_skill_selection_mode": "selected",
+          "after_subpath": "plugins/acme-oncall",
+          "before_enabled": "false",
+          "before_enabled_skill_count": "4",
+          "before_name": "oncall",
+          "before_provider": "github",
+          "before_repo_name": "oncall-plugins",
+          "before_repo_owner": "acme",
+          "before_skill_selection_mode": "automatic",
+          "before_subpath": "plugins/acme-oncall",
+          "changed": "location"
+        },
+        "properties": {
+          "after_enabled": {
+            "description": "Whether the plugin is mounted into agent runs after the change (true, false)",
+            "example": "true",
+            "type": "string"
+          },
+          "after_enabled_skill_count": {
+            "description": "How many skills are selected after the change, absent when every skill loads",
+            "example": "2",
+            "type": "string"
+          },
+          "after_name": {
+            "description": "The plugin's name after the change",
+            "example": "acme-oncall",
+            "type": "string"
+          },
+          "after_provider": {
+            "description": "The source control provider of the plugin's new repository (github, gitlab)",
+            "example": "github",
+            "type": "string"
+          },
+          "after_repo_name": {
+            "description": "The name of the plugin's new repository",
+            "example": "oncall-plugins",
+            "type": "string"
+          },
+          "after_repo_owner": {
+            "description": "The owner of the plugin's new repository",
+            "example": "acme-forks",
+            "type": "string"
+          },
+          "after_skill_selection_mode": {
+            "description": "Which skills load after the change: every skill, or only the selected ones (automatic, selected)",
+            "example": "selected",
+            "type": "string"
+          },
+          "after_subpath": {
+            "description": "The plugin's new directory within its repository, absent when it is the repository root",
+            "example": "plugins/acme-oncall",
+            "type": "string"
+          },
+          "before_enabled": {
+            "description": "Whether the plugin was mounted into agent runs before the change (true, false)",
+            "example": "false",
+            "type": "string"
+          },
+          "before_enabled_skill_count": {
+            "description": "How many skills were selected before the change, absent when every skill loaded",
+            "example": "4",
+            "type": "string"
+          },
+          "before_name": {
+            "description": "The plugin's name before the change",
+            "example": "oncall",
+            "type": "string"
+          },
+          "before_provider": {
+            "description": "The source control provider of the plugin's previous repository (github, gitlab)",
+            "example": "github",
+            "type": "string"
+          },
+          "before_repo_name": {
+            "description": "The name of the plugin's previous repository",
+            "example": "oncall-plugins",
+            "type": "string"
+          },
+          "before_repo_owner": {
+            "description": "The owner of the plugin's previous repository",
+            "example": "acme",
+            "type": "string"
+          },
+          "before_skill_selection_mode": {
+            "description": "Which skills loaded before the change: every skill, or only the selected ones (automatic, selected)",
+            "example": "automatic",
+            "type": "string"
+          },
+          "before_subpath": {
+            "description": "The plugin's previous directory within its repository, absent when it was the repository root",
+            "example": "plugins/acme-oncall",
+            "type": "string"
+          },
+          "changed": {
+            "description": "What the update changed, comma separated (enabled, skill_selection, name, location)",
+            "example": "location",
+            "type": "string"
+          }
+        },
+        "required": [
+          "changed"
+        ],
+        "type": "object"
+      },
       "AuditLogHrisTimeOffPolicyUpdatedMetadataV2": {
         "example": {
           "behaviour": "visible",
@@ -23128,6 +23276,62 @@
         "required": [
           "before_default_team_ids",
           "after_default_team_ids"
+        ],
+        "type": "object"
+      },
+      "AuditLogInvestigationTriggerMetadataV2": {
+        "example": {
+          "blocks": "false",
+          "enabled": "true",
+          "frequency": "once",
+          "moment": "initial_searches",
+          "plugin_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+          "skill": "orient",
+          "task_set": "true"
+        },
+        "properties": {
+          "blocks": {
+            "description": "Whether the investigation waits for the trigger to finish before moving on (true, false)",
+            "example": "false",
+            "type": "string"
+          },
+          "enabled": {
+            "description": "Whether the trigger fires (true, false)",
+            "example": "true",
+            "type": "string"
+          },
+          "frequency": {
+            "description": "How often the trigger fires across one investigation",
+            "example": "once",
+            "type": "string"
+          },
+          "moment": {
+            "description": "When in an investigation the trigger runs",
+            "example": "initial_searches",
+            "type": "string"
+          },
+          "plugin_id": {
+            "description": "The extension plugin holding the skill the trigger runs, absent for a trigger that only gives a task",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          },
+          "skill": {
+            "description": "The skill directory the trigger runs, absent when the trigger leaves the choice of skill to the investigation",
+            "example": "orient",
+            "type": "string"
+          },
+          "task_set": {
+            "description": "Whether the trigger hands the agent a task of its own (true, false)",
+            "example": "true",
+            "type": "string"
+          }
+        },
+        "required": [
+          "moment",
+          "task_set",
+          "blocks",
+          "frequency",
+          "enabled"
         ],
         "type": "object"
       },
@@ -23586,6 +23790,9 @@
               "escalation_path_template",
               "extension_connector",
               "extension_connector_tool",
+              "extension_plugin",
+              "glossary_entry",
+              "investigation_trigger",
               "follow_up_category",
               "follow_up_priority",
               "holiday_user_feed",
@@ -28409,6 +28616,264 @@
         ],
         "type": "object"
       },
+      "AuditLogsExtensionPluginCreatedV1": {
+        "example": {
+          "action": "extension_plugin.created",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "provider": "github",
+            "repo_name": "oncall-plugins",
+            "repo_owner": "acme",
+            "subpath": "plugins/acme-oncall"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "acme-oncall",
+              "type": "extension_plugin"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "extension_plugin.created",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogExtensionPluginCreatedMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "acme-oncall",
+                "type": "extension_plugin"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
+        ],
+        "type": "object"
+      },
+      "AuditLogsExtensionPluginDeletedV1": {
+        "example": {
+          "action": "extension_plugin.deleted",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "acme-oncall",
+              "type": "extension_plugin"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "extension_plugin.deleted",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "acme-oncall",
+                "type": "extension_plugin"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context"
+        ],
+        "type": "object"
+      },
+      "AuditLogsExtensionPluginUpdatedV1": {
+        "example": {
+          "action": "extension_plugin.updated",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "after_enabled": "true",
+            "after_enabled_skill_count": "2",
+            "after_name": "acme-oncall",
+            "after_provider": "github",
+            "after_repo_name": "oncall-plugins",
+            "after_repo_owner": "acme-forks",
+            "after_skill_selection_mode": "selected",
+            "after_subpath": "plugins/acme-oncall",
+            "before_enabled": "false",
+            "before_enabled_skill_count": "4",
+            "before_name": "oncall",
+            "before_provider": "github",
+            "before_repo_name": "oncall-plugins",
+            "before_repo_owner": "acme",
+            "before_skill_selection_mode": "automatic",
+            "before_subpath": "plugins/acme-oncall",
+            "changed": "location"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "acme-oncall",
+              "type": "extension_plugin"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "extension_plugin.updated",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogExtensionPluginUpdatedMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "acme-oncall",
+                "type": "extension_plugin"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
+        ],
+        "type": "object"
+      },
       "AuditLogsFollowUpCategoryCreatedV1": {
         "example": {
           "action": "follow_up_category.created",
@@ -28835,6 +29300,231 @@
                 "id": "01FCNDV6P870EA6S7TK1DSYDG0",
                 "name": "Low",
                 "type": "follow_up_priority"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context"
+        ],
+        "type": "object"
+      },
+      "AuditLogsGlossaryEntryCreatedV1": {
+        "example": {
+          "action": "glossary_entry.created",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "SLO",
+              "type": "glossary_entry"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "glossary_entry.created",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "SLO",
+                "type": "glossary_entry"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context"
+        ],
+        "type": "object"
+      },
+      "AuditLogsGlossaryEntryDeletedV1": {
+        "example": {
+          "action": "glossary_entry.deleted",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "SLO",
+              "type": "glossary_entry"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "glossary_entry.deleted",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "SLO",
+                "type": "glossary_entry"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context"
+        ],
+        "type": "object"
+      },
+      "AuditLogsGlossaryEntryUpdatedV1": {
+        "example": {
+          "action": "glossary_entry.updated",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "SLO",
+              "type": "glossary_entry"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "glossary_entry.updated",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "SLO",
+                "type": "glossary_entry"
               }
             ],
             "items": {
@@ -31699,6 +32389,270 @@
           "actor",
           "targets",
           "context"
+        ],
+        "type": "object"
+      },
+      "AuditLogsInvestigationTriggerCreatedV1": {
+        "example": {
+          "action": "investigation_trigger.created",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "blocks": "false",
+            "enabled": "true",
+            "frequency": "once",
+            "moment": "initial_searches",
+            "plugin_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "skill": "orient",
+            "task_set": "true"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Investigation trigger (01FCNDV6P870EA6S7TK1DSYDG0)",
+              "type": "investigation_trigger"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "investigation_trigger.created",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogInvestigationTriggerMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Investigation trigger (01FCNDV6P870EA6S7TK1DSYDG0)",
+                "type": "investigation_trigger"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
+        ],
+        "type": "object"
+      },
+      "AuditLogsInvestigationTriggerDeletedV1": {
+        "example": {
+          "action": "investigation_trigger.deleted",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "blocks": "false",
+            "enabled": "true",
+            "frequency": "once",
+            "moment": "initial_searches",
+            "plugin_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "skill": "orient",
+            "task_set": "true"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Investigation trigger (01FCNDV6P870EA6S7TK1DSYDG0)",
+              "type": "investigation_trigger"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "investigation_trigger.deleted",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogInvestigationTriggerMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Investigation trigger (01FCNDV6P870EA6S7TK1DSYDG0)",
+                "type": "investigation_trigger"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
+        ],
+        "type": "object"
+      },
+      "AuditLogsInvestigationTriggerUpdatedV1": {
+        "example": {
+          "action": "investigation_trigger.updated",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "blocks": "false",
+            "enabled": "true",
+            "frequency": "once",
+            "moment": "initial_searches",
+            "plugin_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "skill": "orient",
+            "task_set": "true"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Investigation trigger (01FCNDV6P870EA6S7TK1DSYDG0)",
+              "type": "investigation_trigger"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "investigation_trigger.updated",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogInvestigationTriggerMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Investigation trigger (01FCNDV6P870EA6S7TK1DSYDG0)",
+                "type": "investigation_trigger"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
         ],
         "type": "object"
       },
@@ -200766,6 +201720,169 @@
         ]
       }
     },
+    "/x-audit-logs/extension_plugin.created.1": {
+      "get": {
+        "description": "This entry is created whenever an extension plugin is added from a repository",
+        "operationId": "ExtensionPluginCreatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "extension_plugin.created",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "provider": "github",
+                    "repo_name": "oncall-plugins",
+                    "repo_owner": "acme",
+                    "subpath": "plugins/acme-oncall"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "acme-oncall",
+                      "type": "extension_plugin"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsExtensionPluginCreatedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/extension_plugin.deleted.1": {
+      "get": {
+        "description": "This entry is created whenever an extension plugin is removed",
+        "operationId": "ExtensionPluginDeletedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "extension_plugin.deleted",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "acme-oncall",
+                      "type": "extension_plugin"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsExtensionPluginDeletedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/extension_plugin.updated.1": {
+      "get": {
+        "description": "This entry is created whenever an extension plugin is switched on or off, renamed, moved to another repository location, or has its skill selection changed",
+        "operationId": "ExtensionPluginUpdatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "extension_plugin.updated",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "after_enabled": "true",
+                    "after_enabled_skill_count": "2",
+                    "after_name": "acme-oncall",
+                    "after_provider": "github",
+                    "after_repo_name": "oncall-plugins",
+                    "after_repo_owner": "acme-forks",
+                    "after_skill_selection_mode": "selected",
+                    "after_subpath": "plugins/acme-oncall",
+                    "before_enabled": "false",
+                    "before_enabled_skill_count": "4",
+                    "before_name": "oncall",
+                    "before_provider": "github",
+                    "before_repo_name": "oncall-plugins",
+                    "before_repo_owner": "acme",
+                    "before_skill_selection_mode": "automatic",
+                    "before_subpath": "plugins/acme-oncall",
+                    "changed": "location"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "acme-oncall",
+                      "type": "extension_plugin"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsExtensionPluginUpdatedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
     "/x-audit-logs/follow_up_category.created.1": {
       "get": {
         "description": "This entry is created whenever a follow up category is created",
@@ -201031,6 +202148,144 @@
                 },
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsFollowUpPriorityUpdatedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/glossary_entry.created.1": {
+      "get": {
+        "description": "This entry is created whenever a glossary entry is created",
+        "operationId": "GlossaryEntryCreatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "glossary_entry.created",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "SLO",
+                      "type": "glossary_entry"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsGlossaryEntryCreatedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/glossary_entry.deleted.1": {
+      "get": {
+        "description": "This entry is created whenever a glossary entry is deleted",
+        "operationId": "GlossaryEntryDeletedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "glossary_entry.deleted",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "SLO",
+                      "type": "glossary_entry"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsGlossaryEntryDeletedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/glossary_entry.updated.1": {
+      "get": {
+        "description": "This entry is created whenever a glossary entry is updated",
+        "operationId": "GlossaryEntryUpdatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "glossary_entry.updated",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "SLO",
+                      "type": "glossary_entry"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsGlossaryEntryUpdatedV1"
                 }
               }
             },
@@ -202716,6 +203971,171 @@
                 },
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsInternalStatusPageUpdatedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/investigation_trigger.created.1": {
+      "get": {
+        "description": "This entry is created whenever an investigation trigger is created",
+        "operationId": "InvestigationTriggerCreatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "investigation_trigger.created",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "blocks": "false",
+                    "enabled": "true",
+                    "frequency": "once",
+                    "moment": "initial_searches",
+                    "plugin_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "skill": "orient",
+                    "task_set": "true"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Investigation trigger (01FCNDV6P870EA6S7TK1DSYDG0)",
+                      "type": "investigation_trigger"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsInvestigationTriggerCreatedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/investigation_trigger.deleted.1": {
+      "get": {
+        "description": "This entry is created whenever an investigation trigger is deleted",
+        "operationId": "InvestigationTriggerDeletedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "investigation_trigger.deleted",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "blocks": "false",
+                    "enabled": "true",
+                    "frequency": "once",
+                    "moment": "initial_searches",
+                    "plugin_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "skill": "orient",
+                    "task_set": "true"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Investigation trigger (01FCNDV6P870EA6S7TK1DSYDG0)",
+                      "type": "investigation_trigger"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsInvestigationTriggerDeletedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/investigation_trigger.updated.1": {
+      "get": {
+        "description": "This entry is created whenever an investigation trigger is updated",
+        "operationId": "InvestigationTriggerUpdatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "investigation_trigger.updated",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "blocks": "false",
+                    "enabled": "true",
+                    "frequency": "once",
+                    "moment": "initial_searches",
+                    "plugin_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "skill": "orient",
+                    "task_set": "true"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Investigation trigger (01FCNDV6P870EA6S7TK1DSYDG0)",
+                      "type": "investigation_trigger"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsInvestigationTriggerUpdatedV1"
                 }
               }
             },

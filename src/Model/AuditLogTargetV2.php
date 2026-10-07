@@ -238,6 +238,9 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
     public const TYPE_ESCALATION_PATH_TEMPLATE = 'escalation_path_template';
     public const TYPE_EXTENSION_CONNECTOR = 'extension_connector';
     public const TYPE_EXTENSION_CONNECTOR_TOOL = 'extension_connector_tool';
+    public const TYPE_EXTENSION_PLUGIN = 'extension_plugin';
+    public const TYPE_GLOSSARY_ENTRY = 'glossary_entry';
+    public const TYPE_INVESTIGATION_TRIGGER = 'investigation_trigger';
     public const TYPE_FOLLOW_UP_CATEGORY = 'follow_up_category';
     public const TYPE_FOLLOW_UP_PRIORITY = 'follow_up_priority';
     public const TYPE_HOLIDAY_USER_FEED = 'holiday_user_feed';
@@ -317,6 +320,9 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
             self::TYPE_ESCALATION_PATH_TEMPLATE,
             self::TYPE_EXTENSION_CONNECTOR,
             self::TYPE_EXTENSION_CONNECTOR_TOOL,
+            self::TYPE_EXTENSION_PLUGIN,
+            self::TYPE_GLOSSARY_ENTRY,
+            self::TYPE_INVESTIGATION_TRIGGER,
             self::TYPE_FOLLOW_UP_CATEGORY,
             self::TYPE_FOLLOW_UP_PRIORITY,
             self::TYPE_HOLIDAY_USER_FEED,
