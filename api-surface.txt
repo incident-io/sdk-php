@@ -5617,6 +5617,8 @@ const IncidentIo\Model\WorkflowRunSlimV2::DISCRIMINATOR
 const IncidentIo\Model\WorkflowRunV2::DISCRIMINATOR
 const IncidentIo\Model\WorkflowRunsListResultV2::DISCRIMINATOR
 const IncidentIo\Model\WorkflowRunsShowResultV2::DISCRIMINATOR
+const IncidentIo\Model\WorkflowSlimV2::AUTO_RUN_MODE_CONFIRM_BEFORE_RUNNING
+const IncidentIo\Model\WorkflowSlimV2::AUTO_RUN_MODE_RUN_AUTOMATICALLY
 const IncidentIo\Model\WorkflowSlimV2::DISCRIMINATOR
 const IncidentIo\Model\WorkflowSlimV2::PRIVATE_INCIDENT_SCOPE_ALL
 const IncidentIo\Model\WorkflowSlimV2::PRIVATE_INCIDENT_SCOPE_NONE
@@ -5630,6 +5632,8 @@ const IncidentIo\Model\WorkflowSlimV2::STATE_ACTIVE
 const IncidentIo\Model\WorkflowSlimV2::STATE_DISABLED
 const IncidentIo\Model\WorkflowSlimV2::STATE_DRAFT
 const IncidentIo\Model\WorkflowSlimV2::STATE_ERROR
+const IncidentIo\Model\WorkflowV2::AUTO_RUN_MODE_CONFIRM_BEFORE_RUNNING
+const IncidentIo\Model\WorkflowV2::AUTO_RUN_MODE_RUN_AUTOMATICALLY
 const IncidentIo\Model\WorkflowV2::DISCRIMINATOR
 const IncidentIo\Model\WorkflowV2::PRIVATE_INCIDENT_SCOPE_ALL
 const IncidentIo\Model\WorkflowV2::PRIVATE_INCIDENT_SCOPE_NONE
@@ -5643,6 +5647,8 @@ const IncidentIo\Model\WorkflowV2::STATE_ACTIVE
 const IncidentIo\Model\WorkflowV2::STATE_DISABLED
 const IncidentIo\Model\WorkflowV2::STATE_DRAFT
 const IncidentIo\Model\WorkflowV2::STATE_ERROR
+const IncidentIo\Model\WorkflowsCreateWorkflowPayloadV2::AUTO_RUN_MODE_CONFIRM_BEFORE_RUNNING
+const IncidentIo\Model\WorkflowsCreateWorkflowPayloadV2::AUTO_RUN_MODE_RUN_AUTOMATICALLY
 const IncidentIo\Model\WorkflowsCreateWorkflowPayloadV2::DISCRIMINATOR
 const IncidentIo\Model\WorkflowsCreateWorkflowPayloadV2::PRIVATE_INCIDENT_SCOPE_ALL
 const IncidentIo\Model\WorkflowsCreateWorkflowPayloadV2::PRIVATE_INCIDENT_SCOPE_NONE
@@ -5659,6 +5665,8 @@ const IncidentIo\Model\WorkflowsCreateWorkflowPayloadV2::STATE_ERROR
 const IncidentIo\Model\WorkflowsCreateWorkflowResultV2::DISCRIMINATOR
 const IncidentIo\Model\WorkflowsListWorkflowsResultV2::DISCRIMINATOR
 const IncidentIo\Model\WorkflowsShowWorkflowResultV2::DISCRIMINATOR
+const IncidentIo\Model\WorkflowsUpdateWorkflowPayloadV2::AUTO_RUN_MODE_CONFIRM_BEFORE_RUNNING
+const IncidentIo\Model\WorkflowsUpdateWorkflowPayloadV2::AUTO_RUN_MODE_RUN_AUTOMATICALLY
 const IncidentIo\Model\WorkflowsUpdateWorkflowPayloadV2::DISCRIMINATOR
 const IncidentIo\Model\WorkflowsUpdateWorkflowPayloadV2::PRIVATE_INCIDENT_SCOPE_ALL
 const IncidentIo\Model\WorkflowsUpdateWorkflowPayloadV2::PRIVATE_INCIDENT_SCOPE_NONE
@@ -17123,6 +17131,7 @@ property IncidentIo\Model\WorkflowRunV2 workflowVersionNumber
 property IncidentIo\Model\WorkflowRunsListResultV2 paginationMeta
 property IncidentIo\Model\WorkflowRunsListResultV2 workflowRuns
 property IncidentIo\Model\WorkflowRunsShowResultV2 workflowRun
+property IncidentIo\Model\WorkflowSlimV2 autoRunMode
 property IncidentIo\Model\WorkflowSlimV2 conditionGroups
 property IncidentIo\Model\WorkflowSlimV2 continueOnStepError
 property IncidentIo\Model\WorkflowSlimV2 delay
@@ -17143,6 +17152,7 @@ property IncidentIo\Model\WorkflowSlimV2 state
 property IncidentIo\Model\WorkflowSlimV2 steps
 property IncidentIo\Model\WorkflowSlimV2 trigger
 property IncidentIo\Model\WorkflowSlimV2 version
+property IncidentIo\Model\WorkflowV2 autoRunMode
 property IncidentIo\Model\WorkflowV2 conditionGroups
 property IncidentIo\Model\WorkflowV2 continueOnStepError
 property IncidentIo\Model\WorkflowV2 delay
@@ -17165,6 +17175,7 @@ property IncidentIo\Model\WorkflowV2 steps
 property IncidentIo\Model\WorkflowV2 trigger
 property IncidentIo\Model\WorkflowV2 version
 property IncidentIo\Model\WorkflowsCreateWorkflowPayloadV2 annotations
+property IncidentIo\Model\WorkflowsCreateWorkflowPayloadV2 autoRunMode
 property IncidentIo\Model\WorkflowsCreateWorkflowPayloadV2 conditionGroups
 property IncidentIo\Model\WorkflowsCreateWorkflowPayloadV2 continueOnStepError
 property IncidentIo\Model\WorkflowsCreateWorkflowPayloadV2 delay
@@ -17189,6 +17200,7 @@ property IncidentIo\Model\WorkflowsListWorkflowsResultV2 workflows
 property IncidentIo\Model\WorkflowsShowWorkflowResultV2 managementMeta
 property IncidentIo\Model\WorkflowsShowWorkflowResultV2 workflow
 property IncidentIo\Model\WorkflowsUpdateWorkflowPayloadV2 annotations
+property IncidentIo\Model\WorkflowsUpdateWorkflowPayloadV2 autoRunMode
 property IncidentIo\Model\WorkflowsUpdateWorkflowPayloadV2 conditionGroups
 property IncidentIo\Model\WorkflowsUpdateWorkflowPayloadV2 continueOnStepError
 property IncidentIo\Model\WorkflowsUpdateWorkflowPayloadV2 delay

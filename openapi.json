@@ -106168,6 +106168,7 @@
       },
       "WorkflowSlimV2": {
         "example": {
+          "auto_run_mode": "confirm_before_running",
           "condition_groups": [
             {
               "conditions": [
@@ -106391,6 +106392,15 @@
           "version": 3
         },
         "properties": {
+          "auto_run_mode": {
+            "description": "Whether the workflow is configured to run immediately or ask for confirmation in the incident channel",
+            "enum": [
+              "run_automatically",
+              "confirm_before_running"
+            ],
+            "example": "confirm_before_running",
+            "type": "string"
+          },
           "condition_groups": {
             "description": "Conditions that apply to the workflow trigger",
             "example": [
@@ -106737,6 +106747,7 @@
           "expressions",
           "condition_groups",
           "steps",
+          "auto_run_mode",
           "private_incident_scope",
           "include_private_escalations",
           "runs_on_incident_modes",
@@ -106748,6 +106759,7 @@
       },
       "WorkflowV2": {
         "example": {
+          "auto_run_mode": "confirm_before_running",
           "condition_groups": [
             {
               "conditions": [
@@ -107000,6 +107012,15 @@
           "version": 3
         },
         "properties": {
+          "auto_run_mode": {
+            "description": "Whether the workflow is configured to run immediately or ask for confirmation in the incident channel",
+            "enum": [
+              "run_automatically",
+              "confirm_before_running"
+            ],
+            "example": "confirm_before_running",
+            "type": "string"
+          },
           "condition_groups": {
             "description": "Conditions that apply to the workflow trigger",
             "example": [
@@ -107207,7 +107228,7 @@
             "type": "string"
           },
           "form_fields": {
-            "description": "User-configured form fields available in the workflow scope (manual triggers only)",
+            "description": "User-configured form fields available in the workflow scope. Allowed on manually-triggered workflows, and on workflows with an `auto_run_mode` of `confirm_before_running`.",
             "example": [
               {
                 "array": true,
@@ -107382,6 +107403,7 @@
           "expressions",
           "condition_groups",
           "steps",
+          "auto_run_mode",
           "private_incident_scope",
           "include_private_escalations",
           "runs_on_incident_modes",
@@ -107396,6 +107418,7 @@
           "annotations": {
             "incident.io/terraform/version": "3.0.0"
           },
+          "auto_run_mode": "confirm_before_running",
           "condition_groups": [
             {
               "conditions": [
@@ -107607,6 +107630,15 @@
             },
             "type": "object"
           },
+          "auto_run_mode": {
+            "description": "Whether the workflow runs immediately, or asks for confirmation in the incident channel first. Defaults to `run_automatically` on create. If omitted on update, the workflow keeps its current mode.",
+            "enum": [
+              "run_automatically",
+              "confirm_before_running"
+            ],
+            "example": "confirm_before_running",
+            "type": "string"
+          },
           "condition_groups": {
             "description": "Conditions that apply to the workflow trigger",
             "example": [
@@ -107776,7 +107808,7 @@
             "type": "string"
           },
           "form_fields": {
-            "description": "User-configured form fields available in the workflow scope (manual triggers only)",
+            "description": "User-configured form fields available in the workflow scope. Allowed on manually-triggered workflows, and on workflows with an `auto_run_mode` of `confirm_before_running`.",
             "example": [
               {
                 "array": true,
@@ -107940,6 +107972,7 @@
             "source_url": "https://github.com/my-company/infrastructure"
           },
           "workflow": {
+            "auto_run_mode": "confirm_before_running",
             "condition_groups": [
               {
                 "conditions": [
@@ -108210,6 +108243,7 @@
         "example": {
           "workflows": [
             {
+              "auto_run_mode": "confirm_before_running",
               "condition_groups": [
                 {
                   "conditions": [
@@ -108438,6 +108472,7 @@
           "workflows": {
             "example": [
               {
+                "auto_run_mode": "confirm_before_running",
                 "condition_groups": [
                   {
                     "conditions": [
@@ -108682,6 +108717,7 @@
             "source_url": "https://github.com/my-company/infrastructure"
           },
           "workflow": {
+            "auto_run_mode": "confirm_before_running",
             "condition_groups": [
               {
                 "conditions": [
@@ -108953,6 +108989,7 @@
           "annotations": {
             "incident.io/terraform/version": "3.0.0"
           },
+          "auto_run_mode": "confirm_before_running",
           "condition_groups": [
             {
               "conditions": [
@@ -109164,6 +109201,15 @@
             },
             "type": "object"
           },
+          "auto_run_mode": {
+            "description": "Whether the workflow runs immediately, or asks for confirmation in the incident channel first. Defaults to `run_automatically` on create. If omitted on update, the workflow keeps its current mode.",
+            "enum": [
+              "run_automatically",
+              "confirm_before_running"
+            ],
+            "example": "confirm_before_running",
+            "type": "string"
+          },
           "condition_groups": {
             "description": "Conditions that apply to the workflow trigger",
             "example": [
@@ -109333,7 +109379,7 @@
             "type": "string"
           },
           "form_fields": {
-            "description": "User-configured form fields available in the workflow scope (manual triggers only)",
+            "description": "User-configured form fields available in the workflow scope. Allowed on manually-triggered workflows, and on workflows with an `auto_run_mode` of `confirm_before_running`.",
             "example": [
               {
                 "array": true,
@@ -109496,6 +109542,7 @@
             "source_url": "https://github.com/my-company/infrastructure"
           },
           "workflow": {
+            "auto_run_mode": "confirm_before_running",
             "condition_groups": [
               {
                 "conditions": [
@@ -183463,6 +183510,7 @@
                 "example": {
                   "workflows": [
                     {
+                      "auto_run_mode": "confirm_before_running",
                       "condition_groups": [
                         {
                           "conditions": [
@@ -183850,6 +183898,7 @@
                 "annotations": {
                   "incident.io/terraform/version": "3.0.0"
                 },
+                "auto_run_mode": "confirm_before_running",
                 "condition_groups": [
                   {
                     "conditions": [
@@ -184069,6 +184118,7 @@
                     "source_url": "https://github.com/my-company/infrastructure"
                   },
                   "workflow": {
+                    "auto_run_mode": "confirm_before_running",
                     "condition_groups": [
                       {
                         "conditions": [
@@ -184685,6 +184735,7 @@
                     "source_url": "https://github.com/my-company/infrastructure"
                   },
                   "workflow": {
+                    "auto_run_mode": "confirm_before_running",
                     "condition_groups": [
                       {
                         "conditions": [
@@ -185119,6 +185170,7 @@
                 "annotations": {
                   "incident.io/terraform/version": "3.0.0"
                 },
+                "auto_run_mode": "confirm_before_running",
                 "condition_groups": [
                   {
                     "conditions": [
@@ -185338,6 +185390,7 @@
                     "source_url": "https://github.com/my-company/infrastructure"
                   },
                   "workflow": {
+                    "auto_run_mode": "confirm_before_running",
                     "condition_groups": [
                       {
                         "conditions": [

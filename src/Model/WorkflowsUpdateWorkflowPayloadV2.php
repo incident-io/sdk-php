@@ -57,6 +57,7 @@ class WorkflowsUpdateWorkflowPayloadV2 implements ModelInterface, ArrayAccess, J
      */
     protected static array $openAPITypes = [
         'annotations' => 'array<string,string>',
+        'autoRunMode' => 'string',
         'conditionGroups' => '\IncidentIo\Model\ConditionGroupPayloadV2[]',
         'continueOnStepError' => 'bool',
         'delay' => '\IncidentIo\Model\WorkflowDelayV2',
@@ -84,6 +85,7 @@ class WorkflowsUpdateWorkflowPayloadV2 implements ModelInterface, ArrayAccess, J
      */
     protected static array $openAPIFormats = [
         'annotations' => null,
+        'autoRunMode' => null,
         'conditionGroups' => null,
         'continueOnStepError' => null,
         'delay' => null,
@@ -111,6 +113,7 @@ class WorkflowsUpdateWorkflowPayloadV2 implements ModelInterface, ArrayAccess, J
      */
     protected static array $openAPINullables = [
         'annotations' => false,
+        'autoRunMode' => false,
         'conditionGroups' => false,
         'continueOnStepError' => false,
         'delay' => false,
@@ -208,6 +211,7 @@ class WorkflowsUpdateWorkflowPayloadV2 implements ModelInterface, ArrayAccess, J
      */
     protected static array $attributeMap = [
         'annotations' => 'annotations',
+        'autoRunMode' => 'auto_run_mode',
         'conditionGroups' => 'condition_groups',
         'continueOnStepError' => 'continue_on_step_error',
         'delay' => 'delay',
@@ -235,6 +239,7 @@ class WorkflowsUpdateWorkflowPayloadV2 implements ModelInterface, ArrayAccess, J
      */
     protected static array $setters = [
         'annotations' => 'setAnnotations',
+        'autoRunMode' => 'setAutoRunMode',
         'conditionGroups' => 'setConditionGroups',
         'continueOnStepError' => 'setContinueOnStepError',
         'delay' => 'setDelay',
@@ -262,6 +267,7 @@ class WorkflowsUpdateWorkflowPayloadV2 implements ModelInterface, ArrayAccess, J
      */
     protected static array $getters = [
         'annotations' => 'getAnnotations',
+        'autoRunMode' => 'getAutoRunMode',
         'conditionGroups' => 'getConditionGroups',
         'continueOnStepError' => 'getContinueOnStepError',
         'delay' => 'getDelay',
@@ -314,6 +320,8 @@ class WorkflowsUpdateWorkflowPayloadV2 implements ModelInterface, ArrayAccess, J
         return self::$openAPIModelName;
     }
 
+    public const AUTO_RUN_MODE_RUN_AUTOMATICALLY = 'run_automatically';
+    public const AUTO_RUN_MODE_CONFIRM_BEFORE_RUNNING = 'confirm_before_running';
     public const PRIVATE_INCIDENT_SCOPE_ALL = 'all';
     public const PRIVATE_INCIDENT_SCOPE_OWNING_TEAMS = 'owning_teams';
     public const PRIVATE_INCIDENT_SCOPE_NONE = 'none';
@@ -326,6 +334,19 @@ class WorkflowsUpdateWorkflowPayloadV2 implements ModelInterface, ArrayAccess, J
     public const STATE_DISABLED = 'disabled';
     public const STATE_DRAFT = 'draft';
     public const STATE_ERROR = 'error';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public static function getAutoRunModeAllowableValues()
+    {
+        return [
+            self::AUTO_RUN_MODE_RUN_AUTOMATICALLY,
+            self::AUTO_RUN_MODE_CONFIRM_BEFORE_RUNNING,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -398,6 +419,7 @@ class WorkflowsUpdateWorkflowPayloadV2 implements ModelInterface, ArrayAccess, J
     public function __construct(?array $data = null)
     {
         $this->setIfExists('annotations', $data ?? [], null);
+        $this->setIfExists('autoRunMode', $data ?? [], null);
         $this->setIfExists('conditionGroups', $data ?? [], null);
         $this->setIfExists('continueOnStepError', $data ?? [], null);
         $this->setIfExists('delay', $data ?? [], null);
@@ -502,6 +524,33 @@ class WorkflowsUpdateWorkflowPayloadV2 implements ModelInterface, ArrayAccess, J
             throw new InvalidArgumentException('non-nullable annotations cannot be null');
         }
         $this->container['annotations'] = $annotations;
+
+        return $this;
+    }
+
+    /**
+     * Gets autoRunMode
+     *
+     * @return string|null
+     */
+    public function getAutoRunMode(): ?string
+    {
+        return $this->container['autoRunMode'];
+    }
+
+    /**
+     * Sets autoRunMode
+     *
+     * @param string|null $autoRunMode Whether the workflow runs immediately, or asks for confirmation in the incident channel first. Defaults to `run_automatically` on create. If omitted on update, the workflow keeps its current mode.
+     *
+     * @return $this
+     */
+    public function setAutoRunMode(?string $autoRunMode): static
+    {
+        if (is_null($autoRunMode)) {
+            throw new InvalidArgumentException('non-nullable autoRunMode cannot be null');
+        }
+        $this->container['autoRunMode'] = $autoRunMode;
 
         return $this;
     }
@@ -654,7 +703,7 @@ class WorkflowsUpdateWorkflowPayloadV2 implements ModelInterface, ArrayAccess, J
     /**
      * Sets formFields
      *
-     * @param \IncidentIo\Model\WorkflowFormFieldPayloadV2[]|null $formFields User-configured form fields available in the workflow scope (manual triggers only)
+     * @param \IncidentIo\Model\WorkflowFormFieldPayloadV2[]|null $formFields User-configured form fields available in the workflow scope. Allowed on manually-triggered workflows, and on workflows with an `auto_run_mode` of `confirm_before_running`.
      *
      * @return $this
      */

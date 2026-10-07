@@ -56,6 +56,7 @@ class WorkflowV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
+        'autoRunMode' => 'string',
         'conditionGroups' => '\IncidentIo\Model\ConditionGroupV2[]',
         'continueOnStepError' => 'bool',
         'delay' => '\IncidentIo\Model\WorkflowDelayV2',
@@ -85,6 +86,7 @@ class WorkflowV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string|null>
      */
     protected static array $openAPIFormats = [
+        'autoRunMode' => null,
         'conditionGroups' => null,
         'continueOnStepError' => null,
         'delay' => null,
@@ -114,6 +116,7 @@ class WorkflowV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, bool>
      */
     protected static array $openAPINullables = [
+        'autoRunMode' => false,
         'conditionGroups' => false,
         'continueOnStepError' => false,
         'delay' => false,
@@ -213,6 +216,7 @@ class WorkflowV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $attributeMap = [
+        'autoRunMode' => 'auto_run_mode',
         'conditionGroups' => 'condition_groups',
         'continueOnStepError' => 'continue_on_step_error',
         'delay' => 'delay',
@@ -242,6 +246,7 @@ class WorkflowV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $setters = [
+        'autoRunMode' => 'setAutoRunMode',
         'conditionGroups' => 'setConditionGroups',
         'continueOnStepError' => 'setContinueOnStepError',
         'delay' => 'setDelay',
@@ -271,6 +276,7 @@ class WorkflowV2 implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $getters = [
+        'autoRunMode' => 'getAutoRunMode',
         'conditionGroups' => 'getConditionGroups',
         'continueOnStepError' => 'getContinueOnStepError',
         'delay' => 'getDelay',
@@ -326,6 +332,8 @@ class WorkflowV2 implements ModelInterface, ArrayAccess, JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const AUTO_RUN_MODE_RUN_AUTOMATICALLY = 'run_automatically';
+    public const AUTO_RUN_MODE_CONFIRM_BEFORE_RUNNING = 'confirm_before_running';
     public const PRIVATE_INCIDENT_SCOPE_ALL = 'all';
     public const PRIVATE_INCIDENT_SCOPE_OWNING_TEAMS = 'owning_teams';
     public const PRIVATE_INCIDENT_SCOPE_NONE = 'none';
@@ -338,6 +346,19 @@ class WorkflowV2 implements ModelInterface, ArrayAccess, JsonSerializable
     public const STATE_DISABLED = 'disabled';
     public const STATE_DRAFT = 'draft';
     public const STATE_ERROR = 'error';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public static function getAutoRunModeAllowableValues()
+    {
+        return [
+            self::AUTO_RUN_MODE_RUN_AUTOMATICALLY,
+            self::AUTO_RUN_MODE_CONFIRM_BEFORE_RUNNING,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -409,6 +430,7 @@ class WorkflowV2 implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('autoRunMode', $data ?? [], null);
         $this->setIfExists('conditionGroups', $data ?? [], null);
         $this->setIfExists('continueOnStepError', $data ?? [], null);
         $this->setIfExists('delay', $data ?? [], null);
@@ -457,6 +479,9 @@ class WorkflowV2 implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['autoRunMode'] === null) {
+            $invalidProperties[] = "'autoRunMode' can't be null";
+        }
         if ($this->container['conditionGroups'] === null) {
             $invalidProperties[] = "'conditionGroups' can't be null";
         }
@@ -513,6 +538,33 @@ class WorkflowV2 implements ModelInterface, ArrayAccess, JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets autoRunMode
+     *
+     * @return string
+     */
+    public function getAutoRunMode(): string
+    {
+        return $this->container['autoRunMode'];
+    }
+
+    /**
+     * Sets autoRunMode
+     *
+     * @param string $autoRunMode Whether the workflow is configured to run immediately or ask for confirmation in the incident channel
+     *
+     * @return $this
+     */
+    public function setAutoRunMode(string $autoRunMode): static
+    {
+        if (is_null($autoRunMode)) {
+            throw new InvalidArgumentException('non-nullable autoRunMode cannot be null');
+        }
+        $this->container['autoRunMode'] = $autoRunMode;
+
+        return $this;
+    }
 
     /**
      * Gets conditionGroups
@@ -662,7 +714,7 @@ class WorkflowV2 implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets formFields
      *
-     * @param \IncidentIo\Model\WorkflowFormFieldV2[]|null $formFields User-configured form fields available in the workflow scope (manual triggers only)
+     * @param \IncidentIo\Model\WorkflowFormFieldV2[]|null $formFields User-configured form fields available in the workflow scope. Allowed on manually-triggered workflows, and on workflows with an `auto_run_mode` of `confirm_before_running`.
      *
      * @return $this
      */
