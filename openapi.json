@@ -101421,7 +101421,8 @@
             "enum": [
               "complete",
               "pending",
-              "error"
+              "error",
+              "suspended"
             ],
             "example": "complete",
             "type": "string"
@@ -101509,7 +101510,8 @@
             "enum": [
               "complete",
               "pending",
-              "error"
+              "error",
+              "suspended"
             ],
             "example": "complete",
             "type": "string"
