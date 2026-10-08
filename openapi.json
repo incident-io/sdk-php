@@ -65166,6 +65166,7 @@
               "outlook_calendar_event",
               "slack_file",
               "salesforce_case",
+              "pylon_issue",
               "arbitrary_url",
               "scrubbed",
               "statuspage_incident"
@@ -70292,6 +70293,7 @@
                   "outlook_calendar_event",
                   "slack_file",
                   "salesforce_case",
+                  "pylon_issue",
                   "arbitrary_url",
                   "scrubbed",
                   "statuspage_incident"
@@ -115776,6 +115778,7 @@
                 "outlook_calendar_event",
                 "slack_file",
                 "salesforce_case",
+                "pylon_issue",
                 "arbitrary_url",
                 "scrubbed",
                 "statuspage_incident"

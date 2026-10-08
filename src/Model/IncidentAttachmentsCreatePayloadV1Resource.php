@@ -244,6 +244,7 @@ class IncidentAttachmentsCreatePayloadV1Resource implements ModelInterface, Arra
     public const RESOURCE_TYPE_OUTLOOK_CALENDAR_EVENT = 'outlook_calendar_event';
     public const RESOURCE_TYPE_SLACK_FILE = 'slack_file';
     public const RESOURCE_TYPE_SALESFORCE_CASE = 'salesforce_case';
+    public const RESOURCE_TYPE_PYLON_ISSUE = 'pylon_issue';
     public const RESOURCE_TYPE_ARBITRARY_URL = 'arbitrary_url';
     public const RESOURCE_TYPE_SCRUBBED = 'scrubbed';
     public const RESOURCE_TYPE_STATUSPAGE_INCIDENT = 'statuspage_incident';
@@ -270,6 +271,7 @@ class IncidentAttachmentsCreatePayloadV1Resource implements ModelInterface, Arra
             self::RESOURCE_TYPE_OUTLOOK_CALENDAR_EVENT,
             self::RESOURCE_TYPE_SLACK_FILE,
             self::RESOURCE_TYPE_SALESFORCE_CASE,
+            self::RESOURCE_TYPE_PYLON_ISSUE,
             self::RESOURCE_TYPE_ARBITRARY_URL,
             self::RESOURCE_TYPE_SCRUBBED,
             self::RESOURCE_TYPE_STATUSPAGE_INCIDENT,
