@@ -93544,7 +93544,7 @@
         },
         "properties": {
           "document_provider": {
-            "description": "The provider hosting the document. Set this when it can't be inferred from the permalink so the link renders correctly.",
+            "description": "The provider hosting the document. This is informational only: the document is always stored as a link to the permalink.",
             "enum": [
               "",
               "confluence",

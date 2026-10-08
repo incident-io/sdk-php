@@ -329,7 +329,7 @@ class PostmortemDocumentsAttachPayloadV1 implements ModelInterface, ArrayAccess,
     /**
      * Sets documentProvider
      *
-     * @param string|null $documentProvider The provider hosting the document. Set this when it can't be inferred from the permalink so the link renders correctly.
+     * @param string|null $documentProvider The provider hosting the document. This is informational only: the document is always stored as a link to the permalink.
      *
      * @return $this
      */
