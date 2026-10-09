@@ -84776,6 +84776,136 @@
         ],
         "type": "object"
       },
+      "OnCallNotificationPauseV2": {
+        "description": "A window in which a user's on-call notifications are paused: while it's active, escalations skip the user instead of paging them.",
+        "example": {
+          "created_at": "2021-08-17T13:28:57.801578Z",
+          "ends_at": "2021-08-24T13:28:57.801578Z",
+          "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+          "reason": "Annual leave",
+          "starts_at": "2021-08-17T13:28:57.801578Z",
+          "updated_at": "2021-08-17T13:28:57.801578Z",
+          "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+        },
+        "properties": {
+          "created_at": {
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "ends_at": {
+            "description": "When notifications resume",
+            "example": "2021-08-24T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "description": "Unique identifier for this notification pause",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          },
+          "reason": {
+            "description": "Free text reason for why notifications are paused, shown to teammates",
+            "example": "Annual leave",
+            "maxLength": 500,
+            "type": "string"
+          },
+          "starts_at": {
+            "description": "When notifications stop being sent to the user",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "updated_at": {
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "description": "The user whose on-call notifications are paused in this time window",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "user_id",
+          "starts_at",
+          "ends_at",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object"
+      },
+      "OnCallNotificationPausesListResultV2": {
+        "example": {
+          "on_call_notification_pauses": [
+            {
+              "created_at": "2021-08-17T13:28:57.801578Z",
+              "ends_at": "2021-08-24T13:28:57.801578Z",
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "reason": "Annual leave",
+              "starts_at": "2021-08-17T13:28:57.801578Z",
+              "updated_at": "2021-08-17T13:28:57.801578Z",
+              "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+            }
+          ],
+          "pagination_meta": {
+            "after": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "page_size": 25
+          }
+        },
+        "properties": {
+          "on_call_notification_pauses": {
+            "description": "Pauses ordered by when they start",
+            "example": [
+              {
+                "created_at": "2021-08-17T13:28:57.801578Z",
+                "ends_at": "2021-08-24T13:28:57.801578Z",
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "reason": "Annual leave",
+                "starts_at": "2021-08-17T13:28:57.801578Z",
+                "updated_at": "2021-08-17T13:28:57.801578Z",
+                "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/OnCallNotificationPauseV2"
+            },
+            "type": "array"
+          },
+          "pagination_meta": {
+            "$ref": "#/components/schemas/PaginationMetaResultV2"
+          }
+        },
+        "required": [
+          "on_call_notification_pauses",
+          "pagination_meta"
+        ],
+        "type": "object"
+      },
+      "OnCallNotificationPausesShowResultV2": {
+        "example": {
+          "on_call_notification_pause": {
+            "created_at": "2021-08-17T13:28:57.801578Z",
+            "ends_at": "2021-08-24T13:28:57.801578Z",
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "reason": "Annual leave",
+            "starts_at": "2021-08-17T13:28:57.801578Z",
+            "updated_at": "2021-08-17T13:28:57.801578Z",
+            "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+          }
+        },
+        "properties": {
+          "on_call_notification_pause": {
+            "$ref": "#/components/schemas/OnCallNotificationPauseV2"
+          }
+        },
+        "required": [
+          "on_call_notification_pause"
+        ],
+        "type": "object"
+      },
       "OnCallNotificationRuleAppDetailsPublicV2": {
         "example": {
           "push_notification_criticality": "critical"
@@ -161960,6 +162090,431 @@
         ]
       }
     },
+    "/v2/on_call_notification_pauses": {
+      "get": {
+        "description": "List on-call notification pauses across the organisation. By default this returns pauses that are active now or scheduled for the future. Cancelled pauses are never returned, and pauses that were resumed early have ends_at set to when they were resumed.",
+        "operationId": "On-call Notification Pauses V2#List",
+        "parameters": [
+          {
+            "allowEmptyValue": true,
+            "description": "Only return pauses that end after this time. Defaults to now, so by default only active and upcoming pauses are returned.",
+            "example": "2021-08-17T00:00:00Z",
+            "in": "query",
+            "name": "from",
+            "schema": {
+              "description": "Only return pauses that end after this time. Defaults to now, so by default only active and upcoming pauses are returned.",
+              "example": "2021-08-17T00:00:00Z",
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "Only return pauses that start before this time",
+            "example": "2021-08-24T00:00:00Z",
+            "in": "query",
+            "name": "to",
+            "schema": {
+              "description": "Only return pauses that start before this time",
+              "example": "2021-08-24T00:00:00Z",
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "Integer number of records to return",
+            "example": 25,
+            "in": "query",
+            "name": "page_size",
+            "schema": {
+              "default": 25,
+              "description": "Integer number of records to return",
+              "example": 25,
+              "format": "int64",
+              "maximum": 250,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "A pause's ID. This endpoint will return a list of pauses after this ID in relation to the API response order.",
+            "examples": {
+              "default": {
+                "summary": "default",
+                "value": "01FCNDV6P870EA6S7TK1DSYDG0"
+              }
+            },
+            "in": "query",
+            "name": "after",
+            "schema": {
+              "description": "A pause's ID. This endpoint will return a list of pauses after this ID in relation to the API response order.",
+              "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "on_call_notification_pauses": [
+                    {
+                      "created_at": "2021-08-17T13:28:57.801578Z",
+                      "ends_at": "2021-08-24T13:28:57.801578Z",
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "reason": "Annual leave",
+                      "starts_at": "2021-08-17T13:28:57.801578Z",
+                      "updated_at": "2021-08-17T13:28:57.801578Z",
+                      "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+                    }
+                  ],
+                  "pagination_meta": {
+                    "after": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "page_size": 25
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/OnCallNotificationPausesListResultV2"
+                }
+              }
+            },
+            "description": "OK response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "List On-call Notification Pauses V2",
+        "tags": [
+          "On-call Notification Pauses V2"
+        ],
+        "x-docs-display-name": "List",
+        "x-docs-group-name": "On-call Notification Pauses V2",
+        "x-docs-resource-type": "OnCallNotificationPauseV2",
+        "x-mint": {
+          "content": "🔑 Requires the `notification_pauses.view` scope."
+        },
+        "x-rbac-scopes": [
+          "notification_pauses.view"
+        ]
+      }
+    },
+    "/v2/on_call_notification_pauses/{id}": {
+      "get": {
+        "description": "Show a single on-call notification pause. Cancelled pauses are not found.",
+        "operationId": "On-call Notification Pauses V2#Show",
+        "parameters": [
+          {
+            "description": "The pause's ID",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "The pause's ID",
+              "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "on_call_notification_pause": {
+                    "created_at": "2021-08-17T13:28:57.801578Z",
+                    "ends_at": "2021-08-24T13:28:57.801578Z",
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "reason": "Annual leave",
+                    "starts_at": "2021-08-17T13:28:57.801578Z",
+                    "updated_at": "2021-08-17T13:28:57.801578Z",
+                    "user_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/OnCallNotificationPausesShowResultV2"
+                }
+              }
+            },
+            "description": "OK response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "Show On-call Notification Pauses V2",
+        "tags": [
+          "On-call Notification Pauses V2"
+        ],
+        "x-docs-display-name": "Show",
+        "x-docs-group-name": "On-call Notification Pauses V2",
+        "x-docs-resource-type": "OnCallNotificationPauseV2",
+        "x-mint": {
+          "content": "🔑 Requires the `notification_pauses.view` scope."
+        },
+        "x-rbac-scopes": [
+          "notification_pauses.view"
+        ]
+      }
+    },
     "/v2/pay_configs": {
       "get": {
         "description": "List pay configs for this organisation.\n\nReturns published configs, and drafts created through the API, which belong to\nnobody and so are visible to everyone. A draft a person created in the\ndashboard stays private to them. Archived configs are never returned.",
@@ -198968,6 +199523,10 @@
     {
       "description": "Manage maintenance windows for temporarily overriding alert routing during planned maintenance.\n\nMaintenance windows allow you to suppress or redirect alerts during scheduled maintenance periods, preventing unnecessary escalations and noise.",
       "name": "MaintenanceWindows V1"
+    },
+    {
+      "description": "View on-call notification pauses: windows in which a user's on-call notifications are paused, so escalations skip them instead of paging them.",
+      "name": "On-call Notification Pauses V2"
     },
     {
       "description": "Manage on-call pay configs: the rates that pay reports price on-call shifts against.",

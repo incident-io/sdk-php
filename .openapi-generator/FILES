@@ -44,6 +44,7 @@ src/Api/IncidentUpdatesV2Api.php
 src/Api/IncidentsV1Api.php
 src/Api/IncidentsV2Api.php
 src/Api/MaintenanceWindowsV1Api.php
+src/Api/OnCallNotificationPausesV2Api.php
 src/Api/PayConfigsV2Api.php
 src/Api/PayReportsV2Api.php
 src/Api/PoliciesV2Api.php
@@ -962,6 +963,9 @@ src/Model/ModelInterface.php
 src/Model/NewSlackUserGroupPayloadV2.php
 src/Model/OnCallNotificationMethodPhoneDetailsPublicV2.php
 src/Model/OnCallNotificationMethodPublicV2.php
+src/Model/OnCallNotificationPauseV2.php
+src/Model/OnCallNotificationPausesListResultV2.php
+src/Model/OnCallNotificationPausesShowResultV2.php
 src/Model/OnCallNotificationRuleAppDetailsPublicV2.php
 src/Model/OnCallNotificationRuleMethodTargetPublicV2.php
 src/Model/OnCallNotificationRuleMethodTargetSpecificPublicV2.php
