@@ -300,6 +300,7 @@ src/Model/AuditLogScheduleOverrideMetadataV2.php
 src/Model/AuditLogTargetV2.php
 src/Model/AuditLogTelemetryDataSourceAccessModeChangedMetadataV2.php
 src/Model/AuditLogTelemetryDataSourceAccessPolicyChangedMetadataV2.php
+src/Model/AuditLogTelemetryDataSourceAccessPolicyChangedMetadataV2V2.php
 src/Model/AuditLogTelemetryDataSourceQueriedMetadataV2.php
 src/Model/AuditLogTelemetryDataSourceQueriedMetadataV2V2.php
 src/Model/AuditLogTelemetryDataSourceRequestedMetadataV2.php
@@ -521,6 +522,7 @@ src/Model/AuditLogsTeamRoleUpdatedV1.php
 src/Model/AuditLogsTeamSettingsUpdatedV1.php
 src/Model/AuditLogsTelemetryDataSourceAccessModeChangedV1.php
 src/Model/AuditLogsTelemetryDataSourceAccessPolicyChangedV1.php
+src/Model/AuditLogsTelemetryDataSourceAccessPolicyChangedV2.php
 src/Model/AuditLogsTelemetryDataSourceInstalledV1.php
 src/Model/AuditLogsTelemetryDataSourceQueriedV1.php
 src/Model/AuditLogsTelemetryDataSourceQueriedV2.php

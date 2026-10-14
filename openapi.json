@@ -23913,6 +23913,54 @@
         ],
         "type": "object"
       },
+      "AuditLogTelemetryDataSourceAccessPolicyChangedMetadataV2V2": {
+        "example": {
+          "after": "{\"read\":{\"enabled\":true,\"surfaces\":{\"chat\":{\"type\":\"deny\"}}}}",
+          "before": "{\"read\":{\"enabled\":true,\"surfaces\":{\"chat\":{\"type\":\"allow\"}}}}",
+          "change_id": "01JD8ZQK9X0000000000000000",
+          "notification_channels_after": "",
+          "notification_channels_before": "{\"slack_channels\":{\"array_value\":[{\"literal\":\"C0123456789\"}]}}",
+          "set_by": "01FCNDV6P870EA6S7TK1DSYDG0"
+        },
+        "properties": {
+          "after": {
+            "description": "The policy after the change, as JSON",
+            "example": "{\"read\":{\"enabled\":true,\"surfaces\":{\"chat\":{\"type\":\"deny\"}}}}",
+            "type": "string"
+          },
+          "before": {
+            "description": "The policy before the change, as JSON; empty when the connector had no access policy",
+            "example": "{\"read\":{\"enabled\":true,\"surfaces\":{\"chat\":{\"type\":\"allow\"}}}}",
+            "type": "string"
+          },
+          "change_id": {
+            "description": "Shared by every entry the same save produced, so the decision that changed and the access it reached can be read together",
+            "example": "01JD8ZQK9X0000000000000000",
+            "type": "string"
+          },
+          "notification_channels_after": {
+            "description": "The default notification channels after the change, as JSON; absent when they did not change, empty when there are none",
+            "example": "",
+            "type": "string"
+          },
+          "notification_channels_before": {
+            "description": "The default notification channels before the change, as JSON; absent when they did not change, empty when there were none",
+            "example": "{\"slack_channels\":{\"array_value\":[{\"literal\":\"C0123456789\"}]}}",
+            "type": "string"
+          },
+          "set_by": {
+            "description": "ID of the user who saved the policy, absent when staff tooling saved it",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          }
+        },
+        "required": [
+          "before",
+          "after",
+          "change_id"
+        ],
+        "type": "object"
+      },
       "AuditLogTelemetryDataSourceQueriedMetadataV2": {
         "example": {
           "access_mode": "restricted",
@@ -40769,6 +40817,93 @@
           "version": {
             "description": "Which version the event is",
             "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
+        ],
+        "type": "object"
+      },
+      "AuditLogsTelemetryDataSourceAccessPolicyChangedV2": {
+        "example": {
+          "action": "telemetry_data_source.access_policy_changed",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "after": "{\"read\":{\"enabled\":true,\"surfaces\":{\"chat\":{\"type\":\"deny\"}}}}",
+            "before": "{\"read\":{\"enabled\":true,\"surfaces\":{\"chat\":{\"type\":\"allow\"}}}}",
+            "change_id": "01JD8ZQK9X0000000000000000",
+            "notification_channels_after": "",
+            "notification_channels_before": "{\"slack_channels\":{\"array_value\":[{\"literal\":\"C0123456789\"}]}}",
+            "set_by": "01FCNDV6P870EA6S7TK1DSYDG0"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Grafana Cloud",
+              "type": "telemetry_data_source"
+            }
+          ],
+          "version": 2
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "telemetry_data_source.access_policy_changed",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogTelemetryDataSourceAccessPolicyChangedMetadataV2V2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Grafana Cloud",
+                "type": "telemetry_data_source"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 2,
             "format": "int64",
             "type": "integer"
           }
@@ -209707,6 +209842,60 @@
                 },
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsTelemetryDataSourceAccessPolicyChangedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/telemetry_data_source.access_policy_changed.2": {
+      "get": {
+        "description": "This entry is created whenever a connector's access policy changes, which decides what each class of tool on it may do on each surface and where calls to its tools are announced",
+        "operationId": "TelemetryDataSourceAccessPolicyChangedV2",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "telemetry_data_source.access_policy_changed",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "after": "{\"read\":{\"enabled\":true,\"surfaces\":{\"chat\":{\"type\":\"deny\"}}}}",
+                    "before": "{\"read\":{\"enabled\":true,\"surfaces\":{\"chat\":{\"type\":\"allow\"}}}}",
+                    "change_id": "01JD8ZQK9X0000000000000000",
+                    "notification_channels_after": "",
+                    "notification_channels_before": "{\"slack_channels\":{\"array_value\":[{\"literal\":\"C0123456789\"}]}}",
+                    "set_by": "01FCNDV6P870EA6S7TK1DSYDG0"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Grafana Cloud",
+                      "type": "telemetry_data_source"
+                    }
+                  ],
+                  "version": 2
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsTelemetryDataSourceAccessPolicyChangedV2"
                 }
               }
             },
