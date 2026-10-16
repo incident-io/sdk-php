@@ -417,7 +417,7 @@ class StatusPagesCreateStatusPageMaintenanceUpdatePayloadV2 implements ModelInte
     /**
      * Sets notifySubscribers
      *
-     * @param bool $notifySubscribers Whether to notify subscribers about this status page maintenance update. This will not work if your status page has more than 1000 subscribers.
+     * @param bool $notifySubscribers Whether to notify subscribers about this status page maintenance update. If your status page has more than 1000 subscribers, requests that set this to true are rejected. This limit applies only to the public API: publishing from the incident.io dashboard or Slack always notifies every subscriber.
      *
      * @return $this
      */
