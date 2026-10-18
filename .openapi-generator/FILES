@@ -274,6 +274,7 @@ src/Model/AuditLogEntryContextV2.php
 src/Model/AuditLogExtensionConnectorCalledMetadataV2.php
 src/Model/AuditLogExtensionConnectorCalledMetadataV2V2.php
 src/Model/AuditLogExtensionConnectorCalledMetadataV3V2.php
+src/Model/AuditLogExtensionConnectorCalledMetadataV4V2.php
 src/Model/AuditLogExtensionPluginCreatedMetadataV2.php
 src/Model/AuditLogExtensionPluginUpdatedMetadataV2.php
 src/Model/AuditLogHrisTimeOffPolicyUpdatedMetadataV2.php
@@ -367,6 +368,7 @@ src/Model/AuditLogsEscalationScrubbedV1.php
 src/Model/AuditLogsExtensionConnectorCalledV1.php
 src/Model/AuditLogsExtensionConnectorCalledV2.php
 src/Model/AuditLogsExtensionConnectorCalledV3.php
+src/Model/AuditLogsExtensionConnectorCalledV4.php
 src/Model/AuditLogsExtensionPluginCreatedV1.php
 src/Model/AuditLogsExtensionPluginDeletedV1.php
 src/Model/AuditLogsExtensionPluginUpdatedV1.php

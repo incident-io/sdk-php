@@ -23034,6 +23034,85 @@
         ],
         "type": "object"
       },
+      "AuditLogExtensionConnectorCalledMetadataV4V2": {
+        "example": {
+          "access_source": "policy",
+          "approval_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+          "approved_by": "01FCNDV6P870EA6S7TK1DSYDG0",
+          "class": "write",
+          "incident_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+          "outcome": "requires_approval",
+          "reason": "requires_approval",
+          "source_kind": "mcp",
+          "surface": "chat",
+          "telemetry_query_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+          "write": "true"
+        },
+        "properties": {
+          "access_source": {
+            "description": "What decided: the connector's access policy, or a decision pinned on this tool (policy, override)",
+            "example": "policy",
+            "type": "string"
+          },
+          "approval_id": {
+            "description": "ID of the approval request this call executed, when a person's approval is what permitted it",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          },
+          "approved_by": {
+            "description": "ID of the user who approved the approval request this call executed",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          },
+          "class": {
+            "description": "What calling the tool does to the connected system, as the tool's own server describes it (read, write, destructive, unknown)",
+            "example": "write",
+            "type": "string"
+          },
+          "incident_id": {
+            "description": "The incident the call was made for, when incident-scoped",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          },
+          "outcome": {
+            "description": "How the call ended (success, error, denied, requires_approval). A denied call was refused by the connector's access policy and a requires_approval call is waiting for a person's approval; neither reached the connected system",
+            "example": "requires_approval",
+            "type": "string"
+          },
+          "reason": {
+            "description": "Why the call was allowed, refused or made to wait (allowed, denied_by_rule, disabled, unknown_rule_type, rule_not_found, not_read, no_person_present, not_in_allow_list, requires_approval)",
+            "example": "requires_approval",
+            "type": "string"
+          },
+          "source_kind": {
+            "description": "The kind of connector that was called (mcp, http)",
+            "example": "mcp",
+            "type": "string"
+          },
+          "surface": {
+            "description": "The product surface the call ran from (chat, investigation, explore, mcp_client, verify), or internal for system paths with no surface",
+            "example": "chat",
+            "type": "string"
+          },
+          "telemetry_query_id": {
+            "description": "ID of our stored record of this call, absent for a call that was refused or is waiting for approval",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          },
+          "write": {
+            "description": "Whether the call was permitted to change the connected system (true, false)",
+            "example": "true",
+            "type": "string"
+          }
+        },
+        "required": [
+          "surface",
+          "write",
+          "outcome",
+          "source_kind"
+        ],
+        "type": "object"
+      },
       "AuditLogExtensionPluginCreatedMetadataV2": {
         "example": {
           "provider": "github",
@@ -28649,6 +28728,108 @@
           "version": {
             "description": "Which version the event is",
             "example": 3,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
+        ],
+        "type": "object"
+      },
+      "AuditLogsExtensionConnectorCalledV4": {
+        "example": {
+          "action": "extension_connector.called",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "access_source": "policy",
+            "approval_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "approved_by": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "class": "write",
+            "incident_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "outcome": "requires_approval",
+            "reason": "requires_approval",
+            "source_kind": "mcp",
+            "surface": "chat",
+            "telemetry_query_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "write": "true"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Acme Deploy",
+              "type": "extension_connector"
+            },
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "restart_service",
+              "type": "extension_connector_tool"
+            }
+          ],
+          "version": 4
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "extension_connector.called",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogExtensionConnectorCalledMetadataV4V2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Acme Deploy",
+                "type": "extension_connector"
+              },
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "restart_service",
+                "type": "extension_connector_tool"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 4,
             "format": "int64",
             "type": "integer"
           }
@@ -202408,6 +202589,70 @@
                 },
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsExtensionConnectorCalledV3"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/extension_connector.called.4": {
+      "get": {
+        "description": "This entry is created for every call an agent makes to a tool on a connector, whether the tool reads from the connected system or changes it, for every call the connector's access policy refused, and for every call that requires a person's approval before it runs",
+        "operationId": "ExtensionConnectorCalledV4",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "extension_connector.called",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "access_source": "policy",
+                    "approval_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "approved_by": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "class": "write",
+                    "incident_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "outcome": "requires_approval",
+                    "reason": "requires_approval",
+                    "source_kind": "mcp",
+                    "surface": "chat",
+                    "telemetry_query_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "write": "true"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Acme Deploy",
+                      "type": "extension_connector"
+                    },
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "restart_service",
+                      "type": "extension_connector_tool"
+                    }
+                  ],
+                  "version": 4
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsExtensionConnectorCalledV4"
                 }
               }
             },
