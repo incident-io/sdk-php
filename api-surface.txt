@@ -1779,6 +1779,7 @@ const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_ELASTICSEARCH
 const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_EMAIL
 const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_EXPEL
 const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_GITHUB_ISSUE
+const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_GIT_GUARDIAN
 const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_GOOGLE_CLOUD
 const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_GOOGLE_SECOPS
 const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_GRAFANA
@@ -1835,6 +1836,7 @@ const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_ELASTICSEARCH
 const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_EMAIL
 const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_EXPEL
 const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_GITHUB_ISSUE
+const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_GIT_GUARDIAN
 const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_GOOGLE_CLOUD
 const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_GOOGLE_SECOPS
 const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_GRAFANA
@@ -1896,6 +1898,7 @@ const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_ELASTICSEARCH
 const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_EMAIL
 const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_EXPEL
 const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_GITHUB_ISSUE
+const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_GIT_GUARDIAN
 const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_GOOGLE_CLOUD
 const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_GOOGLE_SECOPS
 const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_GRAFANA

@@ -303,6 +303,7 @@ class AlertSourcesCreatePayloadV2 implements ModelInterface, ArrayAccess, JsonSe
     public const SOURCE_TYPE_ELASTICSEARCH = 'elasticsearch';
     public const SOURCE_TYPE_EMAIL = 'email';
     public const SOURCE_TYPE_EXPEL = 'expel';
+    public const SOURCE_TYPE_GIT_GUARDIAN = 'git_guardian';
     public const SOURCE_TYPE_GITHUB_ISSUE = 'github_issue';
     public const SOURCE_TYPE_GOOGLE_CLOUD = 'google_cloud';
     public const SOURCE_TYPE_GOOGLE_SECOPS = 'google_secops';
@@ -367,6 +368,7 @@ class AlertSourcesCreatePayloadV2 implements ModelInterface, ArrayAccess, JsonSe
             self::SOURCE_TYPE_ELASTICSEARCH,
             self::SOURCE_TYPE_EMAIL,
             self::SOURCE_TYPE_EXPEL,
+            self::SOURCE_TYPE_GIT_GUARDIAN,
             self::SOURCE_TYPE_GITHUB_ISSUE,
             self::SOURCE_TYPE_GOOGLE_CLOUD,
             self::SOURCE_TYPE_GOOGLE_SECOPS,
