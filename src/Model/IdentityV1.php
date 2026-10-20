@@ -234,6 +234,7 @@ class IdentityV1 implements ModelInterface, ArrayAccess, JsonSerializable
     public const ROLES_INCIDENT_CREATOR = 'incident_creator';
     public const ROLES_INCIDENT_EDITOR = 'incident_editor';
     public const ROLES_MANAGE_SETTINGS = 'manage_settings';
+    public const ROLES_GLOSSARY_ENTRIES_MANAGE = 'glossary_entries_manage';
     public const ROLES_GLOBAL_ACCESS = 'global_access';
     public const ROLES_CATALOG_VIEWER = 'catalog_viewer';
     public const ROLES_CATALOG_EDITOR = 'catalog_editor';
@@ -303,6 +304,7 @@ class IdentityV1 implements ModelInterface, ArrayAccess, JsonSerializable
             self::ROLES_INCIDENT_CREATOR,
             self::ROLES_INCIDENT_EDITOR,
             self::ROLES_MANAGE_SETTINGS,
+            self::ROLES_GLOSSARY_ENTRIES_MANAGE,
             self::ROLES_GLOBAL_ACCESS,
             self::ROLES_CATALOG_VIEWER,
             self::ROLES_CATALOG_EDITOR,

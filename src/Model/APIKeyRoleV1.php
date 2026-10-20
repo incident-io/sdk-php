@@ -216,6 +216,7 @@ class APIKeyRoleV1 implements ModelInterface, ArrayAccess, JsonSerializable
     public const NAME_INCIDENT_CREATOR = 'incident_creator';
     public const NAME_INCIDENT_EDITOR = 'incident_editor';
     public const NAME_MANAGE_SETTINGS = 'manage_settings';
+    public const NAME_GLOSSARY_ENTRIES_MANAGE = 'glossary_entries_manage';
     public const NAME_GLOBAL_ACCESS = 'global_access';
     public const NAME_CATALOG_VIEWER = 'catalog_viewer';
     public const NAME_CATALOG_EDITOR = 'catalog_editor';
@@ -271,6 +272,7 @@ class APIKeyRoleV1 implements ModelInterface, ArrayAccess, JsonSerializable
             self::NAME_INCIDENT_CREATOR,
             self::NAME_INCIDENT_EDITOR,
             self::NAME_MANAGE_SETTINGS,
+            self::NAME_GLOSSARY_ENTRIES_MANAGE,
             self::NAME_GLOBAL_ACCESS,
             self::NAME_CATALOG_VIEWER,
             self::NAME_CATALOG_EDITOR,

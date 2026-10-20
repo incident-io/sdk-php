@@ -234,6 +234,7 @@ class APIKeysUpdatePayloadV1 implements ModelInterface, ArrayAccess, JsonSeriali
     public const ROLE_NAMES_INCIDENT_CREATOR = 'incident_creator';
     public const ROLE_NAMES_INCIDENT_EDITOR = 'incident_editor';
     public const ROLE_NAMES_MANAGE_SETTINGS = 'manage_settings';
+    public const ROLE_NAMES_GLOSSARY_ENTRIES_MANAGE = 'glossary_entries_manage';
     public const ROLE_NAMES_GLOBAL_ACCESS = 'global_access';
     public const ROLE_NAMES_CATALOG_VIEWER = 'catalog_viewer';
     public const ROLE_NAMES_CATALOG_EDITOR = 'catalog_editor';
@@ -303,6 +304,7 @@ class APIKeysUpdatePayloadV1 implements ModelInterface, ArrayAccess, JsonSeriali
             self::ROLE_NAMES_INCIDENT_CREATOR,
             self::ROLE_NAMES_INCIDENT_EDITOR,
             self::ROLE_NAMES_MANAGE_SETTINGS,
+            self::ROLE_NAMES_GLOSSARY_ENTRIES_MANAGE,
             self::ROLE_NAMES_GLOBAL_ACCESS,
             self::ROLE_NAMES_CATALOG_VIEWER,
             self::ROLE_NAMES_CATALOG_EDITOR,

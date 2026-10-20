@@ -1365,6 +1365,7 @@ const IncidentIo\Model\APIKeyRoleV1::NAME_CATALOG_VIEWER
 const IncidentIo\Model\APIKeyRoleV1::NAME_DOCUMENTS_VIEWER
 const IncidentIo\Model\APIKeyRoleV1::NAME_ESCALATION_CREATOR
 const IncidentIo\Model\APIKeyRoleV1::NAME_GLOBAL_ACCESS
+const IncidentIo\Model\APIKeyRoleV1::NAME_GLOSSARY_ENTRIES_MANAGE
 const IncidentIo\Model\APIKeyRoleV1::NAME_HEARTBEATS_PING
 const IncidentIo\Model\APIKeyRoleV1::NAME_INCIDENT_CREATOR
 const IncidentIo\Model\APIKeyRoleV1::NAME_INCIDENT_EDITOR
@@ -1428,6 +1429,7 @@ const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_CATALOG_VIEWER
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_DOCUMENTS_VIEWER
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_ESCALATION_CREATOR
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_GLOBAL_ACCESS
+const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_GLOSSARY_ENTRIES_MANAGE
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_HEARTBEATS_PING
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_INCIDENT_CREATOR
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_INCIDENT_EDITOR
@@ -1494,6 +1496,7 @@ const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_CATALOG_VIEWER
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_DOCUMENTS_VIEWER
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_ESCALATION_CREATOR
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_GLOBAL_ACCESS
+const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_GLOSSARY_ENTRIES_MANAGE
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_HEARTBEATS_PING
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_INCIDENT_CREATOR
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_INCIDENT_EDITOR
@@ -3446,6 +3449,7 @@ const IncidentIo\Model\IdentityV1::ROLES_CATALOG_VIEWER
 const IncidentIo\Model\IdentityV1::ROLES_DOCUMENTS_VIEWER
 const IncidentIo\Model\IdentityV1::ROLES_ESCALATION_CREATOR
 const IncidentIo\Model\IdentityV1::ROLES_GLOBAL_ACCESS
+const IncidentIo\Model\IdentityV1::ROLES_GLOSSARY_ENTRIES_MANAGE
 const IncidentIo\Model\IdentityV1::ROLES_HEARTBEATS_PING
 const IncidentIo\Model\IdentityV1::ROLES_INCIDENT_CREATOR
 const IncidentIo\Model\IdentityV1::ROLES_INCIDENT_EDITOR
