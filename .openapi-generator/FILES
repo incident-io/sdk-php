@@ -44,6 +44,7 @@ src/Api/IncidentUpdatesV2Api.php
 src/Api/IncidentsV1Api.php
 src/Api/IncidentsV2Api.php
 src/Api/MaintenanceWindowsV1Api.php
+src/Api/ManagedResourcesV2Api.php
 src/Api/OnCallNotificationPausesV2Api.php
 src/Api/PayConfigsV2Api.php
 src/Api/PayReportsV2Api.php
@@ -962,6 +963,9 @@ src/Model/MaintenanceWindowsListResultV1.php
 src/Model/MaintenanceWindowsShowResultV1.php
 src/Model/MaintenanceWindowsUpdatePayloadV1.php
 src/Model/MaintenanceWindowsUpdateResultV1.php
+src/Model/ManagedResourceV2.php
+src/Model/ManagedResourcesCreateManagedResourcePayloadV2.php
+src/Model/ManagedResourcesCreateManagedResourceResultV2.php
 src/Model/ManagementMetaV2.php
 src/Model/ModelInterface.php
 src/Model/NewSlackUserGroupPayloadV2.php

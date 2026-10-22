@@ -84945,12 +84945,14 @@
         ],
         "type": "object"
       },
-      "ManagementMetaV2": {
+      "ManagedResourceV2": {
         "example": {
           "annotations": {
             "incident.io/terraform/version": "3.0.0"
           },
-          "managed_by": "dashboard",
+          "managed_by": "terraform",
+          "resource_id": "abc123",
+          "resource_type": "alert_route",
           "source_url": "https://github.com/my-company/infrastructure"
         },
         "properties": {
@@ -84972,7 +84974,157 @@
               "terraform",
               "external"
             ],
-            "example": "dashboard",
+            "example": "terraform",
+            "type": "string"
+          },
+          "resource_id": {
+            "description": "The ID of the resource that this relates to",
+            "example": "abc123",
+            "type": "string"
+          },
+          "resource_type": {
+            "enum": [
+              "alert_route",
+              "alert_source",
+              "api_key",
+              "incident_form",
+              "incident_template",
+              "escalation_path",
+              "escalation_path_template",
+              "policy",
+              "schedule",
+              "schedule_sync_target",
+              "schedule_sync_rule",
+              "secret",
+              "status_page_component",
+              "status_page_structure",
+              "team_grouping_preference",
+              "workflow"
+            ],
+            "example": "alert_route",
+            "type": "string",
+            "x-public-api-version": "v2"
+          },
+          "source_url": {
+            "description": "The url of the external repository where this resource is managed (if there is one)",
+            "example": "https://github.com/my-company/infrastructure",
+            "type": "string"
+          }
+        },
+        "required": [
+          "resource_type",
+          "resource_id",
+          "managed_by",
+          "annotations"
+        ],
+        "type": "object"
+      },
+      "ManagedResourcesCreateManagedResourcePayloadV2": {
+        "example": {
+          "annotations": {
+            "incident.io/terraform/version": "3.0.0"
+          },
+          "resource_id": "abc123",
+          "resource_type": "alert_route"
+        },
+        "properties": {
+          "annotations": {
+            "additionalProperties": {
+              "example": "abc123",
+              "type": "string"
+            },
+            "description": "Annotations that track metadata about this resource",
+            "example": {
+              "incident.io/terraform/version": "3.0.0"
+            },
+            "type": "object"
+          },
+          "resource_id": {
+            "description": "The ID of the resource that this relates to",
+            "example": "abc123",
+            "type": "string"
+          },
+          "resource_type": {
+            "description": "The type of the related resource",
+            "enum": [
+              "alert_route",
+              "alert_source",
+              "api_key",
+              "incident_form",
+              "incident_template",
+              "escalation_path",
+              "escalation_path_template",
+              "policy",
+              "schedule",
+              "schedule_sync_target",
+              "schedule_sync_rule",
+              "secret",
+              "status_page_component",
+              "status_page_structure",
+              "team_grouping_preference",
+              "workflow"
+            ],
+            "example": "alert_route",
+            "type": "string"
+          }
+        },
+        "required": [
+          "annotations",
+          "resource_type",
+          "resource_id"
+        ],
+        "type": "object"
+      },
+      "ManagedResourcesCreateManagedResourceResultV2": {
+        "example": {
+          "managed_resource": {
+            "annotations": {
+              "incident.io/terraform/version": "3.0.0"
+            },
+            "managed_by": "terraform",
+            "resource_id": "abc123",
+            "resource_type": "alert_route",
+            "source_url": "https://github.com/my-company/infrastructure"
+          }
+        },
+        "properties": {
+          "managed_resource": {
+            "$ref": "#/components/schemas/ManagedResourceV2"
+          }
+        },
+        "required": [
+          "managed_resource"
+        ],
+        "type": "object"
+      },
+      "ManagementMetaV2": {
+        "example": {
+          "annotations": {
+            "incident.io/terraform/version": "3.0.0"
+          },
+          "managed_by": "terraform",
+          "source_url": "https://github.com/my-company/infrastructure"
+        },
+        "properties": {
+          "annotations": {
+            "additionalProperties": {
+              "example": "abc123",
+              "type": "string"
+            },
+            "description": "Annotations that track metadata about this resource",
+            "example": {
+              "incident.io/terraform/version": "3.0.0"
+            },
+            "type": "object"
+          },
+          "managed_by": {
+            "description": "How is this resource managed",
+            "enum": [
+              "dashboard",
+              "terraform",
+              "external"
+            ],
+            "example": "terraform",
             "type": "string"
           },
           "source_url": {
@@ -99262,7 +99414,7 @@
             "annotations": {
               "incident.io/terraform/version": "3.0.0"
             },
-            "managed_by": "dashboard",
+            "managed_by": "terraform",
             "source_url": "https://github.com/my-company/infrastructure"
           },
           "name": "App"
@@ -99325,7 +99477,7 @@
               "annotations": {
                 "incident.io/terraform/version": "3.0.0"
               },
-              "managed_by": "dashboard",
+              "managed_by": "terraform",
               "source_url": "https://github.com/my-company/infrastructure"
             },
             "name": "App"
@@ -99351,7 +99503,7 @@
                 "annotations": {
                   "incident.io/terraform/version": "3.0.0"
                 },
-                "managed_by": "dashboard",
+                "managed_by": "terraform",
                 "source_url": "https://github.com/my-company/infrastructure"
               },
               "name": "App"
@@ -99368,7 +99520,7 @@
                   "annotations": {
                     "incident.io/terraform/version": "3.0.0"
                   },
-                  "managed_by": "dashboard",
+                  "managed_by": "terraform",
                   "source_url": "https://github.com/my-company/infrastructure"
                 },
                 "name": "App"
@@ -99394,7 +99546,7 @@
               "annotations": {
                 "incident.io/terraform/version": "3.0.0"
               },
-              "managed_by": "dashboard",
+              "managed_by": "terraform",
               "source_url": "https://github.com/my-company/infrastructure"
             },
             "name": "App"
@@ -99441,7 +99593,7 @@
               "annotations": {
                 "incident.io/terraform/version": "3.0.0"
               },
-              "managed_by": "dashboard",
+              "managed_by": "terraform",
               "source_url": "https://github.com/my-company/infrastructure"
             },
             "name": "App"
@@ -101507,7 +101659,7 @@
             "annotations": {
               "incident.io/terraform/version": "3.0.0"
             },
-            "managed_by": "dashboard",
+            "managed_by": "terraform",
             "source_url": "https://github.com/my-company/infrastructure"
           }
         },
@@ -109379,7 +109531,7 @@
             "annotations": {
               "incident.io/terraform/version": "3.0.0"
             },
-            "managed_by": "dashboard",
+            "managed_by": "terraform",
             "source_url": "https://github.com/my-company/infrastructure"
           },
           "workflow": {
@@ -110124,7 +110276,7 @@
             "annotations": {
               "incident.io/terraform/version": "3.0.0"
             },
-            "managed_by": "dashboard",
+            "managed_by": "terraform",
             "source_url": "https://github.com/my-company/infrastructure"
           },
           "workflow": {
@@ -110949,7 +111101,7 @@
             "annotations": {
               "incident.io/terraform/version": "3.0.0"
             },
-            "managed_by": "dashboard",
+            "managed_by": "terraform",
             "source_url": "https://github.com/my-company/infrastructure"
           },
           "workflow": {
@@ -162413,6 +162565,189 @@
         ]
       }
     },
+    "/v2/managed_resources": {
+      "post": {
+        "description": "Create or update the management record for a resource. This replaces any annotations already stored on it.\n\nThe annotations set `managed_by`:\n- `incident.io/terraform/version` sets it to `terraform`.\n- `incident.io/is-managed-externally` sets it to `external`. If both keys are present, `external` wins.\n- Neither key sets it to `dashboard`.\n\nThis doesn't change the resource's configuration, but `managed_by` controls whether it can be edited in the dashboard. Returning a schedule to `dashboard` also returns its sync rules and targets.\n\nThe API key must have the update scope for the resource type, e.g. `schedules.update` for a schedule.",
+        "operationId": "Managed Resources V2#CreateManagedResource",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "annotations": {
+                  "incident.io/terraform/version": "3.0.0"
+                },
+                "resource_id": "abc123",
+                "resource_type": "alert_route"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/ManagedResourcesCreateManagedResourcePayloadV2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "managed_resource": {
+                    "annotations": {
+                      "incident.io/terraform/version": "3.0.0"
+                    },
+                    "managed_by": "terraform",
+                    "resource_id": "abc123",
+                    "resource_type": "alert_route",
+                    "source_url": "https://github.com/my-company/infrastructure"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ManagedResourcesCreateManagedResourceResultV2"
+                }
+              }
+            },
+            "description": "OK response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "CreateManagedResource Managed Resources V2",
+        "tags": [
+          "Managed Resources V2"
+        ],
+        "x-docs-display-name": "Create",
+        "x-docs-group-name": "Managed Resources V2",
+        "x-docs-resource-type": "ManagedResourceV2"
+      }
+    },
     "/v2/on_call_notification_pauses": {
       "get": {
         "description": "List on-call notification pauses across the organisation. By default this returns pauses that are active now or scheduled for the future. Cancelled pauses are never returned, and pauses that were resumed early have ends_at set to when they were resumed.",
@@ -179013,7 +179348,7 @@
                         "annotations": {
                           "incident.io/terraform/version": "3.0.0"
                         },
-                        "managed_by": "dashboard",
+                        "managed_by": "terraform",
                         "source_url": "https://github.com/my-company/infrastructure"
                       },
                       "name": "App"
@@ -179195,7 +179530,7 @@
                       "annotations": {
                         "incident.io/terraform/version": "3.0.0"
                       },
-                      "managed_by": "dashboard",
+                      "managed_by": "terraform",
                       "source_url": "https://github.com/my-company/infrastructure"
                     },
                     "name": "App"
@@ -179550,7 +179885,7 @@
                       "annotations": {
                         "incident.io/terraform/version": "3.0.0"
                       },
-                      "managed_by": "dashboard",
+                      "managed_by": "terraform",
                       "source_url": "https://github.com/my-company/infrastructure"
                     },
                     "name": "App"
@@ -179745,7 +180080,7 @@
                       "annotations": {
                         "incident.io/terraform/version": "3.0.0"
                       },
-                      "managed_by": "dashboard",
+                      "managed_by": "terraform",
                       "source_url": "https://github.com/my-company/infrastructure"
                     },
                     "name": "App"
@@ -182649,7 +182984,7 @@
                     "annotations": {
                       "incident.io/terraform/version": "3.0.0"
                     },
-                    "managed_by": "dashboard",
+                    "managed_by": "terraform",
                     "source_url": "https://github.com/my-company/infrastructure"
                   }
                 },
@@ -185951,7 +186286,7 @@
                     "annotations": {
                       "incident.io/terraform/version": "3.0.0"
                     },
-                    "managed_by": "dashboard",
+                    "managed_by": "terraform",
                     "source_url": "https://github.com/my-company/infrastructure"
                   },
                   "workflow": {
@@ -186568,7 +186903,7 @@
                     "annotations": {
                       "incident.io/terraform/version": "3.0.0"
                     },
-                    "managed_by": "dashboard",
+                    "managed_by": "terraform",
                     "source_url": "https://github.com/my-company/infrastructure"
                   },
                   "workflow": {
@@ -187223,7 +187558,7 @@
                     "annotations": {
                       "incident.io/terraform/version": "3.0.0"
                     },
-                    "managed_by": "dashboard",
+                    "managed_by": "terraform",
                     "source_url": "https://github.com/my-company/infrastructure"
                   },
                   "workflow": {
@@ -199846,6 +200181,10 @@
     {
       "description": "Manage maintenance windows for temporarily overriding alert routing during planned maintenance.\n\nMaintenance windows allow you to suppress or redirect alerts during scheduled maintenance periods, preventing unnecessary escalations and noise.",
       "name": "MaintenanceWindows V1"
+    },
+    {
+      "description": "Record whether an incident.io resource is managed in the dashboard or by an external tool such as Terraform.\n",
+      "name": "Managed Resources V2"
     },
     {
       "description": "View on-call notification pauses: windows in which a user's on-call notifications are paused, so escalations skip them instead of paging them.",
