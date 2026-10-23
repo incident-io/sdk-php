@@ -67236,6 +67236,315 @@
         ],
         "type": "object"
       },
+      "GlossaryEntriesCreatePayloadV2": {
+        "example": {
+          "after": "01G0J1EXE7AXZ2C93K61WBPYEH",
+          "description": "Payment service provider that handles card authorisations",
+          "item": "PSP"
+        },
+        "properties": {
+          "after": {
+            "description": "ID of a live glossary entry. The new entry is inserted immediately after it. Omit to append the entry to the end.",
+            "example": "01G0J1EXE7AXZ2C93K61WBPYEH",
+            "type": "string"
+          },
+          "description": {
+            "description": "What the term means",
+            "example": "Payment service provider that handles card authorisations",
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "item": {
+            "description": "The term, for example an acronym or service name. Unique among live entries, ignoring case.",
+            "example": "PSP",
+            "maxLength": 128,
+            "type": "string"
+          }
+        },
+        "required": [
+          "item",
+          "description"
+        ],
+        "type": "object"
+      },
+      "GlossaryEntriesCreateResultV2": {
+        "example": {
+          "glossary_entry": {
+            "created_at": "2021-08-17T13:28:57.801578Z",
+            "description": "Payment service provider that handles card authorisations",
+            "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+            "item": "PSP",
+            "rank": 1,
+            "updated_at": "2021-08-17T13:28:57.801578Z"
+          }
+        },
+        "properties": {
+          "glossary_entry": {
+            "$ref": "#/components/schemas/GlossaryEntryV2"
+          }
+        },
+        "required": [
+          "glossary_entry"
+        ],
+        "type": "object"
+      },
+      "GlossaryEntriesListResultV2": {
+        "example": {
+          "glossary_entries": [
+            {
+              "created_at": "2021-08-17T13:28:57.801578Z",
+              "description": "Payment service provider that handles card authorisations",
+              "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+              "item": "PSP",
+              "rank": 1,
+              "updated_at": "2021-08-17T13:28:57.801578Z"
+            }
+          ],
+          "pagination_meta": {
+            "after": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "page_size": 25
+          }
+        },
+        "properties": {
+          "glossary_entries": {
+            "example": [
+              {
+                "created_at": "2021-08-17T13:28:57.801578Z",
+                "description": "Payment service provider that handles card authorisations",
+                "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                "item": "PSP",
+                "rank": 1,
+                "updated_at": "2021-08-17T13:28:57.801578Z"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/GlossaryEntryV2"
+            },
+            "type": "array"
+          },
+          "pagination_meta": {
+            "$ref": "#/components/schemas/PaginationMetaResultV2"
+          }
+        },
+        "required": [
+          "glossary_entries"
+        ],
+        "type": "object"
+      },
+      "GlossaryEntriesShowResultV2": {
+        "example": {
+          "glossary_entry": {
+            "created_at": "2021-08-17T13:28:57.801578Z",
+            "description": "Payment service provider that handles card authorisations",
+            "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+            "item": "PSP",
+            "rank": 1,
+            "updated_at": "2021-08-17T13:28:57.801578Z"
+          }
+        },
+        "properties": {
+          "glossary_entry": {
+            "$ref": "#/components/schemas/GlossaryEntryV2"
+          }
+        },
+        "required": [
+          "glossary_entry"
+        ],
+        "type": "object"
+      },
+      "GlossaryEntriesUpdatePayloadV2": {
+        "example": {
+          "description": "Payment service provider that handles card authorisations",
+          "item": "PSP"
+        },
+        "properties": {
+          "description": {
+            "description": "What the term means",
+            "example": "Payment service provider that handles card authorisations",
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "item": {
+            "description": "The term, e.g. an acronym or service name",
+            "example": "PSP",
+            "maxLength": 128,
+            "type": "string"
+          }
+        },
+        "required": [
+          "item",
+          "description"
+        ],
+        "type": "object"
+      },
+      "GlossaryEntriesUpdateRanksPayloadV2": {
+        "example": {
+          "rank_updates": [
+            {
+              "rank": 3,
+              "resource_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+            }
+          ]
+        },
+        "properties": {
+          "rank_updates": {
+            "description": "The new rank of every live glossary entry",
+            "example": [
+              {
+                "rank": 3,
+                "resource_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/GlossaryEntryRankUpdateV2"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "rank_updates"
+        ],
+        "type": "object"
+      },
+      "GlossaryEntriesUpdateRanksResultV2": {
+        "example": {
+          "glossary_entries": [
+            {
+              "created_at": "2021-08-17T13:28:57.801578Z",
+              "description": "Payment service provider that handles card authorisations",
+              "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+              "item": "PSP",
+              "rank": 1,
+              "updated_at": "2021-08-17T13:28:57.801578Z"
+            }
+          ]
+        },
+        "properties": {
+          "glossary_entries": {
+            "example": [
+              {
+                "created_at": "2021-08-17T13:28:57.801578Z",
+                "description": "Payment service provider that handles card authorisations",
+                "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                "item": "PSP",
+                "rank": 1,
+                "updated_at": "2021-08-17T13:28:57.801578Z"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/GlossaryEntryV2"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "glossary_entries"
+        ],
+        "type": "object"
+      },
+      "GlossaryEntriesUpdateResultV2": {
+        "example": {
+          "glossary_entry": {
+            "created_at": "2021-08-17T13:28:57.801578Z",
+            "description": "Payment service provider that handles card authorisations",
+            "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+            "item": "PSP",
+            "rank": 1,
+            "updated_at": "2021-08-17T13:28:57.801578Z"
+          }
+        },
+        "properties": {
+          "glossary_entry": {
+            "$ref": "#/components/schemas/GlossaryEntryV2"
+          }
+        },
+        "required": [
+          "glossary_entry"
+        ],
+        "type": "object"
+      },
+      "GlossaryEntryRankUpdateV2": {
+        "description": "The new rank for one live glossary entry.",
+        "example": {
+          "rank": 3,
+          "resource_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+        },
+        "properties": {
+          "rank": {
+            "description": "Desired rank for this resource",
+            "example": 3,
+            "format": "int64",
+            "type": "integer"
+          },
+          "resource_id": {
+            "description": "ID of the resource",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          }
+        },
+        "required": [
+          "resource_id",
+          "rank"
+        ],
+        "type": "object"
+      },
+      "GlossaryEntryV2": {
+        "description": "A glossary entry is one term an organisation has coined — an acronym, a\nservice name, or a piece of internal jargon — and the description of what it means.\n\nAI features use the glossary, in rank order, so they understand those terms. Lower\nranks come first. Deleting an entry archives it, which frees the term so it can be\ncoined again as a new entry.",
+        "example": {
+          "created_at": "2021-08-17T13:28:57.801578Z",
+          "description": "Payment service provider that handles card authorisations",
+          "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+          "item": "PSP",
+          "rank": 1,
+          "updated_at": "2021-08-17T13:28:57.801578Z"
+        },
+        "properties": {
+          "created_at": {
+            "description": "When the entry was created",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "description": "What the term means",
+            "example": "Payment service provider that handles card authorisations",
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "id": {
+            "description": "Unique identifier for this glossary entry",
+            "example": "01G0J1EXE7AXZ2C93K61WBPYEH",
+            "type": "string"
+          },
+          "item": {
+            "description": "The term, e.g. an acronym or service name",
+            "example": "PSP",
+            "maxLength": 128,
+            "type": "string"
+          },
+          "rank": {
+            "description": "The entry's position in the glossary",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          },
+          "updated_at": {
+            "description": "When the entry was last updated",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "item",
+          "description",
+          "rank",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object"
+      },
       "GroupingKeyV2": {
         "example": {
           "reference": "alert.title"
@@ -155778,6 +156087,1136 @@
         ]
       }
     },
+    "/v2/glossary_entries": {
+      "get": {
+        "description": "List glossary entries for this organisation, in rank order.",
+        "operationId": "Glossary Entries V2#List",
+        "parameters": [
+          {
+            "allowEmptyValue": true,
+            "description": "Number of glossary entries to return per page",
+            "example": 25,
+            "in": "query",
+            "name": "page_size",
+            "schema": {
+              "default": 25,
+              "description": "Number of glossary entries to return per page",
+              "example": 25,
+              "format": "int64",
+              "maximum": 250,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "A glossary entry's ID. This endpoint returns entries after this one. Without search, that is later in rank order. With search, it is the next hit after this entry.",
+            "example": "01G0J1EXE7AXZ2C93K61WBPYEH",
+            "in": "query",
+            "name": "after",
+            "schema": {
+              "description": "A glossary entry's ID. This endpoint returns entries after this one. Without search, that is later in rank order. With search, it is the next hit after this entry.",
+              "example": "01G0J1EXE7AXZ2C93K61WBPYEH",
+              "type": "string"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "Filter to entries whose term or description contains this value (case-insensitive)",
+            "example": "payment",
+            "in": "query",
+            "name": "search",
+            "schema": {
+              "description": "Filter to entries whose term or description contains this value (case-insensitive)",
+              "example": "payment",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "glossary_entries": [
+                    {
+                      "created_at": "2021-08-17T13:28:57.801578Z",
+                      "description": "Payment service provider that handles card authorisations",
+                      "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                      "item": "PSP",
+                      "rank": 1,
+                      "updated_at": "2021-08-17T13:28:57.801578Z"
+                    }
+                  ],
+                  "pagination_meta": {
+                    "after": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "page_size": 25
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/GlossaryEntriesListResultV2"
+                }
+              }
+            },
+            "description": "OK response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "List Glossary Entries V2",
+        "tags": [
+          "Glossary Entries V2"
+        ],
+        "x-docs-display-name": "List",
+        "x-docs-group-name": "Glossary Entries V2",
+        "x-docs-resource-type": "GlossaryEntryV2"
+      },
+      "post": {
+        "description": "Create a glossary entry. It is appended to the end of the glossary unless after names an existing entry to insert it after.",
+        "operationId": "Glossary Entries V2#Create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "after": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                "description": "Payment service provider that handles card authorisations",
+                "item": "PSP"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/GlossaryEntriesCreatePayloadV2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "glossary_entry": {
+                    "created_at": "2021-08-17T13:28:57.801578Z",
+                    "description": "Payment service provider that handles card authorisations",
+                    "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                    "item": "PSP",
+                    "rank": 1,
+                    "updated_at": "2021-08-17T13:28:57.801578Z"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/GlossaryEntriesCreateResultV2"
+                }
+              }
+            },
+            "description": "Created response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "Create Glossary Entries V2",
+        "tags": [
+          "Glossary Entries V2"
+        ],
+        "x-docs-display-name": "Create",
+        "x-docs-group-name": "Glossary Entries V2",
+        "x-docs-resource-type": "GlossaryEntryV2",
+        "x-mint": {
+          "content": "🔑 Requires the `glossary_entries.manage` scope."
+        },
+        "x-rbac-scopes": [
+          "glossary_entries.manage"
+        ]
+      }
+    },
+    "/v2/glossary_entries/actions/update_ranks": {
+      "put": {
+        "description": "Reorder glossary entries. Every live entry must be included exactly once.",
+        "operationId": "Glossary Entries V2#UpdateRanks",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "rank_updates": [
+                  {
+                    "rank": 3,
+                    "resource_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+                  }
+                ]
+              },
+              "schema": {
+                "$ref": "#/components/schemas/GlossaryEntriesUpdateRanksPayloadV2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "glossary_entries": [
+                    {
+                      "created_at": "2021-08-17T13:28:57.801578Z",
+                      "description": "Payment service provider that handles card authorisations",
+                      "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                      "item": "PSP",
+                      "rank": 1,
+                      "updated_at": "2021-08-17T13:28:57.801578Z"
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/GlossaryEntriesUpdateRanksResultV2"
+                }
+              }
+            },
+            "description": "OK response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "UpdateRanks Glossary Entries V2",
+        "tags": [
+          "Glossary Entries V2"
+        ],
+        "x-docs-display-name": "Reorder",
+        "x-docs-group-name": "Glossary Entries V2",
+        "x-docs-resource-type": "GlossaryEntryV2",
+        "x-mint": {
+          "content": "🔑 Requires the `glossary_entries.manage` scope."
+        },
+        "x-rbac-scopes": [
+          "glossary_entries.manage"
+        ]
+      }
+    },
+    "/v2/glossary_entries/{id}": {
+      "delete": {
+        "description": "Delete a glossary entry. The entry is archived, which frees its term so the same item can be added again later.",
+        "operationId": "Glossary Entries V2#Destroy",
+        "parameters": [
+          {
+            "description": "Unique identifier for this glossary entry",
+            "example": "01G0J1EXE7AXZ2C93K61WBPYEH",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "Unique identifier for this glossary entry",
+              "example": "01G0J1EXE7AXZ2C93K61WBPYEH",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "Destroy Glossary Entries V2",
+        "tags": [
+          "Glossary Entries V2"
+        ],
+        "x-docs-display-name": "Delete",
+        "x-docs-group-name": "Glossary Entries V2",
+        "x-docs-resource-type": "GlossaryEntryV2",
+        "x-mint": {
+          "content": "🔑 Requires the `glossary_entries.manage` scope."
+        },
+        "x-rbac-scopes": [
+          "glossary_entries.manage"
+        ]
+      },
+      "get": {
+        "description": "Get a single glossary entry.",
+        "operationId": "Glossary Entries V2#Show",
+        "parameters": [
+          {
+            "description": "Unique identifier for this glossary entry",
+            "example": "01G0J1EXE7AXZ2C93K61WBPYEH",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "Unique identifier for this glossary entry",
+              "example": "01G0J1EXE7AXZ2C93K61WBPYEH",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "glossary_entry": {
+                    "created_at": "2021-08-17T13:28:57.801578Z",
+                    "description": "Payment service provider that handles card authorisations",
+                    "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                    "item": "PSP",
+                    "rank": 1,
+                    "updated_at": "2021-08-17T13:28:57.801578Z"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/GlossaryEntriesShowResultV2"
+                }
+              }
+            },
+            "description": "OK response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "Show Glossary Entries V2",
+        "tags": [
+          "Glossary Entries V2"
+        ],
+        "x-docs-display-name": "Show",
+        "x-docs-group-name": "Glossary Entries V2",
+        "x-docs-resource-type": "GlossaryEntryV2"
+      },
+      "put": {
+        "description": "Update a glossary entry's term or description. Rank is unchanged; use the reorder action for that.",
+        "operationId": "Glossary Entries V2#Update",
+        "parameters": [
+          {
+            "description": "Unique identifier for this glossary entry",
+            "example": "01G0J1EXE7AXZ2C93K61WBPYEH",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "Unique identifier for this glossary entry",
+              "example": "01G0J1EXE7AXZ2C93K61WBPYEH",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "description": "Payment service provider that handles card authorisations",
+                "item": "PSP"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/GlossaryEntriesUpdatePayloadV2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "glossary_entry": {
+                    "created_at": "2021-08-17T13:28:57.801578Z",
+                    "description": "Payment service provider that handles card authorisations",
+                    "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+                    "item": "PSP",
+                    "rank": 1,
+                    "updated_at": "2021-08-17T13:28:57.801578Z"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/GlossaryEntriesUpdateResultV2"
+                }
+              }
+            },
+            "description": "OK response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "Update Glossary Entries V2",
+        "tags": [
+          "Glossary Entries V2"
+        ],
+        "x-docs-display-name": "Update",
+        "x-docs-group-name": "Glossary Entries V2",
+        "x-docs-resource-type": "GlossaryEntryV2",
+        "x-mint": {
+          "content": "🔑 Requires the `glossary_entries.manage` scope."
+        },
+        "x-rbac-scopes": [
+          "glossary_entries.manage"
+        ]
+      }
+    },
     "/v2/heartbeat/{alert_source_config_id}/ping": {
       "get": {
         "description": "Send a heartbeat ping for the specified alert source.\n\nRecords a ping, indicating that the monitored job or service is healthy. The\nheartbeat monitor uses these pings to detect missed heartbeats and fire alerts.\nBoth GET and POST are accepted\n",
@@ -200327,6 +201766,10 @@
     {
       "description": "Manage incident follow-ups.\n\nIncidents can have follow-ups associated with them, which track work that should be done\nafter an incident (e.g. improving some documentation, or upgrading a dependency). They can\nalso be exported to external issue trackers.\n\nYou can manage follow-ups in the incident Slack channel with \u003ccode\u003e/incident follow-ups\u003c/code\u003e, or on\nthe incident homepage.\n",
       "name": "Follow-ups V3"
+    },
+    {
+      "description": "Manage the organisation glossary.\n\nThe glossary is the organisation's own terms (service names, acronyms, internal\njargon) and what they mean. AI features use it so they understand those terms\nwherever they appear.\n\nAnyone with an API key can read the glossary. Creating, updating, reordering and\ndeleting entries requires the glossary_entries_manage role. The manage_settings\nrole also grants that access.",
+      "name": "Glossary Entries V2"
     },
     {
       "description": "Send heartbeat pings for dead man's switch monitoring.\n\nHeartbeat alert sources expect periodic pings. If pings stop arriving, alerts\nfire automatically. Use the ping endpoints to signal that your job or service\nis still healthy.\n",

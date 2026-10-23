@@ -23,6 +23,7 @@ src/Api/EscalationPathTemplatesV2Api.php
 src/Api/EscalationsV2Api.php
 src/Api/FollowUpsV2Api.php
 src/Api/FollowUpsV3Api.php
+src/Api/GlossaryEntriesV2Api.php
 src/Api/HeartbeatV2Api.php
 src/Api/IPAllowlistsV1Api.php
 src/Api/IncidentActivityLogEntriesV2Api.php
@@ -816,6 +817,16 @@ src/Model/FollowUpsUpdatePayloadV2.php
 src/Model/FollowUpsUpdatePayloadV3.php
 src/Model/FollowUpsUpdateResultV2.php
 src/Model/FollowUpsUpdateResultV3.php
+src/Model/GlossaryEntriesCreatePayloadV2.php
+src/Model/GlossaryEntriesCreateResultV2.php
+src/Model/GlossaryEntriesListResultV2.php
+src/Model/GlossaryEntriesShowResultV2.php
+src/Model/GlossaryEntriesUpdatePayloadV2.php
+src/Model/GlossaryEntriesUpdateRanksPayloadV2.php
+src/Model/GlossaryEntriesUpdateRanksResultV2.php
+src/Model/GlossaryEntriesUpdateResultV2.php
+src/Model/GlossaryEntryRankUpdateV2.php
+src/Model/GlossaryEntryV2.php
 src/Model/GroupingKeyV2.php
 src/Model/GroupingKeyV3.php
 src/Model/GroupingSettingsV3.php

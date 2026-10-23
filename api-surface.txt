@@ -24,6 +24,7 @@ class IncidentIo\Api\EscalationPathTemplatesV2Api
 class IncidentIo\Api\EscalationsV2Api
 class IncidentIo\Api\FollowUpsV2Api
 class IncidentIo\Api\FollowUpsV3Api
+class IncidentIo\Api\GlossaryEntriesV2Api
 class IncidentIo\Api\HeartbeatV2Api
 class IncidentIo\Api\IPAllowlistsV1Api
 class IncidentIo\Api\IncidentActivityLogEntriesV2Api
@@ -816,6 +817,16 @@ class IncidentIo\Model\FollowUpsUpdatePayloadV2
 class IncidentIo\Model\FollowUpsUpdatePayloadV3
 class IncidentIo\Model\FollowUpsUpdateResultV2
 class IncidentIo\Model\FollowUpsUpdateResultV3
+class IncidentIo\Model\GlossaryEntriesCreatePayloadV2
+class IncidentIo\Model\GlossaryEntriesCreateResultV2
+class IncidentIo\Model\GlossaryEntriesListResultV2
+class IncidentIo\Model\GlossaryEntriesShowResultV2
+class IncidentIo\Model\GlossaryEntriesUpdatePayloadV2
+class IncidentIo\Model\GlossaryEntriesUpdateRanksPayloadV2
+class IncidentIo\Model\GlossaryEntriesUpdateRanksResultV2
+class IncidentIo\Model\GlossaryEntriesUpdateResultV2
+class IncidentIo\Model\GlossaryEntryRankUpdateV2
+class IncidentIo\Model\GlossaryEntryV2
 class IncidentIo\Model\GroupingKeyV2
 class IncidentIo\Model\GroupingKeyV3
 class IncidentIo\Model\GroupingSettingsV3
@@ -1317,6 +1328,7 @@ const IncidentIo\Api\EscalationPathTemplatesV2Api::contentTypes
 const IncidentIo\Api\EscalationsV2Api::contentTypes
 const IncidentIo\Api\FollowUpsV2Api::contentTypes
 const IncidentIo\Api\FollowUpsV3Api::contentTypes
+const IncidentIo\Api\GlossaryEntriesV2Api::contentTypes
 const IncidentIo\Api\HeartbeatV2Api::contentTypes
 const IncidentIo\Api\IPAllowlistsV1Api::contentTypes
 const IncidentIo\Api\IncidentActivityLogEntriesV2Api::contentTypes
@@ -3434,6 +3446,16 @@ const IncidentIo\Model\FollowUpsUpdatePayloadV3::STATUS_NOT_DOING
 const IncidentIo\Model\FollowUpsUpdatePayloadV3::STATUS_OUTSTANDING
 const IncidentIo\Model\FollowUpsUpdateResultV2::DISCRIMINATOR
 const IncidentIo\Model\FollowUpsUpdateResultV3::DISCRIMINATOR
+const IncidentIo\Model\GlossaryEntriesCreatePayloadV2::DISCRIMINATOR
+const IncidentIo\Model\GlossaryEntriesCreateResultV2::DISCRIMINATOR
+const IncidentIo\Model\GlossaryEntriesListResultV2::DISCRIMINATOR
+const IncidentIo\Model\GlossaryEntriesShowResultV2::DISCRIMINATOR
+const IncidentIo\Model\GlossaryEntriesUpdatePayloadV2::DISCRIMINATOR
+const IncidentIo\Model\GlossaryEntriesUpdateRanksPayloadV2::DISCRIMINATOR
+const IncidentIo\Model\GlossaryEntriesUpdateRanksResultV2::DISCRIMINATOR
+const IncidentIo\Model\GlossaryEntriesUpdateResultV2::DISCRIMINATOR
+const IncidentIo\Model\GlossaryEntryRankUpdateV2::DISCRIMINATOR
+const IncidentIo\Model\GlossaryEntryV2::DISCRIMINATOR
 const IncidentIo\Model\GroupingKeyV2::DISCRIMINATOR
 const IncidentIo\Model\GroupingKeyV3::DISCRIMINATOR
 const IncidentIo\Model\GroupingSettingsV3::DISCRIMINATOR
@@ -6650,6 +6672,40 @@ method IncidentIo\Api\FollowUpsV3Api::followUpsV3UpdateWithHttpInfo
 method IncidentIo\Api\FollowUpsV3Api::getConfig
 method IncidentIo\Api\FollowUpsV3Api::getHostIndex
 method IncidentIo\Api\FollowUpsV3Api::setHostIndex
+method IncidentIo\Api\GlossaryEntriesV2Api::__construct
+method IncidentIo\Api\GlossaryEntriesV2Api::getConfig
+method IncidentIo\Api\GlossaryEntriesV2Api::getHostIndex
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2Create
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2CreateAsync
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2CreateAsyncWithHttpInfo
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2CreateRequest
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2CreateWithHttpInfo
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2Destroy
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2DestroyAsync
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2DestroyAsyncWithHttpInfo
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2DestroyRequest
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2DestroyWithHttpInfo
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2List
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListAsync
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListAsyncWithHttpInfo
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListRequest
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListWithHttpInfo
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2Show
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ShowAsync
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ShowAsyncWithHttpInfo
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ShowRequest
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ShowWithHttpInfo
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2Update
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateAsync
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateAsyncWithHttpInfo
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanks
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanksAsync
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanksAsyncWithHttpInfo
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanksRequest
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanksWithHttpInfo
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRequest
+method IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateWithHttpInfo
+method IncidentIo\Api\GlossaryEntriesV2Api::setHostIndex
 method IncidentIo\Api\HeartbeatV2Api::__construct
 method IncidentIo\Api\HeartbeatV2Api::getConfig
 method IncidentIo\Api\HeartbeatV2Api::getHostIndex
@@ -9923,6 +9979,86 @@ param IncidentIo\Api\FollowUpsV3Api::followUpsV3UpdateWithHttpInfo $contentType
 param IncidentIo\Api\FollowUpsV3Api::followUpsV3UpdateWithHttpInfo $followUpsUpdatePayloadV3
 param IncidentIo\Api\FollowUpsV3Api::followUpsV3UpdateWithHttpInfo $id
 param IncidentIo\Api\FollowUpsV3Api::setHostIndex $hostIndex
+param IncidentIo\Api\GlossaryEntriesV2Api::__construct $client
+param IncidentIo\Api\GlossaryEntriesV2Api::__construct $config
+param IncidentIo\Api\GlossaryEntriesV2Api::__construct $hostIndex
+param IncidentIo\Api\GlossaryEntriesV2Api::__construct $selector
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2Create $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2Create $glossaryEntriesCreatePayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2CreateAsync $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2CreateAsync $glossaryEntriesCreatePayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2CreateAsyncWithHttpInfo $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2CreateAsyncWithHttpInfo $glossaryEntriesCreatePayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2CreateRequest $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2CreateRequest $glossaryEntriesCreatePayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2CreateWithHttpInfo $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2CreateWithHttpInfo $glossaryEntriesCreatePayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2Destroy $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2Destroy $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2DestroyAsync $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2DestroyAsync $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2DestroyAsyncWithHttpInfo $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2DestroyAsyncWithHttpInfo $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2DestroyRequest $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2DestroyRequest $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2DestroyWithHttpInfo $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2DestroyWithHttpInfo $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2List $after
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2List $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2List $pageSize
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2List $search
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListAsync $after
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListAsync $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListAsync $pageSize
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListAsync $search
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListAsyncWithHttpInfo $after
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListAsyncWithHttpInfo $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListAsyncWithHttpInfo $pageSize
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListAsyncWithHttpInfo $search
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListRequest $after
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListRequest $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListRequest $pageSize
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListRequest $search
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListWithHttpInfo $after
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListWithHttpInfo $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListWithHttpInfo $pageSize
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ListWithHttpInfo $search
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2Show $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2Show $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ShowAsync $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ShowAsync $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ShowAsyncWithHttpInfo $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ShowAsyncWithHttpInfo $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ShowRequest $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ShowRequest $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ShowWithHttpInfo $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2ShowWithHttpInfo $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2Update $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2Update $glossaryEntriesUpdatePayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2Update $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateAsync $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateAsync $glossaryEntriesUpdatePayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateAsync $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateAsyncWithHttpInfo $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateAsyncWithHttpInfo $glossaryEntriesUpdatePayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateAsyncWithHttpInfo $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanks $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanks $glossaryEntriesUpdateRanksPayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanksAsync $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanksAsync $glossaryEntriesUpdateRanksPayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanksAsyncWithHttpInfo $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanksAsyncWithHttpInfo $glossaryEntriesUpdateRanksPayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanksRequest $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanksRequest $glossaryEntriesUpdateRanksPayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanksWithHttpInfo $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRanksWithHttpInfo $glossaryEntriesUpdateRanksPayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRequest $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRequest $glossaryEntriesUpdatePayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateRequest $id
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateWithHttpInfo $contentType
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateWithHttpInfo $glossaryEntriesUpdatePayloadV2
+param IncidentIo\Api\GlossaryEntriesV2Api::glossaryEntriesV2UpdateWithHttpInfo $id
+param IncidentIo\Api\GlossaryEntriesV2Api::setHostIndex $hostIndex
 param IncidentIo\Api\HeartbeatV2Api::__construct $client
 param IncidentIo\Api\HeartbeatV2Api::__construct $config
 param IncidentIo\Api\HeartbeatV2Api::__construct $hostIndex
@@ -15903,6 +16039,26 @@ property IncidentIo\Model\FollowUpsUpdatePayloadV3 status
 property IncidentIo\Model\FollowUpsUpdatePayloadV3 title
 property IncidentIo\Model\FollowUpsUpdateResultV2 followUp
 property IncidentIo\Model\FollowUpsUpdateResultV3 followUp
+property IncidentIo\Model\GlossaryEntriesCreatePayloadV2 after
+property IncidentIo\Model\GlossaryEntriesCreatePayloadV2 description
+property IncidentIo\Model\GlossaryEntriesCreatePayloadV2 item
+property IncidentIo\Model\GlossaryEntriesCreateResultV2 glossaryEntry
+property IncidentIo\Model\GlossaryEntriesListResultV2 glossaryEntries
+property IncidentIo\Model\GlossaryEntriesListResultV2 paginationMeta
+property IncidentIo\Model\GlossaryEntriesShowResultV2 glossaryEntry
+property IncidentIo\Model\GlossaryEntriesUpdatePayloadV2 description
+property IncidentIo\Model\GlossaryEntriesUpdatePayloadV2 item
+property IncidentIo\Model\GlossaryEntriesUpdateRanksPayloadV2 rankUpdates
+property IncidentIo\Model\GlossaryEntriesUpdateRanksResultV2 glossaryEntries
+property IncidentIo\Model\GlossaryEntriesUpdateResultV2 glossaryEntry
+property IncidentIo\Model\GlossaryEntryRankUpdateV2 rank
+property IncidentIo\Model\GlossaryEntryRankUpdateV2 resourceId
+property IncidentIo\Model\GlossaryEntryV2 createdAt
+property IncidentIo\Model\GlossaryEntryV2 description
+property IncidentIo\Model\GlossaryEntryV2 id
+property IncidentIo\Model\GlossaryEntryV2 item
+property IncidentIo\Model\GlossaryEntryV2 rank
+property IncidentIo\Model\GlossaryEntryV2 updatedAt
 property IncidentIo\Model\GroupingKeyV2 reference
 property IncidentIo\Model\GroupingKeyV3 reference
 property IncidentIo\Model\GroupingSettingsV3 aiEnabled
