@@ -102388,7 +102388,8 @@
               "complete",
               "pending",
               "error",
-              "suspended"
+              "suspended",
+              "skipped"
             ],
             "example": "complete",
             "type": "string"
@@ -102477,7 +102478,8 @@
               "complete",
               "pending",
               "error",
-              "suspended"
+              "suspended",
+              "skipped"
             ],
             "example": "complete",
             "type": "string"

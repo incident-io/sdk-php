@@ -252,6 +252,7 @@ class StepProgressV2 implements ModelInterface, ArrayAccess, JsonSerializable
     public const STATUS_PENDING = 'pending';
     public const STATUS_ERROR = 'error';
     public const STATUS_SUSPENDED = 'suspended';
+    public const STATUS_SKIPPED = 'skipped';
     public const WEBHOOK_DELIVERY_STATE_AVAILABLE = 'available';
     public const WEBHOOK_DELIVERY_STATE_EXPIRED = 'expired';
     public const WEBHOOK_DELIVERY_STATE_UNAVAILABLE = 'unavailable';
@@ -268,6 +269,7 @@ class StepProgressV2 implements ModelInterface, ArrayAccess, JsonSerializable
             self::STATUS_PENDING,
             self::STATUS_ERROR,
             self::STATUS_SUSPENDED,
+            self::STATUS_SKIPPED,
         ];
     }
 
