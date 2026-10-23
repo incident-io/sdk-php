@@ -81423,6 +81423,58 @@
         ],
         "type": "object"
       },
+      "IncidentsConnectExternalIssuePayloadV2": {
+        "example": {
+          "issue_template_id": "01GBA8J19SMXQWPJMX3P2ESCVG",
+          "provider": "jira",
+          "replace": false,
+          "url": "https://example.atlassian.net/browse/OPS-42"
+        },
+        "properties": {
+          "issue_template_id": {
+            "description": "ID of the incident ticket template to sync the issue with",
+            "example": "01GBA8J19SMXQWPJMX3P2ESCVG",
+            "type": "string"
+          },
+          "provider": {
+            "description": "The issue tracker provider the issue belongs to. It must match the provider of the incident ticket template.",
+            "enum": [
+              "asana",
+              "azure_devops",
+              "click_up",
+              "freshservice",
+              "linear",
+              "jira",
+              "salesforce",
+              "jira_server",
+              "github",
+              "gitlab",
+              "service_now",
+              "shortcut",
+              "notion"
+            ],
+            "example": "jira",
+            "type": "string"
+          },
+          "replace": {
+            "default": false,
+            "description": "Whether to replace the incident's current external issue, if it has a different one",
+            "example": false,
+            "type": "boolean"
+          },
+          "url": {
+            "description": "URL of the issue in the issue tracker",
+            "example": "https://example.atlassian.net/browse/OPS-42",
+            "type": "string"
+          }
+        },
+        "required": [
+          "provider",
+          "issue_template_id",
+          "url"
+        ],
+        "type": "object"
+      },
       "IncidentsCreatePayloadV1": {
         "example": {
           "custom_field_entries": [
@@ -161940,6 +161992,184 @@
         "x-rbac-scopes": [
           "incidents.view"
         ]
+      }
+    },
+    "/v2/incidents/{id}/actions/connect_external_issue": {
+      "post": {
+        "description": "Connect an existing issue in an issue tracker to an incident, as its external issue.\n\nThe issue is synced using the given incident ticket template, as if incident.io had\ncreated it from that template. The next sync writes the incident's fields into the issue.\n\nThis needs the incidents.connect_external_issue scope, either across the organisation or\nfrom an incident role on this incident.\n\nThis fails if the incident already has a different external issue (unless replace is\ntrue), or if the issue is already linked to another incident or follow-up.\n\nThe ID supplied can be either the incident's full ID, or the numeric part of its\nreference.",
+        "operationId": "Incidents V2#ConnectExternalIssue",
+        "parameters": [
+          {
+            "description": "The unique identifier of the incident",
+            "example": "01G18REBY9AYH6CMWCJ2CVCYCH",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "The unique identifier of the incident",
+              "example": "01G18REBY9AYH6CMWCJ2CVCYCH",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "issue_template_id": "01GBA8J19SMXQWPJMX3P2ESCVG",
+                "provider": "jira",
+                "replace": false,
+                "url": "https://example.atlassian.net/browse/OPS-42"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/IncidentsConnectExternalIssuePayloadV2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "ConnectExternalIssue Incidents V2",
+        "tags": [
+          "Incidents V2"
+        ],
+        "x-docs-display-name": "Connect external issue",
+        "x-docs-group-name": "Incidents V2",
+        "x-docs-resource-type": "IncidentV2"
       }
     },
     "/v2/incidents/{id}/actions/edit": {

@@ -939,6 +939,7 @@ class IncidentIo\Model\IncidentUpdatesListResultV2
 class IncidentIo\Model\IncidentV1
 class IncidentIo\Model\IncidentV2
 class IncidentIo\Model\IncidentWithStatusChangeV2
+class IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2
 class IncidentIo\Model\IncidentsCreatePayloadV1
 class IncidentIo\Model\IncidentsCreatePayloadV2
 class IncidentIo\Model\IncidentsCreateResultV1
@@ -3838,6 +3839,20 @@ const IncidentIo\Model\IncidentV2::MODE_TUTORIAL
 const IncidentIo\Model\IncidentV2::VISIBILITY__PRIVATE
 const IncidentIo\Model\IncidentV2::VISIBILITY__PUBLIC
 const IncidentIo\Model\IncidentWithStatusChangeV2::DISCRIMINATOR
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::DISCRIMINATOR
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::PROVIDER_ASANA
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::PROVIDER_AZURE_DEVOPS
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::PROVIDER_CLICK_UP
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::PROVIDER_FRESHSERVICE
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::PROVIDER_GITHUB
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::PROVIDER_GITLAB
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::PROVIDER_JIRA
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::PROVIDER_JIRA_SERVER
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::PROVIDER_LINEAR
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::PROVIDER_NOTION
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::PROVIDER_SALESFORCE
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::PROVIDER_SERVICE_NOW
+const IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2::PROVIDER_SHORTCUT
 const IncidentIo\Model\IncidentsCreatePayloadV1::DISCRIMINATOR
 const IncidentIo\Model\IncidentsCreatePayloadV1::MODE_REAL
 const IncidentIo\Model\IncidentsCreatePayloadV1::MODE_TEST
@@ -6979,6 +6994,11 @@ method IncidentIo\Api\IncidentsV1Api::setHostIndex
 method IncidentIo\Api\IncidentsV2Api::__construct
 method IncidentIo\Api\IncidentsV2Api::getConfig
 method IncidentIo\Api\IncidentsV2Api::getHostIndex
+method IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssue
+method IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueAsync
+method IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueAsyncWithHttpInfo
+method IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueRequest
+method IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueWithHttpInfo
 method IncidentIo\Api\IncidentsV2Api::incidentsV2Create
 method IncidentIo\Api\IncidentsV2Api::incidentsV2CreateAsync
 method IncidentIo\Api\IncidentsV2Api::incidentsV2CreateAsyncWithHttpInfo
@@ -10627,6 +10647,21 @@ param IncidentIo\Api\IncidentsV2Api::__construct $client
 param IncidentIo\Api\IncidentsV2Api::__construct $config
 param IncidentIo\Api\IncidentsV2Api::__construct $hostIndex
 param IncidentIo\Api\IncidentsV2Api::__construct $selector
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssue $contentType
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssue $id
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssue $incidentsConnectExternalIssuePayloadV2
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueAsync $contentType
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueAsync $id
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueAsync $incidentsConnectExternalIssuePayloadV2
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueAsyncWithHttpInfo $contentType
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueAsyncWithHttpInfo $id
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueAsyncWithHttpInfo $incidentsConnectExternalIssuePayloadV2
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueRequest $contentType
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueRequest $id
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueRequest $incidentsConnectExternalIssuePayloadV2
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueWithHttpInfo $contentType
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueWithHttpInfo $id
+param IncidentIo\Api\IncidentsV2Api::incidentsV2ConnectExternalIssueWithHttpInfo $incidentsConnectExternalIssuePayloadV2
 param IncidentIo\Api\IncidentsV2Api::incidentsV2Create $contentType
 param IncidentIo\Api\IncidentsV2Api::incidentsV2Create $incidentsCreatePayloadV2
 param IncidentIo\Api\IncidentsV2Api::incidentsV2CreateAsync $contentType
@@ -16309,6 +16344,10 @@ property IncidentIo\Model\IncidentWithStatusChangeV2 incident
 property IncidentIo\Model\IncidentWithStatusChangeV2 message
 property IncidentIo\Model\IncidentWithStatusChangeV2 newStatus
 property IncidentIo\Model\IncidentWithStatusChangeV2 previousStatus
+property IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 issueTemplateId
+property IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 provider
+property IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 replace
+property IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 url
 property IncidentIo\Model\IncidentsCreatePayloadV1 customFieldEntries
 property IncidentIo\Model\IncidentsCreatePayloadV1 idempotencyKey
 property IncidentIo\Model\IncidentsCreatePayloadV1 incidentRoleAssignments

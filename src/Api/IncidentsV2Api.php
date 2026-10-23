@@ -70,6 +70,9 @@ class IncidentsV2Api
 
     /** @var array<string,string[]> $contentTypes **/
     public const contentTypes = [
+        'incidentsV2ConnectExternalIssue' => [
+            'application/json',
+        ],
         'incidentsV2Create' => [
             'application/json',
         ],
@@ -131,6 +134,376 @@ class IncidentsV2Api
     public function getConfig(): Configuration
     {
         return $this->config;
+    }
+
+    /**
+     * Operation incidentsV2ConnectExternalIssue
+     *
+     * ConnectExternalIssue Incidents V2
+     *
+     * @param  string $id The unique identifier of the incident (required)
+     * @param  \IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 $incidentsConnectExternalIssuePayloadV2 incidentsConnectExternalIssuePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['incidentsV2ConnectExternalIssue'] to see the possible values for this operation
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws InvalidArgumentException
+     * @return \IncidentIo\Model\ErrorResponse|null
+     */
+    public function incidentsV2ConnectExternalIssue(
+        string $id,
+        \IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 $incidentsConnectExternalIssuePayloadV2,
+        string $contentType = self::contentTypes['incidentsV2ConnectExternalIssue'][0]
+    ): ?\IncidentIo\Model\ErrorResponse
+    {
+        list($response) = $this->incidentsV2ConnectExternalIssueWithHttpInfo($id, $incidentsConnectExternalIssuePayloadV2, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation incidentsV2ConnectExternalIssueWithHttpInfo
+     *
+     * ConnectExternalIssue Incidents V2
+     *
+     * @param  string $id The unique identifier of the incident (required)
+     * @param  \IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 $incidentsConnectExternalIssuePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['incidentsV2ConnectExternalIssue'] to see the possible values for this operation
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws InvalidArgumentException
+     * @return array{0: null, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     */
+    public function incidentsV2ConnectExternalIssueWithHttpInfo(
+        string $id,
+        \IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 $incidentsConnectExternalIssuePayloadV2,
+        string $contentType = self::contentTypes['incidentsV2ConnectExternalIssue'][0]
+    ): array
+    {
+        $request = $this->incidentsV2ConnectExternalIssueRequest($id, $incidentsConnectExternalIssuePayloadV2, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 408:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 412:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation incidentsV2ConnectExternalIssueAsync
+     *
+     * ConnectExternalIssue Incidents V2
+     *
+     * @param  string $id The unique identifier of the incident (required)
+     * @param  \IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 $incidentsConnectExternalIssuePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['incidentsV2ConnectExternalIssue'] to see the possible values for this operation
+     *
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
+     */
+    public function incidentsV2ConnectExternalIssueAsync(
+        string $id,
+        \IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 $incidentsConnectExternalIssuePayloadV2,
+        string $contentType = self::contentTypes['incidentsV2ConnectExternalIssue'][0]
+    ): PromiseInterface
+    {
+        return $this->incidentsV2ConnectExternalIssueAsyncWithHttpInfo($id, $incidentsConnectExternalIssuePayloadV2, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation incidentsV2ConnectExternalIssueAsyncWithHttpInfo
+     *
+     * ConnectExternalIssue Incidents V2
+     *
+     * @param  string $id The unique identifier of the incident (required)
+     * @param  \IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 $incidentsConnectExternalIssuePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['incidentsV2ConnectExternalIssue'] to see the possible values for this operation
+     *
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
+     */
+    public function incidentsV2ConnectExternalIssueAsyncWithHttpInfo(
+        string $id,
+        \IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 $incidentsConnectExternalIssuePayloadV2,
+        string $contentType = self::contentTypes['incidentsV2ConnectExternalIssue'][0]
+    ): PromiseInterface
+    {
+        $returnType = '';
+        $request = $this->incidentsV2ConnectExternalIssueRequest($id, $incidentsConnectExternalIssuePayloadV2, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'incidentsV2ConnectExternalIssue'
+     *
+     * @param  string $id The unique identifier of the incident (required)
+     * @param  \IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 $incidentsConnectExternalIssuePayloadV2 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['incidentsV2ConnectExternalIssue'] to see the possible values for this operation
+     *
+     * @throws InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function incidentsV2ConnectExternalIssueRequest(
+        string $id,
+        \IncidentIo\Model\IncidentsConnectExternalIssuePayloadV2 $incidentsConnectExternalIssuePayloadV2,
+        string $contentType = self::contentTypes['incidentsV2ConnectExternalIssue'][0]
+    ): Request
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $id when calling incidentsV2ConnectExternalIssue'
+            );
+        }
+        // verify the required parameter 'incidentsConnectExternalIssuePayloadV2' is set
+        if ($incidentsConnectExternalIssuePayloadV2 === null || (is_array($incidentsConnectExternalIssuePayloadV2) && count($incidentsConnectExternalIssuePayloadV2) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $incidentsConnectExternalIssuePayloadV2 when calling incidentsV2ConnectExternalIssue'
+            );
+        }
+
+        $resourcePath = '/v2/incidents/{id}/actions/connect_external_issue';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{id}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($incidentsConnectExternalIssuePayloadV2)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                try {
+                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($incidentsConnectExternalIssuePayloadV2), JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                $httpBody = $incidentsConnectExternalIssuePayloadV2;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new \GuzzleHttp\Psr7\MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                try {
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**

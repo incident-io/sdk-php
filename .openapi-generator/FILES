@@ -939,6 +939,7 @@ src/Model/IncidentUpdatesListResultV2.php
 src/Model/IncidentV1.php
 src/Model/IncidentV2.php
 src/Model/IncidentWithStatusChangeV2.php
+src/Model/IncidentsConnectExternalIssuePayloadV2.php
 src/Model/IncidentsCreatePayloadV1.php
 src/Model/IncidentsCreatePayloadV2.php
 src/Model/IncidentsCreateResultV1.php
