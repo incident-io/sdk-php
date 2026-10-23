@@ -161996,7 +161996,7 @@
     },
     "/v2/incidents/{id}/actions/connect_external_issue": {
       "post": {
-        "description": "Connect an existing issue in an issue tracker to an incident, as its external issue.\n\nThe issue is synced using the given incident ticket template, as if incident.io had\ncreated it from that template. The next sync writes the incident's fields into the issue.\n\nThis needs the incidents.connect_external_issue scope, either across the organisation or\nfrom an incident role on this incident.\n\nThis fails if the incident already has a different external issue (unless replace is\ntrue), or if the issue is already linked to another incident or follow-up.\n\nThe ID supplied can be either the incident's full ID, or the numeric part of its\nreference.",
+        "description": "Connect an existing issue in an issue tracker to an incident, as its external issue.\n\nThe issue is synced using the given incident ticket template, as if incident.io had\ncreated it from that template. The next sync writes the incident's fields into the issue.\n\nThis works whether or not automatic incident ticket creation is turned on. While it is\noff, no tickets are created for other incidents, and the incident's fields are not\nwritten into this issue until it is turned on.\n\nThis needs the incidents.connect_external_issue scope, either across the organisation or\nfrom an incident role on this incident.\n\nThis fails if the incident already has a different external issue (unless replace is\ntrue), or if the issue is already linked to another incident or follow-up.\n\nThe ID supplied can be either the incident's full ID, or the numeric part of its\nreference.",
         "operationId": "Incidents V2#ConnectExternalIssue",
         "parameters": [
           {
