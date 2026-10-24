@@ -23364,6 +23364,106 @@
         ],
         "type": "object"
       },
+      "AuditLogInvestigationConfigUpdatedMetadataV2": {
+        "example": {
+          "after_auto_merge_mode": "auto",
+          "after_auto_run_mode": "on",
+          "after_evaluate_auto_run_on_incident_update": "true",
+          "after_hide_progress_thread": "true",
+          "after_propose_code_changes_mode": "on",
+          "after_status": "enabled",
+          "after_summary_template": "compact",
+          "before_auto_merge_mode": "suggest",
+          "before_auto_run_mode": "off",
+          "before_evaluate_auto_run_on_incident_update": "false",
+          "before_hide_progress_thread": "false",
+          "before_propose_code_changes_mode": "off",
+          "before_status": "disabled",
+          "before_summary_template": "default",
+          "changed": "auto_run_mode,auto_merge_mode"
+        },
+        "properties": {
+          "after_auto_merge_mode": {
+            "description": "What an investigation does with a duplicate incident after the change (suggest, auto)",
+            "example": "auto",
+            "type": "string"
+          },
+          "after_auto_run_mode": {
+            "description": "When investigations start on their own after the change (off, silent, on, conditional)",
+            "example": "on",
+            "type": "string"
+          },
+          "after_evaluate_auto_run_on_incident_update": {
+            "description": "Whether conditional auto-run is re-checked on incident updates after the change (true, false)",
+            "example": "true",
+            "type": "string"
+          },
+          "after_hide_progress_thread": {
+            "description": "Whether the progress thread is hidden after the change (true, false)",
+            "example": "true",
+            "type": "string"
+          },
+          "after_propose_code_changes_mode": {
+            "description": "Whether investigations can open code change tasks on their own after the change (off, on)",
+            "example": "on",
+            "type": "string"
+          },
+          "after_status": {
+            "description": "Whether investigations are switched on after the change (enabled, scheduled_for_enable, disabled)",
+            "example": "enabled",
+            "type": "string"
+          },
+          "after_summary_template": {
+            "description": "The summary template used after the change (default, compact)",
+            "example": "compact",
+            "type": "string"
+          },
+          "before_auto_merge_mode": {
+            "description": "What an investigation did with a duplicate incident before the change (suggest, auto)",
+            "example": "suggest",
+            "type": "string"
+          },
+          "before_auto_run_mode": {
+            "description": "When investigations started on their own before the change (off, silent, on, conditional)",
+            "example": "off",
+            "type": "string"
+          },
+          "before_evaluate_auto_run_on_incident_update": {
+            "description": "Whether conditional auto-run was re-checked on incident updates before the change (true, false)",
+            "example": "false",
+            "type": "string"
+          },
+          "before_hide_progress_thread": {
+            "description": "Whether the progress thread was hidden before the change (true, false)",
+            "example": "false",
+            "type": "string"
+          },
+          "before_propose_code_changes_mode": {
+            "description": "Whether investigations could open code change tasks on their own before the change (off, on)",
+            "example": "off",
+            "type": "string"
+          },
+          "before_status": {
+            "description": "Whether investigations were switched on before the change (enabled, scheduled_for_enable, disabled)",
+            "example": "disabled",
+            "type": "string"
+          },
+          "before_summary_template": {
+            "description": "The summary template used before the change (default, compact)",
+            "example": "default",
+            "type": "string"
+          },
+          "changed": {
+            "description": "What the update changed, comma separated (status, auto_run_mode, condition_groups, evaluate_auto_run_on_incident_update, auto_merge_mode, propose_code_changes_mode, tuneables, hide_progress_thread, summary_template)",
+            "example": "auto_run_mode,auto_merge_mode",
+            "type": "string"
+          }
+        },
+        "required": [
+          "changed"
+        ],
+        "type": "object"
+      },
       "AuditLogInvestigationTriggerMetadataV2": {
         "example": {
           "blocks": "false",
@@ -23878,6 +23978,7 @@
               "extension_plugin",
               "glossary_entry",
               "investigation_trigger",
+              "investigation_config",
               "follow_up_category",
               "follow_up_priority",
               "holiday_user_feed",
@@ -32647,6 +32748,102 @@
           "actor",
           "targets",
           "context"
+        ],
+        "type": "object"
+      },
+      "AuditLogsInvestigationConfigUpdatedV1": {
+        "example": {
+          "action": "investigation_config.updated",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "after_auto_merge_mode": "auto",
+            "after_auto_run_mode": "on",
+            "after_evaluate_auto_run_on_incident_update": "true",
+            "after_hide_progress_thread": "true",
+            "after_propose_code_changes_mode": "on",
+            "after_status": "enabled",
+            "after_summary_template": "compact",
+            "before_auto_merge_mode": "suggest",
+            "before_auto_run_mode": "off",
+            "before_evaluate_auto_run_on_incident_update": "false",
+            "before_hide_progress_thread": "false",
+            "before_propose_code_changes_mode": "off",
+            "before_status": "disabled",
+            "before_summary_template": "default",
+            "changed": "auto_run_mode,auto_merge_mode"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Investigation settings",
+              "type": "investigation_config"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "investigation_config.updated",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogInvestigationConfigUpdatedMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Investigation settings",
+                "type": "investigation_config"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
         ],
         "type": "object"
       },
@@ -207042,6 +207239,69 @@
                 },
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsInternalStatusPageUpdatedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/investigation_config.updated.1": {
+      "get": {
+        "description": "This entry is created whenever investigation settings change, such as when investigations run automatically, whether they merge duplicate incidents or whether they propose code changes",
+        "operationId": "InvestigationConfigUpdatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "investigation_config.updated",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "after_auto_merge_mode": "auto",
+                    "after_auto_run_mode": "on",
+                    "after_evaluate_auto_run_on_incident_update": "true",
+                    "after_hide_progress_thread": "true",
+                    "after_propose_code_changes_mode": "on",
+                    "after_status": "enabled",
+                    "after_summary_template": "compact",
+                    "before_auto_merge_mode": "suggest",
+                    "before_auto_run_mode": "off",
+                    "before_evaluate_auto_run_on_incident_update": "false",
+                    "before_hide_progress_thread": "false",
+                    "before_propose_code_changes_mode": "off",
+                    "before_status": "disabled",
+                    "before_summary_template": "default",
+                    "changed": "auto_run_mode,auto_merge_mode"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Investigation settings",
+                      "type": "investigation_config"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsInvestigationConfigUpdatedV1"
                 }
               }
             },
