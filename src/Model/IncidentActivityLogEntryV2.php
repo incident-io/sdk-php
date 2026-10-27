@@ -305,6 +305,7 @@ class IncidentActivityLogEntryV2 implements ModelInterface, ArrayAccess, JsonSer
     public const TYPE_SCRIBE_REMOVED = 'scribe_removed';
     public const TYPE_EXTERNAL_ISSUE_COMMENT_SYNCED = 'external_issue_comment_synced';
     public const TYPE_INVESTIGATION_HYPOTHESIS_UPDATE = 'investigation_hypothesis_update';
+    public const TYPE_INVESTIGATION_HEADS_UP = 'investigation_heads_up';
     public const TYPE_WORKFLOW_RAN = 'workflow_ran';
 
     /**
@@ -377,6 +378,7 @@ class IncidentActivityLogEntryV2 implements ModelInterface, ArrayAccess, JsonSer
             self::TYPE_SCRIBE_REMOVED,
             self::TYPE_EXTERNAL_ISSUE_COMMENT_SYNCED,
             self::TYPE_INVESTIGATION_HYPOTHESIS_UPDATE,
+            self::TYPE_INVESTIGATION_HEADS_UP,
             self::TYPE_WORKFLOW_RAN,
         ];
     }

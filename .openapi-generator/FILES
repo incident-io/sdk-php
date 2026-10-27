@@ -2,6 +2,7 @@ src/Api/APIKeysV1Api.php
 src/Api/ActionsV1Api.php
 src/Api/ActionsV2Api.php
 src/Api/ActionsV3Api.php
+src/Api/AlertAttachmentsV2Api.php
 src/Api/AlertAttributesV2Api.php
 src/Api/AlertEventsV2Api.php
 src/Api/AlertNotesV1Api.php
@@ -121,6 +122,10 @@ src/Model/ActorV1.php
 src/Model/ActorV2.php
 src/Model/AfterPaginationMetaResultV2.php
 src/Model/AlertActorV2.php
+src/Model/AlertAttachmentV2.php
+src/Model/AlertAttachmentsCreatePayloadV2.php
+src/Model/AlertAttachmentsCreateResultV2.php
+src/Model/AlertAttachmentsListResultV2.php
 src/Model/AlertAttributeCatalogEntryV2.php
 src/Model/AlertAttributeEntryV2.php
 src/Model/AlertAttributeV2.php
@@ -299,6 +304,9 @@ src/Model/AuditLogPrivateInsightsExportedMetadataV2.php
 src/Model/AuditLogPrivateInsightsMeasureQueriedMetadataV2.php
 src/Model/AuditLogPrivateInsightsUnderlyingDataQueriedMetadataV2.php
 src/Model/AuditLogQrCodeMobileLoginSettingUpdatedMetadataV2.php
+src/Model/AuditLogReliabilityReviewRepositoryUpdatedMetadataV2.php
+src/Model/AuditLogReliabilityReviewSettingsUpdatedMetadataV2.php
+src/Model/AuditLogReliabilityReviewSpendLimitUpdatedMetadataV2.php
 src/Model/AuditLogSCIMGroupSeatMappingChangedMetadataV2.php
 src/Model/AuditLogScheduleOverrideMetadataV2.php
 src/Model/AuditLogTargetV2.php
@@ -489,6 +497,9 @@ src/Model/AuditLogsQrCodeMobileLoginSettingUpdatedV1.php
 src/Model/AuditLogsRbacRoleCreatedV1.php
 src/Model/AuditLogsRbacRoleDeletedV1.php
 src/Model/AuditLogsRbacRoleUpdatedV1.php
+src/Model/AuditLogsReliabilityReviewRepositoryUpdatedV1.php
+src/Model/AuditLogsReliabilityReviewSettingsUpdatedV1.php
+src/Model/AuditLogsReliabilityReviewSpendLimitUpdatedV1.php
 src/Model/AuditLogsScheduleCreatedV1.php
 src/Model/AuditLogsScheduleDeletedV1.php
 src/Model/AuditLogsScheduleOverrideCreatedV1.php

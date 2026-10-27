@@ -3148,6 +3148,155 @@
         ],
         "type": "object"
       },
+      "AlertAttachmentV2": {
+        "description": "Something attached to an alert or alert group, such as a ticket, a pull request or\na link.",
+        "example": {
+          "alert_group_id": "01HB9Z8WANK6P870EA6S7TK1DS",
+          "alert_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+          "created_at": "2026-10-23T15:30:00Z",
+          "id": "01J1X9J85C7Y12G8P8W8K55Q5Y",
+          "title": "Tune the disk usage alert",
+          "url": "https://linear.app/acme/issue/ENG-123"
+        },
+        "properties": {
+          "alert_group_id": {
+            "description": "ID of the alert group this is attached to. Exactly one of alert_id or alert_group_id is set.",
+            "example": "01HB9Z8WANK6P870EA6S7TK1DS",
+            "type": "string"
+          },
+          "alert_id": {
+            "description": "ID of the alert this is attached to. Exactly one of alert_id or alert_group_id is set.",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          },
+          "created_at": {
+            "description": "When it was attached",
+            "example": "2026-10-23T15:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "description": "Unique identifier for the alert attachment",
+            "example": "01J1X9J85C7Y12G8P8W8K55Q5Y",
+            "type": "string"
+          },
+          "title": {
+            "description": "The ticket or pull request's title, or the link's title",
+            "example": "Tune the disk usage alert",
+            "type": "string"
+          },
+          "url": {
+            "description": "URL of the attached ticket, pull request or link",
+            "example": "https://linear.app/acme/issue/ENG-123",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "url",
+          "title",
+          "created_at"
+        ],
+        "type": "object"
+      },
+      "AlertAttachmentsCreatePayloadV2": {
+        "example": {
+          "alert_group_id": "01HB9Z8WANK6P870EA6S7TK1DS",
+          "alert_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+          "title": "Disk usage dashboard",
+          "url": "https://linear.app/acme/issue/ENG-123"
+        },
+        "properties": {
+          "alert_group_id": {
+            "description": "ID of the alert group to attach to. Provide exactly one of alert_id or alert_group_id.",
+            "example": "01HB9Z8WANK6P870EA6S7TK1DS",
+            "type": "string"
+          },
+          "alert_id": {
+            "description": "ID of the alert to attach to. Provide exactly one of alert_id or alert_group_id.",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          },
+          "title": {
+            "description": "Title for a link. Tickets and pull requests use their own title, so we ignore this for them.",
+            "example": "Disk usage dashboard",
+            "type": "string"
+          },
+          "url": {
+            "description": "The URL to attach",
+            "example": "https://linear.app/acme/issue/ENG-123",
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "type": "object"
+      },
+      "AlertAttachmentsCreateResultV2": {
+        "example": {
+          "alert_attachment": {
+            "alert_group_id": "01HB9Z8WANK6P870EA6S7TK1DS",
+            "alert_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "created_at": "2026-10-23T15:30:00Z",
+            "id": "01J1X9J85C7Y12G8P8W8K55Q5Y",
+            "title": "Tune the disk usage alert",
+            "url": "https://linear.app/acme/issue/ENG-123"
+          }
+        },
+        "properties": {
+          "alert_attachment": {
+            "$ref": "#/components/schemas/AlertAttachmentV2"
+          }
+        },
+        "required": [
+          "alert_attachment"
+        ],
+        "type": "object"
+      },
+      "AlertAttachmentsListResultV2": {
+        "example": {
+          "alert_attachments": [
+            {
+              "alert_group_id": "01HB9Z8WANK6P870EA6S7TK1DS",
+              "alert_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "created_at": "2026-10-23T15:30:00Z",
+              "id": "01J1X9J85C7Y12G8P8W8K55Q5Y",
+              "title": "Tune the disk usage alert",
+              "url": "https://linear.app/acme/issue/ENG-123"
+            }
+          ],
+          "pagination_meta": {
+            "after": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "page_size": 25
+          }
+        },
+        "properties": {
+          "alert_attachments": {
+            "example": [
+              {
+                "alert_group_id": "01HB9Z8WANK6P870EA6S7TK1DS",
+                "alert_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "created_at": "2026-10-23T15:30:00Z",
+                "id": "01J1X9J85C7Y12G8P8W8K55Q5Y",
+                "title": "Tune the disk usage alert",
+                "url": "https://linear.app/acme/issue/ENG-123"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AlertAttachmentV2"
+            },
+            "type": "array"
+          },
+          "pagination_meta": {
+            "$ref": "#/components/schemas/PaginationMetaResultV2"
+          }
+        },
+        "required": [
+          "alert_attachments"
+        ],
+        "type": "object"
+      },
       "AlertAttributeCatalogEntryV2": {
         "example": {
           "catalog_type_id": "01FCNDV6P870EA6S7TK1DSYDG0",
@@ -23864,6 +24013,105 @@
         },
         "type": "object"
       },
+      "AuditLogReliabilityReviewRepositoryUpdatedMetadataV2": {
+        "example": {
+          "reviews": "enabled"
+        },
+        "properties": {
+          "reviews": {
+            "description": "Whether pull requests to the repository are reviewed after the change (enabled, disabled)",
+            "example": "enabled",
+            "type": "string"
+          }
+        },
+        "required": [
+          "reviews"
+        ],
+        "type": "object"
+      },
+      "AuditLogReliabilityReviewSettingsUpdatedMetadataV2": {
+        "example": {
+          "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
+          "after_automatic_reviews": "once_per_pull_request",
+          "after_draft_reviews": "skip",
+          "after_reviewed_authors": "selected_users",
+          "before_automatic_reviews": "every_push",
+          "before_draft_reviews": "review",
+          "before_reviewed_authors": "everyone",
+          "changed": "automatic_reviews",
+          "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
+        },
+        "properties": {
+          "added_user_ids": {
+            "description": "The users added to those whose pull requests are reviewed, comma separated",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          },
+          "after_automatic_reviews": {
+            "description": "Which pushes to a pull request are reviewed after the change (every_push, once_per_pull_request)",
+            "example": "once_per_pull_request",
+            "type": "string"
+          },
+          "after_draft_reviews": {
+            "description": "Whether draft pull requests are reviewed after the change (review, skip)",
+            "example": "skip",
+            "type": "string"
+          },
+          "after_reviewed_authors": {
+            "description": "Whose pull requests are reviewed after the change (everyone, selected_users)",
+            "example": "selected_users",
+            "type": "string"
+          },
+          "before_automatic_reviews": {
+            "description": "Which pushes to a pull request were reviewed before the change (every_push, once_per_pull_request)",
+            "example": "every_push",
+            "type": "string"
+          },
+          "before_draft_reviews": {
+            "description": "Whether draft pull requests were reviewed before the change (review, skip)",
+            "example": "review",
+            "type": "string"
+          },
+          "before_reviewed_authors": {
+            "description": "Whose pull requests were reviewed before the change (everyone, selected_users)",
+            "example": "everyone",
+            "type": "string"
+          },
+          "changed": {
+            "description": "What the update changed, comma separated (automatic_reviews, draft_reviews, reviewed_authors, reviewed_users)",
+            "example": "automatic_reviews",
+            "type": "string"
+          },
+          "removed_user_ids": {
+            "description": "The users removed from those whose pull requests are reviewed, comma separated",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "type": "string"
+          }
+        },
+        "required": [
+          "changed"
+        ],
+        "type": "object"
+      },
+      "AuditLogReliabilityReviewSpendLimitUpdatedMetadataV2": {
+        "example": {
+          "after_spend_limit_cents": "100000",
+          "before_spend_limit_cents": "50000"
+        },
+        "properties": {
+          "after_spend_limit_cents": {
+            "description": "The monthly spend limit after the change, in cents. Absent when there is no limit",
+            "example": "100000",
+            "type": "string"
+          },
+          "before_spend_limit_cents": {
+            "description": "The monthly spend limit before the change, in cents. Absent when there was no limit",
+            "example": "50000",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "AuditLogSCIMGroupSeatMappingChangedMetadataV2": {
         "example": {
           "after_seat_types": "[full_access, responder_access]",
@@ -23982,6 +24230,8 @@
               "glossary_entry",
               "investigation_trigger",
               "investigation_config",
+              "code_repository",
+              "reliability_review_settings",
               "follow_up_category",
               "follow_up_priority",
               "holiday_user_feed",
@@ -38088,6 +38338,261 @@
           "actor",
           "targets",
           "context"
+        ],
+        "type": "object"
+      },
+      "AuditLogsReliabilityReviewRepositoryUpdatedV1": {
+        "example": {
+          "action": "reliability_review_repository.updated",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "reviews": "enabled"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "acme/api",
+              "type": "code_repository"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "reliability_review_repository.updated",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogReliabilityReviewRepositoryUpdatedMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "acme/api",
+                "type": "code_repository"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
+        ],
+        "type": "object"
+      },
+      "AuditLogsReliabilityReviewSettingsUpdatedV1": {
+        "example": {
+          "action": "reliability_review_settings.updated",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "after_automatic_reviews": "once_per_pull_request",
+            "after_draft_reviews": "skip",
+            "after_reviewed_authors": "selected_users",
+            "before_automatic_reviews": "every_push",
+            "before_draft_reviews": "review",
+            "before_reviewed_authors": "everyone",
+            "changed": "automatic_reviews",
+            "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Reliability review settings",
+              "type": "reliability_review_settings"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "reliability_review_settings.updated",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogReliabilityReviewSettingsUpdatedMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Reliability review settings",
+                "type": "reliability_review_settings"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
+        ],
+        "type": "object"
+      },
+      "AuditLogsReliabilityReviewSpendLimitUpdatedV1": {
+        "example": {
+          "action": "reliability_review_spend_limit.updated",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "after_spend_limit_cents": "100000",
+            "before_spend_limit_cents": "50000"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Reliability review settings",
+              "type": "reliability_review_settings"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "reliability_review_spend_limit.updated",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogReliabilityReviewSpendLimitUpdatedMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Reliability review settings",
+                "type": "reliability_review_settings"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
         ],
         "type": "object"
       },
@@ -71173,6 +71678,7 @@
               "scribe_removed",
               "external_issue_comment_synced",
               "investigation_hypothesis_update",
+              "investigation_heads_up",
               "workflow_ran"
             ],
             "example": "incident_update",
@@ -130111,6 +130617,595 @@
         },
         "x-rbac-scopes": [
           "actions.update"
+        ]
+      }
+    },
+    "/v2/alert_attachments": {
+      "get": {
+        "description": "List the attachments on an alert or alert group, newest first. Provide exactly one of alert_id or alert_group_id. Listing by alert_id returns only what is attached to that alert, not what is attached to its alert group.",
+        "operationId": "Alert Attachments V2#List",
+        "parameters": [
+          {
+            "allowEmptyValue": true,
+            "description": "ID of the alert to list attachments for. Provide exactly one of alert_id or alert_group_id.",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "in": "query",
+            "name": "alert_id",
+            "schema": {
+              "description": "ID of the alert to list attachments for. Provide exactly one of alert_id or alert_group_id.",
+              "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "type": "string"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "ID of the alert group to list attachments for. Provide exactly one of alert_id or alert_group_id.",
+            "example": "01HB9Z8WANK6P870EA6S7TK1DS",
+            "in": "query",
+            "name": "alert_group_id",
+            "schema": {
+              "description": "ID of the alert group to list attachments for. Provide exactly one of alert_id or alert_group_id.",
+              "example": "01HB9Z8WANK6P870EA6S7TK1DS",
+              "type": "string"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "Integer number of records to return",
+            "example": 25,
+            "in": "query",
+            "name": "page_size",
+            "schema": {
+              "default": 25,
+              "description": "Integer number of records to return",
+              "example": 25,
+              "format": "int64",
+              "maximum": 250,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "An alert attachment's ID. This endpoint will return the attachments after this one in the response order.",
+            "examples": {
+              "default": {
+                "summary": "default",
+                "value": "01J1X9J85C7Y12G8P8W8K55Q5Y"
+              }
+            },
+            "in": "query",
+            "name": "after",
+            "schema": {
+              "description": "An alert attachment's ID. This endpoint will return the attachments after this one in the response order.",
+              "example": "01J1X9J85C7Y12G8P8W8K55Q5Y",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "alert_attachments": [
+                    {
+                      "alert_group_id": "01HB9Z8WANK6P870EA6S7TK1DS",
+                      "alert_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "created_at": "2026-10-23T15:30:00Z",
+                      "id": "01J1X9J85C7Y12G8P8W8K55Q5Y",
+                      "title": "Tune the disk usage alert",
+                      "url": "https://linear.app/acme/issue/ENG-123"
+                    }
+                  ],
+                  "pagination_meta": {
+                    "after": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "page_size": 25
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AlertAttachmentsListResultV2"
+                }
+              }
+            },
+            "description": "OK response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "List Alert Attachments V2",
+        "tags": [
+          "Alert Attachments V2"
+        ],
+        "x-docs-display-name": "List",
+        "x-docs-group-name": "Alert Attachments V2",
+        "x-docs-resource-type": "AlertAttachmentV2",
+        "x-mint": {
+          "content": "🔑 Requires the `alerts.view` scope."
+        },
+        "x-rbac-scopes": [
+          "alerts.view"
+        ]
+      },
+      "post": {
+        "description": "Attach a URL to an alert or alert group. Provide exactly one of alert_id or alert_group_id. A URL for a ticket or pull request from a connected integration is attached as that ticket or pull request. Any other URL is attached as a link. A URL that is already attached returns a 422.",
+        "operationId": "Alert Attachments V2#Create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "alert_group_id": "01HB9Z8WANK6P870EA6S7TK1DS",
+                "alert_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "title": "Disk usage dashboard",
+                "url": "https://linear.app/acme/issue/ENG-123"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/AlertAttachmentsCreatePayloadV2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "alert_attachment": {
+                    "alert_group_id": "01HB9Z8WANK6P870EA6S7TK1DS",
+                    "alert_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "created_at": "2026-10-23T15:30:00Z",
+                    "id": "01J1X9J85C7Y12G8P8W8K55Q5Y",
+                    "title": "Tune the disk usage alert",
+                    "url": "https://linear.app/acme/issue/ENG-123"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AlertAttachmentsCreateResultV2"
+                }
+              }
+            },
+            "description": "Created response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "Create Alert Attachments V2",
+        "tags": [
+          "Alert Attachments V2"
+        ],
+        "x-docs-display-name": "Create",
+        "x-docs-group-name": "Alert Attachments V2",
+        "x-docs-resource-type": "AlertAttachmentV2",
+        "x-mint": {
+          "content": "🔑 Requires the `alerts.edit` scope."
+        },
+        "x-rbac-scopes": [
+          "alerts.edit"
+        ]
+      }
+    },
+    "/v2/alert_attachments/{id}": {
+      "delete": {
+        "description": "Remove an attachment from its alert or alert group.",
+        "operationId": "Alert Attachments V2#Delete",
+        "parameters": [
+          {
+            "description": "ID of the alert attachment",
+            "example": "01J1X9J85C7Y12G8P8W8K55Q5Y",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "ID of the alert attachment",
+              "example": "01J1X9J85C7Y12G8P8W8K55Q5Y",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "Delete Alert Attachments V2",
+        "tags": [
+          "Alert Attachments V2"
+        ],
+        "x-docs-display-name": "Delete",
+        "x-docs-group-name": "Alert Attachments V2",
+        "x-docs-resource-type": "AlertAttachmentV2",
+        "x-mint": {
+          "content": "🔑 Requires the `alerts.edit` scope."
+        },
+        "x-rbac-scopes": [
+          "alerts.edit"
         ]
       }
     },
@@ -202090,6 +203185,10 @@
       "name": "Actions V3"
     },
     {
+      "description": "Attach tickets, pull requests and links to an alert or alert group, so responders can find related work.",
+      "name": "Alert Attachments V2"
+    },
+    {
       "description": "View and manage alert attributes.\n\nAlert attributes are used to parse structured data from alerts coming in via alert sources.",
       "name": "Alert Attributes V2"
     },
@@ -210635,6 +211734,162 @@
                 },
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsRbacRoleUpdatedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/reliability_review_repository.updated.1": {
+      "get": {
+        "description": "This entry is created whenever Reliability review is turned on or off for a repository",
+        "operationId": "ReliabilityReviewRepositoryUpdatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "reliability_review_repository.updated",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "reviews": "enabled"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "acme/api",
+                      "type": "code_repository"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsReliabilityReviewRepositoryUpdatedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/reliability_review_settings.updated.1": {
+      "get": {
+        "description": "This entry is created whenever Reliability review settings change, such as which pushes are reviewed, whether drafts are reviewed, or whose pull requests are reviewed",
+        "operationId": "ReliabilityReviewSettingsUpdatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "reliability_review_settings.updated",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "after_automatic_reviews": "once_per_pull_request",
+                    "after_draft_reviews": "skip",
+                    "after_reviewed_authors": "selected_users",
+                    "before_automatic_reviews": "every_push",
+                    "before_draft_reviews": "review",
+                    "before_reviewed_authors": "everyone",
+                    "changed": "automatic_reviews",
+                    "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Reliability review settings",
+                      "type": "reliability_review_settings"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsReliabilityReviewSettingsUpdatedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/reliability_review_spend_limit.updated.1": {
+      "get": {
+        "description": "This entry is created whenever the monthly Reliability review spend limit changes",
+        "operationId": "ReliabilityReviewSpendLimitUpdatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "reliability_review_spend_limit.updated",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "after_spend_limit_cents": "100000",
+                    "before_spend_limit_cents": "50000"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Reliability review settings",
+                      "type": "reliability_review_settings"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsReliabilityReviewSpendLimitUpdatedV1"
                 }
               }
             },
