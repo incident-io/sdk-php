@@ -271,6 +271,7 @@ class AlertSourcesValidatePayloadV2 implements ModelInterface, ArrayAccess, Json
     public const SOURCE_TYPE_STATUS_PAGE_VIEWS = 'status_page_views';
     public const SOURCE_TYPE_SUMO_LOGIC = 'sumo_logic';
     public const SOURCE_TYPE_UPTIME = 'uptime';
+    public const SOURCE_TYPE_UPWIND = 'upwind';
     public const SOURCE_TYPE_VERCEL = 'vercel';
     public const SOURCE_TYPE_WIZ = 'wiz';
     public const SOURCE_TYPE_ZENDESK = 'zendesk';
@@ -336,6 +337,7 @@ class AlertSourcesValidatePayloadV2 implements ModelInterface, ArrayAccess, Json
             self::SOURCE_TYPE_STATUS_PAGE_VIEWS,
             self::SOURCE_TYPE_SUMO_LOGIC,
             self::SOURCE_TYPE_UPTIME,
+            self::SOURCE_TYPE_UPWIND,
             self::SOURCE_TYPE_VERCEL,
             self::SOURCE_TYPE_WIZ,
             self::SOURCE_TYPE_ZENDESK,

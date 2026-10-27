@@ -1839,6 +1839,7 @@ const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_STATUS_CAKE
 const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_STATUS_PAGE_VIEWS
 const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_SUMO_LOGIC
 const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_UPTIME
+const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_UPWIND
 const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_VERCEL
 const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_WIZ
 const IncidentIo\Model\AlertSourceV2::SOURCE_TYPE_ZENDESK
@@ -1896,6 +1897,7 @@ const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_STATUS_CAKE
 const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_STATUS_PAGE_VIEWS
 const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_SUMO_LOGIC
 const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_UPTIME
+const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_UPWIND
 const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_VERCEL
 const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_WIZ
 const IncidentIo\Model\AlertSourcesCreatePayloadV2::SOURCE_TYPE_ZENDESK
@@ -1958,6 +1960,7 @@ const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_STATUS_CAKE
 const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_STATUS_PAGE_VIEWS
 const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_SUMO_LOGIC
 const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_UPTIME
+const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_UPWIND
 const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_VERCEL
 const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_WIZ
 const IncidentIo\Model\AlertSourcesValidatePayloadV2::SOURCE_TYPE_ZENDESK
