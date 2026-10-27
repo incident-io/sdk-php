@@ -61,7 +61,8 @@ class AuditLogActorMetadataV2 implements ModelInterface, ArrayAccess, JsonSerial
         'externalResourceExternalId' => 'string',
         'externalResourceType' => 'string',
         'userBaseRoleSlug' => 'string',
-        'userCustomRoleSlugs' => 'string'
+        'userCustomRoleSlugs' => 'string',
+        'via' => 'string'
     ];
 
     /**
@@ -75,7 +76,8 @@ class AuditLogActorMetadataV2 implements ModelInterface, ArrayAccess, JsonSerial
         'externalResourceExternalId' => null,
         'externalResourceType' => null,
         'userBaseRoleSlug' => null,
-        'userCustomRoleSlugs' => null
+        'userCustomRoleSlugs' => null,
+        'via' => null
     ];
 
     /**
@@ -89,7 +91,8 @@ class AuditLogActorMetadataV2 implements ModelInterface, ArrayAccess, JsonSerial
         'externalResourceExternalId' => false,
         'externalResourceType' => false,
         'userBaseRoleSlug' => false,
-        'userCustomRoleSlugs' => false
+        'userCustomRoleSlugs' => false,
+        'via' => false
     ];
 
     /**
@@ -173,7 +176,8 @@ class AuditLogActorMetadataV2 implements ModelInterface, ArrayAccess, JsonSerial
         'externalResourceExternalId' => 'external_resource_external_id',
         'externalResourceType' => 'external_resource_type',
         'userBaseRoleSlug' => 'user_base_role_slug',
-        'userCustomRoleSlugs' => 'user_custom_role_slugs'
+        'userCustomRoleSlugs' => 'user_custom_role_slugs',
+        'via' => 'via'
     ];
 
     /**
@@ -187,7 +191,8 @@ class AuditLogActorMetadataV2 implements ModelInterface, ArrayAccess, JsonSerial
         'externalResourceExternalId' => 'setExternalResourceExternalId',
         'externalResourceType' => 'setExternalResourceType',
         'userBaseRoleSlug' => 'setUserBaseRoleSlug',
-        'userCustomRoleSlugs' => 'setUserCustomRoleSlugs'
+        'userCustomRoleSlugs' => 'setUserCustomRoleSlugs',
+        'via' => 'setVia'
     ];
 
     /**
@@ -201,7 +206,8 @@ class AuditLogActorMetadataV2 implements ModelInterface, ArrayAccess, JsonSerial
         'externalResourceExternalId' => 'getExternalResourceExternalId',
         'externalResourceType' => 'getExternalResourceType',
         'userBaseRoleSlug' => 'getUserBaseRoleSlug',
-        'userCustomRoleSlugs' => 'getUserCustomRoleSlugs'
+        'userCustomRoleSlugs' => 'getUserCustomRoleSlugs',
+        'via' => 'getVia'
     ];
 
     /**
@@ -257,6 +263,7 @@ class AuditLogActorMetadataV2 implements ModelInterface, ArrayAccess, JsonSerial
         $this->setIfExists('externalResourceType', $data ?? [], null);
         $this->setIfExists('userBaseRoleSlug', $data ?? [], null);
         $this->setIfExists('userCustomRoleSlugs', $data ?? [], null);
+        $this->setIfExists('via', $data ?? [], null);
     }
 
     /**
@@ -454,6 +461,33 @@ class AuditLogActorMetadataV2 implements ModelInterface, ArrayAccess, JsonSerial
             throw new InvalidArgumentException('non-nullable userCustomRoleSlugs cannot be null');
         }
         $this->container['userCustomRoleSlugs'] = $userCustomRoleSlugs;
+
+        return $this;
+    }
+
+    /**
+     * Gets via
+     *
+     * @return string|null
+     */
+    public function getVia(): ?string
+    {
+        return $this->container['via'];
+    }
+
+    /**
+     * Sets via
+     *
+     * @param string|null $via How the user made the change, when it wasn't directly (if it's a user actor)
+     *
+     * @return $this
+     */
+    public function setVia(?string $via): static
+    {
+        if (is_null($via)) {
+            throw new InvalidArgumentException('non-nullable via cannot be null');
+        }
+        $this->container['via'] = $via;
 
         return $this;
     }
