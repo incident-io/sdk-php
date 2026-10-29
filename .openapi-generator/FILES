@@ -283,6 +283,7 @@ src/Model/AuditLogExtensionConnectorCalledMetadataV2.php
 src/Model/AuditLogExtensionConnectorCalledMetadataV2V2.php
 src/Model/AuditLogExtensionConnectorCalledMetadataV3V2.php
 src/Model/AuditLogExtensionConnectorCalledMetadataV4V2.php
+src/Model/AuditLogExtensionConnectorCalledMetadataV5V2.php
 src/Model/AuditLogExtensionPluginCreatedMetadataV2.php
 src/Model/AuditLogExtensionPluginUpdatedMetadataV2.php
 src/Model/AuditLogHrisTimeOffPolicyUpdatedMetadataV2.php
@@ -435,6 +436,7 @@ src/Model/AuditLogsExtensionConnectorCalledV2.php
 src/Model/AuditLogsExtensionConnectorCalledV3.php
 src/Model/AuditLogsExtensionConnectorCalledV4.php
 src/Model/AuditLogsExtensionConnectorCalledV5.php
+src/Model/AuditLogsExtensionConnectorCalledV6.php
 src/Model/AuditLogsExtensionPluginCreatedV1.php
 src/Model/AuditLogsExtensionPluginCreatedV2.php
 src/Model/AuditLogsExtensionPluginDeletedV1.php
