@@ -30096,6 +30096,81 @@
         ],
         "type": "object"
       },
+      "AuditLogsConnectorConfigArchivedV1": {
+        "example": {
+          "action": "connector_config.archived",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "My Connector",
+              "type": "connector_config"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "connector_config.archived",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "My Connector",
+                "type": "connector_config"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context"
+        ],
+        "type": "object"
+      },
       "AuditLogsConnectorConfigCreatedV1": {
         "example": {
           "action": "connector_config.created",
@@ -199631,7 +199706,7 @@
         "x-docs-resource-type": "StatusPageComponentV2"
       },
       "post": {
-        "description": "Create a status page component. Placement on a page is controlled separately via status page structures.",
+        "description": "Create a status page component. Placement on a page is controlled separately via status page structures.\n\nThis endpoint requires an API key with the \"Manage organization settings (e.g. custom fields)\" scope.",
         "operationId": "Status Page Components V2#Create",
         "requestBody": {
           "content": {
@@ -199820,7 +199895,7 @@
     },
     "/v2/status_page_components/{id}": {
       "delete": {
-        "description": "Archive a status page component.",
+        "description": "Archive a status page component.\n\nThis endpoint requires an API key with the \"Manage organization settings (e.g. custom fields)\" scope.",
         "operationId": "Status Page Components V2#Destroy",
         "parameters": [
           {
@@ -200167,7 +200242,7 @@
         "x-docs-resource-type": "StatusPageComponentV2"
       },
       "put": {
-        "description": "Update a status page component's name and description.",
+        "description": "Update a status page component's name and description.\n\nThis endpoint requires an API key with the \"Manage organization settings (e.g. custom fields)\" scope.",
         "operationId": "Status Page Components V2#Update",
         "parameters": [
           {
@@ -223622,6 +223697,52 @@
                 },
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsCodeRepositoryAccessedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/connector_config.archived.1": {
+      "get": {
+        "description": "This entry is created whenever a connector config is archived, which expires its token",
+        "operationId": "ConnectorConfigArchivedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "connector_config.archived",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "My Connector",
+                      "type": "connector_config"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsConnectorConfigArchivedV1"
                 }
               }
             },

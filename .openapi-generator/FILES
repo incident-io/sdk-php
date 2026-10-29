@@ -394,6 +394,7 @@ src/Model/AuditLogsCatalogTypeDeletedV2.php
 src/Model/AuditLogsCatalogTypeUpdatedV1.php
 src/Model/AuditLogsCatalogTypeUpdatedV2.php
 src/Model/AuditLogsCodeRepositoryAccessedV1.php
+src/Model/AuditLogsConnectorConfigArchivedV1.php
 src/Model/AuditLogsConnectorConfigCreatedV1.php
 src/Model/AuditLogsConnectorConfigCreatedV2.php
 src/Model/AuditLogsConnectorConfigTokenGeneratedV1.php

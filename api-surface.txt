@@ -394,6 +394,7 @@ class IncidentIo\Model\AuditLogsCatalogTypeDeletedV2
 class IncidentIo\Model\AuditLogsCatalogTypeUpdatedV1
 class IncidentIo\Model\AuditLogsCatalogTypeUpdatedV2
 class IncidentIo\Model\AuditLogsCodeRepositoryAccessedV1
+class IncidentIo\Model\AuditLogsConnectorConfigArchivedV1
 class IncidentIo\Model\AuditLogsConnectorConfigCreatedV1
 class IncidentIo\Model\AuditLogsConnectorConfigCreatedV2
 class IncidentIo\Model\AuditLogsConnectorConfigTokenGeneratedV1
@@ -2563,6 +2564,7 @@ const IncidentIo\Model\AuditLogsCatalogTypeDeletedV2::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsCatalogTypeUpdatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsCatalogTypeUpdatedV2::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsCodeRepositoryAccessedV1::DISCRIMINATOR
+const IncidentIo\Model\AuditLogsConnectorConfigArchivedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsConnectorConfigCreatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsConnectorConfigCreatedV2::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsConnectorConfigTokenGeneratedV1::DISCRIMINATOR
@@ -14627,6 +14629,12 @@ property IncidentIo\Model\AuditLogsCodeRepositoryAccessedV1 metadata
 property IncidentIo\Model\AuditLogsCodeRepositoryAccessedV1 occurredAt
 property IncidentIo\Model\AuditLogsCodeRepositoryAccessedV1 targets
 property IncidentIo\Model\AuditLogsCodeRepositoryAccessedV1 version
+property IncidentIo\Model\AuditLogsConnectorConfigArchivedV1 action
+property IncidentIo\Model\AuditLogsConnectorConfigArchivedV1 actor
+property IncidentIo\Model\AuditLogsConnectorConfigArchivedV1 context
+property IncidentIo\Model\AuditLogsConnectorConfigArchivedV1 occurredAt
+property IncidentIo\Model\AuditLogsConnectorConfigArchivedV1 targets
+property IncidentIo\Model\AuditLogsConnectorConfigArchivedV1 version
 property IncidentIo\Model\AuditLogsConnectorConfigCreatedV1 action
 property IncidentIo\Model\AuditLogsConnectorConfigCreatedV1 actor
 property IncidentIo\Model\AuditLogsConnectorConfigCreatedV1 context
