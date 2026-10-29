@@ -23880,6 +23880,37 @@
         },
         "type": "object"
       },
+      "AuditLogOrganisationSettingsUpdatedMetadataV3V2": {
+        "example": {
+          "after_organisation_name": "Acme Corporation",
+          "before_organisation_name": "Pineapple Labs",
+          "default_timezone": "Europe/London",
+          "message_retention_days": "90"
+        },
+        "properties": {
+          "after_organisation_name": {
+            "description": "The organisation name after the change",
+            "example": "Acme Corporation",
+            "type": "string"
+          },
+          "before_organisation_name": {
+            "description": "The organisation name before the change",
+            "example": "Pineapple Labs",
+            "type": "string"
+          },
+          "default_timezone": {
+            "description": "The default timezone that was set",
+            "example": "Europe/London",
+            "type": "string"
+          },
+          "message_retention_days": {
+            "description": "The number of days incident channel messages are kept for, empty when they are kept indefinitely",
+            "example": "90",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "AuditLogPolicyMetadataV2": {
         "example": {
           "run_on_private_incidents": "true"
@@ -44436,6 +44467,91 @@
           "version": {
             "description": "Which version the event is",
             "example": 2,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
+        ],
+        "type": "object"
+      },
+      "AuditLogsOrganisationSettingsUpdatedV3": {
+        "example": {
+          "action": "organisation_settings.updated",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "after_organisation_name": "Acme Corporation",
+            "before_organisation_name": "Pineapple Labs",
+            "default_timezone": "Europe/London",
+            "message_retention_days": "90"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Organisation Settings",
+              "type": "organisation_settings"
+            }
+          ],
+          "version": 3
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "organisation_settings.updated",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogOrganisationSettingsUpdatedMetadataV3V2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Organisation Settings",
+                "type": "organisation_settings"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 3,
             "format": "int64",
             "type": "integer"
           }
@@ -232495,6 +232611,58 @@
                 },
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsOrganisationSettingsUpdatedV2"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/organisation_settings.updated.3": {
+      "get": {
+        "description": "This entry is created when certain organisation settings are updated",
+        "operationId": "OrganisationSettingsUpdatedV3",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "organisation_settings.updated",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "after_organisation_name": "Acme Corporation",
+                    "before_organisation_name": "Pineapple Labs",
+                    "default_timezone": "Europe/London",
+                    "message_retention_days": "90"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Organisation Settings",
+                      "type": "organisation_settings"
+                    }
+                  ],
+                  "version": 3
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsOrganisationSettingsUpdatedV3"
                 }
               }
             },

@@ -296,6 +296,7 @@ src/Model/AuditLogOnCallNotificationMethodMetadataV2.php
 src/Model/AuditLogOnCallNotificationPauseMetadataV2.php
 src/Model/AuditLogOnCallUpsellRequestedMetadataV2.php
 src/Model/AuditLogOrganisationSettingsUpdatedMetadataV2.php
+src/Model/AuditLogOrganisationSettingsUpdatedMetadataV3V2.php
 src/Model/AuditLogPolicyMetadataV2.php
 src/Model/AuditLogPrivateAlertAccessAttemptedMetadataV2.php
 src/Model/AuditLogPrivateEscalationAccessAttemptedMetadataV2.php
@@ -575,6 +576,7 @@ src/Model/AuditLogsOnCallUpsellRequestedV1.php
 src/Model/AuditLogsOnCallUpsellRequestedV2.php
 src/Model/AuditLogsOrganisationSettingsUpdatedV1.php
 src/Model/AuditLogsOrganisationSettingsUpdatedV2.php
+src/Model/AuditLogsOrganisationSettingsUpdatedV3.php
 src/Model/AuditLogsPolicyCreatedV1.php
 src/Model/AuditLogsPolicyCreatedV2.php
 src/Model/AuditLogsPolicyCreatedV3.php
