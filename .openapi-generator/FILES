@@ -289,6 +289,7 @@ src/Model/AuditLogExtensionPluginUpdatedMetadataV2.php
 src/Model/AuditLogHrisTimeOffPolicyUpdatedMetadataV2.php
 src/Model/AuditLogIPAllowlistUpdatedMetadataV2.php
 src/Model/AuditLogIncidentTypeDefaultTeamsMetadataV2.php
+src/Model/AuditLogIntegrationUpdatedMetadataV2.php
 src/Model/AuditLogInvestigationConfigUpdatedMetadataV2.php
 src/Model/AuditLogInvestigationTriggerMetadataV2.php
 src/Model/AuditLogMicrosoftEntraTenantLinkedMetadataV2.php
@@ -527,6 +528,7 @@ src/Model/AuditLogsIntegrationInstalledV1.php
 src/Model/AuditLogsIntegrationInstalledV2.php
 src/Model/AuditLogsIntegrationUninstalledV1.php
 src/Model/AuditLogsIntegrationUninstalledV2.php
+src/Model/AuditLogsIntegrationUpdatedV1.php
 src/Model/AuditLogsInternalStatusPageCreatedV1.php
 src/Model/AuditLogsInternalStatusPageCreatedV2.php
 src/Model/AuditLogsInternalStatusPageDeletedV1.php

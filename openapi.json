@@ -23654,6 +23654,53 @@
         ],
         "type": "object"
       },
+      "AuditLogIntegrationUpdatedMetadataV2": {
+        "example": {
+          "changed_fields": "connector_config_id,personal_access_token",
+          "connector_config_id_from": "01FCNDV6P870EA6S7TK1DSYDG0",
+          "connector_config_id_to": "01FCNDV6P870EA6S7TK1DSYDG1",
+          "host_from": "https://jira.example.com",
+          "host_to": "https://jira.internal.example.com",
+          "integration_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+        },
+        "properties": {
+          "changed_fields": {
+            "description": "Comma-separated names of the fields that changed, such as connector_config_id, host, tls_root_cert, ca_certificate, personal_access_token, app_id, private_key or auth_type",
+            "example": "connector_config_id,personal_access_token",
+            "type": "string"
+          },
+          "connector_config_id_from": {
+            "description": "ID of the connector requests went through before the change, absent when there was none",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          },
+          "connector_config_id_to": {
+            "description": "ID of the connector requests go through after the change, absent when there is none",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "type": "string"
+          },
+          "host_from": {
+            "description": "The host before the change, absent when there was none",
+            "example": "https://jira.example.com",
+            "type": "string"
+          },
+          "host_to": {
+            "description": "The host after the change",
+            "example": "https://jira.internal.example.com",
+            "type": "string"
+          },
+          "integration_id": {
+            "description": "ID of the GitLab installation, GitHub Enterprise app or Jira Server config that changed",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "type": "string"
+          }
+        },
+        "required": [
+          "integration_id",
+          "changed_fields"
+        ],
+        "type": "object"
+      },
       "AuditLogInvestigationConfigUpdatedMetadataV2": {
         "example": {
           "after_auto_merge_mode": "auto",
@@ -40400,6 +40447,93 @@
           "actor",
           "targets",
           "context"
+        ],
+        "type": "object"
+      },
+      "AuditLogsIntegrationUpdatedV1": {
+        "example": {
+          "action": "integration.updated",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "changed_fields": "connector_config_id,personal_access_token",
+            "connector_config_id_from": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "connector_config_id_to": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "host_from": "https://jira.example.com",
+            "host_to": "https://jira.internal.example.com",
+            "integration_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "github",
+              "name": "Github",
+              "type": "integration"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "integration.updated",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogIntegrationUpdatedMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "github",
+                "name": "Github",
+                "type": "integration"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
         ],
         "type": "object"
       },
@@ -230145,6 +230279,60 @@
                 },
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsIntegrationUninstalledV2"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/integration.updated.1": {
+      "get": {
+        "description": "This entry is created whenever an installed integration's connector, host, trusted CA certificate or stored credential changes",
+        "operationId": "IntegrationUpdatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "integration.updated",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "changed_fields": "connector_config_id,personal_access_token",
+                    "connector_config_id_from": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "connector_config_id_to": "01FCNDV6P870EA6S7TK1DSYDG1",
+                    "host_from": "https://jira.example.com",
+                    "host_to": "https://jira.internal.example.com",
+                    "integration_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "github",
+                      "name": "Github",
+                      "type": "integration"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsIntegrationUpdatedV1"
                 }
               }
             },
