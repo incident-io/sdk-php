@@ -277,7 +277,7 @@ class AuditLogTelemetryDataSourceCallerIdentitySharingChangedMetadataV2 implemen
     /**
      * Sets enabled
      *
-     * @param string $enabled Whether tool calls to the connector carry the caller's identity after the change (true, false)
+     * @param string $enabled Whether calls to the data source carry the caller's identity after the change (true, false)
      *
      * @return $this
      */

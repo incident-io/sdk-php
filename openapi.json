@@ -24622,7 +24622,7 @@
         },
         "properties": {
           "enabled": {
-            "description": "Whether tool calls to the connector carry the caller's identity after the change (true, false)",
+            "description": "Whether calls to the data source carry the caller's identity after the change (true, false)",
             "example": "true",
             "type": "string"
           }
@@ -240702,7 +240702,7 @@
     },
     "/x-audit-logs/telemetry_data_source.caller_identity_sharing_changed.1": {
       "get": {
-        "description": "This entry is created whenever caller identity sharing is turned on or off for a connector, which decides whether each tool call tells the connector which user or system made it",
+        "description": "This entry is created whenever caller identity sharing is turned on or off for a data source, which decides whether each call tells the data source which user or system made it",
         "operationId": "TelemetryDataSourceCallerIdentitySharingChangedV1",
         "responses": {
           "200": {
@@ -240751,7 +240751,7 @@
     },
     "/x-audit-logs/telemetry_data_source.caller_identity_sharing_changed.2": {
       "get": {
-        "description": "This entry is created whenever caller identity sharing is turned on or off for a connector, which decides whether each tool call tells the connector which user or system made it",
+        "description": "This entry is created whenever caller identity sharing is turned on or off for a data source, which decides whether each call tells the data source which user or system made it",
         "operationId": "TelemetryDataSourceCallerIdentitySharingChangedV2",
         "responses": {
           "200": {
