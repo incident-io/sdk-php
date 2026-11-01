@@ -104533,7 +104533,7 @@
             "type": "string"
           },
           "rank": {
-            "description": "If specified, will update the rank of the entry. When omitted, rank will be set to null (allowing rank removal).",
+            "description": "If specified, will update the rank of the entry. When omitted, rank will be set to null (allowing rank removal), unless incident.io syncs the catalog type, in which case the existing rank is preserved.",
             "example": 1,
             "format": "int32",
             "type": "integer"

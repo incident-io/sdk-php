@@ -451,7 +451,7 @@ class PartialEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSerializ
     /**
      * Sets rank
      *
-     * @param int|null $rank If specified, will update the rank of the entry. When omitted, rank will be set to null (allowing rank removal).
+     * @param int|null $rank If specified, will update the rank of the entry. When omitted, rank will be set to null (allowing rank removal), unless incident.io syncs the catalog type, in which case the existing rank is preserved.
      *
      * @return $this
      */
