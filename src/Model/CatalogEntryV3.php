@@ -61,6 +61,7 @@ class CatalogEntryV3 implements ModelInterface, ArrayAccess, JsonSerializable
         'attributeValues' => 'array<string,\IncidentIo\Model\CatalogEntryEngineParamBindingV3>',
         'catalogTypeId' => 'string',
         'createdAt' => '\DateTime',
+        'customAliases' => 'string[]',
         'externalId' => 'string',
         'id' => 'string',
         'name' => 'string',
@@ -79,6 +80,7 @@ class CatalogEntryV3 implements ModelInterface, ArrayAccess, JsonSerializable
         'attributeValues' => null,
         'catalogTypeId' => null,
         'createdAt' => 'date-time',
+        'customAliases' => null,
         'externalId' => null,
         'id' => null,
         'name' => null,
@@ -97,6 +99,7 @@ class CatalogEntryV3 implements ModelInterface, ArrayAccess, JsonSerializable
         'attributeValues' => false,
         'catalogTypeId' => false,
         'createdAt' => false,
+        'customAliases' => false,
         'externalId' => false,
         'id' => false,
         'name' => false,
@@ -185,6 +188,7 @@ class CatalogEntryV3 implements ModelInterface, ArrayAccess, JsonSerializable
         'attributeValues' => 'attribute_values',
         'catalogTypeId' => 'catalog_type_id',
         'createdAt' => 'created_at',
+        'customAliases' => 'custom_aliases',
         'externalId' => 'external_id',
         'id' => 'id',
         'name' => 'name',
@@ -203,6 +207,7 @@ class CatalogEntryV3 implements ModelInterface, ArrayAccess, JsonSerializable
         'attributeValues' => 'setAttributeValues',
         'catalogTypeId' => 'setCatalogTypeId',
         'createdAt' => 'setCreatedAt',
+        'customAliases' => 'setCustomAliases',
         'externalId' => 'setExternalId',
         'id' => 'setId',
         'name' => 'setName',
@@ -221,6 +226,7 @@ class CatalogEntryV3 implements ModelInterface, ArrayAccess, JsonSerializable
         'attributeValues' => 'getAttributeValues',
         'catalogTypeId' => 'getCatalogTypeId',
         'createdAt' => 'getCreatedAt',
+        'customAliases' => 'getCustomAliases',
         'externalId' => 'getExternalId',
         'id' => 'getId',
         'name' => 'getName',
@@ -280,6 +286,7 @@ class CatalogEntryV3 implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('attributeValues', $data ?? [], null);
         $this->setIfExists('catalogTypeId', $data ?? [], null);
         $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('customAliases', $data ?? [], null);
         $this->setIfExists('externalId', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
@@ -323,6 +330,9 @@ class CatalogEntryV3 implements ModelInterface, ArrayAccess, JsonSerializable
         }
         if ($this->container['createdAt'] === null) {
             $invalidProperties[] = "'createdAt' can't be null";
+        }
+        if ($this->container['customAliases'] === null) {
+            $invalidProperties[] = "'customAliases' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
@@ -479,6 +489,33 @@ class CatalogEntryV3 implements ModelInterface, ArrayAccess, JsonSerializable
             throw new InvalidArgumentException('non-nullable createdAt cannot be null');
         }
         $this->container['createdAt'] = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Gets customAliases
+     *
+     * @return string[]
+     */
+    public function getCustomAliases(): array
+    {
+        return $this->container['customAliases'];
+    }
+
+    /**
+     * Sets customAliases
+     *
+     * @param string[] $customAliases Aliases your organisation has added to an entry of a catalog type that incident.io syncs, such as a schedule or escalation path, which you can't change aliases on directly. Syncs keep them, and they are also listed in aliases. When you update an entry, omit this or send null to keep its current custom aliases, send an empty list to clear them, or send a list to replace them.
+     *
+     * @return $this
+     */
+    public function setCustomAliases(array $customAliases): static
+    {
+        if (is_null($customAliases)) {
+            throw new InvalidArgumentException('non-nullable customAliases cannot be null');
+        }
+        $this->container['customAliases'] = $customAliases;
 
         return $this;
     }

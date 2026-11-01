@@ -76,6 +76,7 @@ class CatalogTypeV3 implements ModelInterface, ArrayAccess, JsonSerializable
         'requiredIntegrations' => 'string[]',
         'schema' => '\IncidentIo\Model\CatalogTypeSchemaV3',
         'sourceRepoUrl' => 'string',
+        'supportsCustomAliases' => 'bool',
         'typeName' => 'string',
         'updatedAt' => '\DateTime',
         'useNameAsIdentifier' => 'bool'
@@ -107,6 +108,7 @@ class CatalogTypeV3 implements ModelInterface, ArrayAccess, JsonSerializable
         'requiredIntegrations' => null,
         'schema' => null,
         'sourceRepoUrl' => null,
+        'supportsCustomAliases' => null,
         'typeName' => null,
         'updatedAt' => 'date-time',
         'useNameAsIdentifier' => null
@@ -138,6 +140,7 @@ class CatalogTypeV3 implements ModelInterface, ArrayAccess, JsonSerializable
         'requiredIntegrations' => false,
         'schema' => false,
         'sourceRepoUrl' => false,
+        'supportsCustomAliases' => false,
         'typeName' => false,
         'updatedAt' => false,
         'useNameAsIdentifier' => false
@@ -239,6 +242,7 @@ class CatalogTypeV3 implements ModelInterface, ArrayAccess, JsonSerializable
         'requiredIntegrations' => 'required_integrations',
         'schema' => 'schema',
         'sourceRepoUrl' => 'source_repo_url',
+        'supportsCustomAliases' => 'supports_custom_aliases',
         'typeName' => 'type_name',
         'updatedAt' => 'updated_at',
         'useNameAsIdentifier' => 'use_name_as_identifier'
@@ -270,6 +274,7 @@ class CatalogTypeV3 implements ModelInterface, ArrayAccess, JsonSerializable
         'requiredIntegrations' => 'setRequiredIntegrations',
         'schema' => 'setSchema',
         'sourceRepoUrl' => 'setSourceRepoUrl',
+        'supportsCustomAliases' => 'setSupportsCustomAliases',
         'typeName' => 'setTypeName',
         'updatedAt' => 'setUpdatedAt',
         'useNameAsIdentifier' => 'setUseNameAsIdentifier'
@@ -301,6 +306,7 @@ class CatalogTypeV3 implements ModelInterface, ArrayAccess, JsonSerializable
         'requiredIntegrations' => 'getRequiredIntegrations',
         'schema' => 'getSchema',
         'sourceRepoUrl' => 'getSourceRepoUrl',
+        'supportsCustomAliases' => 'getSupportsCustomAliases',
         'typeName' => 'getTypeName',
         'updatedAt' => 'getUpdatedAt',
         'useNameAsIdentifier' => 'getUseNameAsIdentifier'
@@ -490,6 +496,7 @@ class CatalogTypeV3 implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('requiredIntegrations', $data ?? [], null);
         $this->setIfExists('schema', $data ?? [], null);
         $this->setIfExists('sourceRepoUrl', $data ?? [], null);
+        $this->setIfExists('supportsCustomAliases', $data ?? [], null);
         $this->setIfExists('typeName', $data ?? [], null);
         $this->setIfExists('updatedAt', $data ?? [], null);
         $this->setIfExists('useNameAsIdentifier', $data ?? [], null);
@@ -555,6 +562,9 @@ class CatalogTypeV3 implements ModelInterface, ArrayAccess, JsonSerializable
         }
         if ($this->container['schema'] === null) {
             $invalidProperties[] = "'schema' can't be null";
+        }
+        if ($this->container['supportsCustomAliases'] === null) {
+            $invalidProperties[] = "'supportsCustomAliases' can't be null";
         }
         if ($this->container['typeName'] === null) {
             $invalidProperties[] = "'typeName' can't be null";
@@ -1113,6 +1123,33 @@ class CatalogTypeV3 implements ModelInterface, ArrayAccess, JsonSerializable
             throw new InvalidArgumentException('non-nullable sourceRepoUrl cannot be null');
         }
         $this->container['sourceRepoUrl'] = $sourceRepoUrl;
+
+        return $this;
+    }
+
+    /**
+     * Gets supportsCustomAliases
+     *
+     * @return bool
+     */
+    public function getSupportsCustomAliases(): bool
+    {
+        return $this->container['supportsCustomAliases'];
+    }
+
+    /**
+     * Sets supportsCustomAliases
+     *
+     * @param bool $supportsCustomAliases Whether entries of this type take custom_aliases. Only catalog types that incident.io syncs do, as you can't change their aliases directly, and not those whose aliases you edit elsewhere, such as alert priorities.
+     *
+     * @return $this
+     */
+    public function setSupportsCustomAliases(bool $supportsCustomAliases): static
+    {
+        if (is_null($supportsCustomAliases)) {
+            throw new InvalidArgumentException('non-nullable supportsCustomAliases cannot be null');
+        }
+        $this->container['supportsCustomAliases'] = $supportsCustomAliases;
 
         return $this;
     }

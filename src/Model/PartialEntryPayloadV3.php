@@ -59,6 +59,7 @@ class PartialEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSerializ
     protected static array $openAPITypes = [
         'aliases' => 'string[]',
         'attributeValues' => 'array<string,\IncidentIo\Model\CatalogEngineParamBindingPayloadV3>',
+        'customAliases' => 'string[]',
         'entryId' => 'string',
         'externalId' => 'string',
         'name' => 'string',
@@ -73,6 +74,7 @@ class PartialEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSerializ
     protected static array $openAPIFormats = [
         'aliases' => null,
         'attributeValues' => null,
+        'customAliases' => null,
         'entryId' => null,
         'externalId' => null,
         'name' => null,
@@ -87,6 +89,7 @@ class PartialEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSerializ
     protected static array $openAPINullables = [
         'aliases' => false,
         'attributeValues' => false,
+        'customAliases' => false,
         'entryId' => false,
         'externalId' => false,
         'name' => false,
@@ -171,6 +174,7 @@ class PartialEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSerializ
     protected static array $attributeMap = [
         'aliases' => 'aliases',
         'attributeValues' => 'attribute_values',
+        'customAliases' => 'custom_aliases',
         'entryId' => 'entry_id',
         'externalId' => 'external_id',
         'name' => 'name',
@@ -185,6 +189,7 @@ class PartialEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSerializ
     protected static array $setters = [
         'aliases' => 'setAliases',
         'attributeValues' => 'setAttributeValues',
+        'customAliases' => 'setCustomAliases',
         'entryId' => 'setEntryId',
         'externalId' => 'setExternalId',
         'name' => 'setName',
@@ -199,6 +204,7 @@ class PartialEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSerializ
     protected static array $getters = [
         'aliases' => 'getAliases',
         'attributeValues' => 'getAttributeValues',
+        'customAliases' => 'getCustomAliases',
         'entryId' => 'getEntryId',
         'externalId' => 'getExternalId',
         'name' => 'getName',
@@ -254,6 +260,7 @@ class PartialEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSerializ
     {
         $this->setIfExists('aliases', $data ?? [], null);
         $this->setIfExists('attributeValues', $data ?? [], null);
+        $this->setIfExists('customAliases', $data ?? [], null);
         $this->setIfExists('entryId', $data ?? [], null);
         $this->setIfExists('externalId', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
@@ -353,6 +360,33 @@ class PartialEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSerializ
             throw new InvalidArgumentException('non-nullable attributeValues cannot be null');
         }
         $this->container['attributeValues'] = $attributeValues;
+
+        return $this;
+    }
+
+    /**
+     * Gets customAliases
+     *
+     * @return string[]|null
+     */
+    public function getCustomAliases(): ?array
+    {
+        return $this->container['customAliases'];
+    }
+
+    /**
+     * Sets customAliases
+     *
+     * @param string[]|null $customAliases Aliases your organisation adds to an entry of a catalog type that incident.io syncs, such as a schedule or escalation path, which you can't change aliases on directly. Omit this or send null to keep the entry's current custom aliases, send an empty list to clear them, or send a list to replace them. Only available on catalog types where supports_custom_aliases is true.
+     *
+     * @return $this
+     */
+    public function setCustomAliases(?array $customAliases): static
+    {
+        if (is_null($customAliases)) {
+            throw new InvalidArgumentException('non-nullable customAliases cannot be null');
+        }
+        $this->container['customAliases'] = $customAliases;
 
         return $this;
     }

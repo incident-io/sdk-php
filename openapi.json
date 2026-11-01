@@ -63074,6 +63074,9 @@
                   }
                 }
               },
+              "custom_aliases": [
+                "primary-on-call"
+              ],
               "entry_id": "abc123",
               "external_id": "abc123",
               "name": "abc123",
@@ -63095,6 +63098,9 @@
                   }
                 }
               },
+              "custom_aliases": [
+                "primary-on-call"
+              ],
               "entry_id": "abc123",
               "external_id": "abc123",
               "name": "abc123",
@@ -63131,6 +63137,9 @@
                     }
                   }
                 },
+                "custom_aliases": [
+                  "primary-on-call"
+                ],
                 "entry_id": "abc123",
                 "external_id": "abc123",
                 "name": "abc123",
@@ -63152,6 +63161,9 @@
                     }
                   }
                 },
+                "custom_aliases": [
+                  "primary-on-call"
+                ],
                 "entry_id": "abc123",
                 "external_id": "abc123",
                 "name": "abc123",
@@ -63447,6 +63459,9 @@
             },
             "catalog_type_id": "01FCNDV6P870EA6S7TK1DSYDG0",
             "created_at": "2021-08-17T13:28:57.801578Z",
+            "custom_aliases": [
+              "primary-on-call"
+            ],
             "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
             "id": "01FCNDV6P870EA6S7TK1DSYDG0",
             "name": "Primary On-call",
@@ -63850,6 +63865,7 @@
               "version": 1
             },
             "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+            "supports_custom_aliases": true,
             "type_name": "Custom[\"BackstageGroup\"]",
             "updated_at": "2021-08-17T13:28:57.801578Z",
             "use_name_as_identifier": true
@@ -64370,6 +64386,9 @@
           },
           "catalog_type_id": "01FCNDV6P870EA6S7TK1DSYDG0",
           "created_at": "2021-08-17T13:28:57.801578Z",
+          "custom_aliases": [
+            "primary-on-call"
+          ],
           "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
           "name": "Primary On-call",
@@ -64427,6 +64446,17 @@
             "format": "date-time",
             "type": "string"
           },
+          "custom_aliases": {
+            "description": "Aliases your organisation has added to an entry of a catalog type that incident.io syncs, such as a schedule or escalation path, which you can't change aliases on directly. Syncs keep them, and they are also listed in aliases. When you update an entry, omit this or send null to keep its current custom aliases, send an empty list to clear them, or send a list to replace them.",
+            "example": [
+              "primary-on-call"
+            ],
+            "items": {
+              "example": "abc123",
+              "type": "string"
+            },
+            "type": "array"
+          },
           "external_id": {
             "description": "An optional alternative ID for this entry, which is ensured to be unique for the type",
             "example": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
@@ -64460,6 +64490,7 @@
           "catalog_type_id",
           "name",
           "aliases",
+          "custom_aliases",
           "rank",
           "attribute_values",
           "created_at",
@@ -64678,6 +64709,9 @@
               },
               "catalog_type_id": "01FCNDV6P870EA6S7TK1DSYDG0",
               "created_at": "2021-08-17T13:28:57.801578Z",
+              "custom_aliases": [
+                "primary-on-call"
+              ],
               "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
               "id": "01FCNDV6P870EA6S7TK1DSYDG0",
               "name": "Primary On-call",
@@ -64732,6 +64766,7 @@
               "version": 1
             },
             "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+            "supports_custom_aliases": true,
             "type_name": "Custom[\"BackstageGroup\"]",
             "updated_at": "2021-08-17T13:28:57.801578Z",
             "use_name_as_identifier": true
@@ -64767,6 +64802,9 @@
                 },
                 "catalog_type_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                 "created_at": "2021-08-17T13:28:57.801578Z",
+                "custom_aliases": [
+                  "primary-on-call"
+                ],
                 "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
                 "id": "01FCNDV6P870EA6S7TK1DSYDG0",
                 "name": "Primary On-call",
@@ -65025,6 +65063,7 @@
                 "version": 1
               },
               "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+              "supports_custom_aliases": true,
               "type_name": "Custom[\"BackstageGroup\"]",
               "updated_at": "2021-08-17T13:28:57.801578Z",
               "use_name_as_identifier": true
@@ -65081,6 +65120,7 @@
                   "version": 1
                 },
                 "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+                "supports_custom_aliases": true,
                 "type_name": "Custom[\"BackstageGroup\"]",
                 "updated_at": "2021-08-17T13:28:57.801578Z",
                 "use_name_as_identifier": true
@@ -65343,6 +65383,9 @@
             },
             "catalog_type_id": "01FCNDV6P870EA6S7TK1DSYDG0",
             "created_at": "2021-08-17T13:28:57.801578Z",
+            "custom_aliases": [
+              "primary-on-call"
+            ],
             "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
             "id": "01FCNDV6P870EA6S7TK1DSYDG0",
             "name": "Primary On-call",
@@ -65396,6 +65439,7 @@
               "version": 1
             },
             "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+            "supports_custom_aliases": true,
             "type_name": "Custom[\"BackstageGroup\"]",
             "updated_at": "2021-08-17T13:28:57.801578Z",
             "use_name_as_identifier": true
@@ -65523,6 +65567,7 @@
               "version": 1
             },
             "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+            "supports_custom_aliases": true,
             "type_name": "Custom[\"BackstageGroup\"]",
             "updated_at": "2021-08-17T13:28:57.801578Z",
             "use_name_as_identifier": true
@@ -66325,6 +66370,7 @@
             "version": 1
           },
           "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+          "supports_custom_aliases": true,
           "type_name": "Custom[\"BackstageGroup\"]",
           "updated_at": "2021-08-17T13:28:57.801578Z",
           "use_name_as_identifier": true
@@ -66504,6 +66550,11 @@
             "example": "https://github.com/my-company/incident-io-catalog",
             "type": "string"
           },
+          "supports_custom_aliases": {
+            "description": "Whether entries of this type take custom_aliases. Only catalog types that incident.io syncs do, as you can't change their aliases directly, and not those whose aliases you edit elsewhere, such as alert priorities.",
+            "example": true,
+            "type": "boolean"
+          },
           "type_name": {
             "description": "The type name of this catalog type, to be used when defining attributes. This is immutable once a CatalogType has been created. For non-externally sync types, it must follow the pattern Custom[\"SomeName\"]",
             "example": "Custom[\"BackstageGroup\"]",
@@ -66533,6 +66584,7 @@
           "categories",
           "color",
           "is_editable",
+          "supports_custom_aliases",
           "annotations",
           "created_at",
           "updated_at",
@@ -66639,6 +66691,9 @@
               }
             }
           },
+          "custom_aliases": [
+            "primary-on-call"
+          ],
           "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
           "name": "Primary On-call",
           "rank": 3,
@@ -66677,6 +66732,17 @@
               }
             },
             "type": "object"
+          },
+          "custom_aliases": {
+            "description": "Aliases your organisation has added to an entry of a catalog type that incident.io syncs, such as a schedule or escalation path, which you can't change aliases on directly. Syncs keep them, and they are also listed in aliases. When you update an entry, omit this or send null to keep its current custom aliases, send an empty list to clear them, or send a list to replace them.",
+            "example": [
+              "primary-on-call"
+            ],
+            "items": {
+              "example": "abc123",
+              "type": "string"
+            },
+            "type": "array"
           },
           "external_id": {
             "description": "An optional alternative ID for this entry, which is ensured to be unique for the type",
@@ -66853,6 +66919,9 @@
             },
             "catalog_type_id": "01FCNDV6P870EA6S7TK1DSYDG0",
             "created_at": "2021-08-17T13:28:57.801578Z",
+            "custom_aliases": [
+              "primary-on-call"
+            ],
             "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
             "id": "01FCNDV6P870EA6S7TK1DSYDG0",
             "name": "Primary On-call",
@@ -66906,6 +66975,7 @@
               "version": 1
             },
             "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+            "supports_custom_aliases": true,
             "type_name": "Custom[\"BackstageGroup\"]",
             "updated_at": "2021-08-17T13:28:57.801578Z",
             "use_name_as_identifier": true
@@ -67299,6 +67369,7 @@
               "version": 1
             },
             "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+            "supports_custom_aliases": true,
             "type_name": "Custom[\"BackstageGroup\"]",
             "updated_at": "2021-08-17T13:28:57.801578Z",
             "use_name_as_identifier": true
@@ -67528,6 +67599,7 @@
               "version": 1
             },
             "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+            "supports_custom_aliases": true,
             "type_name": "Custom[\"BackstageGroup\"]",
             "updated_at": "2021-08-17T13:28:57.801578Z",
             "use_name_as_identifier": true
@@ -104481,6 +104553,9 @@
               }
             }
           },
+          "custom_aliases": [
+            "primary-on-call"
+          ],
           "entry_id": "abc123",
           "external_id": "abc123",
           "name": "abc123",
@@ -104516,6 +104591,17 @@
               }
             },
             "type": "object"
+          },
+          "custom_aliases": {
+            "description": "Aliases your organisation adds to an entry of a catalog type that incident.io syncs, such as a schedule or escalation path, which you can't change aliases on directly. Omit this or send null to keep the entry's current custom aliases, send an empty list to clear them, or send a list to replace them. Only available on catalog types where supports_custom_aliases is true.",
+            "example": [
+              "primary-on-call"
+            ],
+            "items": {
+              "example": "abc123",
+              "type": "string"
+            },
+            "type": "array"
           },
           "entry_id": {
             "description": "ID of the relevant catalog entry",
@@ -213295,6 +213381,9 @@
                       },
                       "catalog_type_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                       "created_at": "2021-08-17T13:28:57.801578Z",
+                      "custom_aliases": [
+                        "primary-on-call"
+                      ],
                       "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
                       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
                       "name": "Primary On-call",
@@ -213349,6 +213438,7 @@
                       "version": 1
                     },
                     "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+                    "supports_custom_aliases": true,
                     "type_name": "Custom[\"BackstageGroup\"]",
                     "updated_at": "2021-08-17T13:28:57.801578Z",
                     "use_name_as_identifier": true
@@ -213573,6 +213663,9 @@
                     },
                     "catalog_type_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                     "created_at": "2021-08-17T13:28:57.801578Z",
+                    "custom_aliases": [
+                      "primary-on-call"
+                    ],
                     "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
                     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
                     "name": "Primary On-call",
@@ -213759,6 +213852,9 @@
                         }
                       }
                     },
+                    "custom_aliases": [
+                      "primary-on-call"
+                    ],
                     "entry_id": "abc123",
                     "external_id": "abc123",
                     "name": "abc123",
@@ -213780,6 +213876,9 @@
                         }
                       }
                     },
+                    "custom_aliases": [
+                      "primary-on-call"
+                    ],
                     "entry_id": "abc123",
                     "external_id": "abc123",
                     "name": "abc123",
@@ -214171,6 +214270,9 @@
                     },
                     "catalog_type_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                     "created_at": "2021-08-17T13:28:57.801578Z",
+                    "custom_aliases": [
+                      "primary-on-call"
+                    ],
                     "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
                     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
                     "name": "Primary On-call",
@@ -214224,6 +214326,7 @@
                       "version": 1
                     },
                     "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+                    "supports_custom_aliases": true,
                     "type_name": "Custom[\"BackstageGroup\"]",
                     "updated_at": "2021-08-17T13:28:57.801578Z",
                     "use_name_as_identifier": true
@@ -214418,6 +214521,9 @@
                     }
                   }
                 },
+                "custom_aliases": [
+                  "primary-on-call"
+                ],
                 "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
                 "name": "Primary On-call",
                 "rank": 3,
@@ -214459,6 +214565,9 @@
                     },
                     "catalog_type_id": "01FCNDV6P870EA6S7TK1DSYDG0",
                     "created_at": "2021-08-17T13:28:57.801578Z",
+                    "custom_aliases": [
+                      "primary-on-call"
+                    ],
                     "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
                     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
                     "name": "Primary On-call",
@@ -214512,6 +214621,7 @@
                       "version": 1
                     },
                     "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+                    "supports_custom_aliases": true,
                     "type_name": "Custom[\"BackstageGroup\"]",
                     "updated_at": "2021-08-17T13:28:57.801578Z",
                     "use_name_as_identifier": true
@@ -214900,6 +215010,7 @@
                         "version": 1
                       },
                       "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+                      "supports_custom_aliases": true,
                       "type_name": "Custom[\"BackstageGroup\"]",
                       "updated_at": "2021-08-17T13:28:57.801578Z",
                       "use_name_as_identifier": true
@@ -215142,6 +215253,7 @@
                       "version": 1
                     },
                     "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+                    "supports_custom_aliases": true,
                     "type_name": "Custom[\"BackstageGroup\"]",
                     "updated_at": "2021-08-17T13:28:57.801578Z",
                     "use_name_as_identifier": true
@@ -215536,6 +215648,7 @@
                       "version": 1
                     },
                     "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+                    "supports_custom_aliases": true,
                     "type_name": "Custom[\"BackstageGroup\"]",
                     "updated_at": "2021-08-17T13:28:57.801578Z",
                     "use_name_as_identifier": true
@@ -215790,6 +215903,7 @@
                       "version": 1
                     },
                     "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+                    "supports_custom_aliases": true,
                     "type_name": "Custom[\"BackstageGroup\"]",
                     "updated_at": "2021-08-17T13:28:57.801578Z",
                     "use_name_as_identifier": true
@@ -216046,6 +216160,7 @@
                       "version": 1
                     },
                     "source_repo_url": "https://github.com/my-company/incident-io-catalog",
+                    "supports_custom_aliases": true,
                     "type_name": "Custom[\"BackstageGroup\"]",
                     "updated_at": "2021-08-17T13:28:57.801578Z",
                     "use_name_as_identifier": true

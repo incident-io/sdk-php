@@ -58,6 +58,7 @@ class CatalogUpdateEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSe
     protected static array $openAPITypes = [
         'aliases' => 'string[]',
         'attributeValues' => 'array<string,\IncidentIo\Model\CatalogEngineParamBindingPayloadV3>',
+        'customAliases' => 'string[]',
         'externalId' => 'string',
         'name' => 'string',
         'rank' => 'int',
@@ -72,6 +73,7 @@ class CatalogUpdateEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSe
     protected static array $openAPIFormats = [
         'aliases' => null,
         'attributeValues' => null,
+        'customAliases' => null,
         'externalId' => null,
         'name' => null,
         'rank' => 'int32',
@@ -86,6 +88,7 @@ class CatalogUpdateEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSe
     protected static array $openAPINullables = [
         'aliases' => false,
         'attributeValues' => false,
+        'customAliases' => false,
         'externalId' => false,
         'name' => false,
         'rank' => false,
@@ -170,6 +173,7 @@ class CatalogUpdateEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSe
     protected static array $attributeMap = [
         'aliases' => 'aliases',
         'attributeValues' => 'attribute_values',
+        'customAliases' => 'custom_aliases',
         'externalId' => 'external_id',
         'name' => 'name',
         'rank' => 'rank',
@@ -184,6 +188,7 @@ class CatalogUpdateEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSe
     protected static array $setters = [
         'aliases' => 'setAliases',
         'attributeValues' => 'setAttributeValues',
+        'customAliases' => 'setCustomAliases',
         'externalId' => 'setExternalId',
         'name' => 'setName',
         'rank' => 'setRank',
@@ -198,6 +203,7 @@ class CatalogUpdateEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSe
     protected static array $getters = [
         'aliases' => 'getAliases',
         'attributeValues' => 'getAttributeValues',
+        'customAliases' => 'getCustomAliases',
         'externalId' => 'getExternalId',
         'name' => 'getName',
         'rank' => 'getRank',
@@ -253,6 +259,7 @@ class CatalogUpdateEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSe
     {
         $this->setIfExists('aliases', $data ?? [], null);
         $this->setIfExists('attributeValues', $data ?? [], null);
+        $this->setIfExists('customAliases', $data ?? [], null);
         $this->setIfExists('externalId', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('rank', $data ?? [], null);
@@ -352,6 +359,33 @@ class CatalogUpdateEntryPayloadV3 implements ModelInterface, ArrayAccess, JsonSe
             throw new InvalidArgumentException('non-nullable attributeValues cannot be null');
         }
         $this->container['attributeValues'] = $attributeValues;
+
+        return $this;
+    }
+
+    /**
+     * Gets customAliases
+     *
+     * @return string[]|null
+     */
+    public function getCustomAliases(): ?array
+    {
+        return $this->container['customAliases'];
+    }
+
+    /**
+     * Sets customAliases
+     *
+     * @param string[]|null $customAliases Aliases your organisation has added to an entry of a catalog type that incident.io syncs, such as a schedule or escalation path, which you can't change aliases on directly. Syncs keep them, and they are also listed in aliases. When you update an entry, omit this or send null to keep its current custom aliases, send an empty list to clear them, or send a list to replace them.
+     *
+     * @return $this
+     */
+    public function setCustomAliases(?array $customAliases): static
+    {
+        if (is_null($customAliases)) {
+            throw new InvalidArgumentException('non-nullable customAliases cannot be null');
+        }
+        $this->container['customAliases'] = $customAliases;
 
         return $this;
     }

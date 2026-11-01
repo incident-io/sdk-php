@@ -17300,6 +17300,7 @@ property IncidentIo\Model\CatalogEntryV3 archivedAt
 property IncidentIo\Model\CatalogEntryV3 attributeValues
 property IncidentIo\Model\CatalogEntryV3 catalogTypeId
 property IncidentIo\Model\CatalogEntryV3 createdAt
+property IncidentIo\Model\CatalogEntryV3 customAliases
 property IncidentIo\Model\CatalogEntryV3 externalId
 property IncidentIo\Model\CatalogEntryV3 id
 property IncidentIo\Model\CatalogEntryV3 name
@@ -17410,6 +17411,7 @@ property IncidentIo\Model\CatalogTypeV3 registryType
 property IncidentIo\Model\CatalogTypeV3 requiredIntegrations
 property IncidentIo\Model\CatalogTypeV3 schema
 property IncidentIo\Model\CatalogTypeV3 sourceRepoUrl
+property IncidentIo\Model\CatalogTypeV3 supportsCustomAliases
 property IncidentIo\Model\CatalogTypeV3 typeName
 property IncidentIo\Model\CatalogTypeV3 updatedAt
 property IncidentIo\Model\CatalogTypeV3 useNameAsIdentifier
@@ -17420,6 +17422,7 @@ property IncidentIo\Model\CatalogUpdateEntryPayloadV2 name
 property IncidentIo\Model\CatalogUpdateEntryPayloadV2 rank
 property IncidentIo\Model\CatalogUpdateEntryPayloadV3 aliases
 property IncidentIo\Model\CatalogUpdateEntryPayloadV3 attributeValues
+property IncidentIo\Model\CatalogUpdateEntryPayloadV3 customAliases
 property IncidentIo\Model\CatalogUpdateEntryPayloadV3 externalId
 property IncidentIo\Model\CatalogUpdateEntryPayloadV3 name
 property IncidentIo\Model\CatalogUpdateEntryPayloadV3 rank
@@ -18725,6 +18728,7 @@ property IncidentIo\Model\PaginationMetaResultWithTotalV3 pageSize
 property IncidentIo\Model\PaginationMetaResultWithTotalV3 totalRecordCount
 property IncidentIo\Model\PartialEntryPayloadV3 aliases
 property IncidentIo\Model\PartialEntryPayloadV3 attributeValues
+property IncidentIo\Model\PartialEntryPayloadV3 customAliases
 property IncidentIo\Model\PartialEntryPayloadV3 entryId
 property IncidentIo\Model\PartialEntryPayloadV3 externalId
 property IncidentIo\Model\PartialEntryPayloadV3 name
