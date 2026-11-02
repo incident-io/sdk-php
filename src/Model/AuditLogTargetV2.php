@@ -253,6 +253,8 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
     public const TYPE_INCIDENT_CALL_SETTING = 'incident_call_setting';
     public const TYPE_INCIDENT_DURATION_METRIC = 'incident_duration_metric';
     public const TYPE_INCIDENT_TEMPLATE = 'incident_template';
+    public const TYPE_INCIDENT_SUMMARY_CONFIG = 'incident_summary_config';
+    public const TYPE_INCIDENT_UPDATE_CONFIG = 'incident_update_config';
     public const TYPE_MAINTENANCE_WINDOW = 'maintenance_window';
     public const TYPE_INCIDENT_ROLE = 'incident_role';
     public const TYPE_INCIDENT_STATUS = 'incident_status';
@@ -338,6 +340,8 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
             self::TYPE_INCIDENT_CALL_SETTING,
             self::TYPE_INCIDENT_DURATION_METRIC,
             self::TYPE_INCIDENT_TEMPLATE,
+            self::TYPE_INCIDENT_SUMMARY_CONFIG,
+            self::TYPE_INCIDENT_UPDATE_CONFIG,
             self::TYPE_MAINTENANCE_WINDOW,
             self::TYPE_INCIDENT_ROLE,
             self::TYPE_INCIDENT_STATUS,

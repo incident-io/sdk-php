@@ -288,7 +288,9 @@ src/Model/AuditLogExtensionPluginCreatedMetadataV2.php
 src/Model/AuditLogExtensionPluginUpdatedMetadataV2.php
 src/Model/AuditLogHrisTimeOffPolicyUpdatedMetadataV2.php
 src/Model/AuditLogIPAllowlistUpdatedMetadataV2.php
+src/Model/AuditLogIncidentSummaryConfigUpdatedMetadataV2.php
 src/Model/AuditLogIncidentTypeDefaultTeamsMetadataV2.php
+src/Model/AuditLogIncidentUpdateConfigUpdatedMetadataV2.php
 src/Model/AuditLogIntegrationUpdatedMetadataV2.php
 src/Model/AuditLogInvestigationConfigUpdatedMetadataV2.php
 src/Model/AuditLogInvestigationTriggerMetadataV2.php
@@ -496,6 +498,7 @@ src/Model/AuditLogsIncidentStatusDeletedV1.php
 src/Model/AuditLogsIncidentStatusDeletedV2.php
 src/Model/AuditLogsIncidentStatusUpdatedV1.php
 src/Model/AuditLogsIncidentStatusUpdatedV2.php
+src/Model/AuditLogsIncidentSummaryConfigUpdatedV1.php
 src/Model/AuditLogsIncidentTemplateCreatedV1.php
 src/Model/AuditLogsIncidentTemplateCreatedV2.php
 src/Model/AuditLogsIncidentTemplateDeletedV1.php
@@ -524,6 +527,7 @@ src/Model/AuditLogsIncidentTypeDeletedV2.php
 src/Model/AuditLogsIncidentTypeUpdatedV1.php
 src/Model/AuditLogsIncidentTypeUpdatedV2.php
 src/Model/AuditLogsIncidentTypeUpdatedV3.php
+src/Model/AuditLogsIncidentUpdateConfigUpdatedV1.php
 src/Model/AuditLogsIntegrationInstalledV1.php
 src/Model/AuditLogsIntegrationInstalledV2.php
 src/Model/AuditLogsIntegrationUninstalledV1.php

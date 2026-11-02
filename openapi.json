@@ -23631,6 +23631,34 @@
         },
         "type": "object"
       },
+      "AuditLogIncidentSummaryConfigUpdatedMetadataV2": {
+        "example": {
+          "after_structure_type": "custom",
+          "before_structure_type": "narrative",
+          "changed": "structure_type,custom_instructions"
+        },
+        "properties": {
+          "after_structure_type": {
+            "description": "The format of suggested summaries after the change (narrative, stakeholder, custom)",
+            "example": "custom",
+            "type": "string"
+          },
+          "before_structure_type": {
+            "description": "The format of suggested summaries before the change (narrative, stakeholder, custom)",
+            "example": "narrative",
+            "type": "string"
+          },
+          "changed": {
+            "description": "What the update changed, comma separated (structure_type, custom_instructions)",
+            "example": "structure_type,custom_instructions",
+            "type": "string"
+          }
+        },
+        "required": [
+          "changed"
+        ],
+        "type": "object"
+      },
       "AuditLogIncidentTypeDefaultTeamsMetadataV2": {
         "example": {
           "after_default_team_ids": "01FCNDV6P870EA6S7TK1DSYDG0,01FCNDV6P870EA6S7TK1DSYDG2",
@@ -23651,6 +23679,34 @@
         "required": [
           "before_default_team_ids",
           "after_default_team_ids"
+        ],
+        "type": "object"
+      },
+      "AuditLogIncidentUpdateConfigUpdatedMetadataV2": {
+        "example": {
+          "after_structure_type": "custom",
+          "before_structure_type": "classic",
+          "changed": "structure_type,custom_instructions"
+        },
+        "properties": {
+          "after_structure_type": {
+            "description": "The format of suggested updates after the change (classic, brief, custom)",
+            "example": "custom",
+            "type": "string"
+          },
+          "before_structure_type": {
+            "description": "The format of suggested updates before the change (classic, brief, custom)",
+            "example": "classic",
+            "type": "string"
+          },
+          "changed": {
+            "description": "What the update changed, comma separated (structure_type, custom_instructions)",
+            "example": "structure_type,custom_instructions",
+            "type": "string"
+          }
+        },
+        "required": [
+          "changed"
         ],
         "type": "object"
       },
@@ -24457,6 +24513,8 @@
               "incident_call_setting",
               "incident_duration_metric",
               "incident_template",
+              "incident_summary_config",
+              "incident_update_config",
               "maintenance_window",
               "incident_role",
               "incident_status",
@@ -37958,6 +38016,90 @@
         ],
         "type": "object"
       },
+      "AuditLogsIncidentSummaryConfigUpdatedV1": {
+        "example": {
+          "action": "incident_summary_config.updated",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "after_structure_type": "custom",
+            "before_structure_type": "narrative",
+            "changed": "structure_type,custom_instructions"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Incident summary settings",
+              "type": "incident_summary_config"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "incident_summary_config.updated",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogIncidentSummaryConfigUpdatedMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Incident summary settings",
+                "type": "incident_summary_config"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
+        ],
+        "type": "object"
+      },
       "AuditLogsIncidentTemplateCreatedV1": {
         "example": {
           "action": "incident_template.created",
@@ -40135,6 +40277,90 @@
           "version": {
             "description": "Which version the event is",
             "example": 3,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
+        ],
+        "type": "object"
+      },
+      "AuditLogsIncidentUpdateConfigUpdatedV1": {
+        "example": {
+          "action": "incident_update_config.updated",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "after_structure_type": "custom",
+            "before_structure_type": "classic",
+            "changed": "structure_type,custom_instructions"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Incident update settings",
+              "type": "incident_update_config"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "incident_update_config.updated",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogIncidentUpdateConfigUpdatedMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Incident update settings",
+                "type": "incident_update_config"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
             "format": "int64",
             "type": "integer"
           }
@@ -228887,6 +229113,57 @@
         ]
       }
     },
+    "/x-audit-logs/incident_summary_config.updated.1": {
+      "get": {
+        "description": "This entry is created whenever the format or custom instructions for suggested incident summaries change",
+        "operationId": "IncidentSummaryConfigUpdatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "incident_summary_config.updated",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "after_structure_type": "custom",
+                    "before_structure_type": "narrative",
+                    "changed": "structure_type,custom_instructions"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Incident summary settings",
+                      "type": "incident_summary_config"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsIncidentSummaryConfigUpdatedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
     "/x-audit-logs/incident_template.created.1": {
       "get": {
         "description": "This entry is created whenever an incident template is created",
@@ -230210,6 +230487,57 @@
                 },
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsIncidentTypeUpdatedV3"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/incident_update_config.updated.1": {
+      "get": {
+        "description": "This entry is created whenever the format or custom instructions for suggested incident updates change",
+        "operationId": "IncidentUpdateConfigUpdatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "incident_update_config.updated",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "after_structure_type": "custom",
+                    "before_structure_type": "classic",
+                    "changed": "structure_type,custom_instructions"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Incident update settings",
+                      "type": "incident_update_config"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsIncidentUpdateConfigUpdatedV1"
                 }
               }
             },
