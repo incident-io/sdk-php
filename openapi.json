@@ -118837,6 +118837,467 @@
         ],
         "type": "object"
       },
+      "StatusPageCustomerPageComponentV2": {
+        "example": {
+          "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+          "description": "The web dashboard",
+          "display_uptime": true,
+          "name": "App",
+          "status": "operational"
+        },
+        "properties": {
+          "component_id": {
+            "description": "The ID of this component. Incidents and maintenance windows refer to components by this ID.",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "type": "string"
+          },
+          "description": {
+            "description": "A description shown under the component's name, if it has one",
+            "example": "The web dashboard",
+            "type": "string"
+          },
+          "display_uptime": {
+            "description": "Whether the page shows this component's uptime",
+            "example": true,
+            "type": "boolean"
+          },
+          "name": {
+            "description": "The name of this component",
+            "example": "App",
+            "type": "string"
+          },
+          "status": {
+            "description": "The current status of this component",
+            "enum": [
+              "operational",
+              "under_maintenance",
+              "degraded_performance",
+              "partial_outage",
+              "full_outage"
+            ],
+            "example": "operational",
+            "type": "string"
+          }
+        },
+        "required": [
+          "component_id",
+          "name",
+          "display_uptime",
+          "status"
+        ],
+        "type": "object"
+      },
+      "StatusPageCustomerPageGroupV2": {
+        "example": {
+          "components": [
+            {
+              "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+              "description": "The web dashboard",
+              "display_uptime": true,
+              "name": "App",
+              "status": "operational"
+            }
+          ],
+          "description": "Services hosted in our EU data center",
+          "display_aggregated_uptime": true,
+          "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+          "name": "EU Data center"
+        },
+        "properties": {
+          "components": {
+            "description": "Array of components belonging to this group",
+            "example": [
+              {
+                "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                "description": "The web dashboard",
+                "display_uptime": true,
+                "name": "App",
+                "status": "operational"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/StatusPageCustomerPageComponentV2"
+            },
+            "type": "array"
+          },
+          "description": {
+            "description": "A description shown under the group's name",
+            "example": "Services hosted in our EU data center",
+            "type": "string"
+          },
+          "display_aggregated_uptime": {
+            "description": "Whether the page shows uptime aggregated across the group's components",
+            "example": true,
+            "type": "boolean"
+          },
+          "id": {
+            "description": "Unique ID of this component group",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of this component group",
+            "example": "EU Data center",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "display_aggregated_uptime",
+          "components"
+        ],
+        "type": "object"
+      },
+      "StatusPageCustomerPageItemV2": {
+        "example": {
+          "component": {
+            "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "description": "The web dashboard",
+            "display_uptime": true,
+            "name": "App",
+            "status": "operational"
+          },
+          "group": {
+            "components": [
+              {
+                "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                "description": "The web dashboard",
+                "display_uptime": true,
+                "name": "App",
+                "status": "operational"
+              }
+            ],
+            "description": "Services hosted in our EU data center",
+            "display_aggregated_uptime": true,
+            "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+            "name": "EU Data center"
+          }
+        },
+        "properties": {
+          "component": {
+            "$ref": "#/components/schemas/StatusPageCustomerPageComponentV2"
+          },
+          "group": {
+            "$ref": "#/components/schemas/StatusPageCustomerPageGroupV2"
+          }
+        },
+        "type": "object"
+      },
+      "StatusPageCustomerPageV2": {
+        "description": "One customer's page on a customer status page: its status, components and incidents.",
+        "example": {
+          "components": [
+            {
+              "component": {
+                "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                "description": "The web dashboard",
+                "display_uptime": true,
+                "name": "App",
+                "status": "operational"
+              },
+              "group": {
+                "components": [
+                  {
+                    "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                    "description": "The web dashboard",
+                    "display_uptime": true,
+                    "name": "App",
+                    "status": "operational"
+                  }
+                ],
+                "description": "Services hosted in our EU data center",
+                "display_aggregated_uptime": true,
+                "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                "name": "EU Data center"
+              }
+            }
+          ],
+          "customer_id": "acme-corp",
+          "maintenances": [
+            {
+              "automate_maintenance_status": true,
+              "component_maintenance_periods": [
+                {
+                  "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+                  "end_at": "2021-08-17T13:28:57.801578Z",
+                  "start_at": "2021-08-17T13:28:57.801578Z"
+                }
+              ],
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "maintenance_status": "maintenance_scheduled",
+              "name": "Routine infrastructure upgrade",
+              "published_at": "2021-08-17T13:28:57.801578Z",
+              "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "updates": [
+                {
+                  "component_statuses": [
+                    {
+                      "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+                      "component_status": "operational"
+                    }
+                  ],
+                  "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                  "maintenance_status": "maintenance_scheduled",
+                  "message": "abc123",
+                  "published_at": "2021-08-17T13:28:57.801578Z",
+                  "status_page_maintenance_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+                }
+              ]
+            }
+          ],
+          "name": "Acme Corp",
+          "ongoing_incidents": [
+            {
+              "component_impacts": [
+                {
+                  "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+                  "component_status": "degraded_performance",
+                  "end_at": "2021-08-17T13:28:57.801578Z",
+                  "start_at": "2021-08-17T13:28:57.801578Z"
+                }
+              ],
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "incident_status": "investigating",
+              "name": "Elevated API latency",
+              "published_at": "2021-08-17T13:28:57.801578Z",
+              "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "updates": [
+                {
+                  "component_statuses": [
+                    {
+                      "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+                      "component_status": "operational"
+                    }
+                  ],
+                  "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                  "incident_status": "investigating",
+                  "message": "abc123",
+                  "published_at": "2021-08-17T13:28:57.801578Z",
+                  "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+                }
+              ]
+            }
+          ],
+          "recent_incidents": [
+            {
+              "component_impacts": [
+                {
+                  "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+                  "component_status": "degraded_performance",
+                  "end_at": "2021-08-17T13:28:57.801578Z",
+                  "start_at": "2021-08-17T13:28:57.801578Z"
+                }
+              ],
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "incident_status": "investigating",
+              "name": "Elevated API latency",
+              "published_at": "2021-08-17T13:28:57.801578Z",
+              "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "updates": [
+                {
+                  "component_statuses": [
+                    {
+                      "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+                      "component_status": "operational"
+                    }
+                  ],
+                  "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                  "incident_status": "investigating",
+                  "message": "abc123",
+                  "published_at": "2021-08-17T13:28:57.801578Z",
+                  "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+                }
+              ]
+            }
+          ],
+          "status": "degraded_performance"
+        },
+        "properties": {
+          "components": {
+            "description": "Components and groups shown on this page, in display order",
+            "example": [
+              {
+                "component": {
+                  "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                  "description": "The web dashboard",
+                  "display_uptime": true,
+                  "name": "App",
+                  "status": "operational"
+                },
+                "group": {
+                  "components": [
+                    {
+                      "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                      "description": "The web dashboard",
+                      "display_uptime": true,
+                      "name": "App",
+                      "status": "operational"
+                    }
+                  ],
+                  "description": "Services hosted in our EU data center",
+                  "display_aggregated_uptime": true,
+                  "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                  "name": "EU Data center"
+                }
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/StatusPageCustomerPageItemV2"
+            },
+            "type": "array"
+          },
+          "customer_id": {
+            "description": "The external ID of the catalog entry that defines this customer's page",
+            "example": "acme-corp",
+            "type": "string"
+          },
+          "maintenances": {
+            "description": "Maintenance windows in progress or scheduled for this customer",
+            "example": [
+              {
+                "automate_maintenance_status": true,
+                "component_maintenance_periods": [
+                  {
+                    "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+                    "end_at": "2021-08-17T13:28:57.801578Z",
+                    "start_at": "2021-08-17T13:28:57.801578Z"
+                  }
+                ],
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "maintenance_status": "maintenance_scheduled",
+                "name": "Routine infrastructure upgrade",
+                "published_at": "2021-08-17T13:28:57.801578Z",
+                "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "updates": [
+                  {
+                    "component_statuses": [
+                      {
+                        "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+                        "component_status": "operational"
+                      }
+                    ],
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "maintenance_status": "maintenance_scheduled",
+                    "message": "abc123",
+                    "published_at": "2021-08-17T13:28:57.801578Z",
+                    "status_page_maintenance_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+                  }
+                ]
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/StatusPageMaintenanceV2"
+            },
+            "type": "array"
+          },
+          "name": {
+            "description": "The name of this customer's page",
+            "example": "Acme Corp",
+            "type": "string"
+          },
+          "ongoing_incidents": {
+            "description": "Incidents currently affecting this customer",
+            "example": [
+              {
+                "component_impacts": [
+                  {
+                    "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+                    "component_status": "degraded_performance",
+                    "end_at": "2021-08-17T13:28:57.801578Z",
+                    "start_at": "2021-08-17T13:28:57.801578Z"
+                  }
+                ],
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "incident_status": "investigating",
+                "name": "Elevated API latency",
+                "published_at": "2021-08-17T13:28:57.801578Z",
+                "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "updates": [
+                  {
+                    "component_statuses": [
+                      {
+                        "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+                        "component_status": "operational"
+                      }
+                    ],
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "incident_status": "investigating",
+                    "message": "abc123",
+                    "published_at": "2021-08-17T13:28:57.801578Z",
+                    "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+                  }
+                ]
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/StatusPageIncidentV2"
+            },
+            "type": "array"
+          },
+          "recent_incidents": {
+            "description": "Incidents from this page's history window, including ongoing incidents",
+            "example": [
+              {
+                "component_impacts": [
+                  {
+                    "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+                    "component_status": "degraded_performance",
+                    "end_at": "2021-08-17T13:28:57.801578Z",
+                    "start_at": "2021-08-17T13:28:57.801578Z"
+                  }
+                ],
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "incident_status": "investigating",
+                "name": "Elevated API latency",
+                "published_at": "2021-08-17T13:28:57.801578Z",
+                "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "updates": [
+                  {
+                    "component_statuses": [
+                      {
+                        "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+                        "component_status": "operational"
+                      }
+                    ],
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "incident_status": "investigating",
+                    "message": "abc123",
+                    "published_at": "2021-08-17T13:28:57.801578Z",
+                    "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+                  }
+                ]
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/StatusPageIncidentV2"
+            },
+            "type": "array"
+          },
+          "status": {
+            "description": "The worst current status of any component on this page, or operational when nothing is affected",
+            "enum": [
+              "operational",
+              "under_maintenance",
+              "degraded_performance",
+              "partial_outage",
+              "full_outage"
+            ],
+            "example": "degraded_performance",
+            "type": "string"
+          }
+        },
+        "required": [
+          "customer_id",
+          "name",
+          "status",
+          "components",
+          "ongoing_incidents",
+          "maintenances",
+          "recent_incidents"
+        ],
+        "type": "object"
+      },
       "StatusPageIncidentAffectedComponentV2": {
         "example": {
           "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
@@ -120722,6 +121183,146 @@
         },
         "required": [
           "availability"
+        ],
+        "type": "object"
+      },
+      "StatusPagesShowStatusPageCustomerPageResultV2": {
+        "example": {
+          "customer_page": {
+            "components": [
+              {
+                "component": {
+                  "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                  "description": "The web dashboard",
+                  "display_uptime": true,
+                  "name": "App",
+                  "status": "operational"
+                },
+                "group": {
+                  "components": [
+                    {
+                      "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                      "description": "The web dashboard",
+                      "display_uptime": true,
+                      "name": "App",
+                      "status": "operational"
+                    }
+                  ],
+                  "description": "Services hosted in our EU data center",
+                  "display_aggregated_uptime": true,
+                  "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                  "name": "EU Data center"
+                }
+              }
+            ],
+            "customer_id": "acme-corp",
+            "maintenances": [
+              {
+                "automate_maintenance_status": true,
+                "component_maintenance_periods": [
+                  {
+                    "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+                    "end_at": "2021-08-17T13:28:57.801578Z",
+                    "start_at": "2021-08-17T13:28:57.801578Z"
+                  }
+                ],
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "maintenance_status": "maintenance_scheduled",
+                "name": "Routine infrastructure upgrade",
+                "published_at": "2021-08-17T13:28:57.801578Z",
+                "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "updates": [
+                  {
+                    "component_statuses": [
+                      {
+                        "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+                        "component_status": "operational"
+                      }
+                    ],
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "maintenance_status": "maintenance_scheduled",
+                    "message": "abc123",
+                    "published_at": "2021-08-17T13:28:57.801578Z",
+                    "status_page_maintenance_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+                  }
+                ]
+              }
+            ],
+            "name": "Acme Corp",
+            "ongoing_incidents": [
+              {
+                "component_impacts": [
+                  {
+                    "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+                    "component_status": "degraded_performance",
+                    "end_at": "2021-08-17T13:28:57.801578Z",
+                    "start_at": "2021-08-17T13:28:57.801578Z"
+                  }
+                ],
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "incident_status": "investigating",
+                "name": "Elevated API latency",
+                "published_at": "2021-08-17T13:28:57.801578Z",
+                "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "updates": [
+                  {
+                    "component_statuses": [
+                      {
+                        "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+                        "component_status": "operational"
+                      }
+                    ],
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "incident_status": "investigating",
+                    "message": "abc123",
+                    "published_at": "2021-08-17T13:28:57.801578Z",
+                    "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+                  }
+                ]
+              }
+            ],
+            "recent_incidents": [
+              {
+                "component_impacts": [
+                  {
+                    "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+                    "component_status": "degraded_performance",
+                    "end_at": "2021-08-17T13:28:57.801578Z",
+                    "start_at": "2021-08-17T13:28:57.801578Z"
+                  }
+                ],
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "incident_status": "investigating",
+                "name": "Elevated API latency",
+                "published_at": "2021-08-17T13:28:57.801578Z",
+                "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "updates": [
+                  {
+                    "component_statuses": [
+                      {
+                        "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+                        "component_status": "operational"
+                      }
+                    ],
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "incident_status": "investigating",
+                    "message": "abc123",
+                    "published_at": "2021-08-17T13:28:57.801578Z",
+                    "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+                  }
+                ]
+              }
+            ],
+            "status": "degraded_performance"
+          }
+        },
+        "properties": {
+          "customer_page": {
+            "$ref": "#/components/schemas/StatusPageCustomerPageV2"
+          }
+        },
+        "required": [
+          "customer_page"
         ],
         "type": "object"
       },
@@ -204857,6 +205458,317 @@
         ],
         "x-display-name": "Show Component Availability",
         "x-docs-display-name": "Show Component Availability",
+        "x-docs-group-name": "Status Pages V2",
+        "x-docs-resource-type": "StatusPageV2"
+      }
+    },
+    "/v2/status_pages/{status_page_id}/customers/{customer_id}": {
+      "get": {
+        "description": "Show one customer's page on a customer status page: its current status, its components, and the incidents and maintenance windows that customer sees.\n\ncustomer_id is the external_id of the catalog entry that defines the customer's page. That entry belongs to the catalog type the status page is split by. You can't use this endpoint for a customer whose catalog entry has no external_id.\n\nThis endpoint requires a valid API key but no specific scopes. Responses can be up to 30 seconds old.",
+        "operationId": "Status Pages V2#ShowStatusPageCustomerPage",
+        "parameters": [
+          {
+            "description": "ID of the customer status page. You can find this by calling the ListStatusPages endpoint.",
+            "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "in": "path",
+            "name": "status_page_id",
+            "required": true,
+            "schema": {
+              "description": "ID of the customer status page. You can find this by calling the ListStatusPages endpoint.",
+              "example": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The external_id of the customer's catalog entry",
+            "example": "acme-corp",
+            "in": "path",
+            "name": "customer_id",
+            "required": true,
+            "schema": {
+              "description": "The external_id of the customer's catalog entry",
+              "example": "acme-corp",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "customer_page": {
+                    "components": [
+                      {
+                        "component": {
+                          "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                          "description": "The web dashboard",
+                          "display_uptime": true,
+                          "name": "App",
+                          "status": "operational"
+                        },
+                        "group": {
+                          "components": [
+                            {
+                              "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                              "description": "The web dashboard",
+                              "display_uptime": true,
+                              "name": "App",
+                              "status": "operational"
+                            }
+                          ],
+                          "description": "Services hosted in our EU data center",
+                          "display_aggregated_uptime": true,
+                          "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+                          "name": "EU Data center"
+                        }
+                      }
+                    ],
+                    "customer_id": "acme-corp",
+                    "maintenances": [
+                      {
+                        "automate_maintenance_status": true,
+                        "component_maintenance_periods": [
+                          {
+                            "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+                            "end_at": "2021-08-17T13:28:57.801578Z",
+                            "start_at": "2021-08-17T13:28:57.801578Z"
+                          }
+                        ],
+                        "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                        "maintenance_status": "maintenance_scheduled",
+                        "name": "Routine infrastructure upgrade",
+                        "published_at": "2021-08-17T13:28:57.801578Z",
+                        "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                        "updates": [
+                          {
+                            "component_statuses": [
+                              {
+                                "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+                                "component_status": "operational"
+                              }
+                            ],
+                            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                            "maintenance_status": "maintenance_scheduled",
+                            "message": "abc123",
+                            "published_at": "2021-08-17T13:28:57.801578Z",
+                            "status_page_maintenance_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+                          }
+                        ]
+                      }
+                    ],
+                    "name": "Acme Corp",
+                    "ongoing_incidents": [
+                      {
+                        "component_impacts": [
+                          {
+                            "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+                            "component_status": "degraded_performance",
+                            "end_at": "2021-08-17T13:28:57.801578Z",
+                            "start_at": "2021-08-17T13:28:57.801578Z"
+                          }
+                        ],
+                        "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                        "incident_status": "investigating",
+                        "name": "Elevated API latency",
+                        "published_at": "2021-08-17T13:28:57.801578Z",
+                        "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                        "updates": [
+                          {
+                            "component_statuses": [
+                              {
+                                "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+                                "component_status": "operational"
+                              }
+                            ],
+                            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                            "incident_status": "investigating",
+                            "message": "abc123",
+                            "published_at": "2021-08-17T13:28:57.801578Z",
+                            "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+                          }
+                        ]
+                      }
+                    ],
+                    "recent_incidents": [
+                      {
+                        "component_impacts": [
+                          {
+                            "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+                            "component_status": "degraded_performance",
+                            "end_at": "2021-08-17T13:28:57.801578Z",
+                            "start_at": "2021-08-17T13:28:57.801578Z"
+                          }
+                        ],
+                        "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                        "incident_status": "investigating",
+                        "name": "Elevated API latency",
+                        "published_at": "2021-08-17T13:28:57.801578Z",
+                        "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                        "updates": [
+                          {
+                            "component_statuses": [
+                              {
+                                "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+                                "component_status": "operational"
+                              }
+                            ],
+                            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                            "incident_status": "investigating",
+                            "message": "abc123",
+                            "published_at": "2021-08-17T13:28:57.801578Z",
+                            "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+                          }
+                        ]
+                      }
+                    ],
+                    "status": "degraded_performance"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/StatusPagesShowStatusPageCustomerPageResultV2"
+                }
+              }
+            },
+            "description": "OK response."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "invalid_request_error: There was a problem with the request, like a missing header or querying a resource that doesn't exist."
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "authentication_error: Authentication failed."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "resource_forbidden: Access to this resource is forbidden for the authenticated user."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_found: The referenced resource could not be found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "method_not_allowed: The endpoint does not support this operation for the specified resource."
+          },
+          "406": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "not_acceptable: Requested a media type this endpoint does not support."
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "request_timeout: The request took too long to process.\n\nclient_timeout: The request was cancelled by the client."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "conflict: Request conflicted with current state of the resource, likely a concurrent update."
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "precondition_failed: A required condition hasn't been met."
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "payload_too_large: The request payload is too large."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "validation_error: A required field was not provided, or the provided data was invalid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "too_many_requests: Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.\n\nrate_limit_reached: The rate limit associated with this resource or API key has been exceeded. Try again later."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "api_error: Something went wrong and has been reported internally."
+          }
+        },
+        "summary": "ShowStatusPageCustomerPage Status Pages V2",
+        "tags": [
+          "Status Pages V2"
+        ],
+        "x-display-name": "Show Customer Page",
+        "x-docs-display-name": "Show Customer Page",
         "x-docs-group-name": "Status Pages V2",
         "x-docs-resource-type": "StatusPageV2"
       }

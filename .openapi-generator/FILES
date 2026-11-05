@@ -1417,6 +1417,10 @@ src/Model/StatusPageComponentsListResultV2.php
 src/Model/StatusPageComponentsShowResultV2.php
 src/Model/StatusPageComponentsUpdatePayloadV2.php
 src/Model/StatusPageComponentsUpdateResultV2.php
+src/Model/StatusPageCustomerPageComponentV2.php
+src/Model/StatusPageCustomerPageGroupV2.php
+src/Model/StatusPageCustomerPageItemV2.php
+src/Model/StatusPageCustomerPageV2.php
 src/Model/StatusPageIncidentAffectedComponentV2.php
 src/Model/StatusPageIncidentComponentImpactV2.php
 src/Model/StatusPageIncidentUpdateV2.php
@@ -1450,6 +1454,7 @@ src/Model/StatusPagesListStatusPageIncidentsResultV2.php
 src/Model/StatusPagesListStatusPageMaintenancesResultV2.php
 src/Model/StatusPagesListStatusPagesResultV2.php
 src/Model/StatusPagesShowStatusPageComponentAvailabilityResultV2.php
+src/Model/StatusPagesShowStatusPageCustomerPageResultV2.php
 src/Model/StatusPagesShowStatusPageIncidentResultV2.php
 src/Model/StatusPagesShowStatusPageMaintenanceResultV2.php
 src/Model/StatusPagesShowStatusPageResultV2.php

@@ -103,6 +103,9 @@ class StatusPagesV2Api
         'statusPagesV2ShowStatusPageComponentAvailability' => [
             'application/json',
         ],
+        'statusPagesV2ShowStatusPageCustomerPage' => [
+            'application/json',
+        ],
         'statusPagesV2ShowStatusPageIncident' => [
             'application/json',
         ],
@@ -5356,6 +5359,468 @@ class StatusPagesV2Api
             $resourcePath = str_replace(
                 '{component_id}',
                 ObjectSerializer::toPathValue($componentId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation statusPagesV2ShowStatusPageCustomerPage
+     *
+     * ShowStatusPageCustomerPage Status Pages V2
+     *
+     * @param  string $statusPageId ID of the customer status page. You can find this by calling the ListStatusPages endpoint. (required)
+     * @param  string $customerId The external_id of the customer&#39;s catalog entry (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['statusPagesV2ShowStatusPageCustomerPage'] to see the possible values for this operation
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws InvalidArgumentException
+     * @return \IncidentIo\Model\StatusPagesShowStatusPageCustomerPageResultV2|\IncidentIo\Model\ErrorResponse
+     */
+    public function statusPagesV2ShowStatusPageCustomerPage(
+        string $statusPageId,
+        string $customerId,
+        string $contentType = self::contentTypes['statusPagesV2ShowStatusPageCustomerPage'][0]
+    ): \IncidentIo\Model\StatusPagesShowStatusPageCustomerPageResultV2|\IncidentIo\Model\ErrorResponse
+    {
+        list($response) = $this->statusPagesV2ShowStatusPageCustomerPageWithHttpInfo($statusPageId, $customerId, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation statusPagesV2ShowStatusPageCustomerPageWithHttpInfo
+     *
+     * ShowStatusPageCustomerPage Status Pages V2
+     *
+     * @param  string $statusPageId ID of the customer status page. You can find this by calling the ListStatusPages endpoint. (required)
+     * @param  string $customerId The external_id of the customer&#39;s catalog entry (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['statusPagesV2ShowStatusPageCustomerPage'] to see the possible values for this operation
+     *
+     * @throws ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws InvalidArgumentException
+     * @return array{0: \IncidentIo\Model\StatusPagesShowStatusPageCustomerPageResultV2|\IncidentIo\Model\ErrorResponse, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     */
+    public function statusPagesV2ShowStatusPageCustomerPageWithHttpInfo(
+        string $statusPageId,
+        string $customerId,
+        string $contentType = self::contentTypes['statusPagesV2ShowStatusPageCustomerPage'][0]
+    ): array
+    {
+        $request = $this->statusPagesV2ShowStatusPageCustomerPageRequest($statusPageId, $customerId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\StatusPagesShowStatusPageCustomerPageResultV2',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 406:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 408:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 412:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\IncidentIo\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\IncidentIo\Model\StatusPagesShowStatusPageCustomerPageResultV2',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\StatusPagesShowStatusPageCustomerPageResultV2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 408:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 412:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\IncidentIo\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation statusPagesV2ShowStatusPageCustomerPageAsync
+     *
+     * ShowStatusPageCustomerPage Status Pages V2
+     *
+     * @param  string $statusPageId ID of the customer status page. You can find this by calling the ListStatusPages endpoint. (required)
+     * @param  string $customerId The external_id of the customer&#39;s catalog entry (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['statusPagesV2ShowStatusPageCustomerPage'] to see the possible values for this operation
+     *
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
+     */
+    public function statusPagesV2ShowStatusPageCustomerPageAsync(
+        string $statusPageId,
+        string $customerId,
+        string $contentType = self::contentTypes['statusPagesV2ShowStatusPageCustomerPage'][0]
+    ): PromiseInterface
+    {
+        return $this->statusPagesV2ShowStatusPageCustomerPageAsyncWithHttpInfo($statusPageId, $customerId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation statusPagesV2ShowStatusPageCustomerPageAsyncWithHttpInfo
+     *
+     * ShowStatusPageCustomerPage Status Pages V2
+     *
+     * @param  string $statusPageId ID of the customer status page. You can find this by calling the ListStatusPages endpoint. (required)
+     * @param  string $customerId The external_id of the customer&#39;s catalog entry (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['statusPagesV2ShowStatusPageCustomerPage'] to see the possible values for this operation
+     *
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
+     */
+    public function statusPagesV2ShowStatusPageCustomerPageAsyncWithHttpInfo(
+        string $statusPageId,
+        string $customerId,
+        string $contentType = self::contentTypes['statusPagesV2ShowStatusPageCustomerPage'][0]
+    ): PromiseInterface
+    {
+        $returnType = '\IncidentIo\Model\StatusPagesShowStatusPageCustomerPageResultV2';
+        $request = $this->statusPagesV2ShowStatusPageCustomerPageRequest($statusPageId, $customerId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'statusPagesV2ShowStatusPageCustomerPage'
+     *
+     * @param  string $statusPageId ID of the customer status page. You can find this by calling the ListStatusPages endpoint. (required)
+     * @param  string $customerId The external_id of the customer&#39;s catalog entry (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['statusPagesV2ShowStatusPageCustomerPage'] to see the possible values for this operation
+     *
+     * @throws InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function statusPagesV2ShowStatusPageCustomerPageRequest(
+        string $statusPageId,
+        string $customerId,
+        string $contentType = self::contentTypes['statusPagesV2ShowStatusPageCustomerPage'][0]
+    ): Request
+    {
+        // verify the required parameter 'statusPageId' is set
+        if ($statusPageId === null || (is_array($statusPageId) && count($statusPageId) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $statusPageId when calling statusPagesV2ShowStatusPageCustomerPage'
+            );
+        }
+        // verify the required parameter 'customerId' is set
+        if ($customerId === null || (is_array($customerId) && count($customerId) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $customerId when calling statusPagesV2ShowStatusPageCustomerPage'
+            );
+        }
+
+        $resourcePath = '/v2/status_pages/{status_page_id}/customers/{customer_id}';
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($statusPageId !== null) {
+            $resourcePath = str_replace(
+                '{status_page_id}',
+                ObjectSerializer::toPathValue($statusPageId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($customerId !== null) {
+            $resourcePath = str_replace(
+                '{customer_id}',
+                ObjectSerializer::toPathValue($customerId),
                 $resourcePath
             );
         }
