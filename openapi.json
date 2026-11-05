@@ -24567,6 +24567,22 @@
         ],
         "type": "object"
       },
+      "AuditLogTelemetryDataSourceAccessInheritanceChangedMetadataV2": {
+        "example": {
+          "inherits_access": "true"
+        },
+        "properties": {
+          "inherits_access": {
+            "description": "Whether the data source takes its access mode and teams from its parent after the change (true, false)",
+            "example": "true",
+            "type": "string"
+          }
+        },
+        "required": [
+          "inherits_access"
+        ],
+        "type": "object"
+      },
       "AuditLogTelemetryDataSourceAccessModeChangedMetadataV2": {
         "example": {
           "from": "default",
@@ -57188,6 +57204,88 @@
           "actor",
           "targets",
           "context"
+        ],
+        "type": "object"
+      },
+      "AuditLogsTelemetryDataSourceAccessInheritanceChangedV1": {
+        "example": {
+          "action": "telemetry_data_source.access_inheritance_changed",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "inherits_access": "true"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Grafana Cloud",
+              "type": "telemetry_data_source"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "telemetry_data_source.access_inheritance_changed",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogTelemetryDataSourceAccessInheritanceChangedMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Grafana Cloud",
+                "type": "telemetry_data_source"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
         ],
         "type": "object"
       },
@@ -240993,6 +241091,55 @@
                 },
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsTeamSettingsUpdatedV2"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/telemetry_data_source.access_inheritance_changed.1": {
+      "get": {
+        "description": "This entry is created whenever a telemetry data source starts or stops taking its access mode and teams from its parent",
+        "operationId": "TelemetryDataSourceAccessInheritanceChangedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "telemetry_data_source.access_inheritance_changed",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "inherits_access": "true"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Grafana Cloud",
+                      "type": "telemetry_data_source"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsTelemetryDataSourceAccessInheritanceChangedV1"
                 }
               }
             },

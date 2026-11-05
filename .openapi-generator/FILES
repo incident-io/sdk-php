@@ -316,6 +316,7 @@ src/Model/AuditLogReliabilityReviewSpendLimitUpdatedMetadataV2.php
 src/Model/AuditLogSCIMGroupSeatMappingChangedMetadataV2.php
 src/Model/AuditLogScheduleOverrideMetadataV2.php
 src/Model/AuditLogTargetV2.php
+src/Model/AuditLogTelemetryDataSourceAccessInheritanceChangedMetadataV2.php
 src/Model/AuditLogTelemetryDataSourceAccessModeChangedMetadataV2.php
 src/Model/AuditLogTelemetryDataSourceAccessPolicyChangedMetadataV2.php
 src/Model/AuditLogTelemetryDataSourceAccessPolicyChangedMetadataV2V2.php
@@ -740,6 +741,7 @@ src/Model/AuditLogsTeamRoleUpdatedV1.php
 src/Model/AuditLogsTeamRoleUpdatedV2.php
 src/Model/AuditLogsTeamSettingsUpdatedV1.php
 src/Model/AuditLogsTeamSettingsUpdatedV2.php
+src/Model/AuditLogsTelemetryDataSourceAccessInheritanceChangedV1.php
 src/Model/AuditLogsTelemetryDataSourceAccessModeChangedV1.php
 src/Model/AuditLogsTelemetryDataSourceAccessModeChangedV2.php
 src/Model/AuditLogsTelemetryDataSourceAccessPolicyChangedV1.php
