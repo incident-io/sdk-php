@@ -59,9 +59,11 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         'addedUserIds' => 'string',
         'afterAutomaticReviews' => 'string',
         'afterDraftReviews' => 'string',
+        'afterNoIssueReviews' => 'string',
         'afterReviewedAuthors' => 'string',
         'beforeAutomaticReviews' => 'string',
         'beforeDraftReviews' => 'string',
+        'beforeNoIssueReviews' => 'string',
         'beforeReviewedAuthors' => 'string',
         'changed' => 'string',
         'removedUserIds' => 'string'
@@ -76,9 +78,11 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         'addedUserIds' => null,
         'afterAutomaticReviews' => null,
         'afterDraftReviews' => null,
+        'afterNoIssueReviews' => null,
         'afterReviewedAuthors' => null,
         'beforeAutomaticReviews' => null,
         'beforeDraftReviews' => null,
+        'beforeNoIssueReviews' => null,
         'beforeReviewedAuthors' => null,
         'changed' => null,
         'removedUserIds' => null
@@ -93,9 +97,11 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         'addedUserIds' => false,
         'afterAutomaticReviews' => false,
         'afterDraftReviews' => false,
+        'afterNoIssueReviews' => false,
         'afterReviewedAuthors' => false,
         'beforeAutomaticReviews' => false,
         'beforeDraftReviews' => false,
+        'beforeNoIssueReviews' => false,
         'beforeReviewedAuthors' => false,
         'changed' => false,
         'removedUserIds' => false
@@ -180,9 +186,11 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         'addedUserIds' => 'added_user_ids',
         'afterAutomaticReviews' => 'after_automatic_reviews',
         'afterDraftReviews' => 'after_draft_reviews',
+        'afterNoIssueReviews' => 'after_no_issue_reviews',
         'afterReviewedAuthors' => 'after_reviewed_authors',
         'beforeAutomaticReviews' => 'before_automatic_reviews',
         'beforeDraftReviews' => 'before_draft_reviews',
+        'beforeNoIssueReviews' => 'before_no_issue_reviews',
         'beforeReviewedAuthors' => 'before_reviewed_authors',
         'changed' => 'changed',
         'removedUserIds' => 'removed_user_ids'
@@ -197,9 +205,11 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         'addedUserIds' => 'setAddedUserIds',
         'afterAutomaticReviews' => 'setAfterAutomaticReviews',
         'afterDraftReviews' => 'setAfterDraftReviews',
+        'afterNoIssueReviews' => 'setAfterNoIssueReviews',
         'afterReviewedAuthors' => 'setAfterReviewedAuthors',
         'beforeAutomaticReviews' => 'setBeforeAutomaticReviews',
         'beforeDraftReviews' => 'setBeforeDraftReviews',
+        'beforeNoIssueReviews' => 'setBeforeNoIssueReviews',
         'beforeReviewedAuthors' => 'setBeforeReviewedAuthors',
         'changed' => 'setChanged',
         'removedUserIds' => 'setRemovedUserIds'
@@ -214,9 +224,11 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         'addedUserIds' => 'getAddedUserIds',
         'afterAutomaticReviews' => 'getAfterAutomaticReviews',
         'afterDraftReviews' => 'getAfterDraftReviews',
+        'afterNoIssueReviews' => 'getAfterNoIssueReviews',
         'afterReviewedAuthors' => 'getAfterReviewedAuthors',
         'beforeAutomaticReviews' => 'getBeforeAutomaticReviews',
         'beforeDraftReviews' => 'getBeforeDraftReviews',
+        'beforeNoIssueReviews' => 'getBeforeNoIssueReviews',
         'beforeReviewedAuthors' => 'getBeforeReviewedAuthors',
         'changed' => 'getChanged',
         'removedUserIds' => 'getRemovedUserIds'
@@ -272,9 +284,11 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         $this->setIfExists('addedUserIds', $data ?? [], null);
         $this->setIfExists('afterAutomaticReviews', $data ?? [], null);
         $this->setIfExists('afterDraftReviews', $data ?? [], null);
+        $this->setIfExists('afterNoIssueReviews', $data ?? [], null);
         $this->setIfExists('afterReviewedAuthors', $data ?? [], null);
         $this->setIfExists('beforeAutomaticReviews', $data ?? [], null);
         $this->setIfExists('beforeDraftReviews', $data ?? [], null);
+        $this->setIfExists('beforeNoIssueReviews', $data ?? [], null);
         $this->setIfExists('beforeReviewedAuthors', $data ?? [], null);
         $this->setIfExists('changed', $data ?? [], null);
         $this->setIfExists('removedUserIds', $data ?? [], null);
@@ -402,6 +416,33 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
     }
 
     /**
+     * Gets afterNoIssueReviews
+     *
+     * @return string|null
+     */
+    public function getAfterNoIssueReviews(): ?string
+    {
+        return $this->container['afterNoIssueReviews'];
+    }
+
+    /**
+     * Sets afterNoIssueReviews
+     *
+     * @param string|null $afterNoIssueReviews Whether a review that finds no issues posts a comment after the change (post, skip)
+     *
+     * @return $this
+     */
+    public function setAfterNoIssueReviews(?string $afterNoIssueReviews): static
+    {
+        if (is_null($afterNoIssueReviews)) {
+            throw new InvalidArgumentException('non-nullable afterNoIssueReviews cannot be null');
+        }
+        $this->container['afterNoIssueReviews'] = $afterNoIssueReviews;
+
+        return $this;
+    }
+
+    /**
      * Gets afterReviewedAuthors
      *
      * @return string|null
@@ -483,6 +524,33 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
     }
 
     /**
+     * Gets beforeNoIssueReviews
+     *
+     * @return string|null
+     */
+    public function getBeforeNoIssueReviews(): ?string
+    {
+        return $this->container['beforeNoIssueReviews'];
+    }
+
+    /**
+     * Sets beforeNoIssueReviews
+     *
+     * @param string|null $beforeNoIssueReviews Whether a review that found no issues posted a comment before the change (post, skip)
+     *
+     * @return $this
+     */
+    public function setBeforeNoIssueReviews(?string $beforeNoIssueReviews): static
+    {
+        if (is_null($beforeNoIssueReviews)) {
+            throw new InvalidArgumentException('non-nullable beforeNoIssueReviews cannot be null');
+        }
+        $this->container['beforeNoIssueReviews'] = $beforeNoIssueReviews;
+
+        return $this;
+    }
+
+    /**
      * Gets beforeReviewedAuthors
      *
      * @return string|null
@@ -522,7 +590,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
     /**
      * Sets changed
      *
-     * @param string $changed What the update changed, comma separated (automatic_reviews, draft_reviews, reviewed_authors, reviewed_users)
+     * @param string $changed What the update changed, comma separated (automatic_reviews, draft_reviews, no_issue_reviews, reviewed_authors, reviewed_users)
      *
      * @return $this
      */

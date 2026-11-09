@@ -325,7 +325,7 @@ class StatusPageComponentAvailabilityV2 implements ModelInterface, ArrayAccess, 
     /**
      * Sets availabilityPercent
      *
-     * @param string|null $availabilityPercent Availability over the window as a percentage, floored (for example \"99.94\"). Omitted when we have no data covering the window.
+     * @param string|null $availabilityPercent Availability over the window as a percentage, floored (for example \"99.94\"). It has at least as many decimal places as the status page's uptime decimal places setting. Above 99.99%, it can have more decimal places, up to six. Omitted when we have no data covering the window.
      *
      * @return $this
      */

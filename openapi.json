@@ -24306,9 +24306,11 @@
           "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
           "after_automatic_reviews": "once_per_pull_request",
           "after_draft_reviews": "skip",
+          "after_no_issue_reviews": "skip",
           "after_reviewed_authors": "selected_users",
           "before_automatic_reviews": "every_push",
           "before_draft_reviews": "review",
+          "before_no_issue_reviews": "post",
           "before_reviewed_authors": "everyone",
           "changed": "automatic_reviews",
           "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
@@ -24329,6 +24331,11 @@
             "example": "skip",
             "type": "string"
           },
+          "after_no_issue_reviews": {
+            "description": "Whether a review that finds no issues posts a comment after the change (post, skip)",
+            "example": "skip",
+            "type": "string"
+          },
           "after_reviewed_authors": {
             "description": "Whose pull requests are reviewed after the change (everyone, selected_users)",
             "example": "selected_users",
@@ -24344,13 +24351,18 @@
             "example": "review",
             "type": "string"
           },
+          "before_no_issue_reviews": {
+            "description": "Whether a review that found no issues posted a comment before the change (post, skip)",
+            "example": "post",
+            "type": "string"
+          },
           "before_reviewed_authors": {
             "description": "Whose pull requests were reviewed before the change (everyone, selected_users)",
             "example": "everyone",
             "type": "string"
           },
           "changed": {
-            "description": "What the update changed, comma separated (automatic_reviews, draft_reviews, reviewed_authors, reviewed_users)",
+            "description": "What the update changed, comma separated (automatic_reviews, draft_reviews, no_issue_reviews, reviewed_authors, reviewed_users)",
             "example": "automatic_reviews",
             "type": "string"
           },
@@ -51108,9 +51120,11 @@
             "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
             "after_automatic_reviews": "once_per_pull_request",
             "after_draft_reviews": "skip",
+            "after_no_issue_reviews": "skip",
             "after_reviewed_authors": "selected_users",
             "before_automatic_reviews": "every_push",
             "before_draft_reviews": "review",
+            "before_no_issue_reviews": "post",
             "before_reviewed_authors": "everyone",
             "changed": "automatic_reviews",
             "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
@@ -51198,9 +51212,11 @@
             "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
             "after_automatic_reviews": "once_per_pull_request",
             "after_draft_reviews": "skip",
+            "after_no_issue_reviews": "skip",
             "after_reviewed_authors": "selected_users",
             "before_automatic_reviews": "every_push",
             "before_draft_reviews": "review",
+            "before_no_issue_reviews": "post",
             "before_reviewed_authors": "everyone",
             "changed": "automatic_reviews",
             "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
@@ -118591,7 +118607,7 @@
         },
         "properties": {
           "availability_percent": {
-            "description": "Availability over the window as a percentage, floored (for example \"99.94\"). Omitted when we have no data covering the window.",
+            "description": "Availability over the window as a percentage, floored (for example \"99.94\"). It has at least as many decimal places as the status page's uptime decimal places setting. Above 99.99%, it can have more decimal places, up to six. Omitted when we have no data covering the window.",
             "example": "99.94",
             "type": "string"
           },
@@ -238289,9 +238305,11 @@
                     "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
                     "after_automatic_reviews": "once_per_pull_request",
                     "after_draft_reviews": "skip",
+                    "after_no_issue_reviews": "skip",
                     "after_reviewed_authors": "selected_users",
                     "before_automatic_reviews": "every_push",
                     "before_draft_reviews": "review",
+                    "before_no_issue_reviews": "post",
                     "before_reviewed_authors": "everyone",
                     "changed": "automatic_reviews",
                     "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
@@ -238346,9 +238364,11 @@
                     "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
                     "after_automatic_reviews": "once_per_pull_request",
                     "after_draft_reviews": "skip",
+                    "after_no_issue_reviews": "skip",
                     "after_reviewed_authors": "selected_users",
                     "before_automatic_reviews": "every_push",
                     "before_draft_reviews": "review",
+                    "before_no_issue_reviews": "post",
                     "before_reviewed_authors": "everyone",
                     "changed": "automatic_reviews",
                     "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
