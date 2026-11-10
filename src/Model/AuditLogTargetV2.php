@@ -244,6 +244,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
     public const TYPE_INVESTIGATION_CONFIG = 'investigation_config';
     public const TYPE_CODE_REPOSITORY = 'code_repository';
     public const TYPE_RELIABILITY_REVIEW_SETTINGS = 'reliability_review_settings';
+    public const TYPE_RELIABILITY_REVIEW_RULE = 'reliability_review_rule';
     public const TYPE_FOLLOW_UP_CATEGORY = 'follow_up_category';
     public const TYPE_FOLLOW_UP_PRIORITY = 'follow_up_priority';
     public const TYPE_HOLIDAY_USER_FEED = 'holiday_user_feed';
@@ -331,6 +332,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
             self::TYPE_INVESTIGATION_CONFIG,
             self::TYPE_CODE_REPOSITORY,
             self::TYPE_RELIABILITY_REVIEW_SETTINGS,
+            self::TYPE_RELIABILITY_REVIEW_RULE,
             self::TYPE_FOLLOW_UP_CATEGORY,
             self::TYPE_FOLLOW_UP_PRIORITY,
             self::TYPE_HOLIDAY_USER_FEED,
