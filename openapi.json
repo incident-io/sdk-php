@@ -105760,7 +105760,7 @@
         },
         "properties": {
           "base_rate_cents": {
-            "description": "Rate paid for any time no rule covers, in the lowest denomination of the currency",
+            "description": "Rate paid for one unit of rate_time_unit, for any time no rule covers, in the lowest denomination of the currency",
             "example": 1200,
             "format": "int64",
             "type": "integer"
@@ -105808,10 +105808,11 @@
             "type": "string"
           },
           "rate_time_unit": {
-            "description": "The unit of time every rate on this config is quoted per. Pay is pro-rated by the second either way.",
+            "description": "The unit of time every rate on this config is quoted per: hour, day, or week. A day is 24 hours of shift time and a week is 7 days. Pay is pro-rated by the second.",
             "enum": [
               "hour",
-              "day"
+              "day",
+              "week"
             ],
             "example": "hour",
             "type": "string"
@@ -105827,7 +105828,7 @@
             "type": "string"
           },
           "weekly_rules": {
-            "description": "Rules that apply every week, by day of week and time of day, in evaluation order",
+            "description": "Rules that apply every week, by day of week and time of day, in evaluation order. Must be empty when rate_time_unit is week.",
             "example": [
               {
                 "end_time": "17:00",
@@ -106078,7 +106079,7 @@
         },
         "properties": {
           "base_rate_cents": {
-            "description": "Rate paid for any time no rule covers, in the lowest denomination of the currency",
+            "description": "Rate paid for one unit of rate_time_unit, for any time no rule covers, in the lowest denomination of the currency",
             "example": 1200,
             "format": "int64",
             "type": "integer"
@@ -106110,10 +106111,11 @@
             "type": "array"
           },
           "rate_time_unit": {
-            "description": "The unit of time every rate on this config is quoted per",
+            "description": "The unit of time every rate on this config is quoted per: hour, day, or week. A day is 24 hours of shift time and a week is 7 days. Pay is pro-rated by the second.",
             "enum": [
               "hour",
-              "day"
+              "day",
+              "week"
             ],
             "example": "hour",
             "type": "string"
@@ -106590,7 +106592,7 @@
         },
         "properties": {
           "base_rate_cents": {
-            "description": "Rate paid for any time no rule covers, in the lowest denomination of the currency",
+            "description": "Rate paid for one unit of rate_time_unit, for any time no rule covers, in the lowest denomination of the currency",
             "example": 1200,
             "format": "int64",
             "type": "integer"
@@ -106606,10 +106608,11 @@
             "type": "string"
           },
           "rate_time_unit": {
-            "description": "The unit of time every rate on this config is quoted per. Pay is pro-rated by the second either way.",
+            "description": "The unit of time every rate on this config is quoted per: hour, day, or week. A day is 24 hours of shift time and a week is 7 days. Pay is pro-rated by the second.",
             "enum": [
               "hour",
-              "day"
+              "day",
+              "week"
             ],
             "example": "hour",
             "type": "string"

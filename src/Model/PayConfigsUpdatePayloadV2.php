@@ -232,6 +232,7 @@ class PayConfigsUpdatePayloadV2 implements ModelInterface, ArrayAccess, JsonSeri
 
     public const RATE_TIME_UNIT_HOUR = 'hour';
     public const RATE_TIME_UNIT_DAY = 'day';
+    public const RATE_TIME_UNIT_WEEK = 'week';
 
     /**
      * Gets allowable values of the enum
@@ -243,6 +244,7 @@ class PayConfigsUpdatePayloadV2 implements ModelInterface, ArrayAccess, JsonSeri
         return [
             self::RATE_TIME_UNIT_HOUR,
             self::RATE_TIME_UNIT_DAY,
+            self::RATE_TIME_UNIT_WEEK,
         ];
     }
 
@@ -332,7 +334,7 @@ class PayConfigsUpdatePayloadV2 implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * Sets baseRateCents
      *
-     * @param int $baseRateCents Rate paid for any time no rule covers, in the lowest denomination of the currency
+     * @param int $baseRateCents Rate paid for one unit of rate_time_unit, for any time no rule covers, in the lowest denomination of the currency
      *
      * @return $this
      */
@@ -413,7 +415,7 @@ class PayConfigsUpdatePayloadV2 implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * Sets rateTimeUnit
      *
-     * @param string $rateTimeUnit The unit of time every rate on this config is quoted per. Pay is pro-rated by the second either way.
+     * @param string $rateTimeUnit The unit of time every rate on this config is quoted per: hour, day, or week. A day is 24 hours of shift time and a week is 7 days. Pay is pro-rated by the second.
      *
      * @return $this
      */

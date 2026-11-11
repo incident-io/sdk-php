@@ -4526,6 +4526,7 @@ const IncidentIo\Model\PayConfigOneOffRuleV2::DISCRIMINATOR
 const IncidentIo\Model\PayConfigV2::DISCRIMINATOR
 const IncidentIo\Model\PayConfigV2::RATE_TIME_UNIT_DAY
 const IncidentIo\Model\PayConfigV2::RATE_TIME_UNIT_HOUR
+const IncidentIo\Model\PayConfigV2::RATE_TIME_UNIT_WEEK
 const IncidentIo\Model\PayConfigWeeklyRulePayloadV2::DISCRIMINATOR
 const IncidentIo\Model\PayConfigWeeklyRulePayloadV2::WEEKDAYS_FRIDAY
 const IncidentIo\Model\PayConfigWeeklyRulePayloadV2::WEEKDAYS_MONDAY
@@ -4547,6 +4548,7 @@ const IncidentIo\Model\PayConfigsCreateOneOffRuleResultV2::DISCRIMINATOR
 const IncidentIo\Model\PayConfigsCreatePayloadV2::DISCRIMINATOR
 const IncidentIo\Model\PayConfigsCreatePayloadV2::RATE_TIME_UNIT_DAY
 const IncidentIo\Model\PayConfigsCreatePayloadV2::RATE_TIME_UNIT_HOUR
+const IncidentIo\Model\PayConfigsCreatePayloadV2::RATE_TIME_UNIT_WEEK
 const IncidentIo\Model\PayConfigsCreateResultV2::DISCRIMINATOR
 const IncidentIo\Model\PayConfigsCreateWeeklyRulePayloadV2::DISCRIMINATOR
 const IncidentIo\Model\PayConfigsCreateWeeklyRulePayloadV2::WEEKDAYS_FRIDAY
@@ -4568,6 +4570,7 @@ const IncidentIo\Model\PayConfigsUpdateOneOffRuleResultV2::DISCRIMINATOR
 const IncidentIo\Model\PayConfigsUpdatePayloadV2::DISCRIMINATOR
 const IncidentIo\Model\PayConfigsUpdatePayloadV2::RATE_TIME_UNIT_DAY
 const IncidentIo\Model\PayConfigsUpdatePayloadV2::RATE_TIME_UNIT_HOUR
+const IncidentIo\Model\PayConfigsUpdatePayloadV2::RATE_TIME_UNIT_WEEK
 const IncidentIo\Model\PayConfigsUpdateResultV2::DISCRIMINATOR
 const IncidentIo\Model\PayConfigsUpdateWeeklyRulePayloadV2::DISCRIMINATOR
 const IncidentIo\Model\PayConfigsUpdateWeeklyRulePayloadV2::WEEKDAYS_FRIDAY
