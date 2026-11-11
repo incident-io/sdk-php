@@ -225,6 +225,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
     public const TYPE_ALERT_SCHEMA = 'alert_schema';
     public const TYPE_ALERT_SOURCE = 'alert_source';
     public const TYPE_ALERT_PRIORITY = 'alert_priority';
+    public const TYPE_ESCALATION_URGENCY = 'escalation_urgency';
     public const TYPE_ANNOUNCEMENT_RULE = 'announcement_rule';
     public const TYPE_ANNOUNCEMENT_POST_TEMPLATE = 'announcement_post_template';
     public const TYPE_CATALOG_TYPE = 'catalog_type';
@@ -313,6 +314,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
             self::TYPE_ALERT_SCHEMA,
             self::TYPE_ALERT_SOURCE,
             self::TYPE_ALERT_PRIORITY,
+            self::TYPE_ESCALATION_URGENCY,
             self::TYPE_ANNOUNCEMENT_RULE,
             self::TYPE_ANNOUNCEMENT_POST_TEMPLATE,
             self::TYPE_CATALOG_TYPE,

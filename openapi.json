@@ -24603,6 +24603,7 @@
               "alert_schema",
               "alert_source",
               "alert_priority",
+              "escalation_urgency",
               "announcement_rule",
               "announcement_post_template",
               "catalog_type",
@@ -33152,6 +33153,231 @@
           "version": {
             "description": "Which version the event is",
             "example": 2,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context"
+        ],
+        "type": "object"
+      },
+      "AuditLogsEscalationUrgencyCreatedV1": {
+        "example": {
+          "action": "escalation_urgency.created",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Urgent",
+              "type": "escalation_urgency"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "escalation_urgency.created",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Urgent",
+                "type": "escalation_urgency"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context"
+        ],
+        "type": "object"
+      },
+      "AuditLogsEscalationUrgencyDeletedV1": {
+        "example": {
+          "action": "escalation_urgency.deleted",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Urgent",
+              "type": "escalation_urgency"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "escalation_urgency.deleted",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Urgent",
+                "type": "escalation_urgency"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context"
+        ],
+        "type": "object"
+      },
+      "AuditLogsEscalationUrgencyUpdatedV1": {
+        "example": {
+          "action": "escalation_urgency.updated",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Urgent",
+              "type": "escalation_urgency"
+            }
+          ],
+          "version": 1
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "escalation_urgency.updated",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Urgent",
+                "type": "escalation_urgency"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 1,
             "format": "int64",
             "type": "integer"
           }
@@ -227597,6 +227823,144 @@
                 },
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsEscalationPathTemplateUpdatedV2"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/escalation_urgency.created.1": {
+      "get": {
+        "description": "This entry is created whenever an escalation urgency is created",
+        "operationId": "EscalationUrgencyCreatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "escalation_urgency.created",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Urgent",
+                      "type": "escalation_urgency"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsEscalationUrgencyCreatedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/escalation_urgency.deleted.1": {
+      "get": {
+        "description": "This entry is created whenever an escalation urgency is deleted",
+        "operationId": "EscalationUrgencyDeletedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "escalation_urgency.deleted",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Urgent",
+                      "type": "escalation_urgency"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsEscalationUrgencyDeletedV1"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/escalation_urgency.updated.1": {
+      "get": {
+        "description": "This entry is created whenever an escalation urgency is updated",
+        "operationId": "EscalationUrgencyUpdatedV1",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "escalation_urgency.updated",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Urgent",
+                      "type": "escalation_urgency"
+                    }
+                  ],
+                  "version": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsEscalationUrgencyUpdatedV1"
                 }
               }
             },

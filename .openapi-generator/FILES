@@ -438,6 +438,9 @@ src/Model/AuditLogsEscalationPathUpdatedV1.php
 src/Model/AuditLogsEscalationPathUpdatedV2.php
 src/Model/AuditLogsEscalationScrubbedV1.php
 src/Model/AuditLogsEscalationScrubbedV2.php
+src/Model/AuditLogsEscalationUrgencyCreatedV1.php
+src/Model/AuditLogsEscalationUrgencyDeletedV1.php
+src/Model/AuditLogsEscalationUrgencyUpdatedV1.php
 src/Model/AuditLogsExtensionConnectorCalledV1.php
 src/Model/AuditLogsExtensionConnectorCalledV2.php
 src/Model/AuditLogsExtensionConnectorCalledV3.php

@@ -438,6 +438,9 @@ class IncidentIo\Model\AuditLogsEscalationPathUpdatedV1
 class IncidentIo\Model\AuditLogsEscalationPathUpdatedV2
 class IncidentIo\Model\AuditLogsEscalationScrubbedV1
 class IncidentIo\Model\AuditLogsEscalationScrubbedV2
+class IncidentIo\Model\AuditLogsEscalationUrgencyCreatedV1
+class IncidentIo\Model\AuditLogsEscalationUrgencyDeletedV1
+class IncidentIo\Model\AuditLogsEscalationUrgencyUpdatedV1
 class IncidentIo\Model\AuditLogsExtensionConnectorCalledV1
 class IncidentIo\Model\AuditLogsExtensionConnectorCalledV2
 class IncidentIo\Model\AuditLogsExtensionConnectorCalledV3
@@ -2455,6 +2458,7 @@ const IncidentIo\Model\AuditLogTargetV2::TYPE_DEBRIEF_INVITE_RULE
 const IncidentIo\Model\AuditLogTargetV2::TYPE_ESCALATION
 const IncidentIo\Model\AuditLogTargetV2::TYPE_ESCALATION_PATH
 const IncidentIo\Model\AuditLogTargetV2::TYPE_ESCALATION_PATH_TEMPLATE
+const IncidentIo\Model\AuditLogTargetV2::TYPE_ESCALATION_URGENCY
 const IncidentIo\Model\AuditLogTargetV2::TYPE_EXTENSION_CONNECTOR
 const IncidentIo\Model\AuditLogTargetV2::TYPE_EXTENSION_CONNECTOR_TOOL
 const IncidentIo\Model\AuditLogTargetV2::TYPE_EXTENSION_PLUGIN
@@ -2634,6 +2638,9 @@ const IncidentIo\Model\AuditLogsEscalationPathUpdatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsEscalationPathUpdatedV2::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsEscalationScrubbedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsEscalationScrubbedV2::DISCRIMINATOR
+const IncidentIo\Model\AuditLogsEscalationUrgencyCreatedV1::DISCRIMINATOR
+const IncidentIo\Model\AuditLogsEscalationUrgencyDeletedV1::DISCRIMINATOR
+const IncidentIo\Model\AuditLogsEscalationUrgencyUpdatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsExtensionConnectorCalledV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsExtensionConnectorCalledV2::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsExtensionConnectorCalledV3::DISCRIMINATOR
@@ -14971,6 +14978,24 @@ property IncidentIo\Model\AuditLogsEscalationScrubbedV2 context
 property IncidentIo\Model\AuditLogsEscalationScrubbedV2 occurredAt
 property IncidentIo\Model\AuditLogsEscalationScrubbedV2 targets
 property IncidentIo\Model\AuditLogsEscalationScrubbedV2 version
+property IncidentIo\Model\AuditLogsEscalationUrgencyCreatedV1 action
+property IncidentIo\Model\AuditLogsEscalationUrgencyCreatedV1 actor
+property IncidentIo\Model\AuditLogsEscalationUrgencyCreatedV1 context
+property IncidentIo\Model\AuditLogsEscalationUrgencyCreatedV1 occurredAt
+property IncidentIo\Model\AuditLogsEscalationUrgencyCreatedV1 targets
+property IncidentIo\Model\AuditLogsEscalationUrgencyCreatedV1 version
+property IncidentIo\Model\AuditLogsEscalationUrgencyDeletedV1 action
+property IncidentIo\Model\AuditLogsEscalationUrgencyDeletedV1 actor
+property IncidentIo\Model\AuditLogsEscalationUrgencyDeletedV1 context
+property IncidentIo\Model\AuditLogsEscalationUrgencyDeletedV1 occurredAt
+property IncidentIo\Model\AuditLogsEscalationUrgencyDeletedV1 targets
+property IncidentIo\Model\AuditLogsEscalationUrgencyDeletedV1 version
+property IncidentIo\Model\AuditLogsEscalationUrgencyUpdatedV1 action
+property IncidentIo\Model\AuditLogsEscalationUrgencyUpdatedV1 actor
+property IncidentIo\Model\AuditLogsEscalationUrgencyUpdatedV1 context
+property IncidentIo\Model\AuditLogsEscalationUrgencyUpdatedV1 occurredAt
+property IncidentIo\Model\AuditLogsEscalationUrgencyUpdatedV1 targets
+property IncidentIo\Model\AuditLogsEscalationUrgencyUpdatedV1 version
 property IncidentIo\Model\AuditLogsExtensionConnectorCalledV1 action
 property IncidentIo\Model\AuditLogsExtensionConnectorCalledV1 actor
 property IncidentIo\Model\AuditLogsExtensionConnectorCalledV1 context
