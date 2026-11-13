@@ -56,6 +56,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
+        'addedIgnoredAuthors' => 'string',
         'addedUserIds' => 'string',
         'afterAutomaticReviews' => 'string',
         'afterDraftReviews' => 'string',
@@ -66,6 +67,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         'beforeNoIssueReviews' => 'string',
         'beforeReviewedAuthors' => 'string',
         'changed' => 'string',
+        'removedIgnoredAuthors' => 'string',
         'removedUserIds' => 'string'
     ];
 
@@ -75,6 +77,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
      * @var array<string, string|null>
      */
     protected static array $openAPIFormats = [
+        'addedIgnoredAuthors' => null,
         'addedUserIds' => null,
         'afterAutomaticReviews' => null,
         'afterDraftReviews' => null,
@@ -85,6 +88,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         'beforeNoIssueReviews' => null,
         'beforeReviewedAuthors' => null,
         'changed' => null,
+        'removedIgnoredAuthors' => null,
         'removedUserIds' => null
     ];
 
@@ -94,6 +98,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
      * @var array<string, bool>
      */
     protected static array $openAPINullables = [
+        'addedIgnoredAuthors' => false,
         'addedUserIds' => false,
         'afterAutomaticReviews' => false,
         'afterDraftReviews' => false,
@@ -104,6 +109,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         'beforeNoIssueReviews' => false,
         'beforeReviewedAuthors' => false,
         'changed' => false,
+        'removedIgnoredAuthors' => false,
         'removedUserIds' => false
     ];
 
@@ -183,6 +189,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
      * @var array<string, string>
      */
     protected static array $attributeMap = [
+        'addedIgnoredAuthors' => 'added_ignored_authors',
         'addedUserIds' => 'added_user_ids',
         'afterAutomaticReviews' => 'after_automatic_reviews',
         'afterDraftReviews' => 'after_draft_reviews',
@@ -193,6 +200,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         'beforeNoIssueReviews' => 'before_no_issue_reviews',
         'beforeReviewedAuthors' => 'before_reviewed_authors',
         'changed' => 'changed',
+        'removedIgnoredAuthors' => 'removed_ignored_authors',
         'removedUserIds' => 'removed_user_ids'
     ];
 
@@ -202,6 +210,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
      * @var array<string, string>
      */
     protected static array $setters = [
+        'addedIgnoredAuthors' => 'setAddedIgnoredAuthors',
         'addedUserIds' => 'setAddedUserIds',
         'afterAutomaticReviews' => 'setAfterAutomaticReviews',
         'afterDraftReviews' => 'setAfterDraftReviews',
@@ -212,6 +221,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         'beforeNoIssueReviews' => 'setBeforeNoIssueReviews',
         'beforeReviewedAuthors' => 'setBeforeReviewedAuthors',
         'changed' => 'setChanged',
+        'removedIgnoredAuthors' => 'setRemovedIgnoredAuthors',
         'removedUserIds' => 'setRemovedUserIds'
     ];
 
@@ -221,6 +231,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
      * @var array<string, string>
      */
     protected static array $getters = [
+        'addedIgnoredAuthors' => 'getAddedIgnoredAuthors',
         'addedUserIds' => 'getAddedUserIds',
         'afterAutomaticReviews' => 'getAfterAutomaticReviews',
         'afterDraftReviews' => 'getAfterDraftReviews',
@@ -231,6 +242,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         'beforeNoIssueReviews' => 'getBeforeNoIssueReviews',
         'beforeReviewedAuthors' => 'getBeforeReviewedAuthors',
         'changed' => 'getChanged',
+        'removedIgnoredAuthors' => 'getRemovedIgnoredAuthors',
         'removedUserIds' => 'getRemovedUserIds'
     ];
 
@@ -281,6 +293,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('addedIgnoredAuthors', $data ?? [], null);
         $this->setIfExists('addedUserIds', $data ?? [], null);
         $this->setIfExists('afterAutomaticReviews', $data ?? [], null);
         $this->setIfExists('afterDraftReviews', $data ?? [], null);
@@ -291,6 +304,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         $this->setIfExists('beforeNoIssueReviews', $data ?? [], null);
         $this->setIfExists('beforeReviewedAuthors', $data ?? [], null);
         $this->setIfExists('changed', $data ?? [], null);
+        $this->setIfExists('removedIgnoredAuthors', $data ?? [], null);
         $this->setIfExists('removedUserIds', $data ?? [], null);
     }
 
@@ -333,6 +347,33 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets addedIgnoredAuthors
+     *
+     * @return string|null
+     */
+    public function getAddedIgnoredAuthors(): ?string
+    {
+        return $this->container['addedIgnoredAuthors'];
+    }
+
+    /**
+     * Sets addedIgnoredAuthors
+     *
+     * @param string|null $addedIgnoredAuthors The GitHub usernames added to those whose pull requests aren't reviewed automatically, comma separated
+     *
+     * @return $this
+     */
+    public function setAddedIgnoredAuthors(?string $addedIgnoredAuthors): static
+    {
+        if (is_null($addedIgnoredAuthors)) {
+            throw new InvalidArgumentException('non-nullable addedIgnoredAuthors cannot be null');
+        }
+        $this->container['addedIgnoredAuthors'] = $addedIgnoredAuthors;
+
+        return $this;
+    }
 
     /**
      * Gets addedUserIds
@@ -590,7 +631,7 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
     /**
      * Sets changed
      *
-     * @param string $changed What the update changed, comma separated (automatic_reviews, draft_reviews, no_issue_reviews, reviewed_authors, reviewed_users)
+     * @param string $changed What the update changed, comma separated (automatic_reviews, draft_reviews, no_issue_reviews, reviewed_authors, reviewed_users, ignored_authors)
      *
      * @return $this
      */
@@ -600,6 +641,33 @@ class AuditLogReliabilityReviewSettingsUpdatedMetadataV2 implements ModelInterfa
             throw new InvalidArgumentException('non-nullable changed cannot be null');
         }
         $this->container['changed'] = $changed;
+
+        return $this;
+    }
+
+    /**
+     * Gets removedIgnoredAuthors
+     *
+     * @return string|null
+     */
+    public function getRemovedIgnoredAuthors(): ?string
+    {
+        return $this->container['removedIgnoredAuthors'];
+    }
+
+    /**
+     * Sets removedIgnoredAuthors
+     *
+     * @param string|null $removedIgnoredAuthors The GitHub usernames removed from those whose pull requests aren't reviewed automatically, comma separated
+     *
+     * @return $this
+     */
+    public function setRemovedIgnoredAuthors(?string $removedIgnoredAuthors): static
+    {
+        if (is_null($removedIgnoredAuthors)) {
+            throw new InvalidArgumentException('non-nullable removedIgnoredAuthors cannot be null');
+        }
+        $this->container['removedIgnoredAuthors'] = $removedIgnoredAuthors;
 
         return $this;
     }

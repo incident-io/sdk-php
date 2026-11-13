@@ -672,6 +672,7 @@ src/Model/AuditLogsReliabilityReviewRuleDeletedV1.php
 src/Model/AuditLogsReliabilityReviewRuleUpdatedV1.php
 src/Model/AuditLogsReliabilityReviewSettingsUpdatedV1.php
 src/Model/AuditLogsReliabilityReviewSettingsUpdatedV2.php
+src/Model/AuditLogsReliabilityReviewSettingsUpdatedV3.php
 src/Model/AuditLogsReliabilityReviewSpendLimitUpdatedV1.php
 src/Model/AuditLogsReliabilityReviewSpendLimitUpdatedV2.php
 src/Model/AuditLogsScheduleCreatedV1.php

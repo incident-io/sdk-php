@@ -24409,6 +24409,7 @@
       },
       "AuditLogReliabilityReviewSettingsUpdatedMetadataV2": {
         "example": {
+          "added_ignored_authors": "dependabot",
           "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
           "after_automatic_reviews": "once_per_pull_request",
           "after_draft_reviews": "skip",
@@ -24419,9 +24420,15 @@
           "before_no_issue_reviews": "post",
           "before_reviewed_authors": "everyone",
           "changed": "automatic_reviews",
+          "removed_ignored_authors": "renovate[bot]",
           "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
         },
         "properties": {
+          "added_ignored_authors": {
+            "description": "The GitHub usernames added to those whose pull requests aren't reviewed automatically, comma separated",
+            "example": "dependabot",
+            "type": "string"
+          },
           "added_user_ids": {
             "description": "The users added to those whose pull requests are reviewed, comma separated",
             "example": "01FCNDV6P870EA6S7TK1DSYDG0",
@@ -24468,8 +24475,13 @@
             "type": "string"
           },
           "changed": {
-            "description": "What the update changed, comma separated (automatic_reviews, draft_reviews, no_issue_reviews, reviewed_authors, reviewed_users)",
+            "description": "What the update changed, comma separated (automatic_reviews, draft_reviews, no_issue_reviews, reviewed_authors, reviewed_users, ignored_authors)",
             "example": "automatic_reviews",
+            "type": "string"
+          },
+          "removed_ignored_authors": {
+            "description": "The GitHub usernames removed from those whose pull requests aren't reviewed automatically, comma separated",
+            "example": "renovate[bot]",
             "type": "string"
           },
           "removed_user_ids": {
@@ -51701,6 +51713,7 @@
             "user_agent": "Chrome/91.0.4472.114"
           },
           "metadata": {
+            "added_ignored_authors": "dependabot",
             "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
             "after_automatic_reviews": "once_per_pull_request",
             "after_draft_reviews": "skip",
@@ -51711,6 +51724,7 @@
             "before_no_issue_reviews": "post",
             "before_reviewed_authors": "everyone",
             "changed": "automatic_reviews",
+            "removed_ignored_authors": "renovate[bot]",
             "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
           },
           "occurred_at": "2021-08-17T13:28:57.801578Z",
@@ -51793,6 +51807,7 @@
             "user_agent": "Chrome/91.0.4472.114"
           },
           "metadata": {
+            "added_ignored_authors": "dependabot",
             "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
             "after_automatic_reviews": "once_per_pull_request",
             "after_draft_reviews": "skip",
@@ -51803,6 +51818,7 @@
             "before_no_issue_reviews": "post",
             "before_reviewed_authors": "everyone",
             "changed": "automatic_reviews",
+            "removed_ignored_authors": "renovate[bot]",
             "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
           },
           "occurred_at": "2021-08-17T13:28:57.801578Z",
@@ -51853,6 +51869,100 @@
           "version": {
             "description": "Which version the event is",
             "example": 2,
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "occurred_at",
+          "version",
+          "actor",
+          "targets",
+          "context",
+          "metadata"
+        ],
+        "type": "object"
+      },
+      "AuditLogsReliabilityReviewSettingsUpdatedV3": {
+        "example": {
+          "action": "reliability_review_settings.updated",
+          "actor": {
+            "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "metadata": {
+              "user_base_role_slug": "admin",
+              "user_custom_role_slugs": "engineering,security"
+            },
+            "name": "John Doe",
+            "type": "user"
+          },
+          "context": {
+            "location": "1.2.3.4",
+            "user_agent": "Chrome/91.0.4472.114"
+          },
+          "metadata": {
+            "added_ignored_authors": "dependabot",
+            "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
+            "after_automatic_reviews": "once_per_pull_request",
+            "after_draft_reviews": "skip",
+            "after_no_issue_reviews": "skip",
+            "after_reviewed_authors": "selected_users",
+            "before_automatic_reviews": "every_push",
+            "before_draft_reviews": "review",
+            "before_no_issue_reviews": "post",
+            "before_reviewed_authors": "everyone",
+            "changed": "automatic_reviews",
+            "removed_ignored_authors": "renovate[bot]",
+            "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
+          },
+          "occurred_at": "2021-08-17T13:28:57.801578Z",
+          "targets": [
+            {
+              "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+              "name": "Reliability review settings",
+              "type": "reliability_review_settings"
+            }
+          ],
+          "version": 3
+        },
+        "properties": {
+          "action": {
+            "description": "The type of log entry that this is",
+            "example": "reliability_review_settings.updated",
+            "type": "string"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/AuditLogActorV2"
+          },
+          "context": {
+            "$ref": "#/components/schemas/AuditLogEntryContextV2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AuditLogReliabilityReviewSettingsUpdatedMetadataV2"
+          },
+          "occurred_at": {
+            "description": "When the entry occurred",
+            "example": "2021-08-17T13:28:57.801578Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "targets": {
+            "description": "The custom field that was created",
+            "example": [
+              {
+                "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                "name": "Reliability review settings",
+                "type": "reliability_review_settings"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/AuditLogTargetV2"
+            },
+            "type": "array"
+          },
+          "version": {
+            "description": "Which version the event is",
+            "example": 3,
             "format": "int64",
             "type": "integer"
           }
@@ -239183,6 +239293,7 @@
                     "user_agent": "Chrome/91.0.4472.114"
                   },
                   "metadata": {
+                    "added_ignored_authors": "dependabot",
                     "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
                     "after_automatic_reviews": "once_per_pull_request",
                     "after_draft_reviews": "skip",
@@ -239193,6 +239304,7 @@
                     "before_no_issue_reviews": "post",
                     "before_reviewed_authors": "everyone",
                     "changed": "automatic_reviews",
+                    "removed_ignored_authors": "renovate[bot]",
                     "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
                   },
                   "occurred_at": "2021-08-17T13:28:57.801578Z",
@@ -239242,6 +239354,7 @@
                     "user_agent": "Chrome/91.0.4472.114"
                   },
                   "metadata": {
+                    "added_ignored_authors": "dependabot",
                     "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
                     "after_automatic_reviews": "once_per_pull_request",
                     "after_draft_reviews": "skip",
@@ -239252,6 +239365,7 @@
                     "before_no_issue_reviews": "post",
                     "before_reviewed_authors": "everyone",
                     "changed": "automatic_reviews",
+                    "removed_ignored_authors": "renovate[bot]",
                     "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
                   },
                   "occurred_at": "2021-08-17T13:28:57.801578Z",
@@ -239266,6 +239380,67 @@
                 },
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsReliabilityReviewSettingsUpdatedV2"
+                }
+              }
+            },
+            "description": "OK response."
+          }
+        },
+        "tags": [
+          "Audit logs"
+        ]
+      }
+    },
+    "/x-audit-logs/reliability_review_settings.updated.3": {
+      "get": {
+        "description": "This entry is created whenever Reliability review settings change, such as which pushes are reviewed, whether drafts are reviewed, or whose pull requests are reviewed",
+        "operationId": "ReliabilityReviewSettingsUpdatedV3",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "action": "reliability_review_settings.updated",
+                  "actor": {
+                    "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "metadata": {
+                      "user_base_role_slug": "admin",
+                      "user_custom_role_slugs": "engineering,security"
+                    },
+                    "name": "John Doe",
+                    "type": "user"
+                  },
+                  "context": {
+                    "location": "1.2.3.4",
+                    "user_agent": "Chrome/91.0.4472.114"
+                  },
+                  "metadata": {
+                    "added_ignored_authors": "dependabot",
+                    "added_user_ids": "01FCNDV6P870EA6S7TK1DSYDG0",
+                    "after_automatic_reviews": "once_per_pull_request",
+                    "after_draft_reviews": "skip",
+                    "after_no_issue_reviews": "skip",
+                    "after_reviewed_authors": "selected_users",
+                    "before_automatic_reviews": "every_push",
+                    "before_draft_reviews": "review",
+                    "before_no_issue_reviews": "post",
+                    "before_reviewed_authors": "everyone",
+                    "changed": "automatic_reviews",
+                    "removed_ignored_authors": "renovate[bot]",
+                    "removed_user_ids": "01FCNDV6P870EA6S7TK1DSYDG1"
+                  },
+                  "occurred_at": "2021-08-17T13:28:57.801578Z",
+                  "targets": [
+                    {
+                      "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+                      "name": "Reliability review settings",
+                      "type": "reliability_review_settings"
+                    }
+                  ],
+                  "version": 3
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsReliabilityReviewSettingsUpdatedV3"
                 }
               }
             },
