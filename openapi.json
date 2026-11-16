@@ -158070,6 +158070,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -158102,6 +158103,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -158134,6 +158136,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -158166,6 +158169,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -158198,6 +158202,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -158230,6 +158235,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -158266,6 +158272,7 @@
                   ],
                   "items": {
                     "example": "value",
+                    "pattern": "^[^\u0000]*$",
                     "type": "string"
                   },
                   "type": "array"
@@ -158308,6 +158315,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -158340,6 +158348,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -158372,6 +158381,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -173619,6 +173629,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -173651,6 +173662,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -173683,6 +173695,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -173715,6 +173728,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -173747,6 +173761,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -173779,6 +173794,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -173811,6 +173827,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -182821,6 +182838,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -182853,6 +182871,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -182885,6 +182904,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -182917,6 +182937,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -182949,6 +182970,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -182981,6 +183003,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -183017,6 +183040,7 @@
                   ],
                   "items": {
                     "example": "value",
+                    "pattern": "^[^\u0000]*$",
                     "type": "string"
                   },
                   "type": "array"
@@ -183063,6 +183087,7 @@
                   ],
                   "items": {
                     "example": "value",
+                    "pattern": "^[^\u0000]*$",
                     "type": "string"
                   },
                   "type": "array"
@@ -183105,6 +183130,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -207952,6 +207978,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -210807,6 +210834,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -210839,6 +210867,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -218441,6 +218470,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
@@ -218473,6 +218503,7 @@
                 ],
                 "items": {
                   "example": "some_value",
+                  "pattern": "^[^\u0000]*$",
                   "type": "string"
                 },
                 "type": "array"
