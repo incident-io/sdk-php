@@ -104909,6 +104909,7 @@
           "resource_type": {
             "enum": [
               "alert_route",
+              "alert_rule",
               "alert_source",
               "api_key",
               "incident_form",
@@ -104972,6 +104973,7 @@
             "description": "The type of the related resource",
             "enum": [
               "alert_route",
+              "alert_rule",
               "alert_source",
               "api_key",
               "incident_form",

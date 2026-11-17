@@ -4448,6 +4448,7 @@ const IncidentIo\Model\ManagedResourceV2::MANAGED_BY_DASHBOARD
 const IncidentIo\Model\ManagedResourceV2::MANAGED_BY_EXTERNAL
 const IncidentIo\Model\ManagedResourceV2::MANAGED_BY_TERRAFORM
 const IncidentIo\Model\ManagedResourceV2::RESOURCE_TYPE_ALERT_ROUTE
+const IncidentIo\Model\ManagedResourceV2::RESOURCE_TYPE_ALERT_RULE
 const IncidentIo\Model\ManagedResourceV2::RESOURCE_TYPE_ALERT_SOURCE
 const IncidentIo\Model\ManagedResourceV2::RESOURCE_TYPE_API_KEY
 const IncidentIo\Model\ManagedResourceV2::RESOURCE_TYPE_ESCALATION_PATH
@@ -4465,6 +4466,7 @@ const IncidentIo\Model\ManagedResourceV2::RESOURCE_TYPE_TEAM_GROUPING_PREFERENCE
 const IncidentIo\Model\ManagedResourceV2::RESOURCE_TYPE_WORKFLOW
 const IncidentIo\Model\ManagedResourcesCreateManagedResourcePayloadV2::DISCRIMINATOR
 const IncidentIo\Model\ManagedResourcesCreateManagedResourcePayloadV2::RESOURCE_TYPE_ALERT_ROUTE
+const IncidentIo\Model\ManagedResourcesCreateManagedResourcePayloadV2::RESOURCE_TYPE_ALERT_RULE
 const IncidentIo\Model\ManagedResourcesCreateManagedResourcePayloadV2::RESOURCE_TYPE_ALERT_SOURCE
 const IncidentIo\Model\ManagedResourcesCreateManagedResourcePayloadV2::RESOURCE_TYPE_API_KEY
 const IncidentIo\Model\ManagedResourcesCreateManagedResourcePayloadV2::RESOURCE_TYPE_ESCALATION_PATH

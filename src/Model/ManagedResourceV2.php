@@ -234,6 +234,7 @@ class ManagedResourceV2 implements ModelInterface, ArrayAccess, JsonSerializable
     public const MANAGED_BY_TERRAFORM = 'terraform';
     public const MANAGED_BY_EXTERNAL = 'external';
     public const RESOURCE_TYPE_ALERT_ROUTE = 'alert_route';
+    public const RESOURCE_TYPE_ALERT_RULE = 'alert_rule';
     public const RESOURCE_TYPE_ALERT_SOURCE = 'alert_source';
     public const RESOURCE_TYPE_API_KEY = 'api_key';
     public const RESOURCE_TYPE_INCIDENT_FORM = 'incident_form';
@@ -273,6 +274,7 @@ class ManagedResourceV2 implements ModelInterface, ArrayAccess, JsonSerializable
     {
         return [
             self::RESOURCE_TYPE_ALERT_ROUTE,
+            self::RESOURCE_TYPE_ALERT_RULE,
             self::RESOURCE_TYPE_ALERT_SOURCE,
             self::RESOURCE_TYPE_API_KEY,
             self::RESOURCE_TYPE_INCIDENT_FORM,
