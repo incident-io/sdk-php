@@ -135170,10 +135170,10 @@
         "x-docs-group-name": "Custom Field Options V1",
         "x-docs-resource-type": "CustomFieldOptionV1",
         "x-mint": {
-          "content": "🔑 Requires the `organisation_settings.update` scope."
+          "content": "🔑 Requires the `custom_fields.update` scope."
         },
         "x-rbac-scopes": [
-          "organisation_settings.update"
+          "custom_fields.update"
         ]
       }
     },
@@ -135338,10 +135338,10 @@
         "x-docs-group-name": "Custom Field Options V1",
         "x-docs-resource-type": "CustomFieldOptionV1",
         "x-mint": {
-          "content": "🔑 Requires the `organisation_settings.update` scope."
+          "content": "🔑 Requires the `custom_fields.update` scope."
         },
         "x-rbac-scopes": [
-          "organisation_settings.update"
+          "custom_fields.update"
         ]
       },
       "get": {
@@ -135714,10 +135714,10 @@
         "x-docs-group-name": "Custom Field Options V1",
         "x-docs-resource-type": "CustomFieldOptionV1",
         "x-mint": {
-          "content": "🔑 Requires the `organisation_settings.update` scope."
+          "content": "🔑 Requires the `custom_fields.update` scope."
         },
         "x-rbac-scopes": [
-          "organisation_settings.update"
+          "custom_fields.update"
         ]
       }
     },
@@ -136109,10 +136109,10 @@
         "x-docs-group-name": "Custom Fields V1",
         "x-docs-resource-type": "CustomFieldV1",
         "x-mint": {
-          "content": "🔑 Requires the `organisation_settings.update` scope."
+          "content": "🔑 Requires the `custom_fields.create` scope."
         },
         "x-rbac-scopes": [
-          "organisation_settings.update"
+          "custom_fields.create"
         ]
       }
     },
@@ -136278,10 +136278,10 @@
         "x-docs-group-name": "Custom Fields V1",
         "x-docs-resource-type": "CustomFieldV1",
         "x-mint": {
-          "content": "🔑 Requires the `organisation_settings.update` scope."
+          "content": "🔑 Requires the `custom_fields.destroy` scope."
         },
         "x-rbac-scopes": [
-          "organisation_settings.update"
+          "custom_fields.destroy"
         ]
       },
       "get": {
@@ -136696,10 +136696,10 @@
         "x-docs-group-name": "Custom Fields V1",
         "x-docs-resource-type": "CustomFieldV1",
         "x-mint": {
-          "content": "🔑 Requires the `organisation_settings.update` scope."
+          "content": "🔑 Requires the `custom_fields.update` scope."
         },
         "x-rbac-scopes": [
-          "organisation_settings.update"
+          "custom_fields.update"
         ]
       }
     },
@@ -168538,10 +168538,10 @@
         "x-docs-group-name": "Custom Fields V2",
         "x-docs-resource-type": "CustomFieldV2",
         "x-mint": {
-          "content": "🔑 Requires the `organisation_settings.update` scope."
+          "content": "🔑 Requires the `custom_fields.create` scope."
         },
         "x-rbac-scopes": [
-          "organisation_settings.update"
+          "custom_fields.create"
         ]
       }
     },
@@ -168706,10 +168706,10 @@
         "x-docs-group-name": "Custom Fields V2",
         "x-docs-resource-type": "CustomFieldV2",
         "x-mint": {
-          "content": "🔑 Requires the `organisation_settings.update` scope."
+          "content": "🔑 Requires the `custom_fields.destroy` scope."
         },
         "x-rbac-scopes": [
-          "organisation_settings.update"
+          "custom_fields.destroy"
         ]
       },
       "get": {
@@ -169127,10 +169127,10 @@
         "x-docs-group-name": "Custom Fields V2",
         "x-docs-resource-type": "CustomFieldV2",
         "x-mint": {
-          "content": "🔑 Requires the `organisation_settings.update` scope."
+          "content": "🔑 Requires the `custom_fields.update` scope."
         },
         "x-rbac-scopes": [
-          "organisation_settings.update"
+          "custom_fields.update"
         ]
       }
     },
