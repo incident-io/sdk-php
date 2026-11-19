@@ -132880,10 +132880,10 @@
         "x-docs-group-name": "Alert Notes V1",
         "x-docs-resource-type": "AlertNoteV1",
         "x-mint": {
-          "content": "🔑 Requires the `alerts.edit` scope."
+          "content": "🔑 Requires the `alert_notes.create` scope."
         },
         "x-rbac-scopes": [
-          "alerts.edit"
+          "alert_notes.create"
         ]
       }
     },
@@ -133048,10 +133048,10 @@
         "x-docs-group-name": "Alert Notes V1",
         "x-docs-resource-type": "AlertNoteV1",
         "x-mint": {
-          "content": "🔑 Requires the `alerts.edit` scope."
+          "content": "🔑 Requires the `alert_notes.destroy` scope."
         },
         "x-rbac-scopes": [
-          "alerts.edit"
+          "alert_notes.destroy"
         ]
       },
       "get": {
@@ -133467,10 +133467,10 @@
         "x-docs-group-name": "Alert Notes V1",
         "x-docs-resource-type": "AlertNoteV1",
         "x-mint": {
-          "content": "🔑 Requires the `alerts.edit` scope."
+          "content": "🔑 Requires the `alert_notes.update` scope."
         },
         "x-rbac-scopes": [
-          "alerts.edit"
+          "alert_notes.update"
         ]
       }
     },
@@ -150307,10 +150307,10 @@
         "x-docs-group-name": "Alert Attachments V2",
         "x-docs-resource-type": "AlertAttachmentV2",
         "x-mint": {
-          "content": "🔑 Requires the `alerts.edit` scope."
+          "content": "🔑 Requires the `alert_attachments.create` scope."
         },
         "x-rbac-scopes": [
-          "alerts.edit"
+          "alert_attachments.create"
         ]
       }
     },
@@ -150475,10 +150475,10 @@
         "x-docs-group-name": "Alert Attachments V2",
         "x-docs-resource-type": "AlertAttachmentV2",
         "x-mint": {
-          "content": "🔑 Requires the `alerts.edit` scope."
+          "content": "🔑 Requires the `alert_attachments.destroy` scope."
         },
         "x-rbac-scopes": [
-          "alerts.edit"
+          "alert_attachments.destroy"
         ]
       }
     },
@@ -159086,10 +159086,10 @@
         "x-docs-group-name": "Alerts V2",
         "x-docs-resource-type": "AlertV2",
         "x-mint": {
-          "content": "🔑 Requires the `alerts.edit` scope."
+          "content": "🔑 Requires the `alerts.update_tags` scope."
         },
         "x-rbac-scopes": [
-          "alerts.edit"
+          "alerts.update_tags"
         ]
       }
     },
@@ -159332,10 +159332,10 @@
         "x-docs-group-name": "Alerts V2",
         "x-docs-resource-type": "AlertV2",
         "x-mint": {
-          "content": "🔑 Requires the `alerts.edit` scope."
+          "content": "🔑 Requires the `alerts.update_tags` scope."
         },
         "x-rbac-scopes": [
-          "alerts.edit"
+          "alerts.update_tags"
         ]
       }
     },
@@ -159808,10 +159808,10 @@
         "x-docs-group-name": "Alerts V2",
         "x-docs-resource-type": "AlertV2",
         "x-mint": {
-          "content": "🔑 Requires the `alerts.edit` scope."
+          "content": "🔑 Requires the `alerts.update_tags` scope."
         },
         "x-rbac-scopes": [
-          "alerts.edit"
+          "alerts.update_tags"
         ]
       }
     },
