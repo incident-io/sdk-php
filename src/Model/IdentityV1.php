@@ -277,6 +277,7 @@ class IdentityV1 implements ModelInterface, ArrayAccess, JsonSerializable
     public const ROLES_INVESTIGATIONS_EDITOR = 'investigations_editor';
     public const ROLES_TELEMETRY_VIEWER = 'telemetry_viewer';
     public const ROLES_DOCUMENTS_VIEWER = 'documents_viewer';
+    public const ROLES_USER_SESSIONS_REVOKE = 'user_sessions_revoke';
     public const TEAM_ROLES_CATALOG_EDITOR = 'catalog_editor';
     public const TEAM_ROLES_SCHEDULES_EDITOR = 'schedules_editor';
     public const TEAM_ROLES_SCHEDULES_READER = 'schedules_reader';
@@ -347,6 +348,7 @@ class IdentityV1 implements ModelInterface, ArrayAccess, JsonSerializable
             self::ROLES_INVESTIGATIONS_EDITOR,
             self::ROLES_TELEMETRY_VIEWER,
             self::ROLES_DOCUMENTS_VIEWER,
+            self::ROLES_USER_SESSIONS_REVOKE,
         ];
     }
 

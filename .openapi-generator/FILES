@@ -799,6 +799,7 @@ src/Model/AuditLogsUserReinstatedV1.php
 src/Model/AuditLogsUserReinstatedV2.php
 src/Model/AuditLogsUserRoleMembershipsUpdatedV1.php
 src/Model/AuditLogsUserRoleMembershipsUpdatedV2.php
+src/Model/AuditLogsUserSessionsRevokedV1.php
 src/Model/AuditLogsUserUpdatedV1.php
 src/Model/AuditLogsUserUpdatedV2.php
 src/Model/AuditLogsWorkflowCreatedV1.php

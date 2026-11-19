@@ -259,6 +259,7 @@ class APIKeyRoleV1 implements ModelInterface, ArrayAccess, JsonSerializable
     public const NAME_INVESTIGATIONS_EDITOR = 'investigations_editor';
     public const NAME_TELEMETRY_VIEWER = 'telemetry_viewer';
     public const NAME_DOCUMENTS_VIEWER = 'documents_viewer';
+    public const NAME_USER_SESSIONS_REVOKE = 'user_sessions_revoke';
 
     /**
      * Gets allowable values of the enum
@@ -315,6 +316,7 @@ class APIKeyRoleV1 implements ModelInterface, ArrayAccess, JsonSerializable
             self::NAME_INVESTIGATIONS_EDITOR,
             self::NAME_TELEMETRY_VIEWER,
             self::NAME_DOCUMENTS_VIEWER,
+            self::NAME_USER_SESSIONS_REVOKE,
         ];
     }
 

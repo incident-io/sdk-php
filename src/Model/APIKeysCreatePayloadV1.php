@@ -277,6 +277,7 @@ class APIKeysCreatePayloadV1 implements ModelInterface, ArrayAccess, JsonSeriali
     public const ROLE_NAMES_INVESTIGATIONS_EDITOR = 'investigations_editor';
     public const ROLE_NAMES_TELEMETRY_VIEWER = 'telemetry_viewer';
     public const ROLE_NAMES_DOCUMENTS_VIEWER = 'documents_viewer';
+    public const ROLE_NAMES_USER_SESSIONS_REVOKE = 'user_sessions_revoke';
     public const TEAM_ROLE_NAMES_CATALOG_EDITOR = 'catalog_editor';
     public const TEAM_ROLE_NAMES_SCHEDULES_EDITOR = 'schedules_editor';
     public const TEAM_ROLE_NAMES_SCHEDULES_READER = 'schedules_reader';
@@ -347,6 +348,7 @@ class APIKeysCreatePayloadV1 implements ModelInterface, ArrayAccess, JsonSeriali
             self::ROLE_NAMES_INVESTIGATIONS_EDITOR,
             self::ROLE_NAMES_TELEMETRY_VIEWER,
             self::ROLE_NAMES_DOCUMENTS_VIEWER,
+            self::ROLE_NAMES_USER_SESSIONS_REVOKE,
         ];
     }
 

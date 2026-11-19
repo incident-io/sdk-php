@@ -799,6 +799,7 @@ class IncidentIo\Model\AuditLogsUserReinstatedV1
 class IncidentIo\Model\AuditLogsUserReinstatedV2
 class IncidentIo\Model\AuditLogsUserRoleMembershipsUpdatedV1
 class IncidentIo\Model\AuditLogsUserRoleMembershipsUpdatedV2
+class IncidentIo\Model\AuditLogsUserSessionsRevokedV1
 class IncidentIo\Model\AuditLogsUserUpdatedV1
 class IncidentIo\Model\AuditLogsUserUpdatedV2
 class IncidentIo\Model\AuditLogsWorkflowCreatedV1
@@ -1681,6 +1682,7 @@ const IncidentIo\Model\APIKeyRoleV1::NAME_TEAM_MEMBERSHIPS_MANAGE
 const IncidentIo\Model\APIKeyRoleV1::NAME_TELEMETRY_DATA_SOURCE_UPDATE
 const IncidentIo\Model\APIKeyRoleV1::NAME_TELEMETRY_QUERY_RESTRICTED
 const IncidentIo\Model\APIKeyRoleV1::NAME_TELEMETRY_VIEWER
+const IncidentIo\Model\APIKeyRoleV1::NAME_USER_SESSIONS_REVOKE
 const IncidentIo\Model\APIKeyRoleV1::NAME_VIEWER
 const IncidentIo\Model\APIKeyRoleV1::NAME_WORKFLOWS_EDITOR
 const IncidentIo\Model\APIKeyRoleV1::NAME_WORKFLOWS_VIEWER
@@ -1745,6 +1747,7 @@ const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_TEAM_MEMBERSHIPS_MANAG
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_TELEMETRY_DATA_SOURCE_UPDATE
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_TELEMETRY_QUERY_RESTRICTED
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_TELEMETRY_VIEWER
+const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_USER_SESSIONS_REVOKE
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_VIEWER
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_WORKFLOWS_EDITOR
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_WORKFLOWS_VIEWER
@@ -1812,6 +1815,7 @@ const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_TEAM_MEMBERSHIPS_MANAG
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_TELEMETRY_DATA_SOURCE_UPDATE
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_TELEMETRY_QUERY_RESTRICTED
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_TELEMETRY_VIEWER
+const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_USER_SESSIONS_REVOKE
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_VIEWER
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_WORKFLOWS_EDITOR
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_WORKFLOWS_VIEWER
@@ -3000,6 +3004,7 @@ const IncidentIo\Model\AuditLogsUserReinstatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsUserReinstatedV2::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsUserRoleMembershipsUpdatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsUserRoleMembershipsUpdatedV2::DISCRIMINATOR
+const IncidentIo\Model\AuditLogsUserSessionsRevokedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsUserUpdatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsUserUpdatedV2::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsWorkflowCreatedV1::DISCRIMINATOR
@@ -4040,6 +4045,7 @@ const IncidentIo\Model\IdentityV1::ROLES_TEAM_MEMBERSHIPS_MANAGE
 const IncidentIo\Model\IdentityV1::ROLES_TELEMETRY_DATA_SOURCE_UPDATE
 const IncidentIo\Model\IdentityV1::ROLES_TELEMETRY_QUERY_RESTRICTED
 const IncidentIo\Model\IdentityV1::ROLES_TELEMETRY_VIEWER
+const IncidentIo\Model\IdentityV1::ROLES_USER_SESSIONS_REVOKE
 const IncidentIo\Model\IdentityV1::ROLES_VIEWER
 const IncidentIo\Model\IdentityV1::ROLES_WORKFLOWS_EDITOR
 const IncidentIo\Model\IdentityV1::ROLES_WORKFLOWS_VIEWER
@@ -8272,6 +8278,11 @@ method IncidentIo\Api\UsersV2Api::usersV2ListNotificationRulesRequest
 method IncidentIo\Api\UsersV2Api::usersV2ListNotificationRulesWithHttpInfo
 method IncidentIo\Api\UsersV2Api::usersV2ListRequest
 method IncidentIo\Api\UsersV2Api::usersV2ListWithHttpInfo
+method IncidentIo\Api\UsersV2Api::usersV2RevokeSessions
+method IncidentIo\Api\UsersV2Api::usersV2RevokeSessionsAsync
+method IncidentIo\Api\UsersV2Api::usersV2RevokeSessionsAsyncWithHttpInfo
+method IncidentIo\Api\UsersV2Api::usersV2RevokeSessionsRequest
+method IncidentIo\Api\UsersV2Api::usersV2RevokeSessionsWithHttpInfo
 method IncidentIo\Api\UsersV2Api::usersV2Show
 method IncidentIo\Api\UsersV2Api::usersV2ShowAsync
 method IncidentIo\Api\UsersV2Api::usersV2ShowAsyncWithHttpInfo
@@ -13163,6 +13174,16 @@ param IncidentIo\Api\UsersV2Api::usersV2ListWithHttpInfo $email
 param IncidentIo\Api\UsersV2Api::usersV2ListWithHttpInfo $includeInactive
 param IncidentIo\Api\UsersV2Api::usersV2ListWithHttpInfo $pageSize
 param IncidentIo\Api\UsersV2Api::usersV2ListWithHttpInfo $slackUserId
+param IncidentIo\Api\UsersV2Api::usersV2RevokeSessions $contentType
+param IncidentIo\Api\UsersV2Api::usersV2RevokeSessions $id
+param IncidentIo\Api\UsersV2Api::usersV2RevokeSessionsAsync $contentType
+param IncidentIo\Api\UsersV2Api::usersV2RevokeSessionsAsync $id
+param IncidentIo\Api\UsersV2Api::usersV2RevokeSessionsAsyncWithHttpInfo $contentType
+param IncidentIo\Api\UsersV2Api::usersV2RevokeSessionsAsyncWithHttpInfo $id
+param IncidentIo\Api\UsersV2Api::usersV2RevokeSessionsRequest $contentType
+param IncidentIo\Api\UsersV2Api::usersV2RevokeSessionsRequest $id
+param IncidentIo\Api\UsersV2Api::usersV2RevokeSessionsWithHttpInfo $contentType
+param IncidentIo\Api\UsersV2Api::usersV2RevokeSessionsWithHttpInfo $id
 param IncidentIo\Api\UsersV2Api::usersV2Show $contentType
 param IncidentIo\Api\UsersV2Api::usersV2Show $id
 param IncidentIo\Api\UsersV2Api::usersV2ShowAsync $contentType
@@ -17274,6 +17295,12 @@ property IncidentIo\Model\AuditLogsUserRoleMembershipsUpdatedV2 metadata
 property IncidentIo\Model\AuditLogsUserRoleMembershipsUpdatedV2 occurredAt
 property IncidentIo\Model\AuditLogsUserRoleMembershipsUpdatedV2 targets
 property IncidentIo\Model\AuditLogsUserRoleMembershipsUpdatedV2 version
+property IncidentIo\Model\AuditLogsUserSessionsRevokedV1 action
+property IncidentIo\Model\AuditLogsUserSessionsRevokedV1 actor
+property IncidentIo\Model\AuditLogsUserSessionsRevokedV1 context
+property IncidentIo\Model\AuditLogsUserSessionsRevokedV1 occurredAt
+property IncidentIo\Model\AuditLogsUserSessionsRevokedV1 targets
+property IncidentIo\Model\AuditLogsUserSessionsRevokedV1 version
 property IncidentIo\Model\AuditLogsUserUpdatedV1 action
 property IncidentIo\Model\AuditLogsUserUpdatedV1 actor
 property IncidentIo\Model\AuditLogsUserUpdatedV1 context
