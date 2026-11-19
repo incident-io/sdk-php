@@ -193437,10 +193437,10 @@
         "x-docs-group-name": "Policies V2",
         "x-docs-resource-type": "PolicyV2",
         "x-mint": {
-          "content": "🔑 Requires the `policies.create` scope."
+          "content": "🔑 Requires the `policies.update` scope."
         },
         "x-rbac-scopes": [
-          "policies.create"
+          "policies.update"
         ]
       }
     },
