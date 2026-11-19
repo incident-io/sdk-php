@@ -346,7 +346,7 @@ class PolicyPostMortemV2 implements ModelInterface, ArrayAccess, JsonSerializabl
     /**
      * Sets runOnPrivateIncidents
      *
-     * @param bool|null $runOnPrivateIncidents Requires the policies.run_on_private scope
+     * @param bool|null $runOnPrivateIncidents Requires the policies.run.private_incidents scope
      *
      * @return $this
      */

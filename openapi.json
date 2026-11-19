@@ -111058,7 +111058,7 @@
             "type": "array"
           },
           "run_on_private_incidents": {
-            "description": "Requires the policies.run_on_private scope",
+            "description": "Requires the policies.run.private_incidents scope",
             "example": false,
             "type": "boolean"
           }
@@ -111169,7 +111169,7 @@
             "type": "array"
           },
           "run_on_private_incidents": {
-            "description": "Requires the policies.run_on_private scope",
+            "description": "Requires the policies.run.private_incidents scope",
             "example": false,
             "type": "boolean"
           }
@@ -112745,7 +112745,7 @@
             "type": "array"
           },
           "run_on_private_incidents": {
-            "description": "Requires the policies.run_on_private scope",
+            "description": "Requires the policies.run.private_incidents scope",
             "example": false,
             "type": "boolean"
           }
@@ -112856,7 +112856,7 @@
             "type": "array"
           },
           "run_on_private_incidents": {
-            "description": "Requires the policies.run_on_private scope",
+            "description": "Requires the policies.run.private_incidents scope",
             "example": false,
             "type": "boolean"
           }
@@ -113011,7 +113011,7 @@
             "type": "array"
           },
           "run_on_private_incidents": {
-            "description": "Requires the policies.run_on_private scope",
+            "description": "Requires the policies.run.private_incidents scope",
             "example": false,
             "type": "boolean"
           }
@@ -113122,7 +113122,7 @@
             "type": "array"
           },
           "run_on_private_incidents": {
-            "description": "Requires the policies.run_on_private scope",
+            "description": "Requires the policies.run.private_incidents scope",
             "example": false,
             "type": "boolean"
           }
@@ -141386,10 +141386,10 @@
         "x-docs-group-name": "Incident Templates V1",
         "x-docs-resource-type": "IncidentTemplateV1",
         "x-mint": {
-          "content": "🔑 Requires the `incident_template.create` scope."
+          "content": "🔑 Requires the `incident_templates.create` scope."
         },
         "x-rbac-scopes": [
-          "incident_template.create"
+          "incident_templates.create"
         ]
       }
     },
@@ -141974,10 +141974,10 @@
         "x-docs-group-name": "Incident Templates V1",
         "x-docs-resource-type": "IncidentTemplateV1",
         "x-mint": {
-          "content": "🔑 Requires the `incident_template.destroy` scope."
+          "content": "🔑 Requires the `incident_templates.destroy` scope."
         },
         "x-rbac-scopes": [
-          "incident_template.destroy"
+          "incident_templates.destroy"
         ]
       },
       "get": {
@@ -143107,10 +143107,10 @@
         "x-docs-group-name": "Incident Templates V1",
         "x-docs-resource-type": "IncidentTemplateV1",
         "x-mint": {
-          "content": "🔑 Requires the `incident_template.update` scope."
+          "content": "🔑 Requires the `incident_templates.update` scope."
         },
         "x-rbac-scopes": [
-          "incident_template.update"
+          "incident_templates.update"
         ]
       }
     },
@@ -145666,10 +145666,10 @@
         "x-docs-group-name": "MaintenanceWindows V1",
         "x-docs-resource-type": "MaintenanceWindowV1",
         "x-mint": {
-          "content": "🔑 Requires the `maintenance_window.create` scope."
+          "content": "🔑 Requires the `maintenance_windows.create` scope."
         },
         "x-rbac-scopes": [
-          "maintenance_window.create"
+          "maintenance_windows.create"
         ]
       }
     },
@@ -145847,10 +145847,10 @@
         "x-docs-group-name": "MaintenanceWindows V1",
         "x-docs-resource-type": "MaintenanceWindowV1",
         "x-mint": {
-          "content": "🔑 Requires the `maintenance_window.destroy` scope."
+          "content": "🔑 Requires the `maintenance_windows.destroy` scope."
         },
         "x-rbac-scopes": [
-          "maintenance_window.destroy"
+          "maintenance_windows.destroy"
         ]
       },
       "get": {
@@ -146515,10 +146515,10 @@
         "x-docs-group-name": "MaintenanceWindows V1",
         "x-docs-resource-type": "MaintenanceWindowV1",
         "x-mint": {
-          "content": "🔑 Requires the `maintenance_window.update` scope."
+          "content": "🔑 Requires the `maintenance_windows.update` scope."
         },
         "x-rbac-scopes": [
-          "maintenance_window.update"
+          "maintenance_windows.update"
         ]
       }
     },
@@ -147714,10 +147714,10 @@
         "x-docs-group-name": "PostmortemDocuments V1",
         "x-docs-resource-type": "PostmortemDocumentV1",
         "x-mint": {
-          "content": "🔑 Requires the `in_app_postmortems.copy_as_markdown` scope."
+          "content": "🔑 Requires the `in_app_postmortem_markdown_exports.view` scope."
         },
         "x-rbac-scopes": [
-          "in_app_postmortems.copy_as_markdown"
+          "in_app_postmortem_markdown_exports.view"
         ]
       }
     },
@@ -166632,10 +166632,10 @@
         "x-docs-group-name": "Catalog Entries V2",
         "x-docs-resource-type": "CatalogEntryV2",
         "x-mint": {
-          "content": "🔑 Requires the `catalog_entries.edit` scope."
+          "content": "🔑 Requires the `catalog_entries.update` scope."
         },
         "x-rbac-scopes": [
-          "catalog_entries.edit"
+          "catalog_entries.update"
         ]
       }
     },
@@ -167887,10 +167887,10 @@
         "x-docs-group-name": "Catalog Types V2",
         "x-docs-resource-type": "CatalogTypeV2",
         "x-mint": {
-          "content": "🔑 Requires the `catalog_types.edit` scope."
+          "content": "🔑 Requires the `catalog_types.update` scope."
         },
         "x-rbac-scopes": [
-          "catalog_types.edit"
+          "catalog_types.update"
         ]
       }
     },
@@ -168139,10 +168139,10 @@
         "x-docs-group-name": "Catalog Types V2",
         "x-docs-resource-type": "CatalogTypeV2",
         "x-mint": {
-          "content": "🔑 Requires the `catalog_types.edit` scope."
+          "content": "🔑 Requires the `catalog_types.update` scope."
         },
         "x-rbac-scopes": [
-          "catalog_types.edit"
+          "catalog_types.update"
         ]
       }
     },
@@ -176871,10 +176871,10 @@
         "x-docs-group-name": "Follow-ups V2",
         "x-docs-resource-type": "FollowUpV2",
         "x-mint": {
-          "content": "🔑 Requires the `follow_ups.connect_external_issue` scope."
+          "content": "🔑 Requires the `follow_up_external_issues.create` scope."
         },
         "x-rbac-scopes": [
-          "follow_ups.connect_external_issue"
+          "follow_up_external_issues.create"
         ]
       }
     },
@@ -177268,10 +177268,10 @@
         "x-docs-group-name": "Glossary Entries V2",
         "x-docs-resource-type": "GlossaryEntryV2",
         "x-mint": {
-          "content": "🔑 Requires the `glossary_entries.manage` scope."
+          "content": "🔑 Requires the `glossary_entries.update` scope."
         },
         "x-rbac-scopes": [
-          "glossary_entries.manage"
+          "glossary_entries.update"
         ]
       }
     },
@@ -177459,10 +177459,10 @@
         "x-docs-group-name": "Glossary Entries V2",
         "x-docs-resource-type": "GlossaryEntryV2",
         "x-mint": {
-          "content": "🔑 Requires the `glossary_entries.manage` scope."
+          "content": "🔑 Requires the `glossary_entries.update` scope."
         },
         "x-rbac-scopes": [
-          "glossary_entries.manage"
+          "glossary_entries.update"
         ]
       }
     },
@@ -177627,10 +177627,10 @@
         "x-docs-group-name": "Glossary Entries V2",
         "x-docs-resource-type": "GlossaryEntryV2",
         "x-mint": {
-          "content": "🔑 Requires the `glossary_entries.manage` scope."
+          "content": "🔑 Requires the `glossary_entries.update` scope."
         },
         "x-rbac-scopes": [
-          "glossary_entries.manage"
+          "glossary_entries.update"
         ]
       },
       "get": {
@@ -178001,10 +178001,10 @@
         "x-docs-group-name": "Glossary Entries V2",
         "x-docs-resource-type": "GlossaryEntryV2",
         "x-mint": {
-          "content": "🔑 Requires the `glossary_entries.manage` scope."
+          "content": "🔑 Requires the `glossary_entries.update` scope."
         },
         "x-rbac-scopes": [
-          "glossary_entries.manage"
+          "glossary_entries.update"
         ]
       }
     },
@@ -179937,7 +179937,7 @@
     },
     "/v2/incident_participant_workloads": {
       "get": {
-        "description": "List the participants of an incident with their workload.\n\nWe calculate how much time each participant has spent working on the incident, aggregated\nper participant. Each participant is annotated with their participant type and, if they have\nleft the incident, when they were archived.\n\nWorkload is calculated periodically, so values can lag real time and the most recent period\nmay still be filling. The metadata reports the time the figures are calculated up to.\n\nWorkload for private incidents is only returned to API keys with the\n`incident_workloads.view_private` scope.",
+        "description": "List the participants of an incident with their workload.\n\nWe calculate how much time each participant has spent working on the incident, aggregated\nper participant. Each participant is annotated with their participant type and, if they have\nleft the incident, when they were archived.\n\nWorkload is calculated periodically, so values can lag real time and the most recent period\nmay still be filling. The metadata reports the time the figures are calculated up to.\n\nWorkload for private incidents is only returned to API keys with the\n`incident_workloads.view.private_incidents` scope.",
         "operationId": "IncidentParticipantWorkloads V2#List",
         "parameters": [
           {
@@ -184235,7 +184235,7 @@
     },
     "/v2/incidents/{id}/actions/connect_external_issue": {
       "post": {
-        "description": "Connect an existing issue in an issue tracker to an incident, as its external issue.\n\nThe issue is synced using the given incident ticket template, as if incident.io had\ncreated it from that template. The next sync writes the incident's fields into the issue.\n\nThis works whether or not automatic incident ticket creation is turned on. While it is\noff, no tickets are created for other incidents, and the incident's fields are not\nwritten into this issue until it is turned on.\n\nThis needs the incidents.connect_external_issue scope, either across the organisation or\nfrom an incident role on this incident.\n\nThis fails if the incident already has a different external issue (unless replace is\ntrue), or if the issue is already linked to another incident or follow-up.\n\nThe ID supplied can be either the incident's full ID, or the numeric part of its\nreference.",
+        "description": "Connect an existing issue in an issue tracker to an incident, as its external issue.\n\nThe issue is synced using the given incident ticket template, as if incident.io had\ncreated it from that template. The next sync writes the incident's fields into the issue.\n\nThis works whether or not automatic incident ticket creation is turned on. While it is\noff, no tickets are created for other incidents, and the incident's fields are not\nwritten into this issue until it is turned on.\n\nThis needs the incident_external_issues.create scope, either across the organisation or\nfrom an incident role on this incident.\n\nThis fails if the incident already has a different external issue (unless replace is\ntrue), or if the issue is already linked to another incident or follow-up.\n\nThe ID supplied can be either the incident's full ID, or the numeric part of its\nreference.",
         "operationId": "Incidents V2#ConnectExternalIssue",
         "parameters": [
           {
@@ -200813,10 +200813,10 @@
         "x-docs-group-name": "Secrets V2",
         "x-docs-resource-type": "SecretV2",
         "x-mint": {
-          "content": "🔑 Requires the `secrets.view_metadata` scope."
+          "content": "🔑 Requires the `secrets.view` scope."
         },
         "x-rbac-scopes": [
-          "secrets.view_metadata"
+          "secrets.view"
         ]
       },
       "post": {
@@ -201172,10 +201172,10 @@
         "x-docs-group-name": "Secrets V2",
         "x-docs-resource-type": "SecretV2",
         "x-mint": {
-          "content": "🔑 Requires the `secrets.delete` scope."
+          "content": "🔑 Requires the `secrets.destroy` scope."
         },
         "x-rbac-scopes": [
-          "secrets.delete"
+          "secrets.destroy"
         ]
       },
       "get": {
@@ -201387,10 +201387,10 @@
         "x-docs-group-name": "Secrets V2",
         "x-docs-resource-type": "SecretV2",
         "x-mint": {
-          "content": "🔑 Requires the `secrets.view_metadata` scope."
+          "content": "🔑 Requires the `secrets.view` scope."
         },
         "x-rbac-scopes": [
-          "secrets.view_metadata"
+          "secrets.view"
         ]
       },
       "put": {
@@ -202900,10 +202900,10 @@
         "x-docs-group-name": "Status Page Incident Updates V2",
         "x-docs-resource-type": "StatusPageIncidentUpdateV2",
         "x-mint": {
-          "content": "🔑 Requires the `status_pages.publish_updates` scope."
+          "content": "🔑 Requires the `status_pages.publish` scope."
         },
         "x-rbac-scopes": [
-          "status_pages.publish_updates"
+          "status_pages.publish"
         ]
       }
     },
@@ -203415,10 +203415,10 @@
         "x-docs-group-name": "Status Page Incidents V2",
         "x-docs-resource-type": "StatusPageIncidentV2",
         "x-mint": {
-          "content": "🔑 Requires the `status_pages.publish_updates` scope."
+          "content": "🔑 Requires the `status_pages.publish` scope."
         },
         "x-rbac-scopes": [
-          "status_pages.publish_updates"
+          "status_pages.publish"
         ]
       }
     },
@@ -203836,10 +203836,10 @@
         "x-docs-group-name": "Status Page Incidents V2",
         "x-docs-resource-type": "StatusPageIncidentV2",
         "x-mint": {
-          "content": "🔑 Requires the `status_pages.publish_updates` scope."
+          "content": "🔑 Requires the `status_pages.publish` scope."
         },
         "x-rbac-scopes": [
-          "status_pages.publish_updates"
+          "status_pages.publish"
         ]
       }
     },
@@ -204035,10 +204035,10 @@
         "x-docs-group-name": "Status Page Maintenance Updates V2",
         "x-docs-resource-type": "StatusPageMaintenanceUpdateV2",
         "x-mint": {
-          "content": "🔑 Requires the `status_pages.publish_updates` scope."
+          "content": "🔑 Requires the `status_pages.publish` scope."
         },
         "x-rbac-scopes": [
-          "status_pages.publish_updates"
+          "status_pages.publish"
         ]
       }
     },
@@ -204550,10 +204550,10 @@
         "x-docs-group-name": "Status Page Maintenances V2",
         "x-docs-resource-type": "StatusPageMaintenanceV2",
         "x-mint": {
-          "content": "🔑 Requires the `status_pages.publish_updates` scope."
+          "content": "🔑 Requires the `status_pages.publish` scope."
         },
         "x-rbac-scopes": [
-          "status_pages.publish_updates"
+          "status_pages.publish"
         ]
       }
     },
@@ -204719,10 +204719,10 @@
         "x-docs-group-name": "Status Page Maintenances V2",
         "x-docs-resource-type": "StatusPageMaintenanceV2",
         "x-mint": {
-          "content": "🔑 Requires the `status_pages.publish_updates` scope."
+          "content": "🔑 Requires the `status_pages.publish` scope."
         },
         "x-rbac-scopes": [
-          "status_pages.publish_updates"
+          "status_pages.publish"
         ]
       },
       "get": {
@@ -205140,10 +205140,10 @@
         "x-docs-group-name": "Status Page Maintenances V2",
         "x-docs-resource-type": "StatusPageMaintenanceV2",
         "x-mint": {
-          "content": "🔑 Requires the `status_pages.publish_updates` scope."
+          "content": "🔑 Requires the `status_pages.publish` scope."
         },
         "x-rbac-scopes": [
-          "status_pages.publish_updates"
+          "status_pages.publish"
         ]
       }
     },
@@ -205362,10 +205362,10 @@
         "x-docs-group-name": "Status Page Incidents V2",
         "x-docs-resource-type": "StatusPageIncidentV2",
         "x-mint": {
-          "content": "🔑 Requires the `status_pages.publish_updates` scope."
+          "content": "🔑 Requires the `status_pages.publish` scope."
         },
         "x-rbac-scopes": [
-          "status_pages.publish_updates"
+          "status_pages.publish"
         ]
       }
     },
@@ -207189,7 +207189,7 @@
     },
     "/v2/users/{user_id}/notification_methods": {
       "get": {
-        "description": "List notification methods for a user. Phone numbers are partially redacted unless the API key holds the notification_methods.view_unredacted scope.",
+        "description": "List notification methods for a user. Phone numbers are partially redacted unless the API key holds the unredacted_notification_methods.view scope.",
         "operationId": "Users V2#ListNotificationMethods",
         "parameters": [
           {
@@ -207926,10 +207926,10 @@
         "x-docs-group-name": "Users V2",
         "x-docs-resource-type": "UserWithRolesV2",
         "x-mint": {
-          "content": "🔑 Requires the `users.preferred_paging_provider.edit` scope."
+          "content": "🔑 Requires the `users.update_preferred_paging_provider` scope."
         },
         "x-rbac-scopes": [
-          "users.preferred_paging_provider.edit"
+          "users.update_preferred_paging_provider"
         ]
       }
     },
@@ -216095,10 +216095,10 @@
         "x-docs-group-name": "Catalog Entries V3",
         "x-docs-resource-type": "CatalogEntryV3",
         "x-mint": {
-          "content": "🔑 Requires the `catalog_entries.edit` scope."
+          "content": "🔑 Requires the `catalog_entries.update` scope."
         },
         "x-rbac-scopes": [
-          "catalog_entries.edit"
+          "catalog_entries.update"
         ]
       }
     },
@@ -216828,10 +216828,10 @@
         "x-docs-group-name": "Catalog Entries V3",
         "x-docs-resource-type": "CatalogEntryV3",
         "x-mint": {
-          "content": "🔑 Requires the `catalog_entries.edit` scope."
+          "content": "🔑 Requires the `catalog_entries.update` scope."
         },
         "x-rbac-scopes": [
-          "catalog_entries.edit"
+          "catalog_entries.update"
         ]
       }
     },
@@ -218110,10 +218110,10 @@
         "x-docs-group-name": "Catalog Types V3",
         "x-docs-resource-type": "CatalogTypeV3",
         "x-mint": {
-          "content": "🔑 Requires the `catalog_types.edit` scope."
+          "content": "🔑 Requires the `catalog_types.update` scope."
         },
         "x-rbac-scopes": [
-          "catalog_types.edit"
+          "catalog_types.update"
         ]
       }
     },
@@ -218367,10 +218367,10 @@
         "x-docs-group-name": "Catalog Types V3",
         "x-docs-resource-type": "CatalogTypeV3",
         "x-mint": {
-          "content": "🔑 Requires the `catalog_types.edit` scope."
+          "content": "🔑 Requires the `catalog_types.update` scope."
         },
         "x-rbac-scopes": [
-          "catalog_types.edit"
+          "catalog_types.update"
         ]
       }
     },
@@ -219230,10 +219230,10 @@
         "x-docs-group-name": "Follow-ups V3",
         "x-docs-resource-type": "FollowUpV3",
         "x-mint": {
-          "content": "🔑 Requires the `follow_ups.create_from_link` scope."
+          "content": "🔑 Requires the `follow_ups.import` scope."
         },
         "x-rbac-scopes": [
-          "follow_ups.create_from_link"
+          "follow_ups.import"
         ]
       }
     },
@@ -220162,10 +220162,10 @@
         "x-docs-group-name": "Follow-ups V3",
         "x-docs-resource-type": "FollowUpV3",
         "x-mint": {
-          "content": "🔑 Requires the `follow_ups.connect_external_issue` scope."
+          "content": "🔑 Requires the `follow_up_external_issues.create` scope."
         },
         "x-rbac-scopes": [
-          "follow_ups.connect_external_issue"
+          "follow_up_external_issues.create"
         ]
       }
     },

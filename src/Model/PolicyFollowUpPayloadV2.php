@@ -346,7 +346,7 @@ class PolicyFollowUpPayloadV2 implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Sets runOnPrivateIncidents
      *
-     * @param bool|null $runOnPrivateIncidents Requires the policies.run_on_private scope
+     * @param bool|null $runOnPrivateIncidents Requires the policies.run.private_incidents scope
      *
      * @return $this
      */
