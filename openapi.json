@@ -150648,10 +150648,10 @@
         "x-docs-group-name": "Alert Attributes V2",
         "x-docs-resource-type": "AlertAttributeV2",
         "x-mint": {
-          "content": "🔑 Requires the `alert_schema.view` scope."
+          "content": "🔑 Requires the `alert_attributes.view` scope."
         },
         "x-rbac-scopes": [
-          "alert_schema.view"
+          "alert_attributes.view"
         ]
       },
       "post": {
@@ -150834,10 +150834,10 @@
         "x-docs-group-name": "Alert Attributes V2",
         "x-docs-resource-type": "AlertAttributeV2",
         "x-mint": {
-          "content": "🔑 Requires the `alert_schema.update` scope."
+          "content": "🔑 Requires the `alert_attributes.update` scope."
         },
         "x-rbac-scopes": [
-          "alert_schema.update"
+          "alert_attributes.update"
         ]
       }
     },
@@ -151002,10 +151002,10 @@
         "x-docs-group-name": "Alert Attributes V2",
         "x-docs-resource-type": "AlertAttributeV2",
         "x-mint": {
-          "content": "🔑 Requires the `alert_schema.update` scope."
+          "content": "🔑 Requires the `alert_attributes.update` scope."
         },
         "x-rbac-scopes": [
-          "alert_schema.update"
+          "alert_attributes.update"
         ]
       },
       "get": {
@@ -151185,10 +151185,10 @@
         "x-docs-group-name": "Alert Attributes V2",
         "x-docs-resource-type": "AlertAttributeV2",
         "x-mint": {
-          "content": "🔑 Requires the `alert_schema.view` scope."
+          "content": "🔑 Requires the `alert_attributes.view` scope."
         },
         "x-rbac-scopes": [
-          "alert_schema.view"
+          "alert_attributes.view"
         ]
       },
       "put": {
@@ -151385,10 +151385,10 @@
         "x-docs-group-name": "Alert Attributes V2",
         "x-docs-resource-type": "AlertAttributeV2",
         "x-mint": {
-          "content": "🔑 Requires the `alert_schema.update` scope."
+          "content": "🔑 Requires the `alert_attributes.update` scope."
         },
         "x-rbac-scopes": [
-          "alert_schema.update"
+          "alert_attributes.update"
         ]
       }
     },
@@ -152999,10 +152999,10 @@
         "x-docs-group-name": "Alert Routes V2",
         "x-docs-resource-type": "AlertRouteV2",
         "x-mint": {
-          "content": "🔑 Requires the `alert_route.create` scope."
+          "content": "🔑 Requires the `alert_routes.create` scope."
         },
         "x-rbac-scopes": [
-          "alert_route.create"
+          "alert_routes.create"
         ]
       }
     },
@@ -153167,10 +153167,10 @@
         "x-docs-group-name": "Alert Routes V2",
         "x-docs-resource-type": "AlertRouteV2",
         "x-mint": {
-          "content": "🔑 Requires the `alert_route.destroy` scope."
+          "content": "🔑 Requires the `alert_routes.destroy` scope."
         },
         "x-rbac-scopes": [
-          "alert_route.destroy"
+          "alert_routes.destroy"
         ]
       },
       "get": {
@@ -155073,10 +155073,10 @@
         "x-docs-group-name": "Alert Routes V2",
         "x-docs-resource-type": "AlertRouteV2",
         "x-mint": {
-          "content": "🔑 Requires the `alert_route.update` scope."
+          "content": "🔑 Requires the `alert_routes.update` scope."
         },
         "x-rbac-scopes": [
-          "alert_route.update"
+          "alert_routes.update"
         ]
       }
     },
@@ -156173,10 +156173,10 @@
         "x-docs-group-name": "Alert Sources V2",
         "x-docs-resource-type": "AlertSourceV2",
         "x-mint": {
-          "content": "🔑 Requires the `alert_source.create` scope."
+          "content": "🔑 Requires the `alert_sources.create` scope."
         },
         "x-rbac-scopes": [
-          "alert_source.create"
+          "alert_sources.create"
         ]
       }
     },
@@ -156669,10 +156669,10 @@
         "x-docs-group-name": "Alert Sources V2",
         "x-docs-resource-type": "AlertSourceV2",
         "x-mint": {
-          "content": "🔑 Requires the `alert_source.destroy` scope."
+          "content": "🔑 Requires the `alert_sources.destroy` scope."
         },
         "x-rbac-scopes": [
-          "alert_source.destroy"
+          "alert_sources.destroy"
         ]
       },
       "get": {
@@ -157793,10 +157793,10 @@
         "x-docs-group-name": "Alert Sources V2",
         "x-docs-resource-type": "AlertSourceV2",
         "x-mint": {
-          "content": "🔑 Requires the `alert_source.update` scope."
+          "content": "🔑 Requires the `alert_sources.update` scope."
         },
         "x-rbac-scopes": [
-          "alert_source.update"
+          "alert_sources.update"
         ]
       }
     },
@@ -179710,10 +179710,10 @@
         "x-docs-group-name": "Incident Alerts V2",
         "x-docs-resource-type": "IncidentAlertV2",
         "x-mint": {
-          "content": "🔑 Requires the `alerts.attach_to_incident` scope."
+          "content": "🔑 Requires the `incident_alerts.create` scope."
         },
         "x-rbac-scopes": [
-          "alerts.attach_to_incident"
+          "incident_alerts.create"
         ]
       }
     },
@@ -213283,10 +213283,10 @@
         "x-docs-group-name": "Alert Routes V3",
         "x-docs-resource-type": "AlertRouteV3",
         "x-mint": {
-          "content": "🔑 Requires the `alert_route.create` scope."
+          "content": "🔑 Requires the `alert_routes.create` scope."
         },
         "x-rbac-scopes": [
-          "alert_route.create"
+          "alert_routes.create"
         ]
       }
     },
@@ -213451,10 +213451,10 @@
         "x-docs-group-name": "Alert Routes V3",
         "x-docs-resource-type": "AlertRouteV3",
         "x-mint": {
-          "content": "🔑 Requires the `alert_route.destroy` scope."
+          "content": "🔑 Requires the `alert_routes.destroy` scope."
         },
         "x-rbac-scopes": [
-          "alert_route.destroy"
+          "alert_routes.destroy"
         ]
       },
       "get": {
@@ -215331,10 +215331,10 @@
         "x-docs-group-name": "Alert Routes V3",
         "x-docs-resource-type": "AlertRouteV3",
         "x-mint": {
-          "content": "🔑 Requires the `alert_route.update` scope."
+          "content": "🔑 Requires the `alert_routes.update` scope."
         },
         "x-rbac-scopes": [
-          "alert_route.update"
+          "alert_routes.update"
         ]
       }
     },
