@@ -144807,10 +144807,10 @@
         "x-docs-group-name": "IPAllowlists V1",
         "x-docs-resource-type": "IPAllowlistV1",
         "x-mint": {
-          "content": "🔑 Requires the `security_settings.update` scope."
+          "content": "🔑 Requires the `ip_allowlists.update` scope."
         },
         "x-rbac-scopes": [
-          "security_settings.update"
+          "ip_allowlists.update"
         ]
       }
     },
