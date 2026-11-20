@@ -267,6 +267,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
     public const TYPE_INTERNAL_STATUS_PAGE = 'internal_status_page';
     public const TYPE_IP_ALLOWLIST = 'ip_allowlist';
     public const TYPE_NUDGE = 'nudge';
+    public const TYPE_OAUTH_SESSION = 'oauth_session';
     public const TYPE_ON_CALL_NOTIFICATION_METHOD = 'on_call_notification_method';
     public const TYPE_ON_CALL_NOTIFICATION_PAUSE = 'on_call_notification_pause';
     public const TYPE_ORGANISATION = 'organisation';
@@ -356,6 +357,7 @@ class AuditLogTargetV2 implements ModelInterface, ArrayAccess, JsonSerializable
             self::TYPE_INTERNAL_STATUS_PAGE,
             self::TYPE_IP_ALLOWLIST,
             self::TYPE_NUDGE,
+            self::TYPE_OAUTH_SESSION,
             self::TYPE_ON_CALL_NOTIFICATION_METHOD,
             self::TYPE_ON_CALL_NOTIFICATION_PAUSE,
             self::TYPE_ORGANISATION,

@@ -570,6 +570,7 @@ src/Model/AuditLogsNudgeDeletedV1.php
 src/Model/AuditLogsNudgeDeletedV2.php
 src/Model/AuditLogsNudgeUpdatedV1.php
 src/Model/AuditLogsNudgeUpdatedV2.php
+src/Model/AuditLogsOauthSessionRevokedV1.php
 src/Model/AuditLogsOnCallNotificationMethodCreatedV1.php
 src/Model/AuditLogsOnCallNotificationMethodCreatedV2.php
 src/Model/AuditLogsOnCallNotificationMethodCreatedV3.php

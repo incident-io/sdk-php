@@ -570,6 +570,7 @@ class IncidentIo\Model\AuditLogsNudgeDeletedV1
 class IncidentIo\Model\AuditLogsNudgeDeletedV2
 class IncidentIo\Model\AuditLogsNudgeUpdatedV1
 class IncidentIo\Model\AuditLogsNudgeUpdatedV2
+class IncidentIo\Model\AuditLogsOauthSessionRevokedV1
 class IncidentIo\Model\AuditLogsOnCallNotificationMethodCreatedV1
 class IncidentIo\Model\AuditLogsOnCallNotificationMethodCreatedV2
 class IncidentIo\Model\AuditLogsOnCallNotificationMethodCreatedV3
@@ -2494,6 +2495,7 @@ const IncidentIo\Model\AuditLogTargetV2::TYPE_INVESTIGATION_TRIGGER
 const IncidentIo\Model\AuditLogTargetV2::TYPE_IP_ALLOWLIST
 const IncidentIo\Model\AuditLogTargetV2::TYPE_MAINTENANCE_WINDOW
 const IncidentIo\Model\AuditLogTargetV2::TYPE_NUDGE
+const IncidentIo\Model\AuditLogTargetV2::TYPE_OAUTH_SESSION
 const IncidentIo\Model\AuditLogTargetV2::TYPE_ON_CALL_NOTIFICATION_METHOD
 const IncidentIo\Model\AuditLogTargetV2::TYPE_ON_CALL_NOTIFICATION_PAUSE
 const IncidentIo\Model\AuditLogTargetV2::TYPE_ON_CALL_UPSELL_REQUEST
@@ -2778,6 +2780,7 @@ const IncidentIo\Model\AuditLogsNudgeDeletedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsNudgeDeletedV2::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsNudgeUpdatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsNudgeUpdatedV2::DISCRIMINATOR
+const IncidentIo\Model\AuditLogsOauthSessionRevokedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsOnCallNotificationMethodCreatedV1::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsOnCallNotificationMethodCreatedV2::DISCRIMINATOR
 const IncidentIo\Model\AuditLogsOnCallNotificationMethodCreatedV3::DISCRIMINATOR
@@ -15837,6 +15840,12 @@ property IncidentIo\Model\AuditLogsNudgeUpdatedV2 context
 property IncidentIo\Model\AuditLogsNudgeUpdatedV2 occurredAt
 property IncidentIo\Model\AuditLogsNudgeUpdatedV2 targets
 property IncidentIo\Model\AuditLogsNudgeUpdatedV2 version
+property IncidentIo\Model\AuditLogsOauthSessionRevokedV1 action
+property IncidentIo\Model\AuditLogsOauthSessionRevokedV1 actor
+property IncidentIo\Model\AuditLogsOauthSessionRevokedV1 context
+property IncidentIo\Model\AuditLogsOauthSessionRevokedV1 occurredAt
+property IncidentIo\Model\AuditLogsOauthSessionRevokedV1 targets
+property IncidentIo\Model\AuditLogsOauthSessionRevokedV1 version
 property IncidentIo\Model\AuditLogsOnCallNotificationMethodCreatedV1 action
 property IncidentIo\Model\AuditLogsOnCallNotificationMethodCreatedV1 actor
 property IncidentIo\Model\AuditLogsOnCallNotificationMethodCreatedV1 context
