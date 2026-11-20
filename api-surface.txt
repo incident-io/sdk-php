@@ -1682,6 +1682,7 @@ const IncidentIo\Model\APIKeyRoleV1::NAME_TEAM_MEMBERSHIPS_MANAGE
 const IncidentIo\Model\APIKeyRoleV1::NAME_TELEMETRY_DATA_SOURCE_UPDATE
 const IncidentIo\Model\APIKeyRoleV1::NAME_TELEMETRY_QUERY_RESTRICTED
 const IncidentIo\Model\APIKeyRoleV1::NAME_TELEMETRY_VIEWER
+const IncidentIo\Model\APIKeyRoleV1::NAME_USERS_VIEWER
 const IncidentIo\Model\APIKeyRoleV1::NAME_USER_SESSIONS_REVOKE
 const IncidentIo\Model\APIKeyRoleV1::NAME_VIEWER
 const IncidentIo\Model\APIKeyRoleV1::NAME_WORKFLOWS_EDITOR
@@ -1747,6 +1748,7 @@ const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_TEAM_MEMBERSHIPS_MANAG
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_TELEMETRY_DATA_SOURCE_UPDATE
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_TELEMETRY_QUERY_RESTRICTED
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_TELEMETRY_VIEWER
+const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_USERS_VIEWER
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_USER_SESSIONS_REVOKE
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_VIEWER
 const IncidentIo\Model\APIKeysCreatePayloadV1::ROLE_NAMES_WORKFLOWS_EDITOR
@@ -1815,6 +1817,7 @@ const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_TEAM_MEMBERSHIPS_MANAG
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_TELEMETRY_DATA_SOURCE_UPDATE
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_TELEMETRY_QUERY_RESTRICTED
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_TELEMETRY_VIEWER
+const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_USERS_VIEWER
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_USER_SESSIONS_REVOKE
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_VIEWER
 const IncidentIo\Model\APIKeysUpdatePayloadV1::ROLE_NAMES_WORKFLOWS_EDITOR
@@ -4045,6 +4048,7 @@ const IncidentIo\Model\IdentityV1::ROLES_TEAM_MEMBERSHIPS_MANAGE
 const IncidentIo\Model\IdentityV1::ROLES_TELEMETRY_DATA_SOURCE_UPDATE
 const IncidentIo\Model\IdentityV1::ROLES_TELEMETRY_QUERY_RESTRICTED
 const IncidentIo\Model\IdentityV1::ROLES_TELEMETRY_VIEWER
+const IncidentIo\Model\IdentityV1::ROLES_USERS_VIEWER
 const IncidentIo\Model\IdentityV1::ROLES_USER_SESSIONS_REVOKE
 const IncidentIo\Model\IdentityV1::ROLES_VIEWER
 const IncidentIo\Model\IdentityV1::ROLES_WORKFLOWS_EDITOR

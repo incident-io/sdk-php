@@ -108,7 +108,8 @@
               "investigations_editor",
               "telemetry_viewer",
               "documents_viewer",
-              "user_sessions_revoke"
+              "user_sessions_revoke",
+              "users_viewer"
             ],
             "example": "viewer",
             "type": "string",
@@ -372,7 +373,8 @@
                 "investigations_editor",
                 "telemetry_viewer",
                 "documents_viewer",
-                "user_sessions_revoke"
+                "user_sessions_revoke",
+                "users_viewer"
               ],
               "example": "viewer",
               "type": "string"
@@ -792,7 +794,8 @@
                 "investigations_editor",
                 "telemetry_viewer",
                 "documents_viewer",
-                "user_sessions_revoke"
+                "user_sessions_revoke",
+                "users_viewer"
               ],
               "example": "viewer",
               "type": "string"
@@ -87570,7 +87573,8 @@
                 "investigations_editor",
                 "telemetry_viewer",
                 "documents_viewer",
-                "user_sessions_revoke"
+                "user_sessions_revoke",
+                "users_viewer"
               ],
               "example": "viewer",
               "type": "string",
